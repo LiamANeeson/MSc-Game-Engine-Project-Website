@@ -1,33 +1,69 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from "react";
+import {
+  AppBar,
+  Toolbar,
+  CssBaseline,
+  Typography,
+  makeStyles,
+  useTheme,
+  useMediaQuery,
+} from "@material-ui/core";
+import { Link } from "react-router-dom";
+import DrawerComponent from "../Drawer/DrawerComponent";
+
+const useStyles = makeStyles((theme) => ({
+  navlinks: {
+    marginLeft: theme.spacing(5),
+    display: "flex",
+  },
+  logo: {
+    flexGrow: "1",
+    cursor: "pointer",
+  },
+  link: {
+    textDecoration: "none",
+    color: "#D64933",
+    fontSize: "20px",
+    marginLeft: theme.spacing(20),
+    "&:hover": {
+      color: "#D64933",
+      borderBottom: "1px solid white",
+    },
+  },
+}));
 
 function Navbar() {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">Game Engine</Link>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarText">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <Link className="nav-link" to="/">Home <span className="sr-only"></span></Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/about">About</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/tutorial">Tutorial</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/download">Download</Link>
-          </li>
-        </ul>
-        <span className="navbar-text">
-        </span>
-      </div>
-    </nav>
-  )
-}
+  const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-export default Navbar
+  return (
+    <AppBar position="static" style={{backgroundColor: "#92DCE5"}}>
+      <CssBaseline />
+      <Toolbar>
+        <Typography variant="h4" className={classes.logo}>
+          Game Engine
+        </Typography>
+        {isMobile ? (
+          <DrawerComponent />
+        ) : (
+          <div className={classes.navlinks}>
+            <Link to="/" className={classes.link}>
+              Home
+            </Link>
+            <Link to="/about" className={classes.link}>
+              About
+            </Link>
+            <Link to="/tutorial" className={classes.link}>
+              Tutorial
+            </Link>
+            <Link to="/download" className={classes.link}>
+              Download
+            </Link>
+          </div>
+        )}
+      </Toolbar>
+    </AppBar>
+  );
+}
+export default Navbar;
