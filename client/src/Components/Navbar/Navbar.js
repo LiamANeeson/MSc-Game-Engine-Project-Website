@@ -1,27 +1,32 @@
-import React, { useState } from 'react'
-import "./Navbar.css"
-import ReorderIcon from "@material-ui/icons/Reorder"
+import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Navbar() {
-
-  const [showLinks, setShowLinks] = useState(false);
   return (
-    <div className='Navbar'>
-        <div className='leftSide'>
-            <div className='links' id={showLinks ? "hidden" : ""}>    
-                <a href='/home'>Home</a>
-                <a href='/about'>About</a>
-                <a href='/tutorial'>Tutorial</a>
-                <a href='/documentation'>Documentation</a>
-                <a href='/community'>Community</a>
-                <a href='/download'>Download</a>
-            </div>
-            <button onClick={() => setShowLinks(!showLinks)}><ReorderIcon /></button>
-        </div>
-        <div className='rightSide'>
-            <button>Download</button>
-        </div>
-    </div>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link className="navbar-brand" to="/">Game Engine</Link>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarText">
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item active">
+            <Link className="nav-link" to="/">Home <span className="sr-only"></span></Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/about">About</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/tutorial">Tutorial</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/download">Download</Link>
+          </li>
+        </ul>
+        <span className="navbar-text">
+        </span>
+      </div>
+    </nav>
   )
 }
 
