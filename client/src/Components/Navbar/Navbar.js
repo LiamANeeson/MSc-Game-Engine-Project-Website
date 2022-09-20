@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "../App.css"
+import "./Navbar.css"
 import ReorderIcon from "@material-ui/icons/Reorder"
 
 function Navbar() {
