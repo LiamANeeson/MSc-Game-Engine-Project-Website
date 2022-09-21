@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: center;   
+}
+
+body {
+    background-color: orange;
+}
+
+.card {
+    background: white;
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+}
+
+.card-image {
+    background-color: aqua;
+    height: 150px;
+    margin-bottom: 15px;
+}
