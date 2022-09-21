@@ -1,69 +1,35 @@
-import React from "react";
-import {
-  AppBar,
-  Toolbar,
-  CssBaseline,
-  Typography,
-  makeStyles,
-  useTheme,
-  useMediaQuery,
-} from "@material-ui/core";
-import { Link } from "react-router-dom";
-import DrawerComponent from "../Drawer/DrawerComponent";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { MenuList } from "./MenuList";
+import "./Navbar.css";
 
-const useStyles = makeStyles((theme) => ({
-  navlinks: {
-    marginLeft: theme.spacing(5),
-    display: "flex",
-  },
-  logo: {
-    flexGrow: "1",
-    cursor: "pointer",
-  },
-  link: {
-    textDecoration: "none",
-    color: "#D64933",
-    fontSize: "20px",
-    marginLeft: theme.spacing(20),
-    "&:hover": {
-      color: "#D64933",
-      borderBottom: "1px solid white",
-    },
-  },
-}));
+const Navbar = () => {
+  const [clicked, setClicked] = useState(false);
+  const menuList = MenuList.map(({ url, title }, index) => {
+    return (
+      <li key={index}>
+        <NavLink exact to={url} activeClassName="active">
+          {title}
+        </NavLink>
+      </li>
+    );
+  });
 
-function Navbar() {
-  const classes = useStyles();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const handleClick = () => {
+    setClicked(!clicked);
+  };
 
   return (
-    <AppBar position="static" style={{backgroundColor: "#92DCE5"}}>
-      <CssBaseline />
-      <Toolbar>
-        <Typography variant="h4" className={classes.logo}>
-          Game Engine
-        </Typography>
-        {isMobile ? (
-          <DrawerComponent />
-        ) : (
-          <div className={classes.navlinks}>
-            <Link to="/" className={classes.link}>
-              Home
-            </Link>
-            <Link to="/about" className={classes.link}>
-              About
-            </Link>
-            <Link to="/tutorial" className={classes.link}>
-              Tutorial
-            </Link>
-            <Link to="/download" className={classes.link}>
-              Download
-            </Link>
-          </div>
-        )}
-      </Toolbar>
-    </AppBar>
+    <nav>
+      <div className="logo">
+        Game Engine
+      </div>
+      <div className="menu-icon" onClick={handleClick}>
+        <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
+      </div>
+      <ul className={clicked ? "menu-list" : "menu-list close"}>{menuList}</ul>
+    </nav>
   );
-}
+};
+
 export default Navbar;
