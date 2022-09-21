@@ -1,28 +1,35 @@
-import React, { useState } from 'react'
-import "./Navbar.css"
-import ReorderIcon from "@material-ui/icons/Reorder"
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { MenuList } from "./MenuList";
+import "./Navbar.css";
 
-function Navbar() {
+const Navbar = () => {
+  const [clicked, setClicked] = useState(false);
+  const menuList = MenuList.map(({ url, title }, index) => {
+    return (
+      <li key={index}>
+        <NavLink exact to={url} activeClassName="active">
+          {title}
+        </NavLink>
+      </li>
+    );
+  });
 
-  const [showLinks, setShowLinks] = useState(false);
+  const handleClick = () => {
+    setClicked(!clicked);
+  };
+
   return (
-    <div className='Navbar'>
-        <div className='leftSide'>
-            <div className='links' id={showLinks ? "hidden" : ""}>    
-                <a href='/home'>Home</a>
-                <a href='/about'>About</a>
-                <a href='/tutorial'>Tutorial</a>
-                <a href='/documentation'>Documentation</a>
-                <a href='/community'>Community</a>
-                <a href='/download'>Download</a>
-            </div>
-            <button onClick={() => setShowLinks(!showLinks)}><ReorderIcon /></button>
-        </div>
-        <div className='rightSide'>
-            <button>Download</button>
-        </div>
-    </div>
-  )
-}
+    <nav>
+      <div className="logo">
+        Game Engine
+      </div>
+      <div className="menu-icon" onClick={handleClick}>
+        <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
+      </div>
+      <ul className={clicked ? "menu-list" : "menu-list close"}>{menuList}</ul>
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;
