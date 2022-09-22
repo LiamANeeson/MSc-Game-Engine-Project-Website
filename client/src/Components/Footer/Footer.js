@@ -1,13 +1,14 @@
 import React from 'react'
+import './Footer.css'
 
-function About() {
+function Footer() {
   return (
     <div>
         <h2>
-            About Game Engine
+            Footer
         </h2>
     </div>
   )
 }
 
-export default About
+export default Footer

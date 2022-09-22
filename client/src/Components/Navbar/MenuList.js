@@ -12,6 +12,10 @@ export const MenuList = [
       url: "/tutorial",
     },
     {
+      title: "Documentation",
+      url: "/docs",
+    },
+    {
       title: "Community",
       url: "/community",
     },

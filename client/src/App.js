@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import './App.css'
 
-import Home from './Pages/Home';
-import Tutorial from './Pages/Tutorial';
-import About from './Pages/About';
-import Community from './Pages/Community';
-import Download from './Pages/Download';
+import Home from './Pages/Home/Home';
+import Tutorial from './Pages/Tutorial/Tutorial';
+import About from './Pages/About/About';
+import Documentation from './Pages/Docs/Documentation';
+import Community from './Pages/Community/Community';
+import Download from './Pages/Download/Download';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/about' element = {<About /> } />
         <Route path='/tutorial' element = {<Tutorial />} />
         <Route path='/community' element = {<Community />} />
+        <Route path='/docs' element = {<Documentation />} />
         <Route path='/download' element = {<Download /> } />
       </Routes>
     </Router>
@@ -25,3 +27,5 @@ function App() {
 }
 
 export default App;
+
+
