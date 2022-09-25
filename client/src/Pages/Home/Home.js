@@ -17,13 +17,13 @@ function Home() {
         <h2 className='box-head'>Box 1</h2>
       </div>
       <div className='home-box-2'>
-      <h2 className='box-head'>Box 2</h2>
+        <h2 className='box-head'>Box 2</h2>
       </div>
       <div className='home-box-3'>
-      <h2 className='box-head'>Box 3</h2>
+        <h2 className='box-head'>Box 3</h2>
       </div>
       <div className='home-box-4'>
-      <h2 className='box-head'>Box 4</h2>
+        <h2 className='box-head'>Box 4</h2>
       </div>
     </div>
   )

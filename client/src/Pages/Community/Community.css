@@ -1,0 +1,85 @@
+.community-container {
+    background-color: #12264f;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "community-headline community-headline"
+    "post-box-1 post-box-2"
+    "post-box-3 post-box-4"
+    "post-box-5 post-box-6"
+    ;
+}
+
+.community-headline {
+    grid-area: community-headline;
+}
+
+.ask-q-btn {
+    margin-left: 50%;
+    background-color: #1ab851;;
+    cursor: pointer;
+    border-radius: 6px;
+    backface-visibility: hidden;
+    border-width: 0;
+    box-sizing: border-box;
+    font-size: 50%;
+    height: 44px;
+    line-height: 1.15;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+}
+
+.post-box-1 {
+    grid-area: post-box-1;
+    background-color: #17529d;
+    margin: 4%;
+    border-radius: 10px;
+    padding: 3%;
+}
+
+.post-box-2 {
+    grid-area: post-box-2;
+    background-color: #17529d;
+    margin: 4%;
+    border-radius: 10px;
+    padding: 3%;
+} 
+
+.post-box-3 {
+    grid-area: post-box-3;
+    background-color: #17529d;
+    margin: 4%;
+    border-radius: 10px;
+    padding: 3%;
+}
+
+.post-box-4 {
+    grid-area: post-box-4;
+    background-color: #17529d;
+    margin: 4%;
+    border-radius: 10px;
+    padding: 3%;
+} 
+
+.post-box-5 {
+    grid-area: post-box-5;
+    background-color: #17529d;
+    margin: 4%;
+    border-radius: 10px;
+    padding: 3%;
+}
+
+.post-box-6 {
+    grid-area: post-box-6;
+    background-color: #17529d;
+    margin: 4%;
+    border-radius: 10px;
+    padding: 3%;
+} 
+
