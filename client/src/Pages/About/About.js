@@ -15,6 +15,7 @@ function About() {
           Vivamus aliquam lorem in leo sodales dictum. In consequat elit at lobortis ultrices. 
           Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse nec suscipit justo, a pretium quam.
         </p>
+        <button className='about-btn'> Learn More</button>
       </div>
       <div className='about-box-2'>
         Box 2
@@ -24,6 +25,7 @@ function About() {
           Vivamus aliquam lorem in leo sodales dictum. In consequat elit at lobortis ultrices. 
           Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse nec suscipit justo, a pretium quam.
         </p>
+        <button className='about-btn'>Learn More</button>
       </div>
       <div className='about-box-3'>Box 3
         <div className='image'></div>
@@ -32,6 +34,7 @@ function About() {
           Vivamus aliquam lorem in leo sodales dictum. In consequat elit at lobortis ultrices. 
           Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse nec suscipit justo, a pretium quam.
         </p>
+        <button className='about-btn'>Learn More</button>
       </div>
     </div>
   )

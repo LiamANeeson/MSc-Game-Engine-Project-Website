@@ -9,6 +9,7 @@ import About from './Pages/About/About';
 import Documentation from './Pages/Docs/Documentation';
 import Community from './Pages/Community/Community';
 import Download from './Pages/Download/Download';
+// import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/docs' element = {<Documentation />} />
         <Route path='/download' element = {<Download /> } />
       </Routes>
+      {/* <Footer /> */}
     </Router>
   );
 }

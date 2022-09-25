@@ -1,9 +1,13 @@
+* {
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+}
+
 nav {
-    background: rgba(0, 0, 0, 0.9);
+    background: #12264f;
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    color: #fff;
+    color: green;
     position: relative;
     z-index: 99;
   }
@@ -33,7 +37,7 @@ nav {
   }
   
   .logo font {
-    color: #fff;
+    color: green;
   }
   
   .menu-list {

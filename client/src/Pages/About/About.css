@@ -1,11 +1,12 @@
 .container {
+    background-color: #12264f;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: 
     "title-header"
-    "box-1"
-    "box-2"
-    "box-3"
+    "about-box-1"
+    "about-box-2"
+    "about-box-3"
     "."
     ;
 }
@@ -13,19 +14,57 @@
 .title-header {
     grid-area: title-header;
     text-align: center;
+    background-color: #12264f;
+    color: #f4eb95;
+    margin: 3%;
 }
 
 .about-box-1{
-    grid-area: box-1;
+    grid-area: about-box-1;
     text-align: center;
+    background-color: #17529d;
+    padding: 5%;
+    border-radius: 20px;
+    margin: 5%;
 }
 
 .about-box-2{
-    grid-area: box-2;
+    grid-area: about-box-2;
     text-align: center;
+    background-color: #17529d;
+    padding: 5%;
+    border-radius: 20px;
+    margin: 5%;
 }
 
 .about-box-3{
-    grid-area: box-3;
+    grid-area: about-box-3;
     text-align: center;
+    background-color: #17529d;
+    padding: 5%;
+    border-radius: 20px;
+    margin: 5%;
+}
+
+.about-btn {
+    background-color: #1ab851;;
+    cursor: pointer;
+    border-radius: 6px;
+    backface-visibility: hidden;
+    border-width: 0;
+    box-sizing: border-box;
+    font-size: 100%;
+    height: 44px;
+    line-height: 1.15;
+    margin: 12px;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+}
+
+.about-btn:hover {
+    background-color: #12903e;;
 }
