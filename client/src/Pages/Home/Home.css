@@ -1,5 +1,5 @@
 .homePage-container {
-    background-color: #12264f;
+    background-color: #17529d;
     display: grid;
     grid-template-rows: 2fr 1fr 1fr 0.55fr;
     justify-content: center;
@@ -29,7 +29,7 @@
 }
 
 .head-btn {
-    background-color: #1ab851;;
+    background-color: tomato;
     cursor: pointer;
     border-radius: 6px;
     backface-visibility: hidden;
@@ -48,32 +48,59 @@
 }
 
 .head-btn:hover {
-    background-color: #12903e;
+    background-color: rgb(208, 81, 58);
 }
 
 .home-box-1{
     grid-area: home-box-1;
-    background-color: #17529d;
+    background-color: #12264f;
     margin: 2%;
     border-radius: 10px;
 }
 .home-box-2{
     grid-area: home-box-2;
-    background-color: #17529d;
+    background-color: #12264f;
     margin: 2%;
     border-radius: 10px;
 }
 .home-box-3{
     grid-area: home-box-3;
-    background-color: #17529d;
+    height: auto;
+    background-color: #12264f;
     margin: 2%;
     border-radius: 10px;
 }
 .home-box-4{
     grid-area: home-box-4;
-    background-color: #17529d;
+    background-color: #12264f;
     margin: 2%;
     border-radius: 10px;
+}
+
+.homePage-container .box-head {
+    color: #f4eb95;
+    padding-top: 3%;
+}
+
+.homePage-container .home-box-1 .image-1 {
+    background-color: aqua;
+    height: 60%;
+}
+
+.homePage-container .home-box-2 .image-2 {
+    background-color: aqua;
+    height: 60%;
+}
+
+.homePage-container .home-box-3 .image-3 {
+    background-color: aqua;
+    height: 60%;
+
+}
+
+.homePage-container .home-box-4 .image-4 {
+    background-color: aqua;
+    height: 60%;
 }
 
 @media (max-width: 700px) {
