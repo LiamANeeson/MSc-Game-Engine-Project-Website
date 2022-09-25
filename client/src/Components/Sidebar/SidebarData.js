@@ -1,7 +1,7 @@
 import React from 'react';
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
+import * as GiIcons from 'react-icons/gi';
 
 export const SidebarData = [
     {
@@ -17,7 +17,7 @@ export const SidebarData = [
         cName: 'row'
     },
     {
-        title: "Add Animations",
+        title: "Animations",
         path: '/tutorial/add-animations',
         icon: <AiIcons.AiFillEdit />,
         cName: 'row'
@@ -29,9 +29,9 @@ export const SidebarData = [
         cName: 'row'
     },
     {
-        title: "Scripting",
-        path: '/tutorial/scritping',
-        icon: <AiIcons.AiFillCode/>,
+        title: "Physics",
+        path: '/tutorial/physics',
+        icon: <GiIcons.GiMaterialsScience/>,
         cName: 'row'
     },
     {
