@@ -1,11 +1,10 @@
 import React from 'react'
+import Sidebar from '../../Components/Sidebar/Sidebar'
 
 function Tutorial() {
   return (
     <div>
-        <h2>
-            Tutorial Section 
-        </h2>
+      <Sidebar />
     </div>
   )
 }
