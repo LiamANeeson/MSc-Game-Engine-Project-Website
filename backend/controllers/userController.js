@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+const dotenv = require('dotenv').config();
 const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 
@@ -42,6 +43,7 @@ const registerUser = asyncHandler(async(req, res) => {
         _id: user.id,
         name: user.name,
         email: user.email,
+        token: generateToken(user._id)
       })
     } else {
       res.status(400)
@@ -54,7 +56,22 @@ const registerUser = asyncHandler(async(req, res) => {
 // @route POST /api/users/login
 // @access Public 
 const loginUser = asyncHandler(async(req, res) => {
-  res.json({message: 'login user'})
+  const {email, password} = req.body
+  // Check if User Email Exists
+  const user = await User.findOne({email})
+
+  // Check Password Encrypted and Unencrypted
+  if(user && (await bcrypt.compare(password, user.password))) {
+    res.json({
+      _id: user.id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id)
+    })
+  } else {
+    res.status(400)
+    throw new Error('Wrong Email or Password')
+  }
 })
 
 // @desc Get user data 
@@ -64,6 +81,13 @@ const getUser = asyncHandler(async(req, res) => {
   res.json({message: 'User Data'})
 })
 
+
+// Generate JWT 
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: '30d',
+  })
+}
 
 module.exports = {
   registerUser,
