@@ -17,7 +17,7 @@ const registerUser = asyncHandler(async(req, res) => {
 
   if(!name || !email || !password){
     res.status(400)
-    throw new Error('Please add fields')
+    throw new Error('Please Include All Required Fields')
   }
 
     // Check if user exists
@@ -75,10 +75,16 @@ const loginUser = asyncHandler(async(req, res) => {
 })
 
 // @desc Get user data 
-// @route GET /api/users/me
-// @access Public 
+// @route GET /api/users/user
+// @access Private 
 const getUser = asyncHandler(async(req, res) => {
-  res.json({message: 'User Data'})
+  const{ _id, name, email } = await User.findById(req.user.id)
+
+  res.status(200).json({
+    id: _id,
+    name, 
+    email,
+  })
 })
 
 
