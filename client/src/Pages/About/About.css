@@ -1,5 +1,5 @@
 .container {
-    background-color: #12264f;
+    background-color: #293241;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: 
@@ -14,7 +14,7 @@
 .title-header {
     grid-area: title-header;
     text-align: center;
-    background-color: #12264f;
+    background-color: #293241;
     color: #f4eb95;
     margin: 3%;
 }
@@ -22,7 +22,7 @@
 .about-box-1{
     grid-area: about-box-1;
     text-align: center;
-    background-color: #17529d;
+    background-color: #3D5A80;
     padding: 5%;
     border-radius: 20px;
     margin: 5%;
@@ -31,7 +31,7 @@
 .about-box-2{
     grid-area: about-box-2;
     text-align: center;
-    background-color: #17529d;
+    background-color: #3D5A80;
     padding: 5%;
     border-radius: 20px;
     margin: 5%;
@@ -40,14 +40,14 @@
 .about-box-3{
     grid-area: about-box-3;
     text-align: center;
-    background-color: #17529d;
+    background-color: #3D5A80;
     padding: 5%;
     border-radius: 20px;
     margin: 5%;
 }
 
 .about-btn {
-    background-color: #1ab851;;
+    background-color: #EE6C4D;
     cursor: pointer;
     border-radius: 6px;
     backface-visibility: hidden;
@@ -63,8 +63,4 @@
     position: relative;
     text-align: center;
     font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
-}
-
-.about-btn:hover {
-    background-color: #12903e;;
 }
