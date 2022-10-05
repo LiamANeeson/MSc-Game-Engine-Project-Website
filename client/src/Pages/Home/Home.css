@@ -1,5 +1,5 @@
 .homePage-container {
-    background-color: #17529d;
+    background-color: #003049;
     display: grid;
     grid-template-rows: 2fr 1fr 1fr 0.55fr;
     justify-content: center;
@@ -16,7 +16,7 @@
 }
 
 .headline-text {
-    color: #f4eb95;
+    color: #F77F00;
     background-color: #12264f;
     display: grid;;
     font-weight: bold;
@@ -25,11 +25,11 @@
 
 .blurb {
     padding: 5%;
-    color: #f4eb95;
+    color: #EAE2B7;
 }
 
 .head-btn {
-    background-color: tomato;
+    background-color: #D62828;
     cursor: pointer;
     border-radius: 6px;
     backface-visibility: hidden;
@@ -48,37 +48,37 @@
 }
 
 .head-btn:hover {
-    background-color: rgb(208, 81, 58);
+    background-color: rgb(179, 69, 50);
 }
 
 .home-box-1{
     grid-area: home-box-1;
-    background-color: #12264f;
+    background-color: #F77F00;
     margin: 2%;
     border-radius: 10px;
 }
 .home-box-2{
     grid-area: home-box-2;
-    background-color: #12264f;
+    background-color: #F77F00;
     margin: 2%;
     border-radius: 10px;
 }
 .home-box-3{
     grid-area: home-box-3;
     height: auto;
-    background-color: #12264f;
+    background-color: #F77F00;
     margin: 2%;
     border-radius: 10px;
 }
 .home-box-4{
     grid-area: home-box-4;
-    background-color: #12264f;
+    background-color: #F77F00;
     margin: 2%;
     border-radius: 10px;
 }
 
 .homePage-container .box-head {
-    color: #f4eb95;
+    color: #FCBF49;
     padding-top: 3%;
 }
 

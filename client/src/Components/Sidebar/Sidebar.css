@@ -1,7 +1,7 @@
 .sidebar {
     height: 100vh;
     width: 30vh;
-    background-color: #12264f;
+    background-color: #293241;
 }
 
 .sidebarList {
@@ -24,7 +24,7 @@
 
 .sidebarList .row:hover {
     cursor: pointer;
-    background-color: #17529d;
+    background-color: #3D5A80;
 }
 
 .row {
@@ -42,7 +42,7 @@
 
 .row a {
     text-decoration: none;
-    color: tomato;
+    color: #EE6C4D;
     font-size: 18px;
     width: 95%;
     height: 100%;

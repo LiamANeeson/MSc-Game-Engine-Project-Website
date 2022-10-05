@@ -14,11 +14,12 @@
 
 .community-headline {
     grid-area: community-headline;
+    color: #D62828;
 }
 
 .ask-q-btn {
     margin-left: 50%;
-    background-color: #1ab851;;
+    background-color: #D62828;
     cursor: pointer;
     border-radius: 6px;
     backface-visibility: hidden;
@@ -37,7 +38,7 @@
 
 .post-box-1 {
     grid-area: post-box-1;
-    background-color: #17529d;
+    background-color: #F77F00;
     margin: 4%;
     border-radius: 10px;
     padding: 3%;
@@ -45,7 +46,7 @@
 
 .post-box-2 {
     grid-area: post-box-2;
-    background-color: #17529d;
+    background-color: #F77F00;
     margin: 4%;
     border-radius: 10px;
     padding: 3%;
@@ -53,7 +54,7 @@
 
 .post-box-3 {
     grid-area: post-box-3;
-    background-color: #17529d;
+    background-color: #F77F00;
     margin: 4%;
     border-radius: 10px;
     padding: 3%;
@@ -61,7 +62,7 @@
 
 .post-box-4 {
     grid-area: post-box-4;
-    background-color: #17529d;
+    background-color: #F77F00;
     margin: 4%;
     border-radius: 10px;
     padding: 3%;
@@ -69,7 +70,7 @@
 
 .post-box-5 {
     grid-area: post-box-5;
-    background-color: #17529d;
+    background-color: #F77F00;
     margin: 4%;
     border-radius: 10px;
     padding: 3%;
@@ -77,7 +78,7 @@
 
 .post-box-6 {
     grid-area: post-box-6;
-    background-color: #17529d;
+    background-color: #F77F00;
     margin: 4%;
     border-radius: 10px;
     padding: 3%;

@@ -1,12 +1,9 @@
 # MSc-Game-Engine-Project-Website
 
-TODO:
-    - Admin Panel
-    - Registration 
-    - Sign in 
-    - Forum for asking questoin 
-    - Forum for regisation (need to make connection)
-    - Styling on certain pages 
-    - Populated with content
-    - Images 
-    - Backend allowing users that are logged into answer questions 
+## Colour Palette 
+Shades from darkest to lightest
+- 293241 (Dark Grey)
+- 3D5A80 (Navy Grey)
+- EE6C4D (Light Orange)
+- 98C1D9 (Blue Grey)
+- E0FBFC (Pale Blue)

@@ -1,5 +1,5 @@
 .container {
-    background-color: #12264f;
+    background-color: #003049;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: 
@@ -14,7 +14,7 @@
 .title-header {
     grid-area: title-header;
     text-align: center;
-    background-color: #12264f;
+    background-color: #003049;
     color: #f4eb95;
     margin: 3%;
 }
@@ -22,7 +22,7 @@
 .about-box-1{
     grid-area: about-box-1;
     text-align: center;
-    background-color: #17529d;
+    background-color: #F77F00;
     padding: 5%;
     border-radius: 20px;
     margin: 5%;
@@ -31,7 +31,7 @@
 .about-box-2{
     grid-area: about-box-2;
     text-align: center;
-    background-color: #17529d;
+    background-color: #F77F00;
     padding: 5%;
     border-radius: 20px;
     margin: 5%;
@@ -40,14 +40,14 @@
 .about-box-3{
     grid-area: about-box-3;
     text-align: center;
-    background-color: #17529d;
+    background-color: #F77F00;
     padding: 5%;
     border-radius: 20px;
     margin: 5%;
 }
 
 .about-btn {
-    background-color: #1ab851;;
+    background-color: #D62828;
     cursor: pointer;
     border-radius: 6px;
     backface-visibility: hidden;
