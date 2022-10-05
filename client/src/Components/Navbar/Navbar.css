@@ -3,11 +3,11 @@
 }
 
 nav {
-    background: #293241;
+    background: #12264f;
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    color: #EE6C4D;
+    color: green;
     position: relative;
     z-index: 99;
   }
@@ -33,11 +33,11 @@ nav {
   .logo {
     font-weight: 600;
     font-size: 25px;
-    color: #EE6C4D;
+    color: tomato;
   }
   
   .logo font {
-    color: #EE6C4D;
+    color: tomato;
   }
   
   .menu-list {
@@ -50,7 +50,7 @@ nav {
   .menu-list li:last-child a {
     font-weight: 300;
     padding: 5px 10px;
-    background-color: EE6C4D;
+    background-color: tomato;
     transition: all 0.5s ease-in-out;
     margin-left: 20px;
     border-radius: 2px;
@@ -66,7 +66,7 @@ nav {
   
   .menu-list li a:hover,
   .menu-list li a.active {
-    background-color: #EE6C4D;
+    background-color: #1ab851;
     border-radius: 2px;
     color: #000;
     transition: all 0.5s ease-in-out;
