@@ -4,10 +4,11 @@
     box-sizing: border-box;
     font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
   }
+  
   .container {
     background-position: center;
     background-size: cover;
-
+    background-color: #12264f;
     position: relative;
     overflow: hidden;
   }

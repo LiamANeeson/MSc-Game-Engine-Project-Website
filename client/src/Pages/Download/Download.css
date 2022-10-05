@@ -1,0 +1,39 @@
+.download-container {
+    background-color: #293241;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+}
+
+.download-card {
+    margin-top: 10%;;
+    padding: 20%;
+    background-color: #3D5A80;
+    grid-column: 2/2;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.download-btn {
+    background-color: #EE6C4D;
+    cursor: pointer;
+    border-radius: 6px;
+    backface-visibility: hidden;
+    border-width: 0;
+    box-sizing: border-box;
+    font-size: 100%;
+    height: 44px;
+    line-height: 1.15;
+    margin: 12px;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+}
+
+.download-btn:hover {
+    background-color: rgb(208, 81, 58);
+}
