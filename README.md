@@ -26,9 +26,9 @@ npm i
 
 MongoDB
 User Can create a cluster via mongoDB website and connect via MongoDB compass
-In the .env file change user, password and collection name based on local machine 
-Here Database name is: **MSc_Game_Engine_Website**
-Collection name: **users** 
+In the .envexample file the information required for mongo is availble. Create a .env file with required information or rename .envexample and add relevant information. 
+Database name used: **MSc_Game_Engine_Website**
+Collection name used: **users** 
 ``` 
 MONGO_URI = 'mongodb+srv://<USERNAME>:<PASSWORD>@msccluster.4g6wc.mongodb.net/<DB_NAME>?retryWrites=true&w=majority'
 ```
