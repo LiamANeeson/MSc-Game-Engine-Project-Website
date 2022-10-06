@@ -27,24 +27,20 @@
     background-color: #3D5A80;
 }
 
-/* .row {
+.row {
     display: flex;
     justify-content: start;
     align-items: center;
     padding: 8px 0px 8px 16px;
     list-style: none;
     height: 60px;
-} */
+}
 
 .row #title{
     flex: 70%;
 } 
 
 .row a {
-    color: #000;
-    text-decoration: none;
-}
-/* .row a {
     text-decoration: none;
     color: #EE6C4D;
     font-size: 18px;
@@ -54,7 +50,7 @@
     align-items: center;
     padding: 0 16px;
     border-radius: 4px;
-} */
+}
 
 span {
     margin-left: 16px;

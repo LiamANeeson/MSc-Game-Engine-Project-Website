@@ -8,7 +8,6 @@ import Tutorial from './Pages/Tutorial/Tutorial';
 import About from './Pages/About/About';
 import Documentation from './Pages/Docs/Documentation';
 import Community from './Pages/Community/Community';
-import QuestionDetail from './Pages/Community/QuestionDetail';
 import Download from './Pages/Download/Download';
 // import Footer from './Components/Footer/Footer';
 
@@ -17,13 +16,12 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route exact path='/question/:id' element = {<QuestionDetail /> } />
-        <Route exact path='/about' element = {<About /> } />
-        <Route exact path='/tutorial' element = {<Tutorial />} />
-        <Route exact path='/community' element = {<Community />} />
-        <Route exact path='/docs' element = {<Documentation />} />
-        <Route exact path='/download' element = {<Download /> } />
-        <Route exact path='/' element = {<Home />} />
+        <Route path='/' element = {<Home />} />
+        <Route path='/about' element = {<About /> } />
+        <Route path='/tutorial' element = {<Tutorial />} />
+        <Route path='/community' element = {<Community />} />
+        <Route path='/docs' element = {<Documentation />} />
+        <Route path='/download' element = {<Download /> } />
       </Routes>
       {/* <Footer /> */}
     </Router>
