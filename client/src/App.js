@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 import Navbar from './Components/Navbar/Navbar';
 import './App.css';
@@ -16,21 +18,24 @@ import Download from './Pages/Download/Download'
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/' element={<Home />} />
-        <Route path='/home' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/tutorial' element={<Tutorial/>} />
-        <Route path='/docs' element={<Docs />} />
-        <Route path='/community' element={<Community />} />
-        <Route path='/download' element={<Download />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/tutorial' element={<Tutorial/>} />
+          <Route path='/docs' element={<Docs />} />
+          <Route path='/community' element={<Community />} />
+          <Route path='/download' element={<Download />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+        </Routes>
+      </Router>
+      <ToastContainer />
+    </>
   );
 }
 
