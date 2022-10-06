@@ -10,3 +10,5 @@ TODO:
     - Populated with content
     - Images 
     - Backend allowing users that are logged into answer questions 
+    
+    -Design responsive UI for all components. It should work on different screen size/platform.
