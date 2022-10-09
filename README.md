@@ -36,7 +36,8 @@ MONGO_URI = 'mongodb+srv://<USERNAME>:<PASSWORD>@msccluster.4g6wc.mongodb.net/<D
 ### List of Tasks
 - [x] Basic UI Elements
 - [x] User Authentication
-- [ ] Frontend Login & Register Elements 
+- [x] Frontend Login & Register Elements 
+- [ ] Responsive design
 - [ ] Profile page
 - [ ] Community page
 - [ ] Allow logged in users to perform CRUD operations on posts  

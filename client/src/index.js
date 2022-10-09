@@ -8,6 +8,9 @@ import './index.css';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
+// Importing the Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 root.render(
   <React.StrictMode>

@@ -14,6 +14,9 @@ import About from './Pages/About/About';
 import Tutorial from './Pages/Tutorial/Tutorial'
 import Docs from './Pages/Docs/Documentation'
 import Community from './Pages/Community/Community';
+import QuestionDetail from './Pages/Community/QuestionDetail';
+import Download from './Pages/Download/Download';
+
 import Download from './Pages/Download/Download'
 
 function App() {
@@ -32,6 +35,7 @@ function App() {
           <Route path='/download' element={<Download />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route exact path='/question/:id' element = {<QuestionDetail /> } />
         </Routes>
       </Router>
       <ToastContainer />
