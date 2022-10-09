@@ -17,8 +17,6 @@ import Community from './Pages/Community/Community';
 import QuestionDetail from './Pages/Community/QuestionDetail';
 import Download from './Pages/Download/Download';
 
-import Download from './Pages/Download/Download'
-
 function App() {
   return (
     <>
