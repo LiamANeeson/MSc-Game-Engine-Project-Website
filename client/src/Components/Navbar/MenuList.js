@@ -1,7 +1,7 @@
 export const MenuList = [
     {
       title: "Home",
-      url: "/",
+      url: "/home",
     },
     {
       title: "About",
@@ -23,4 +23,16 @@ export const MenuList = [
       title: "Download",
       url: "/download",
     },
+    {
+        title: "Login",
+        url: "/login",
+    },
+    {
+        title: "Register",
+        url: "/register",
+    },
+    {
+      title: "Profile",
+      url: "/profile",
+  },
   ];

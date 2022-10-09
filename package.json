@@ -1,0 +1,33 @@
+{
+  "name": "game_engine_website",
+  "version": "1.0.0",
+  "description": "Website for MSc project game engine ",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiamANeeson/MSc-Game-Engine-Project-Website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LiamANeeson/MSc-Game-Engine-Project-Website/issues"
+  },
+  "homepage": "https://github.com/LiamANeeson/MSc-Game-Engine-Project-Website#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
