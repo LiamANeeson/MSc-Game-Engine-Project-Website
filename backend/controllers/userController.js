@@ -56,10 +56,11 @@ const registerUser = asyncHandler(async(req, res) => {
 // @route POST /api/users/login
 // @access Public 
 const loginUser = asyncHandler(async(req, res) => {
+
   const {email, password} = req.body
   // Check if User Email Exists
   const user = await User.findOne({email})
-
+  
   // Check Password Encrypted and Unencrypted
   if(user && (await bcrypt.compare(password, user.password))) {
     res.json({

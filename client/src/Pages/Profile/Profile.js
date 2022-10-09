@@ -15,7 +15,7 @@ function Profile() {
   }
   return (
     <div>
-      <h1>Hi! {user && user.name}</h1>
+      <h1>Hi {user && user.name}!</h1>
       <button className='btn' onClick={onLogout}>Log out</button>
     </div>
   )
