@@ -7,6 +7,7 @@ import Navbar from './Components/Navbar/Navbar';
 import './App.css';
 
 import Profile from './Pages/Profile/Profile';
+import UpdateProfile from './Pages/Profile/UpdateProfile'
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import Home from './Pages/Home/Home';
@@ -18,27 +19,28 @@ import QuestionDetail from './Pages/Community/QuestionDetail';
 import Download from './Pages/Download/Download';
 
 function App() {
-  return (
-    <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/' element={<Home />} />
-          <Route path='/home' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/tutorial' element={<Tutorial/>} />
-          <Route path='/docs' element={<Docs />} />
-          <Route path='/community' element={<Community />} />
-          <Route path='/download' element={<Download />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route exact path='/question/:id' element = {<QuestionDetail /> } />
-        </Routes>
-      </Router>
-      <ToastContainer />
-    </>
-  );
+    return (
+        <>
+            <Router>
+                <Navbar />
+                <Routes>
+                    <Route path='/profile' element={<Profile />} />
+                    <Route path='/updateProfile' element={<UpdateProfile />} />
+                    <Route path='/' element={<Home />} />
+                    <Route path='/home' element={<Home />} />
+                    <Route path='/about' element={<About />} />
+                    <Route path='/tutorial' element={<Tutorial />} />
+                    <Route path='/docs' element={<Docs />} />
+                    <Route path='/community' element={<Community />} />
+                    <Route path='/download' element={<Download />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/register' element={<Register />} />
+                    <Route exact path='/question/:id' element={<QuestionDetail />} />
+                </Routes>
+            </Router>
+            <ToastContainer />
+        </>
+    );
 }
 
 export default App;
