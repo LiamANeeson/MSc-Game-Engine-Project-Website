@@ -21,14 +21,14 @@ function normalizeServerError(serverResponse) {
 }
 
 //Login
-export async function login(email,password){
+export async function login(email, password) {
   try {
     const axiosConfig = {
       method: "post",
       url: `${apiURL}/users/login`,
-      data:{
-        email:email,
-        password:password
+      data: {
+        email: email,
+        password: password
       }
     };
     const response = await axios.default.request(axiosConfig);
@@ -40,18 +40,35 @@ export async function login(email,password){
   }
 }
 
+//get user
+export async function getUser(ID) {
+  try {
+    let token = localStorage.getItem("AuthToken");
+    const axiosConfig = {
+      method: "get",
+      url: `${apiURL}/users/${ID}`,
+      headers: { Authorization: "Bearer " + token },
+    };
+    const response = await axios.default.request(axiosConfig);
+    const normalizedResponse = normalizeServerResponse(response);
+    return [null, normalizedResponse];
+  } catch (error) {
+    const errorObject = normalizeServerError(error);
+    return [errorObject, null];
+  }
+}
 //Create a question
-export async function createQuestion(title,description,tags) {
+export async function createQuestion(title, description, tags) {
   try {
     let token = localStorage.getItem("AuthToken");
     const axiosConfig = {
       method: "post",
       url: `${apiURL}/question`,
       headers: { Authorization: "Bearer " + token },
-      data:{
-        title:title,
-        description:description,
-        tags:tags.split(',')
+      data: {
+        title: title,
+        description: description,
+        tags: tags.split(',')
       }
     };
     const response = await axios.default.request(axiosConfig);
