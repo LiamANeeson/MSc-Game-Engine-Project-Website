@@ -24,7 +24,7 @@ function Navigationbar() {
             <Nav.Link eventKey={2} href="/register">
               Register
             </Nav.Link>
-            <Button variant="outline-success" href="/download">Download</Button>
+            <Button href="/download" className='custom-btn'>Download</Button>
           </Nav>
         </Navbar.Collapse>
       </Container>
