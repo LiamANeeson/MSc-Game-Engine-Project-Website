@@ -3,5 +3,15 @@
 }
 
 .custom-btn {
-  background-color: red;
+  background-color: #EE6C4D !important; 
+  border-color: #EE6C4D !important;
+  outline: none !important ;
+  overflow: hidden !important;
+  color: #293241 !important;
+}
+
+.custom-btn:hover {
+  background-color: rgb(208, 81, 58) !important;
+  border-color: #EE6C4D !important;
+  outline: none !important ;
 }
