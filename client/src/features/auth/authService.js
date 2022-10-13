@@ -17,6 +17,7 @@ const login = async (userData) => {
     
     if (response.data) {
       localStorage.setItem('user', JSON.stringify(response.data))
+      localStorage.setItem('authToken',response.data.token )
     }
   
     return response.data
