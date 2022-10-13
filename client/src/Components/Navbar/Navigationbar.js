@@ -1,29 +1,39 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { MenuList } from "./MenuList";
-import {Nav, Navbar, NavLink} from 'react-bootstrap'
-import "./Navbar.css";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button'
+
+import './Navbar.css';
 
 function Navigationbar() {
-    return (
-      <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
-      <Navbar.Toggle aria-controls="navbarScroll" data-bs-target="#navbarScroll" />
-      <Navbar.Collapse id="navbarScroll">
-        <Nav>
-          <NavLink eventKey = "1" as={Link} to="/">Home</NavLink>
-          <NavLink eventKey = "2" as={Link} to="/about">About</NavLink>
-          <NavLink eventKey = "3" as={Link} to="/tutorial">Tutorial</NavLink>
-          <NavLink eventKey = "4" as={Link} to="/docs">Documentation</NavLink>
-          <NavLink eventKey = "5" as={Link} to="/community">Community</NavLink>
-          <NavLink eventKey = "6" as={Link} to="/download">Download</NavLink>
-          <NavLink eventKey = "7" as={Link} to="/login">Login</NavLink>
-          <NavLink eventKey = "7" as={Link} to="/register">Register</NavLink>          
-        </Nav>
-      </Navbar.Collapse>
+  return (
+    <div>
+      <Navbar collapseOnSelect expand="lg" bg="navContainer" variant="dark">
+      <Container>
+        <Navbar.Brand href="/">Horizon GE</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/about">About</Nav.Link>
+            <Nav.Link href="/tutorial">Tutorial</Nav.Link>
+            <Nav.Link href="/docs">Documentation</Nav.Link>
+            <Nav.Link href="/community">Community</Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link href="/login">Log in</Nav.Link>
+            <Nav.Link eventKey={2} href="/register">
+              Register
+            </Nav.Link>
+            <Button href="/download" className='custom-btn'>Download</Button>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
     </Navbar>
-    );
+    </div>
+  )
 }
-export default Navigationbar
+
+export default Navigationbar;
   // const [clicked, setClicked] = useState(false);
   // const menuList = MenuList.map(({ url, title }, index) => {
   //   return (
@@ -34,5 +44,6 @@ export default Navigationbar
   //     </li>
   //   );
   // });
+
 
 
