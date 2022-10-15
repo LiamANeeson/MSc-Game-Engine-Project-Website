@@ -98,6 +98,27 @@ export async function getQuestions(authToken) {
   }
 }
 
+//post a answer
+export async function createAnswer(questionId,content) {
+  try {
+    let token = localStorage.getItem("AuthToken");
+    const axiosConfig = {
+      method: "post",
+      url: `${apiURL}/answer`,
+      headers: { Authorization: "Bearer " + token },
+      data:{
+        questionId:questionId,
+        content:content
+      }
+    };
+    const response = await axios.default.request(axiosConfig);
+    const normalizedResponse = normalizeServerResponse(response);
+    return [null, normalizedResponse];
+  } catch (error) {
+    const errorObject = normalizeServerError(error);
+    return [errorObject, null];
+  }
+}
 //get a question
 export async function getQuestion(questionID) {
   try {

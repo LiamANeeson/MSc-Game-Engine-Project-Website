@@ -12,7 +12,7 @@ const createAnswer = async (req, res) => {
     const newAnswer = new Answer({
       content,
       questionId,
-      userObj: req.user._id,
+      userObj: req.user
     });
 
     await Question.findOneAndUpdate(
