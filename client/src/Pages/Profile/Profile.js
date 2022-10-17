@@ -1,74 +1,62 @@
-import React from 'react'
+﻿import React from 'react'
 import "./Profile.css"
-import { Link, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../../features/auth/authSlice'
+import { useEffect } from 'react'
+import bootstrap from 'bootstrap'
+
+
+
 
 function Profile() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { user } = useSelector((state) => state.auth)
+    const { pathname } = useLocation();
+    const currentProfile = JSON.parse(localStorage.getItem('profile'))
+
+    const birthday = currentProfile.birthday.slice(0, 10)
 
     const toUpdateProfile = () => {
         navigate('/updateProfile')
     }
-    return (
 
-        <div class="bg-white p-3 shadow-sm rounded-sm">
-            <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                <span clas="text-green-500">
-                    <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                </span>
-                <span class="tracking-wide">Profile</span>
-            </div>
-            <div class="text-gray-700">
-                <div class="grid md:grid-cols-2 text-sm">
-                    <div class="grid grid-cols-2">
-                        <div class="px-4 py-2 font-semibold">First Name</div>
-                        <div class="px-4 py-2">Jane</div>
-                    </div>
-                    <div class="grid grid-cols-2">
-                        <div class="px-4 py-2 font-semibold">Last Name</div>
-                        <div class="px-4 py-2">Doe</div>
-                    </div>
-                    <div class="grid grid-cols-2">
-                        <div class="px-4 py-2 font-semibold">Gender</div>
-                        <div class="px-4 py-2">Female</div>
-                    </div>
-                    <div class="grid grid-cols-2">
-                        <div class="px-4 py-2 font-semibold">Contact No.</div>
-                        <div class="px-4 py-2">+11 998001001</div>
-                    </div>
-                    <div class="grid grid-cols-2">
-                        <div class="px-4 py-2 font-semibold">Current Address</div>
-                        <div class="px-4 py-2">Beech Creek, PA, Pennsylvania</div>
-                    </div>
-                    <div class="grid grid-cols-2">
-                        <div class="px-4 py-2 font-semibold">Permanant Address</div>
-                        <div class="px-4 py-2">Arlington Heights, IL, Illinois</div>
-                    </div>
-                    <div class="grid grid-cols-2">
-                        <div class="px-4 py-2 font-semibold">Email.</div>
-                        <div class="px-4 py-2">
-                            <a class="text-blue-800" href="mailto:jane@example.com">jane@example.com</a>
+    const onLogout = () => {
+        dispatch(logout())
+        dispatch(reset())
+        navigate('/')
+    }
+    return (
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-3 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" /><span> </span></div>
+                </div>
+                <div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Profile</h4>
                         </div>
-                    </div>
-                    <div class="grid grid-cols-2">
-                        <div class="px-4 py-2 font-semibold">Birthday</div>
-                        <div class="px-4 py-2">Feb 06, 1998</div>
+                        <div class="row mt-2">
+                            <div class="col-md-6"><label class="labels">First Name</label><input type="text" class="form-control" value={currentProfile.firstName} disabled="true" /></div>
+                            <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" value={currentProfile.lastName} disabled="true" /></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" value={currentProfile.contactNumber} disabled="true" /></div>
+                            <div class="col-md-12"><label class="labels">Gender</label><input type="text" class="form-control" value={currentProfile.gender} disabled="true" /></div>
+                            <div class="col-md-12"><label class="labels">Current Address</label><input type="text" class="form-control" value={currentProfile.currentAddress} disabled="true" /></div>
+                            <div class="col-md-12"><label class="labels">Permanent Address</label><input type="text" class="form-control" value={currentProfile.permanentAddress} disabled="true" /></div>
+                            <div class="col-md-12"><label class="labels">Birthday</label><input type="text" class="form-control" value={birthday} disabled="true" /></div>
+                            <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" value={currentProfile.email} disabled="true" /></div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-md-6"><button class="btn btn-primary btn-lg" type="button" onClick={toUpdateProfile}>Edit Profile</button></div>
+                            <div class="col-md-6"><button class="btn btn-primary btn-lg" type="button" onClick={onLogout}>Log Out</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <button
-                class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
-                onClick={toUpdateProfile}>Update Profile</button>
         </div>
-
-
     )
 }
 

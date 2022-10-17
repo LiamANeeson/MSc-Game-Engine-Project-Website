@@ -16,20 +16,41 @@ const login = async (userData) => {
     const response = await axios.post(API_URL + 'login', userData)
     
     if (response.data) {
-      localStorage.setItem('user', JSON.stringify(response.data))
+        localStorage.setItem('user', JSON.stringify(response.data))
+        localStorage.setItem('profile', JSON.stringify(response.data.profile))
     }
   
     return response.data
 }
 
+const updateProfile = async (profileData) => {
+    
+    const response = await axios.post(API_URL + 'profile', profileData)
+
+    if (response.data.profile) {
+        localStorage.setItem('profile', JSON.stringify(response.data.profile))
+    }
+
+    return response.data
+}
+
+//const uploadFile = async (file) => {
+
+//    const response = await axios.post('/upload', file)
+
+//    return response.data
+//}
+
 const logout = () => {
     localStorage.removeItem('user')
+    localStorage.removeItem('profile')
 }
 
 const authService = {
     register,
     login, 
-    logout
+    logout,
+    updateProfile
 }
 
 export default authService
