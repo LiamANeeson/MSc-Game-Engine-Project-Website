@@ -13,7 +13,6 @@ const profileSchema = new mongoose.Schema(
         },
         contactNumber: {
             type: String,
-            unique: true,
         },
         currentAddress: {
             type: String,
@@ -37,4 +36,4 @@ const profileSchema = new mongoose.Schema(
     }
 )
 
-module.exports = mongoose.model('Profile', profileSchema, 'profiles')
+module.exports = mongoose.model('Profile', profileSchema, 'profile')
