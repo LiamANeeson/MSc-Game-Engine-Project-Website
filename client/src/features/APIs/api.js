@@ -98,6 +98,24 @@ export async function getQuestions(authToken) {
   }
 }
 
+//get a question
+export async function getQuestion(questionID) {
+  try {
+    let token = localStorage.getItem("AuthToken");
+    const axiosConfig = {
+      method: "get",
+      url: `${apiURL}/question/${questionID}`,
+      headers: { Authorization: "Bearer " + token },
+    };
+    const response = await axios.default.request(axiosConfig);
+    const normalizedResponse = normalizeServerResponse(response);
+    return [null, normalizedResponse];
+  } catch (error) {
+    const errorObject = normalizeServerError(error);
+    return [errorObject, null];
+  }
+}
+
 //post a answer
 export async function createAnswer(questionId,content) {
   try {
@@ -118,21 +136,6 @@ export async function createAnswer(questionId,content) {
     const errorObject = normalizeServerError(error);
     return [errorObject, null];
   }
-}
-//get a question
-export async function getQuestion(questionID) {
-  try {
-    let token = localStorage.getItem("AuthToken");
-    const axiosConfig = {
-      method: "get",
-      url: `${apiURL}/question/${questionID}`,
-      headers: { Authorization: "Bearer " + token },
-    };
-    const response = await axios.default.request(axiosConfig);
-    const normalizedResponse = normalizeServerResponse(response);
-    return [null, normalizedResponse];
-  } catch (error) {
-    const errorObject = normalizeServerError(error);
-    return [errorObject, null];
-  }
+
+
 }
