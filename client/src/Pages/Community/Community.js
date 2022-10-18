@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Image } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
@@ -74,14 +74,6 @@ function Community() {
                             <button type="submit" class="Filter-btn">
                                 Sort
                             </button>
-                            <div class="pagination">
-                                <a href="#">&laquo;</a>
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">&raquo;</a>
-                            </div>
                         </div>
                     </Col>
                     <Col md={2} style={{ marginTop: "15px" }}>
@@ -153,23 +145,10 @@ function Community() {
                                                 </div>
                                             </div>
                                         </div>
-
                                     </Row>
                                 </div>
                             </Col>
                         ))}
-                </Row>
-                <Row>
-                    <Col>
-                        <div class="pagination">
-                            <a href="#">&laquo;</a>
-                            <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">&raquo;</a>
-                        </div>
-                    </Col>
                 </Row>
             </Container>
             {/* <AskQuestionModel
