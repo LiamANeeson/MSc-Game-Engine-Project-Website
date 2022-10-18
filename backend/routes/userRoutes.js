@@ -13,7 +13,7 @@ const { uploadFiles } = require('../controllers/fileUploadController')
 router.post('/', registerUser)
 router.post('/login', loginUser)
 router.get('/user', protect, getUser)
-router.get('/:id', protect, getUser)
+router.get('/:id', protect , getUser)
 router.post('/profile', updateProfile)
 router.post("/upload", uploadFiles);
 
