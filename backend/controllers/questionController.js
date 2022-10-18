@@ -87,7 +87,7 @@ const voteQuestion = async (req, res) => {
   try {
     const question = await Question.find({
       _id: req.params.id,
-      Votes: req.user._id,
+      Votes: req.user
     });
     if (question.length > 0)
       return res.status(400).json({ msg: "You liked this question." });

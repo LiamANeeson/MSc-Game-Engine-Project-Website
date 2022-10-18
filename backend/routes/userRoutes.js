@@ -10,7 +10,6 @@ const { protect } = require('../middleware/authMiddleware')
 
 router.post('/', registerUser)
 router.post('/login', loginUser)
-router.get('/user', protect , getUser)
 router.get('/:id', protect , getUser)
 
 
