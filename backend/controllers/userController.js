@@ -2,8 +2,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const dotenv = require('dotenv').config();
 const asyncHandler = require('express-async-handler')
-const User = require('../models/userModel');
-const Profile = require('../models/profileModel');
+const User = require('../models/userModel')
 
 
 // @desc Register new user 
@@ -38,10 +37,6 @@ const registerUser = asyncHandler(async(req, res) => {
       email,
       password: hashedPassword,
     })
-
-    const profile = await Profile.create({
-        email
-    })
   
     if (user) {
       res.status(201).json({
@@ -62,11 +57,9 @@ const registerUser = asyncHandler(async(req, res) => {
 // @access Public 
 const loginUser = asyncHandler(async(req, res) => {
 
-    const { email, password } = req.body
-
+  const {email, password} = req.body
   // Check if User Email Exists
-    const user = await User.findOne({ email })
-    const profile = await Profile.findOne({ email })
+  const user = await User.findOne({email})
   
   // Check Password Encrypted and Unencrypted
   if(user && (await bcrypt.compare(password, user.password))) {
@@ -74,8 +67,7 @@ const loginUser = asyncHandler(async(req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id),
-      profile: profile
+      token: generateToken(user._id)
     })
   } else {
     res.status(400)
