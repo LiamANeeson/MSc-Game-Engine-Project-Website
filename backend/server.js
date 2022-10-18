@@ -17,15 +17,8 @@ app.get("/", (req, res) => {
     res.send("APIs Up && running");
 });
 app.use("/api/users", require("./routes/userRoutes"));
-app.use("/api/question", require("./routes/questionRoutes"))
+app.use("/api/question", require("./routes/questionRoute"))
 app.use("/api/answer", require("./routes/answerRoute"))
-
-app.get("/", (req, res) => {
-  res.send("APIs Up && running");
-});
-app.use("/api/users", require("./routes/userRoutes"));
-app.use("/api/question",require("./routes/questionRoutes"))
-app.use("/api/answer",require("./routes/answerRoute"))
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
 

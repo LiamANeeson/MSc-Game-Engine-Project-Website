@@ -1,63 +1,48 @@
-import axios from 'axios'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
-const API_URL = '/api/users/'
+import Navigationbar from './Components/Navbar/Navigationbar';
+import './App.css';
 
-const register = async (userData) => {
-    const response = await axios.post(API_URL, userData)
+import Profile from './Pages/Profile/Profile';
+import UpdateProfile from './Pages/Profile/UpdateProfile'
+import Login from './Pages/Login/Login';
+import Register from './Pages/Register/Register';
+import Home from './Pages/Home/Home';
+import About from './Pages/About/About';
+import Tutorial from './Pages/Tutorial/Tutorial'
+import Docs from './Pages/Docs/Documentation'
+import Community from './Pages/Community/Community';
+import QuestionDetail from './Pages/Community/QuestionDetail';
+import Download from './Pages/Download/Download';
+import AskQuestion from './Pages/Community/AskQuestion'
 
-    if (response.data) {
-        localStorage.setItem('user', JSON.stringify(response.data))
-    }
-
-    return response.data
+function App() {
+    return (
+        <>
+            <Router>
+                <Navigationbar />
+                <Routes>
+                    <Route path='/profile' element={<Profile />} />
+                    <Route path='/updateProfile' element={<UpdateProfile />} />
+                    <Route path='/' element={<Home />} />
+                    <Route path='/home' element={<Home />} />
+                    <Route path='/about' element={<About />} />
+                    <Route path='/tutorial' element={<Tutorial />} />
+                    <Route path='/docs' element={<Docs />} />
+                    <Route path='/community' element={<Community />} />
+                    <Route path='/ask-question' element={<AskQuestion />} />
+                    <Route path='/download' element={<Download />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/register' element={<Register />} />
+                    <Route exact path='/question/:id' element={<QuestionDetail />} />
+                </Routes>
+            </Router>
+            <ToastContainer />
+        </>
+    );
 }
 
-const login = async (userData) => {
-    const response = await axios.post(API_URL + 'login', userData)
-
-    if (response.data) {
-<<<<<<< HEAD
-        localStorage.setItem('user', JSON.stringify(response.data))
-        localStorage.setItem('authToken', response.data.token )
-        localStorage.setItem('profile', JSON.stringify(response.data.profile))
-=======
-      localStorage.setItem('user', JSON.stringify(response.data))
-      localStorage.setItem('authToken',response.data.token )
->>>>>>> d69bf7850171170b481f99e77d89913c0cd8d592
-    }
-
-    return response.data
-}
-
-const updateProfile = async (profileData) => {
-
-    const response = await axios.post(API_URL + 'profile', profileData)
-
-    if (response.data.profile) {
-        localStorage.setItem('profile', JSON.stringify(response.data.profile))
-    }
-
-    return response.data
-}
-
-const uploadFile = async (file) => {
-
-    const response = await axios.post(API_URL + 'upload', file)
-
-    return response.data
-}
-
-const logout = () => {
-    localStorage.removeItem('user')
-    localStorage.removeItem('profile')
-}
-
-const authService = {
-    register,
-    login,
-    logout,
-    updateProfile,
-    uploadFile
-}
-
-export default authService
+export default App;
