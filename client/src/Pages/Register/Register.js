@@ -54,7 +54,7 @@ function Register() {
             }
       
             dispatch(register(userData))
-          }
+        }
     }
 
     return(
