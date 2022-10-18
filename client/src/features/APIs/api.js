@@ -136,6 +136,22 @@ export async function createAnswer(questionId,content) {
     const errorObject = normalizeServerError(error);
     return [errorObject, null];
   }
+}
 
-
+//get answer
+export async function getAnswer(answerID) {
+  try {
+    let token = localStorage.getItem("AuthToken");
+    const axiosConfig = {
+      method: "get",
+      url: `${apiURL}/answer/${answerID}`,
+      headers: { Authorization: "Bearer " + token },
+    };
+    const response = await axios.default.request(axiosConfig);
+    const normalizedResponse = normalizeServerResponse(response);
+    return [null, normalizedResponse];
+  } catch (error) {
+    const errorObject = normalizeServerError(error);
+    return [errorObject, null];
+  }
 }
