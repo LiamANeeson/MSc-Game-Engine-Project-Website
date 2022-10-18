@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
-import Navbar from './Components/Navbar/Navbar';
+import Navigationbar from './Components/Navbar/Navigationbar';
 import './App.css';
 
 import Profile from './Pages/Profile/Profile';
@@ -17,12 +17,13 @@ import Docs from './Pages/Docs/Documentation'
 import Community from './Pages/Community/Community';
 import QuestionDetail from './Pages/Community/QuestionDetail';
 import Download from './Pages/Download/Download';
+import AskQuestion from './Pages/Community/AskQuestion'
 
 function App() {
     return (
         <>
             <Router>
-                <Navbar />
+                <Navigationbar />
                 <Routes>
                     <Route path='/profile' element={<Profile />} />
                     <Route path='/updateProfile' element={<UpdateProfile />} />
@@ -32,6 +33,7 @@ function App() {
                     <Route path='/tutorial' element={<Tutorial />} />
                     <Route path='/docs' element={<Docs />} />
                     <Route path='/community' element={<Community />} />
+                    <Route path='/ask-question' element={<AskQuestion />} />
                     <Route path='/download' element={<Download />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
