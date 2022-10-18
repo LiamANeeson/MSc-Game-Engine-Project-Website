@@ -46,14 +46,14 @@ export const updateProfile = createAsyncThunk('auth/updateProfile', async (profi
 })
 
 //upload file
-//export const uploadFile = createAsyncThunk('auth/uploadFile', async (file, thunkAPI) => {
-//    try {
-//        return await authService.uploadFile(file)
-//    } catch (error) {
-//        const message = (error.response && error.response.data) || error.message || error.toString()
-//        return thunkAPI.rejectWithValue(message)
-//    }
-//})
+export const uploadFile = createAsyncThunk('auth/uploadFile', async (file, thunkAPI) => {
+    try {
+        return await authService.uploadFile(file)
+    } catch (error) {
+        const message = (error.response && error.response.data) || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
 
   export const logout = createAsyncThunk('auth/logout', 
   async () => {

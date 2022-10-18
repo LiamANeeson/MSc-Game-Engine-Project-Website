@@ -1,13 +1,13 @@
-﻿import React, { useState } from "react";
+﻿import React, { useState, useRef } from "react";
 import "./UpdateProfile.css"
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-import { updateProfile, login } from '../../features/auth/authSlice'
+import { updateProfile, uploadFile } from '../../features/auth/authSlice'
 
 function UpdateProfile() {
     const navigate = useNavigate()
@@ -16,13 +16,17 @@ function UpdateProfile() {
     const currentProfile = JSON.parse(localStorage.getItem('profile'))
     const [startDate, setStartDate] = useState(new Date(currentProfile.birthday))
 
-    const [file, setFile] = useState();
-    const [fileName, setFileName] = useState("");
+    const [file, setFile] = useState()
+    const [displayImg, setDisplayImg] = useState(currentProfile.avatar)
+    const fileUpload = React.createRef()
+
+    const chooseFile = (e) => {
+        fileUpload.current.click()
+    }
 
     const handleChange = (e) => {
-
-        setFile(URL.createObjectURL(e.target.files[0]));
-        setFileName(e.target.files[0].name);
+        setDisplayImg(URL.createObjectURL(e.target.files[0]));
+        setFile(e.target.files[0]);
     }
 
     const [formData, setFormData] = useState({
@@ -58,45 +62,63 @@ function UpdateProfile() {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        const profileData = {
-            email,
-            firstName,
-            lastName,
-            gender,
-            contactNumber,
-            currentAddress,
-            birthday: startDate,
-            permanentAddress,
-            avatar
-        }
+        const fileData = new FormData();
+        fileData.append("file", file);
+        let avatarPath;
 
+        dispatch(uploadFile(fileData)).then((res) => {
 
-
-
-        dispatch(updateProfile(profileData)).then((res) => {
-            if (res.payload.msg === "Update profile successful") {
-                alert('Update profile successful')
-                navigate('/profile')
+            if (!res.payload.fileName) {
+                avatarPath = avatar
             } else {
-                alert('Failure to update profile')
+                avatarPath = "http://localhost:5000/uploads/" + res.payload.fileName;
             }
 
+            const profileData = {
+                email,
+                firstName,
+                lastName,
+                gender,
+                contactNumber,
+                currentAddress,
+                birthday: startDate,
+                permanentAddress,
+                avatar: avatarPath
+            }
+
+
+
+            dispatch(updateProfile(profileData)).then((res) => {
+
+                if (res.payload.profile) {
+                    alert('Update profile successfully')
+                    navigate('/profile')
+                } else {
+                    alert('Failure to update profile')
+                }
+
+            })
         })
+
+
+
 
     }
 
     return (
-        <div class="container rounded bg-white mt-5 mb-5">
 
+        <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="rounded-circle mt-5" width="150px" src={file} />
-                        <input class="text-center" type="file" onChange={handleChange} />
+                        <img class="rounded-circle mt-5" width="150px" src={displayImg} />
+                        <button class="btn btn-info btn-sm mt-2" onClick={chooseFile}>Change  profile photo</button>
+                        <input class="text-center" type="file" onChange={handleChange} ref={fileUpload} hidden />
                     </div>
                 </div>
-                <form onSubmit={onSubmit}>
-                    <div class="col-md-5 border-right">
+
+                <div class="col-md-5 border-right">
+                    <form onSubmit={onSubmit}>
                         <div class="p-3 py-5">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="text-right">Profile Setting</h4>
@@ -124,8 +146,9 @@ function UpdateProfile() {
 
                             <div class="mt-5 text-center"><button class="btn btn-primary btn-lg" type="submit">Save Profile</button></div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+
             </div>
 
         </div>

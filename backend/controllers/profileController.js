@@ -25,10 +25,8 @@ const updateProfile = async (req, res) => {
 
         const currentProfile = await Profile.findOne({ email })
 
-        console.log(currentProfile)
-
         return res.status(200).send({
-            msg: 'Update profile successful',
+            msg: 'Update profile successfully',
             profile: currentProfile
         })
     }
