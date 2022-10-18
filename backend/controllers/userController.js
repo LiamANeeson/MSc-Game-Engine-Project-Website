@@ -87,7 +87,13 @@ const loginUser = asyncHandler(async(req, res) => {
 // @route GET /api/users/user
 // @access Private 
 const getUser = asyncHandler(async(req, res) => {
-  res.status(200).json(req.user)
+  try {
+    // res.status(200).json(req.user)
+    const user = await User.findById(req.params.id);
+    res.status(200).json(user)
+     } catch (error) {
+    console.log(error)
+  }
 })
 
 

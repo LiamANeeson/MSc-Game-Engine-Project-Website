@@ -16,9 +16,14 @@ const login = async (userData) => {
     const response = await axios.post(API_URL + 'login', userData)
 
     if (response.data) {
+<<<<<<< HEAD
         localStorage.setItem('user', JSON.stringify(response.data))
         localStorage.setItem('authToken', response.data.token )
         localStorage.setItem('profile', JSON.stringify(response.data.profile))
+=======
+      localStorage.setItem('user', JSON.stringify(response.data))
+      localStorage.setItem('authToken',response.data.token )
+>>>>>>> d69bf7850171170b481f99e77d89913c0cd8d592
     }
 
     return response.data

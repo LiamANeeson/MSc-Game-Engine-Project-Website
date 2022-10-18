@@ -11,9 +11,12 @@
     "@testing-library/user-event": "^14.4.3",
     "axios": "^1.0.0",
     "bootstrap": "^5.2.2",
+<<<<<<< HEAD
     "date-fns": "^2.29.3",
     "dayjs": "^1.11.5",
     "luxon": "^2.5.0",
+=======
+>>>>>>> d69bf7850171170b481f99e77d89913c0cd8d592
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
