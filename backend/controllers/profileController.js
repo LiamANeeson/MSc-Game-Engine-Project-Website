@@ -12,18 +12,20 @@ const updateProfile = async (req, res) => {
         })
 
     } else {
-        await Profile.updateOne({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            gender: req.body.gender,
-            contactNumber: req.body.contactNumber,
-            currentAddress: req.body.currentAddress,
-            birthday: req.body.birthday,
-            permanentAddress: req.body.permanentAddress,
-            avatar: req.body.avatar,
-        })
+        await Profile.updateOne({ email },
+            {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                gender: req.body.gender,
+                contactNumber: req.body.contactNumber,
+                currentAddress: req.body.currentAddress,
+                birthday: req.body.birthday,
+                permanentAddress: req.body.permanentAddress,
+                avatar: req.body.avatar,
+            })
 
         const currentProfile = await Profile.findOne({ email })
+
 
         return res.status(200).send({
             msg: 'Update profile successfully',
