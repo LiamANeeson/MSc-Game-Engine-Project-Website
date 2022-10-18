@@ -18,7 +18,7 @@ const login = async (userData) => {
 
     if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data))
-        localStorage.setItem('authToken', response.data.token )
+        localStorage.setItem('authToken', response.data.token)
         localStorage.setItem('profile', JSON.stringify(response.data.profile))
     }
 
