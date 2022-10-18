@@ -40,20 +40,16 @@ function Login() {
         dispatch(reset())
     }, [user, isError, isSuccess, message, navigate, dispatch])
 
-    const onSubmit = async(e) => {
+    const onSubmit = (e) => {
         e.preventDefault()
 
-        const [loginError,loginResponse] = await Api.login(email,password)
-        if(loginError){
-            console.log(loginError)
+        const userData = {
+            email, 
+            password
         }
-        if(loginResponse.status === 200){
-            console.log(loginResponse)
-            localStorage.setItem('AuthToken',loginResponse?.data?.token)
-            toast.success("Login Successfully!")
-            navigate('/profile')
-        }
+        dispatch(login(userData))
     }
+    
     return(
         <>
             <section className='head'>

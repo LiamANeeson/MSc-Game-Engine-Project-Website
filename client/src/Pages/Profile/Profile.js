@@ -7,12 +7,13 @@ function Profile() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const {user} = useSelector((state) => state.auth)
-
+  
   const onLogout = () => {
     dispatch(logout())
     dispatch(reset())
     navigate('/')
   }
+  console.log(user)
   return (
     <div>
       <h1>Hi {user && user.name}!</h1>
