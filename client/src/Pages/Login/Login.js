@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import {login, reset} from '../../features/auth/authSlice'
-import * as Api from "../../features/APIs/api";
 
 function Login() {
     const [formData, setFormData] = useState({
@@ -24,7 +23,7 @@ function Login() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const { user, isLoading, isError, isSuccess, message } = useSelector(
+    const { user, isError, isSuccess, message } = useSelector(
         (state) => state.auth
     )
 

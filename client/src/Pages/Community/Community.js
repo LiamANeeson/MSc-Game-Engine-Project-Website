@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Container, Image } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import "./Community.css";
 import * as Api from "../../features/APIs/api";
-import AskQuestionModel from "./AskQuestionModel";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 
@@ -13,7 +12,7 @@ function Community() {
     const navigate = useNavigate()
     const [queObj, setQueObj] = useState([]);
     console.log(queObj);
-    const [result, setresult] = useState([]);
+    // const [result, setresult] = useState([]);
     useEffect(() => {
         const init = async () => {
             const authToken = localStorage.getItem("AuthToken");
@@ -29,14 +28,14 @@ function Community() {
         init();
     }, []);
 
-    const getUser = async (questionId) => {
-        const [error, response] = await Api.getQuestion(questionId);
-        if (response) {
-            const userId = response.data.userObj;
-            const [err, res] = await Api.getUser(userId);
-            console.log(res, "created by");
-        }
-    };
+    // const getUser = async (questionId) => {
+    //     const [error, response] = await Api.getQuestion(questionId);
+    //     if (response) {
+    //         const userId = response.data.userObj;
+    //         const [err, res] = await Api.getUser(userId);
+    //         console.log(res, "created by");
+    //     }
+    // };
     return (
 
 
@@ -74,14 +73,6 @@ function Community() {
                             <button type="submit" class="Filter-btn">
                                 Sort
                             </button>
-                            <div class="pagination">
-                                <a href="#">&laquo;</a>
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">&raquo;</a>
-                            </div>
                         </div>
                     </Col>
                     <Col md={2} style={{ marginTop: "15px" }}>
@@ -161,14 +152,6 @@ function Community() {
                 </Row>
                 <Row>
                     <Col>
-                        <div class="pagination">
-                            <a href="#">&laquo;</a>
-                            <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">&raquo;</a>
-                        </div>
                     </Col>
                 </Row>
             </Container>

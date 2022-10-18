@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Container, Image } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import './Community.css'
 
 const QuestionDetail = (props) => {
