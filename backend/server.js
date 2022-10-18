@@ -11,6 +11,14 @@ const app = express();
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(__dirname + '/public'));
+
+app.get("/", (req, res) => {
+    res.send("APIs Up && running");
+});
+app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/question", require("./routes/questionRoutes"))
+app.use("/api/answer", require("./routes/answerRoute"))
 
 app.get("/", (req, res) => {
   res.send("APIs Up && running");
