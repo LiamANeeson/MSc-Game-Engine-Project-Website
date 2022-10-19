@@ -11,14 +11,14 @@ const app = express();
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(__dirname + '/public'));
 
 app.get("/", (req, res) => {
-  res.send("APIs Up && running");
+    res.send("APIs Up && running");
 });
 app.use("/api/users", require("./routes/userRoutes"));
-app.use("/api/question",require("./routes/questionRoute"))
-app.use("/api/answer",require("./routes/answerRoute"))
-
+app.use("/api/question", require("./routes/questionRoute"))
+app.use("/api/answer", require("./routes/answerRoute"))
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
 app.use(errorHandler);
