@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 import Navigationbar from './Components/Navbar/Navigationbar';
+import Footer from './Components/Footer/Footer'
 import './App.css';
 
 import Profile from './Pages/Profile/Profile';
@@ -17,6 +18,7 @@ import Community from './Pages/Community/Community';
 import QuestionDetail from './Pages/Community/QuestionDetail';
 import Download from './Pages/Download/Download';
 import AskQuestion from './Pages/Community/AskQuestion'
+
 
 function App() {
   return (
@@ -39,6 +41,7 @@ function App() {
         </Routes>
       </Router>
       <ToastContainer />
+      <Footer />
     </>
   );
 }
