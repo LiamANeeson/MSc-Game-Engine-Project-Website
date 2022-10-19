@@ -31,7 +31,12 @@ export async function login(email, password) {
         password: password
       }
     };
-    const response = await axios.default.request(axiosConfig);
+      const response = await axios.default.request(axiosConfig);
+
+      if (response) {
+          localStorage.setItem('profile', JSON.stringify(response.data.profile))
+      }
+      
     const normalizedResponse = normalizeServerResponse(response);
     return [null, normalizedResponse];
   } catch (error) {
