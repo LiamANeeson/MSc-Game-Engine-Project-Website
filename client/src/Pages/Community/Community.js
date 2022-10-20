@@ -132,15 +132,10 @@ function Community() {
                                                 </div>
                                             </div>
                                         </div>
-
                                     </Row>
                                 </div>
                             </Col>
                         ))}
-                </Row>
-                <Row>
-                    <Col>
-                    </Col>
                 </Row>
             </Container>
             {/* <AskQuestionModel

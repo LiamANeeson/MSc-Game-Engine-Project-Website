@@ -1,9 +1,15 @@
 import React from 'react'
+import { FaSignInAlt } from 'react-icons/fa'
 import {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+
 import {login, reset} from '../../features/auth/authSlice'
+import * as Api from "../../features/APIs/api";
+
+import './Login.css'
+
 
 function Login() {
     const [formData, setFormData] = useState({
@@ -51,13 +57,13 @@ function Login() {
     
     return(
         <>
+        <container className="login-container">
             <section className='head'>
-                <h1>Login</h1>
+                <h1>Login <FaSignInAlt /></h1>
                 <p>Log into your Horizon Game Engine account!</p>
             </section>
-
-            <section className = 'form'>
-                <form onSubmit={onSubmit}>
+                <form onSubmit={onSubmit} className='submission-form'>
+                    <label for = "email">Email</label>
                     <input 
                         type = "email" 
                         className = 'form-control' 
@@ -67,20 +73,21 @@ function Login() {
                         placeholder = 'Please Enter your email'
                         onChange={onChange}
                     />
+                    <label for = "password">Password</label>
                     <input 
                         type = "password" 
                         className = 'form-control' 
                         id = 'password'
                         name = 'password'
                         value = {password}
-                        placeholder = 'Please create password'
+                        placeholder = 'Please enter password'
                         onChange={onChange}
                     />
                     <button type='submit' className='submit-btn'>
                         Submit
                     </button>  
                 </form>
-            </section>
+            </container>
         </>
     )
 }

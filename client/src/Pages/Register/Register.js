@@ -1,9 +1,13 @@
 import React from 'react'
+import {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { FaUserAlt } from 'react-icons/fa'
+
 import { register, reset } from '../../features/auth/authSlice'
-import {useState, useEffect} from 'react'
+import './Register.css'
+
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -59,55 +63,57 @@ function Register() {
 
     return(
         <>
-            <section className='head'>
-                <h1>Register</h1>
-                <p>Create an account for Horizon Game Engine!</p>
-            </section>
-
-            <section className = 'form'>
-                <form onSubmit={onSubmit}>
-                    <input 
-                        type = "text" 
-                        className = 'form-control' 
-                        id = 'name'
-                        name = 'name'
-                        value = {name}
-                        placeholder = 'Please Enter your name'
-                        onChange={onChange}
-                    />
-                    <input 
-                        type = "email" 
-                        className = 'form-control' 
-                        id = 'email'
-                        name = 'email'
-                        value = {email}
-                        placeholder = 'Please Enter your email'
-                        onChange={onChange}
-                    />
-                    <input 
-                        type = "password" 
-                        className = 'form-control' 
-                        id = 'password'
-                        name = 'password'
-                        value = {password}
-                        placeholder = 'Please create password'
-                        onChange={onChange}
-                    />
-
-                    <input 
-                        type = "password_confirm" 
-                        className = 'form-control' 
-                        id = 'password_confirm'
-                        name = 'password_confirm'
-                        value = {password_confirm}
-                        placeholder = 'Confirm Password'
-                        onChange={onChange}
-                    />
-                    <button type='submit' className='submit-btn'>
-                        Submit
-                    </button>  
-                </form>
-            </section>
+            <container className="register-container">
+                <section className='head'>
+                    <h1>Register <FaUserAlt /></h1>
+                    <p>Create an account for Horizon Game Engine!</p>
+                </section>
+                    <form onSubmit={onSubmit} className="submission-form-register">
+                    <label for = "name">Name</label>
+                        <input 
+                            type = "text" 
+                            className = 'form-control' 
+                            id = 'name'
+                            name = 'name'
+                            value = {name}
+                            placeholder = 'Please Enter your name'
+                            onChange={onChange}
+                        />
+                        <label for = "email">Email</label>
+                        <input 
+                            type = "email" 
+                            className = 'form-control' 
+                            id = 'email'
+                            name = 'email'
+                            value = {email}
+                            placeholder = 'Please Enter your email'
+                            onChange={onChange}
+                        />
+                        <label for = "password">Password</label>
+                        <input
+                            type = "password" 
+                            className = 'form-control' 
+                            id = 'password'
+                            name = 'password'
+                            value = {password}
+                            placeholder = 'Please create password'
+                            onChange={onChange}
+                        />
+                        <label for = "password_confirm">Confirm Password</label>
+                        <input 
+                            type = "password" 
+                            className = 'form-control' 
+                            id = 'password_confirm'
+                            name = 'password_confirm'
+                            value = {password_confirm}
+                            placeholder = 'Confirm Password'
+                            onChange={onChange}
+                        />
+                        <button type='submit' className='submit-btn'>
+                            Submit
+                        </button>  
+                    </form>
+            </container>
         </>
     )
 }
