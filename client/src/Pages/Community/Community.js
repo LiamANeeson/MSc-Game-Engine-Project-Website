@@ -27,18 +27,7 @@ function Community() {
         };
         init();
     }, []);
-
-    // const getUser = async (questionId) => {
-    //     const [error, response] = await Api.getQuestion(questionId);
-    //     if (response) {
-    //         const userId = response.data.userObj;
-    //         const [err, res] = await Api.getUser(userId);
-    //         console.log(res, "created by");
-    //     }
-    // };
     return (
-
-
         <div className="community-container">
             <div className="community-headline">
                 <h2 className="community-headline-text">All Questions</h2>
@@ -67,7 +56,6 @@ function Community() {
                                 <option value="desc">Sort by name(Z-A)</option>
                                 <option value="opel">Sort by most votes</option>
                                 <option value="opel">Sort by most views</option>
-                                <option value="audi">Audi</option>
                             </select>
 
                             <button type="submit" class="Filter-btn">
@@ -137,7 +125,7 @@ function Community() {
                       <Image src={que.userObj.userImage} />
                   </div> */}
                                                 <div className="user-info float-right">
-                                                    <div className="user-name">{ }</div>
+                                                    <div className="user-name">{que?.userObj?.name}</div>
                                                     <div className="created-at">
                                                         {moment(que.createdAt).format("DD-MM-YYYY,h:mm a")}
                                                     </div>
