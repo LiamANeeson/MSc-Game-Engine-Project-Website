@@ -26,19 +26,24 @@ function App() {
       <Router>
         <Navigationbar />
         <Routes>
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/updateProfile' element={<UpdateProfile />} />
+          {/* Page Routes */}
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/tutorial' element={<Tutorial/>} />
           <Route path='/docs' element={<Docs />} />
+          <Route path='/download' element={<Download />} />
+          
+          {/* Community and Question Routes  */}
           <Route path='/community' element={<Community />} />
           <Route path='/ask-question' element={<AskQuestion />} />
-          <Route path='/download' element={<Download />} />
+          <Route exact path='/question/:id' element = {<QuestionDetail /> } />
+          
+          {/* Profile Routes */}
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          <Route exact path='/question/:id' element = {<QuestionDetail /> } />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/updateProfile' element={<UpdateProfile />} />
         </Routes>
       </Router>
       <ToastContainer />
