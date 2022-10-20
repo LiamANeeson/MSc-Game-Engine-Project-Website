@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 import Navigationbar from './Components/Navbar/Navigationbar';
+import { AuthRoute } from './Components/RouterGuard/routerGuard'
 import './App.css';
 
 import Profile from './Pages/Profile/Profile';
@@ -25,8 +26,12 @@ function App() {
             <Router>
                 <Navigationbar />
                 <Routes>
-                    <Route path='/profile' element={<Profile />} />
-                    <Route path='/updateProfile' element={<UpdateProfile />} />
+                    <Route path='/profile' element={<AuthRoute>
+                        <Profile />
+                    </AuthRoute>} />
+                    <Route path='/updateProfile' element={<AuthRoute>
+                        <UpdateProfile />
+                    </AuthRoute>} />
                     <Route path='/' element={<Home />} />
                     <Route path='/home' element={<Home />} />
                     <Route path='/about' element={<About />} />

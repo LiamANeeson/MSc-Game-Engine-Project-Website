@@ -1,8 +1,8 @@
-﻿import React, { useState, useRef } from "react";
+﻿import React, { useState } from "react";
 import "./UpdateProfile.css"
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-
+import { toast } from "react-toastify";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -14,6 +14,7 @@ function UpdateProfile() {
     const dispatch = useDispatch()
 
     const currentProfile = JSON.parse(localStorage.getItem('profile'))
+    const userName = JSON.parse(localStorage.getItem('userName'))
     const [startDate, setStartDate] = useState(new Date(currentProfile.birthday))
 
     const [file, setFile] = useState()
@@ -37,7 +38,8 @@ function UpdateProfile() {
         contactNumber: currentProfile.contactNumber,
         currentAddress: currentProfile.currentAddress,
         permanentAddress: currentProfile.permanentAddress,
-        avatar: currentProfile.avatar
+        avatar: currentProfile.avatar,
+        nickName: userName
     })
 
     const {
@@ -48,7 +50,8 @@ function UpdateProfile() {
         contactNumber,
         currentAddress,
         permanentAddress,
-        avatar } = formData
+        avatar,
+        nickName, } = formData
 
     const onChange = (e) => {
 
@@ -83,7 +86,8 @@ function UpdateProfile() {
                 currentAddress,
                 birthday: startDate,
                 permanentAddress,
-                avatar: avatarPath
+                avatar: avatarPath,
+                nickName
             }
 
 
@@ -91,10 +95,10 @@ function UpdateProfile() {
             dispatch(updateProfile(profileData)).then((res) => {
 
                 if (res.payload.profile) {
-                    alert('Update profile successfully')
+                    toast.success("Update profile successfully");
                     navigate('/profile')
                 } else {
-                    alert('Failure to update profile')
+                    toast.error('Failure to update profile')
                 }
 
             })
@@ -128,6 +132,7 @@ function UpdateProfile() {
                                 <div class="col-md-6"><label class="labels">Last name</label><input type="text" id='lastName' name='lastName' class="form-control" value={lastName} placeholder="last name" onChange={onChange} /></div>
                             </div>
                             <div class="row mt-3">
+                                <div class="col-md-12"><label class="labels">Nick Name</label><input id="nickName" name="nickName" type="text" class="form-control" value={nickName} placeholder="nick name" onChange={onChange} /></div>
                                 <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" id='contactNumber' name='contactNumber' class="form-control" placeholder="enter phone number" value={contactNumber} onChange={onChange} /></div>
                                 <div class="col-md-12"><label class="labels">Gender</label>
                                     <input type="radio" name="gender" id="gender1"

@@ -31,6 +31,7 @@ const updateProfile = async (profileData) => {
 
     if (response.data.profile) {
         localStorage.setItem('profile', JSON.stringify(response.data.profile))
+        localStorage.setItem('userName', JSON.stringify(response.data.user.name))
     }
 
     return response.data
