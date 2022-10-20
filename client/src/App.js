@@ -27,6 +27,7 @@ function App() {
         <Navigationbar />
         <Routes>
           <Route path='/profile' element={<Profile />} />
+          <Route path='/updateProfile' element={<UpdateProfile />} />
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path='/about' element={<About />} />
