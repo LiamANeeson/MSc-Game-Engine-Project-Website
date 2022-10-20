@@ -1,44 +1,114 @@
 import React from 'react'
-import './Home.css'
+import {
+  Container,
+  Row, 
+  Col, 
+  Card,
+  Button
+} from 'react-bootstrap';
 
+import './Home.css'
+import PhysicsPic from '../../Assets/Images/physics_example.PNG'
+import ScenePic from '../../Assets/Images/scene_example.png'
+import ScriptingPic from '../../Assets/Images/scripting_example.jpg'
+import CommunityPic from '../../Assets/Images/Gamer_Dev_Pic.jpg'
+
+
+// Row = 12 cols or 100%
 function Home() {
   return (
-    <div className='homePage-container'>
-      <div className='headline-content'>
-        <h2 className='headline-text'>Learn Game Development</h2>
-        <div className='head-image'></div>
-        <p className='blurb'>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis dolor rutrum, facilisis lacus porttitor, maximus risus. Vivamus aliquam lorem in leo sodales dictum. In consequat elit at lobortis ultrices. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse nec suscipit justo, a pretium quam.
-        </p>
-        <button className = 'head-btn'>Download</button>
-        <button className = 'head-btn'>Learn More</button>
-      </div>
-      <div className='home-box-1'>
-        <h2 className='box-head'>Box 1</h2>
-        <div className='image-1'>
-          Hello
-        </div>
-      </div>
-      <div className='home-box-2'>
-        <h2 className='box-head'>Box 2</h2>
-        <div className='image-2'>
-          Hello
-        </div>
-      </div>
-      <div className='home-box-3'>
-        <h2 className='box-head'>Box 3</h2>
-        <div className='image-3'>
-          Hello
-        </div>
-      </div>
-      <div className='home-box-4'>
-        <h2 className='box-head'>Box 4</h2>
-        <div className='image-4'>
-          Hello
-        </div>
-      </div>
-    </div>
+    <Container>
+      <Row>
+        <Col>
+        <Card className='text-center mt-5'>
+          <Card.Body>
+            <Card.Title>Build 2D Games</Card.Title>
+            <Card.Text>
+              Create Awesome 2D Games with the Horizon Game Engine
+            </Card.Text>
+            <Card.Text>
+              Horizon Game Engine Gives you all the necessary tools you need to create 2D games. Letting you learn and focus on creating games!
+            </Card.Text>
+            <Card.Text>
+              Horizon is a free and open-source so you don't have to worry about fees or royalties! All you have to do is create some games!
+            </Card.Text>
+            <Button variant="primary" className='home-cta-btn'>Download</Button>
+            <Button variant="primary" className='home-cta-btn'>Learn More</Button>
+          </Card.Body>
+        </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg={3} sm={6}>
+          <Card className='text-center mt-5 mb-5'>
+            <Card.Img src={PhysicsPic}/>
+            <Card.Body>
+              <Card.Title>Physics</Card.Title>
+              <Card.Text>
+                Learn about physics used in 2D games and how to use it the Horizon GE
+              </Card.Text>
+              <Button variant="primary" className='home-cta-btn'>Learn More</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col lg={3} sm={6}>
+          <Card className='text-center mt-5 mb-5' >
+          <Card.Img src={ScenePic}/>
+            <Card.Body>
+              <Card.Title>Scene Managment</Card.Title>
+              <Card.Text>
+                Learn all about scenes in game development and how they work in Horizon GE. 
+              </Card.Text>
+              <Button variant="primary" className='home-cta-btn'>Learn More</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col lg={3} sm={6}>
+          <Card className='text-center mt-5 mb-5'>
+          <Card.Img src={ScriptingPic} />
+            <Card.Body>
+              <Card.Title>Scripting</Card.Title>
+              <Card.Text>
+                Horizon GE uses a visual scripting model allowing users to add scripts to objects without the need to learn a scripting language!
+              </Card.Text>
+              <Button variant="primary" className='home-cta-btn'>Learn More</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col lg={3} sm={6}>
+          <Card className='text-center mt-5 mb-5'>
+          <Card.Img src = {CommunityPic}/>
+            <Card.Body>
+              <Card.Title>Horizon Community</Card.Title>
+              <Card.Text> 
+                Horizon Game Engine Community Page allows users to create posts or search for posts to discuss the Horizon Game Engine!
+              </Card.Text>
+              <Button variant="primary" className='home-cta-btn'>Learn More</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 
 export default Home
+
+    // <div className='homePage-container'>
+    //   <div className='headline-content'>
+    //     <h2 className='headline-text'>
+    //       Learn Game Development
+    //       <em>Create Awesome 2D Games with the Horizon Game Engine</em>
+    //     </h2>
+    //     <div className='head-image'>
+    //     </div>
+    //     <p className='blurb'>
+    //     Horizon Game Engine Gives you all the necessary tools you need to create 2D games. Letting you learn and focus on creating games!
+    //     </p>
+    //     <p className='blurb'>
+    //       Horizon is a free and open-source so you don't have to worry about fees or royalties! All you have to do is create some games!
+    //     </p>
+    //     <button className = 'head-btn'>Download</button>
+    //     <button className = 'head-btn'>Learn More</button>
+    //   </div>
+    // </div>

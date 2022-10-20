@@ -1,35 +1,6 @@
-.homePage-container {
-    background-color: #293241; 
-    display: grid;
-    grid-template-rows: 2fr 1fr 1fr 0.55fr;
-    justify-content: center;
-    text-align: center;
-    grid-template-areas: 
-    "headline-content headline-content"
-    "home-box-1 home-box-2"
-    "home-box-3 home-box-4"
-    ;
-}
-
-.headline-content {
-    grid-area: headline-content;
-}
-
-.headline-text {
-    color: #f4eb95;
-    background-color: #293241 ;
-    display: grid;;
-    font-weight: bold;
-    padding: 3%;
-}
-
-.blurb {
-    padding: 5%;
-    color: #f4eb95;
-}
-
-.head-btn {
-    background-color: #EE6C4D;
+.home-cta-btn {
+    background-color: #EE6C4D !important;
+    width: 50%;
     cursor: pointer;
     border-radius: 6px;
     backface-visibility: hidden;
@@ -39,7 +10,8 @@
     height: 44px;
     line-height: 1.15;
     margin: 12px;
-    outline: none;
+    outline: none !important;
+    border-color: #EE6C4D !important;
     overflow: hidden;
     padding: 0 25px;
     position: relative;
@@ -47,71 +19,8 @@
     font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
 }
 
-.head-btn:hover {
-    background-color: rgb(208, 81, 58);
-}
-
-.home-box-1{
-    grid-area: home-box-1;
-    background-color: #3D5A80;
-    margin: 2%;
-    border-radius: 10px;
-}
-.home-box-2{
-    grid-area: home-box-2;
-    background-color: #3D5A80;
-    margin: 2%;
-    border-radius: 10px;
-}
-.home-box-3{
-    grid-area: home-box-3;
-    height: auto;
-    background-color: #3D5A80;
-    margin: 2%;
-    border-radius: 10px;
-}
-.home-box-4{
-    grid-area: home-box-4;
-    background-color: #3D5A80;
-    margin: 2%;
-    border-radius: 10px;
-}
-
-.homePage-container .box-head {
-    color: #f4eb95;
-    padding-top: 3%;
-}
-
-.homePage-container .home-box-1 .image-1 {
-    /* background-color: aqua; */
-    height: 60%;
-}
-
-.homePage-container .home-box-2 .image-2 {
-    /* background-color: aqua; */
-    height: 60%;
-}
-
-.homePage-container .home-box-3 .image-3 {
-    /* background-color: aqua; */
-    height: 60%;
-
-}
-
-.homePage-container .home-box-4 .image-4 {
-    /* background-color: ; */
-    height: 60%;
-}
-
-@media (max-width: 700px) {
-    .homePage-container {
-        grid-template-rows: 2fr 1fr 1fr 1fr 1fr;
-        grid-template-areas: 
-        "headline-content"
-        "home-box-1"
-        "home-box-2"
-        "home-box-3"
-        "home-box-4"
-        ;
-    }
-}
+.home-cta-btn:hover {
+    background-color: rgb(208, 81, 58) !important;
+    border-color: #EE6C4D !important;
+    outline: none !important ;
+  }

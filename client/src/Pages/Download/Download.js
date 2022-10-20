@@ -2,7 +2,7 @@ import React from 'react'
 import { FaGithub, FaWindows } from 'react-icons/fa'
 
 import './Download.css'
-import GameArtDownload from '../../Images/open_game_art_download.PNG'
+
 function Download() {
   return (
     <div className='download-container'>

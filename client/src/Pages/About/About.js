@@ -1,6 +1,5 @@
 import React from 'react'
 import './About.css'
-import GameArt1 from '../../Images/game_art_1.PNG'
 
 function About() {
   return (
@@ -27,7 +26,7 @@ function About() {
           Join our website and learn more about Horizon Game Engine using our Community section. 
         </li>
       </ul>
-      <img src = {GameArt1} alt="2D 8-bit Game Example" className='about-img'/>
+      <img  alt="2D 8-bit Game Example" className='about-img'/>
       <h2>Create Amazing 2D Games</h2>
       <p>
         <em>Horizon is Game Engine purpose built for creating 2D Games</em>
