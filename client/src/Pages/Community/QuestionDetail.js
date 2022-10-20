@@ -15,6 +15,7 @@ const QuestionDetail = (props) => {
   const [answer, setAnswer] = useState("");
   const [question, setQuestion] = useState();
 
+  //This function calls all question related data when given specific id
   useEffect(() => {
     const init = async () => {
       const [error, response] = await Api.getQuestion(id);
