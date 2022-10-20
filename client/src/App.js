@@ -8,6 +8,7 @@ import Footer from './Components/Footer/Footer'
 import './App.css';
 
 import Profile from './Pages/Profile/Profile';
+import UpdateProfile from './Pages/Profile/UpdateProfile'
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import Home from './Pages/Home/Home';
@@ -50,6 +51,7 @@ function App() {
       <Footer />
     </>
   );
+
 }
 
 export default App;

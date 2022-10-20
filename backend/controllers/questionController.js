@@ -6,7 +6,7 @@ const createQuestion = async (req, res) => {
   console.log(req.user);
   const newQuestion = new Question({
     ...information,
-    userObj: req.user._id,
+    userObj: req.user,
   });
   console.log(newQuestion);
   try {
@@ -20,7 +20,7 @@ const createQuestion = async (req, res) => {
 //Get all questions.
 const getQuestions = async (req, res) => {
   try {
-    const questions = await Question.find();
+    const questions = await Question.find().populate("answers");
     res.status(200).json({
       success: true,
       questions: questions,
