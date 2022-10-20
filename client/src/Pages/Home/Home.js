@@ -17,13 +17,13 @@ import CommunityPic from '../../Assets/Images/Gamer_Dev_Pic.jpg'
 // Row = 12 cols or 100%
 function Home() {
   return (
-    <Container>
+    <Container className='home-container'>
       <Row>
         <Col>
         <Card className='text-center mt-5'>
           <Card.Body>
-            <Card.Title>Build 2D Games</Card.Title>
-            <Card.Text>
+            <Card.Title className="fs-1 fw-bold">Build 2D Games</Card.Title>
+            <Card.Text className="fw-bold">
               Create Awesome 2D Games with the Horizon Game Engine
             </Card.Text>
             <Card.Text>

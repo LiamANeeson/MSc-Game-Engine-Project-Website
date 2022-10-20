@@ -1,3 +1,10 @@
+.card-text{
+    font-size:19px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 .home-cta-btn {
     background-color: #EE6C4D !important;
     width: 50%;
