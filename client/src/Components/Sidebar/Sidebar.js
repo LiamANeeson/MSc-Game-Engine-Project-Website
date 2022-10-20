@@ -1,31 +1,41 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { Children, useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { FaArrowRight } from 'react-icons/fa'
 
 import './Sidebar.css'
 import {SidebarData} from './SidebarData'
 
-
-function Sidebar() {
+const Sidebar = ({children}) => {
+  const[isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div className='sidebar'>
-     <ul className='sidebarList'>
-     {SidebarData.map((val, key) => {
-        return (
-          <li
-            key={key}
-            className="row">            
-            <Link to = {val.path}>
-              {val.icon}
-              <span>{val.title}</span>
-            </Link>
-          </li>
-        )
-      }
-      )}
-     </ul>
+    <div className='sidebar-container'>
+      <div style={{width: isOpen ? "30vh" : "6.5vh" }}className='sidebar'>
+        <div className='top-section'>
+          <h1 style = {{display: isOpen ? "block" : "none"}}className='logo'>Tutorial</h1>
+          <div style = {{marginLeft: isOpen ? "50px": "10px"}}className='bars'>
+            <FaArrowRight onClick={toggle}/>
+          </div>
+        </div>
+        {
+          SidebarData.map((item, index) => (
+            <NavLink 
+              to={item.path} 
+              key={index} 
+              className="link"
+              activeclassName="active">
+                <div className='icon'>{item.icon}</div>
+                <div className='link-text'>{item.title}</div>
+              </NavLink>
+          ))
+        }
+      </div>
+      <main>
+        {children}
+      </main>
     </div>
   )
-}
 
+};
 export default Sidebar

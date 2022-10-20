@@ -1,12 +1,9 @@
-﻿import React from 'react'
+import React from 'react'
 import "./Profile.css"
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logout, reset } from '../../features/auth/authSlice'
 import bootstrap from 'bootstrap'
-
-
-
 
 function Profile() {
     const navigate = useNavigate()

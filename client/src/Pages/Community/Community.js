@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Container, Image } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import "./Community.css";
 import * as Api from "../../features/APIs/api";
-import AskQuestionModel from "./AskQuestionModel";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 
@@ -13,7 +12,7 @@ function Community() {
     const navigate = useNavigate()
     const [queObj, setQueObj] = useState([]);
     console.log(queObj);
-    const [result, setresult] = useState([]);
+    // const [result, setresult] = useState([]);
     useEffect(() => {
         const init = async () => {
             const authToken = localStorage.getItem("AuthToken");
@@ -28,18 +27,7 @@ function Community() {
         };
         init();
     }, []);
-
-    const getUser = async (questionId) => {
-        const [error, response] = await Api.getQuestion(questionId);
-        if (response) {
-            const userId = response.data.userObj;
-            const [err, res] = await Api.getUser(userId);
-            console.log(res, "created by");
-        }
-    };
     return (
-
-
         <div className="community-container">
             <div className="community-headline">
                 <h2 className="community-headline-text">All Questions</h2>
@@ -68,20 +56,11 @@ function Community() {
                                 <option value="desc">Sort by name(Z-A)</option>
                                 <option value="opel">Sort by most votes</option>
                                 <option value="opel">Sort by most views</option>
-                                <option value="audi">Audi</option>
                             </select>
 
                             <button type="submit" class="Filter-btn">
                                 Sort
                             </button>
-                            <div class="pagination">
-                                <a href="#">&laquo;</a>
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">&raquo;</a>
-                            </div>
                         </div>
                     </Col>
                     <Col md={2} style={{ marginTop: "15px" }}>
@@ -146,30 +125,17 @@ function Community() {
                       <Image src={que.userObj.userImage} />
                   </div> */}
                                                 <div className="user-info float-right">
-                                                    <div className="user-name">{ }</div>
+                                                    <div className="user-name">{que?.userObj?.name}</div>
                                                     <div className="created-at">
                                                         {moment(que.createdAt).format("DD-MM-YYYY,h:mm a")}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </Row>
                                 </div>
                             </Col>
                         ))}
-                </Row>
-                <Row>
-                    <Col>
-                        <div class="pagination">
-                            <a href="#">&laquo;</a>
-                            <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">&raquo;</a>
-                        </div>
-                    </Col>
                 </Row>
             </Container>
             {/* <AskQuestionModel
