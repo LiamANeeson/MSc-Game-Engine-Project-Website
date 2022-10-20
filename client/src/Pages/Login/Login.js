@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import {login, reset} from '../../features/auth/authSlice'
-import * as Api from "../../features/APIs/api";
 
 function Login() {
     const [formData, setFormData] = useState({
@@ -24,7 +23,7 @@ function Login() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const { user, isLoading, isError, isSuccess, message } = useSelector(
+    const { user, isError, isSuccess, message } = useSelector(
         (state) => state.auth
     )
 
@@ -40,20 +39,16 @@ function Login() {
         dispatch(reset())
     }, [user, isError, isSuccess, message, navigate, dispatch])
 
-    const onSubmit = async(e) => {
+    const onSubmit = (e) => {
         e.preventDefault()
 
-        const [loginError,loginResponse] = await Api.login(email,password)
-        if(loginError){
-            console.log(loginError)
+        const userData = {
+            email, 
+            password
         }
-        if(loginResponse.status === 200){
-            console.log(loginResponse)
-            localStorage.setItem('AuthToken',loginResponse?.data?.token)
-            toast.success("Login Successfully!")
-            navigate('/profile')
-        }
+        dispatch(login(userData))
     }
+    
     return(
         <>
             <section className='head'>
