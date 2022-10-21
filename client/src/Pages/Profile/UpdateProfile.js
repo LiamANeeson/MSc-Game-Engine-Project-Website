@@ -3,8 +3,6 @@ import "./UpdateProfile.css"
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { toast } from "react-toastify";
-import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
 
 import { updateProfile, uploadFile } from '../../features/auth/authSlice'
@@ -15,7 +13,6 @@ function UpdateProfile() {
 
     const currentProfile = JSON.parse(localStorage.getItem('profile'))
     const userName = JSON.parse(localStorage.getItem('userName'))
-    const [startDate, setStartDate] = useState(new Date(currentProfile.birthday))
 
     const [file, setFile] = useState()
     const [displayImg, setDisplayImg] = useState(currentProfile.avatar)
@@ -34,10 +31,6 @@ function UpdateProfile() {
         email: currentProfile.email,
         firstName: currentProfile.firstName,
         lastName: currentProfile.lastName,
-        gender: currentProfile.gender,
-        contactNumber: currentProfile.contactNumber,
-        currentAddress: currentProfile.currentAddress,
-        permanentAddress: currentProfile.permanentAddress,
         avatar: currentProfile.avatar,
         nickName: userName
     })
@@ -46,10 +39,6 @@ function UpdateProfile() {
         email,
         firstName,
         lastName,
-        gender,
-        contactNumber,
-        currentAddress,
-        permanentAddress,
         avatar,
         nickName, } = formData
 
@@ -81,11 +70,6 @@ function UpdateProfile() {
                 email,
                 firstName,
                 lastName,
-                gender,
-                contactNumber,
-                currentAddress,
-                birthday: startDate,
-                permanentAddress,
                 avatar: avatarPath,
                 nickName
             }
@@ -131,24 +115,7 @@ function UpdateProfile() {
                                 <div class="col-md-6"><label class="labels">Name</label><input type="text" id='firstName' name='firstName' class="form-control" value={firstName} onChange={onChange} placeholder="first name" /></div>
                                 <div class="col-md-6"><label class="labels">Last name</label><input type="text" id='lastName' name='lastName' class="form-control" value={lastName} placeholder="last name" onChange={onChange} /></div>
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-md-12"><label class="labels">Nick Name</label><input id="nickName" name="nickName" type="text" class="form-control" value={nickName} placeholder="nick name" onChange={onChange} /></div>
-                                <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" id='contactNumber' name='contactNumber' class="form-control" placeholder="enter phone number" value={contactNumber} onChange={onChange} /></div>
-                                <div class="col-md-12"><label class="labels">Gender</label>
-                                    <input type="radio" name="gender" id="gender1"
-                                        value='Male' onChange={onChange} checked={gender === 'Male'} /> Male
-                                    <input type="radio" name="gender" id="gender2"
-                                        value='Female' onChange={onChange} checked={gender === 'Female'} /> Female
-                                </div>
-                                <div class="col-md-12"><label class="labels">Current Address</label><input type="text" id='currentAddress' name='currentAddress' class="form-control" placeholder="enter current address" value={currentAddress} onChange={onChange} /></div>
-                                <div class="col-md-12"><label class="labels">Permanant Address</label><input type="text" id='permanentAddress' name='permanentAddress' class="form-control" placeholder="enter permanant address" value={permanentAddress} onChange={onChange} /></div>
-                                <div class="col-md-12"><label class="labels">Birthday</label>
-                                    <DatePicker dateFormat="yyyy-MM-dd" selected={startDate} onChange={(date) => setStartDate(date)} filterDate={d => {
-                                        return new Date() > d;
-                                    }} />
-                                </div>
-                            </div>
-
+                            <div class="col-md-12"><label class="labels">Nick Name</label><input type="text" id='nickName' name='nickName' class="form-control" placeholder="nickName" value={nickName} onChange={onChange} /></div>
                             <div class="mt-5 text-center"><button class="btn btn-primary btn-lg" type="submit">Save Profile</button></div>
                         </div>
                     </form>

@@ -13,8 +13,6 @@ function Profile() {
     const userName = JSON.parse(localStorage.getItem('userName'))
 
 
-    const birthday = currentProfile.birthday.slice(0, 10)
-
     const toUpdateProfile = () => {
         navigate('/updateProfile')
     }
@@ -41,11 +39,6 @@ function Profile() {
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-12"><label class="labels">Nick Name</label><input type="text" class="form-control" value={userName} disabled="true" /></div>
-                            <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" value={currentProfile.contactNumber} disabled="true" /></div>
-                            <div class="col-md-12"><label class="labels">Gender</label><input type="text" class="form-control" value={currentProfile.gender} disabled="true" /></div>
-                            <div class="col-md-12"><label class="labels">Current Address</label><input type="text" class="form-control" value={currentProfile.currentAddress} disabled="true" /></div>
-                            <div class="col-md-12"><label class="labels">Permanent Address</label><input type="text" class="form-control" value={currentProfile.permanentAddress} disabled="true" /></div>
-                            <div class="col-md-12"><label class="labels">Birthday</label><input type="text" class="form-control" value={birthday} disabled="true" /></div>
                             <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" value={currentProfile.email} disabled="true" /></div>
                         </div>
                         <div class="row mt-3">

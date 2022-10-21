@@ -17,11 +17,6 @@ const updateProfile = async (req, res) => {
             {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
-                gender: req.body.gender,
-                contactNumber: req.body.contactNumber,
-                currentAddress: req.body.currentAddress,
-                birthday: req.body.birthday,
-                permanentAddress: req.body.permanentAddress,
                 avatar: req.body.avatar,
             })
 
@@ -34,7 +29,6 @@ const updateProfile = async (req, res) => {
         const currentUser = await User.findOne({ email })
 
         return res.status(200).send({
-            msg: 'Update profile successfully',
             profile: currentProfile,
             user: currentUser
         })

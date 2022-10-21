@@ -42,13 +42,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const profile = await Profile.create({
         email,
         firstName: '',
-        lastName: '',
-        gender: '',
-        contactNumber: '',
-        currentAddress: '',
-        birthday: '1900-10-15T17:16:14.000Z',
-        permanentAddress: '',
-        firstName: '',
+        lastName: ''
     })
 
     if (user) {
