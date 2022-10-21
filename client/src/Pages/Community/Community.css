@@ -199,3 +199,8 @@ span.tag{
     background-color: transparent;
     border: 1px solid #a1a8af;
 }
+
+div a {
+    color: black;
+    text-decoration: none;
+}
