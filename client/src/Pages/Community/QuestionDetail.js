@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col, Container, Image } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./Community.css";
 import * as Api from "../../features/APIs/api";
 import Button from "react-bootstrap/Button";
@@ -8,15 +8,17 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
 import moment from "moment";
-
+import { Icon } from "@iconify/react";
 
 const QuestionDetail = (props) => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [answers, setAnswers] = useState([]);
   const [answer, setAnswer] = useState("");
   const [question, setQuestion] = useState();
 
-  //This function calls all question related data when given specific id
+  const logedInUser = localStorage.getItem("AuthToken");
+
   useEffect(() => {
     const init = async () => {
       const [error, response] = await Api.getQuestion(id);
@@ -48,6 +50,47 @@ const QuestionDetail = (props) => {
     }
   };
 
+  const deleteQuestion = async () => {
+    const [deleteErr, deleteRes] = await Api.deleteQuestion(id);
+    if (deleteErr) {
+      toast.error("Something went wrong.Try again later!");
+    }
+    if (deleteRes) {
+      toast.success("Question deleted!");
+      navigate("/community");
+    }
+  };
+
+  const upVoteQuestion = async () => {
+    const [voteErr, voteRes] = await Api.voteQuestion(id);
+    if (voteErr) {
+      toast.info("You already liked this question!");
+    }
+    if (voteRes) {
+      toast.success("Question Liked!");
+    }
+  };
+
+  const downVoteQuestion = async () => {
+    const [voteErr, voteRes] = await Api.downVoteQuestion(id);
+    if (voteErr) {
+      toast.error("Something went wrong!");
+    }
+    if (voteRes) {
+      toast.success("Success!");
+    }
+  };
+
+  const followQuestion = async () => {
+    const [followErr, followRes] = await Api.followQuestion(id);
+    if (followErr) {
+      toast.error("Something went wrong!");
+    }
+    if (followRes) {
+      toast.success("Followed!");
+    }
+  };
+
   return (
     <>
       <div style={{ padding: "10px" }}>
@@ -70,11 +113,75 @@ const QuestionDetail = (props) => {
             </Card.Text>
 
             <div style={{ display: "flex" }}>
-              <Button variant="secondary">Follow</Button>{" "}
               <div className="que-tags">
                 {question?.tags.map((tag) => (
                   <span className="tag">{tag}</span>
                 ))}
+              </div>
+              <div
+                style={{
+                  width: "30%",
+                  marginLeft: "5px",
+                  padding: "12px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Button
+                  disabled={!logedInUser}
+                  variant="secondary"
+                  onClick={() => followQuestion()}
+                >
+                  Follow
+                </Button>
+
+                <Button
+                  disabled={!logedInUser}
+                  variant="secondary"
+                  onClick={() => upVoteQuestion()}
+                >
+                  <Icon
+                    icon="ant-design:like-filled"
+                    width="30px"
+                    height="30px"
+                    style={{ cursor: "pointer" }}
+                  />
+                </Button>
+
+                <Button
+                  disabled={!logedInUser}
+                  variant="secondary"
+                  onClick={() => downVoteQuestion()}
+                >
+                  <Icon
+                    icon="ant-design:dislike-filled"
+                    width="30px"
+                    height="30px"
+                    style={{ cursor: "pointer" }}
+                  />
+                </Button>
+
+                {/*<div style={{ padding: "5px" }}>
+                <Icon
+                  icon="bxs:pencil"
+                  width="30px"
+                  height="30px"
+                  style={{ cursor: "pointer" }}
+                />
+              </div>*/}
+
+                <Button
+                  disabled={!logedInUser}
+                  variant="secondary"
+                  onClick={() => deleteQuestion()}
+                >
+                  <Icon
+                    icon="ant-design:delete-filled"
+                    width="30px"
+                    height="30px"
+                    style={{ cursor: "pointer" }}
+                  />
+                </Button>
               </div>
             </div>
           </Card.Body>
@@ -118,21 +225,34 @@ const QuestionDetail = (props) => {
               </div>
             </Card.Text>
             <br />
-            <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Control
-                as="textarea"
-                rows="3"
-                placeholder="Start writing your answer..."
-                onChange={onChangeAnswer}
-              />
-            </Form.Group>
+            {!logedInUser ? (
+              <>
+                <h5 style={{ color: "red" }}>Please login to post a answer.</h5>
+              </>
+            ) : (
+              <>
+                <Form.Group controlId="exampleForm.ControlTextarea1">
+                  <Form.Control
+                    as="textarea"
+                    rows="3"
+                    placeholder="Start writing your answer..."
+                    onChange={onChangeAnswer}
+                  />
+                </Form.Group>
+              </>
+            )}
+
             <br />
             <br />
-            <div style={{ display: "flex", justifyContent: "end" }}>
-              <Button variant="secondary" onClick={postAnswer}>
-                Post answer
-              </Button>
-            </div>
+            {!logedInUser ? (
+              <></>
+            ) : (
+              <div style={{ display: "flex", justifyContent: "end" }}>
+                <Button variant="secondary" onClick={postAnswer}>
+                  Post answer
+                </Button>
+              </div>
+            )}
           </Card.Body>
         </Card>
       </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Image, Button } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
@@ -7,26 +7,43 @@ import "./Community.css";
 import * as Api from "../../features/APIs/api";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import Search from "./Search/Search";
+import Sort from "./Sort/Sort";
+import Question from "./Question";
+import Pagination from "./Pagination/Pagination";
 
 function Community() {
     const navigate = useNavigate()
-    const [queObj, setQueObj] = useState([]);
+    const [obj, setObj] = useState({});
+    const [search, setSearch] = useState();
+    const [sort, setSort] = useState({ sort: "createdAt", order: "desc" });
+    const [page, setPage] = useState(1);
     console.log(queObj);
     // const [result, setresult] = useState([]);
     useEffect(() => {
         const init = async () => {
             const authToken = localStorage.getItem("AuthToken");
-            console.log({ authToken });
-            const [error, response] = await Api.getQuestions(authToken);
+            console.log({ authToken, page, search });
+            const [error, response] = await Api.getQuestions(
+                authToken,
+                page,
+                sort.sort,
+                sort.order,
+                search
+            );
+            if (error) {
+                console.log(error);
+            }
             if (response.status === 200) {
-                setQueObj(response.data.questions);
+                setObj(response.data);
+                console.log(response.data);
             }
             if (error) {
                 console.log(error);
             }
         };
         init();
-    }, []);
+    }, [sort, page, search]);
     return (
         <div className="community-container">
             <div className="community-headline">
@@ -34,30 +51,26 @@ function Community() {
             </div>
             <Container fluid className="que-container">
                 <Row>
-                    {/*<Col md={3}></Col> */}
-                    <Col md={7} style={{ marginTop: "15px" }}>
-                        <div className="filter">
-                            <button className="Filter-btn">All</button>
-                            <button className="Filter-btn">Unanswered</button>
-                            <label htmlFor="header-search"></label>
-                            <input
-                                type="text"
-                                id="header-search"
-                                placeholder="Search question"
-                                name="s"
-                            />
-                            <button type="submit" class="Filter-btn">
-                                Search
-                            </button>
-
-                            <label htmlFor="header-sort"></label>
-                            <select name="sort" class="mySelect" id="header-sort">
-                                <option value="asc">Sort by name(A-Z)</option>
-                                <option value="desc">Sort by name(Z-A)</option>
-                                <option value="opel">Sort by most votes</option>
-                                <option value="opel">Sort by most views</option>
-                            </select>
-
+                    <Row
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItem: "center",
+                        }}
+                    >
+                        <div
+                            style={{
+                                display: "flex",
+                                width: "80%",
+                                padding: "10px",
+                                marginTop: "2%",
+                                justifyContent: "space-around",
+                            }}
+                        >
+                            <div>
+                                <Button variant="primary">All</Button>{" "}
+                                <Button variant="primary">UnAnswered</Button>{" "}
+                            </div>
                             <button type="submit" class="Filter-btn">
                                 Sort
                             </button>

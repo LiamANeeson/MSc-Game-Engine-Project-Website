@@ -87,14 +87,15 @@ export async function createQuestion(title, description, tags) {
 }
 
 //get all question
-export async function getQuestions(authToken) {
+export async function getQuestions(authToken,page,sort,sortOrder,search) {
   try {
     const token = authToken;
     const axiosConfig = {
       method: "get",
-      url: `${apiURL}/question`,
+      url: `${apiURL}/question?page=${page}&sort=${sort},${sortOrder}&search=${search}`,
       headers: { Authorization: "Bearer " + token },
     };
+    console.log(axiosConfig?.url);
     const response = await axios.default.request(axiosConfig);
     const normalizedResponse = normalizeServerResponse(response);
     return [null, normalizedResponse];
