@@ -8,24 +8,9 @@ const profileSchema = new mongoose.Schema(
         lastName: {
             type: String,
         },
-        gender: {
-            type: String,
-        },
-        contactNumber: {
-            type: String,
-        },
-        currentAddress: {
-            type: String,
-        },
         email: {
             type: String,
             unique: true,
-        },
-        birthday: {
-            type: String,
-        },
-        permanentAddress: {
-            type: String,
         },
         avatar: {
             type: String,

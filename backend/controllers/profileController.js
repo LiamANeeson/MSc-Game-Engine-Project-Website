@@ -1,4 +1,5 @@
 const Profile = require('../models/profileModel')
+const User = require('../models/userModel')
 
 
 const updateProfile = async (req, res) => {
@@ -16,20 +17,20 @@ const updateProfile = async (req, res) => {
             {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
-                gender: req.body.gender,
-                contactNumber: req.body.contactNumber,
-                currentAddress: req.body.currentAddress,
-                birthday: req.body.birthday,
-                permanentAddress: req.body.permanentAddress,
                 avatar: req.body.avatar,
             })
 
-        const currentProfile = await Profile.findOne({ email })
+        await User.updateOne({ email },
+            {
+                name: req.body.nickName,
+            })
 
+        const currentProfile = await Profile.findOne({ email })
+        const currentUser = await User.findOne({ email })
 
         return res.status(200).send({
-            msg: 'Update profile successfully',
-            profile: currentProfile
+            profile: currentProfile,
+            user: currentUser
         })
     }
 }
