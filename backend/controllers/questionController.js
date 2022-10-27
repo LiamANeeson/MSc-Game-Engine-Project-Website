@@ -24,6 +24,7 @@ const getQuestions = async (req, res) => {
     const limit = parseInt(req.query.limit) || 5;
     const search = req.query.search || "";
     let sort = req.query.sort || "createdAt";
+
     req.query.sort ? (sort = req.query.sort.split(",")) : (sort = [sort]);
     let sortBy = {};
     if (sort[1]) {
@@ -31,6 +32,9 @@ const getQuestions = async (req, res) => {
     } else {
       sortBy[sort[0]] = "asc";
     }
+
+    // const questions = await Question.find({})
+
     const questions = await Question.find({
       name: { $regex: search, $options: "i" },
     })
@@ -41,6 +45,8 @@ const getQuestions = async (req, res) => {
     const total = await Question.countDocuments({
       name: { $regex: search, $options: "i" },
     });
+
+    // console.log(questions);
 
     const response = {
       error: false,
@@ -112,7 +118,7 @@ const voteQuestion = async (req, res) => {
   try {
     const question = await Question.find({
       _id: req.params.id,
-      votes: req.user
+      votes: req.user._id,
     });
     if (question.length > 0)
       return res.status(400).json({ msg: "Something went wrong!" });
@@ -128,7 +134,7 @@ const voteQuestion = async (req, res) => {
     if (!vote)
       return res.status(400).json({ msg: "This question does not exist." });
 
-    res.json({ msg: "Liked Question!" });
+    res.json({ msg: "Liked question!" });
   } catch (err) {
     return res.status(500).json({ msg: err.message });
   }
@@ -163,11 +169,15 @@ const downVoteQuestion = async (req, res) => {
 
 const followQuestion = async (req, res) => {
   try {
-    const question = await Question.findById(req.params.id);
-    if (!question)
-      return res.status(400).json({ msg: "question does not exist." });
+    console.log(req.user)
+    const question = await Question.find({
+      _id: req.params.id,
+      followedBy: req.user._id,
+    });
+    if (question.length > 0)
+      return res.status(400).json({ msg: "Something went wrong!" });
 
-    const newUser = await Question.findOneAndUpdate(
+    const follow = await Question.findOneAndUpdate(
       { _id: req.params.id },
       {
         $push: { followedBy: req.user._id },
@@ -175,50 +185,46 @@ const followQuestion = async (req, res) => {
       { new: true }
     );
 
-    // await User.findOneAndUpdate(
-    //   { _id: req.user._id },
-    //   {
-    //     $push: { followedBy: req.params.id },
-    //   },
-    //   { new: true }
-    // );
+    if (!follow)
+      return res.status(400).json({ msg: "This question does not exist." });
 
-    res.json({ newUser });
+    res.json({ msg: "Followed Successfully!" });
   } catch (err) {
+    console.log(err)
     return res.status(500).json({ msg: err.message });
   }
 };
 
-exports.unFollowUser = async (req, res) => {
-  try {
-    const user = await User.find({
-      _id: req.params.id,
-      followers: req.user._id,
-    });
-    if (user.length === 0)
-      return res.status(400).json({ msg: "You did not follow this user." });
+// exports.unFollowUser = async (req, res) => {
+//   try {
+//     const user = await User.find({
+//       _id: req.params.id,
+//       followers: req.user._id,
+//     });
+//     if (user.length === 0)
+//       return res.status(400).json({ msg: "You did not follow this user." });
 
-    const newUser = await User.findOneAndUpdate(
-      { _id: req.params.id },
-      {
-        $pull: { followers: req.user._id },
-      },
-      { new: true }
-    ).populate("followers following", "-password");
+//     const newUser = await User.findOneAndUpdate(
+//       { _id: req.params.id },
+//       {
+//         $pull: { followers: req.user._id },
+//       },
+//       { new: true }
+//     ).populate("followers following", "-password");
 
-    await User.findOneAndUpdate(
-      { _id: req.user._id },
-      {
-        $pull: { following: req.params.id },
-      },
-      { new: true }
-    );
+//     await User.findOneAndUpdate(
+//       { _id: req.user._id },
+//       {
+//         $pull: { following: req.params.id },
+//       },
+//       { new: true }
+//     );
 
-    res.json({ newUser });
-  } catch (err) {
-    return res.status(500).json({ msg: err.message });
-  }
-};
+//     res.json({ newUser });
+//   } catch (err) {
+//     return res.status(500).json({ msg: err.message });
+//   }
+// };
 
 module.exports = {
   createQuestion,
@@ -226,5 +232,7 @@ module.exports = {
   getQuestionById,
   updateQuestion,
   deleteQuestion,
-  voteQuestion
+  voteQuestion,
+  downVoteQuestion,
+  followQuestion
 };

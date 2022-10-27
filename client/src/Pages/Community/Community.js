@@ -22,6 +22,8 @@ function Community() {
   
   const logedInUser = localStorage.getItem("AuthToken");
    
+  console.log("sort...",sort)
+
   useEffect(() => {
     const init = async () => {
       const authToken = localStorage.getItem("AuthToken");
@@ -89,6 +91,7 @@ function Community() {
             </div>
           </div>
         </Row>
+        
         <Question questions={obj.questions ? obj.questions : []} />
         <Pagination
           page={page}

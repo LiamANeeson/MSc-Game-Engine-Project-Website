@@ -1,6 +1,7 @@
 const Answer = require("../models/answerModel");
 const Question = require("../models/questionModel");
 
+//create answer
 const createAnswer = async (req, res) => {
   try {
     const { questionId, content } = req.body;
@@ -45,8 +46,64 @@ const getAnswerById = async (req, res) => {
   }
 };
 
+//Vote Answer
+const voteAnswer = async (req, res) => {
+  try {
+    const answer = await Answer.find({
+      _id: req.params.id,
+      votes: req.user._id,
+    });
+    if (answer.length > 0)
+      return res.status(400).json({ msg: "Something went wrong!" });
+
+    const vote = await Answer.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $push: { votes: req.user._id },
+      },
+      { new: true }
+    );
+
+    if (!vote)
+      return res.status(400).json({ msg: "This answer does not exist." });
+
+    res.json({ msg: "Liked answer!" });
+  } catch (err) {
+    return res.status(500).json({ msg: err.message });
+  }
+};
+
+//DownVote Question
+const downVoteAnswer = async (req, res) => {
+  try {
+    const answer = await Answer.find({
+      _id: req.params.id,
+      likes: req.user._id,
+    });
+    if (answer.length === 0)
+      return res.status(400).json({ msg: "You did not like this answer." });
+
+    const unlike = await Answer.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $pull: { votes: req.user._id },
+      },
+      { new: true }
+    );
+
+    if (!unlike)
+      return res.status(400).json({ msg: "This answer does not exist." });
+
+    res.json({ msg: "Unliked answer!" });
+  } catch (err) {
+    return res.status(500).json({ msg: err.message });
+  }
+};
+
 
 module.exports = {
   createAnswer,
-  getAnswerById
+  getAnswerById,
+  voteAnswer,
+  downVoteAnswer
 };
