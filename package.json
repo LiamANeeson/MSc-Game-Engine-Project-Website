@@ -4,14 +4,14 @@
   "description": "Website for MSc project game engine ",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "node server.js",
     "heroku-postbuild": "npm install npm && run build",
-    "server": "nodemon backend/server.js",
+    "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "stop": "taskkill -f -im node.exe",
-    "data:import": "node backend/dbSeeder",
-    "data:destroy": "node backend/dbSeeder -d"
+    "data:import": "node dbSeeder",
+    "data:destroy": "node dbSeeder -d"
   },
   "repository": {
     "type": "git",
