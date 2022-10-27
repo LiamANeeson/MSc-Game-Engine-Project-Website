@@ -4,9 +4,10 @@
   "description": "Website for MSc project game engine ",
   "main": "server.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
+    "heroku-postbuild": "npm install npm && run build",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "stop": "taskkill -f -im node.exe",
     "data:import": "node dbSeeder",
