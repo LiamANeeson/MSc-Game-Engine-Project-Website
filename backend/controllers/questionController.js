@@ -41,7 +41,6 @@ const getQuestions = async (req, res) => {
     const total = await Question.countDocuments({
       name: { $regex: search, $options: "i" },
     });
-    console.log(total);
 
     const response = {
       error: false,

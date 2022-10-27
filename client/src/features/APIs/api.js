@@ -91,7 +91,7 @@ export async function getQuestions(authToken,page,sort,sortOrder,search) {
     const token = authToken;
     const axiosConfig = {
       method: "get",
-      url: `${apiURL}/question?page=${page}&sort=${sort},${sortOrder}&search=${search}`,
+      url: URL,
       headers: { Authorization: "Bearer " + token },
     };
     console.log(axiosConfig?.url);
