@@ -11,7 +11,10 @@ const questionSchema = new mongoose.Schema(
       required: true,
     },
     views:{
-      type: String,
+      type: Number,
+    },
+    totalVotes:{
+      type: Number,
     },
     votes: [{ type: mongoose.Types.ObjectId, ref: 'user' }],
     followedBy: [{type: mongoose.Types.ObjectId, ref: 'user'}],

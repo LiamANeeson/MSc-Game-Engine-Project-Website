@@ -41,9 +41,16 @@ const Question = ({questions}) => {
                 </div>
                 <div>
                   <span className="views">
-                    {que.Votes?.length}
+                    {que.views}
                     <br />
                     Views
+                  </span>
+                </div>
+                <div>
+                  <span className="views">
+                    {que.totalVotes}
+                    <br />
+                    Votes
                   </span>
                 </div>
                 <div>
@@ -62,3 +69,5 @@ const Question = ({questions}) => {
   </Row>
   )
 }
+
+export default Question

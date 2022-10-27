@@ -1,4 +1,4 @@
-NODE_EVV = development 
+NODE_ENV = development 
+MONGO_URI="mongodb+srv://admin:admin@gameengine.wqinfml.mongodb.net/test"
 PORT = 5000
-MONGO_URI = 'mongodb+srv://YOUR_MONGO_DETAILS_HERE' 
-JWT_SECRET = super_secret_key_123
+JWT_SECRET='secret'

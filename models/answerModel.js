@@ -5,16 +5,13 @@ const answerSchema = new mongoose.Schema(
     content: {
       type: String,
     },
-    vote: {
-      type: Number,
-      default: 0,
-    },
+    votes: [{ type: mongoose.Types.ObjectId, ref: 'user' }],
     question: {
       type: mongoose.Schema.ObjectId,
       ref: "Question",
     },
     questionId: mongoose.Types.ObjectId,
-    userObj: Object
+    userObj:Object
   },
   {
     timestamps: true,
