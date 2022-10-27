@@ -11,7 +11,7 @@ import moment from "moment";
 import Search from "./Search/Search";
 import Sort from "./Sort/Sort";
 import Pagination from "./Pagination/Pagination";
-//import Question from "./Question";
+import Question from "./Question";
 
 function Community() {
   const navigate = useNavigate();
