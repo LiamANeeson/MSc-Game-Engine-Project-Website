@@ -8,7 +8,9 @@
     "server": "nodemon backend/server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "stop": "taskkill -f -im node.exe"
+    "stop": "taskkill -f -im node.exe",
+    "data:import": "node backend/dbSeeder",
+    "data:destroy": "node backend/dbSeeder -d"
   },
   "repository": {
     "type": "git",

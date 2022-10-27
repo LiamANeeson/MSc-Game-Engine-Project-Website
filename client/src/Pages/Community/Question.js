@@ -12,7 +12,7 @@ const Question = ({questions}) => {
           <div className="que-inner-wrapper">
             <div className="">
               <h2 className="question-title">
-                <Link to={`/question/${que._id}`}>{que.title}</Link>
+                <Link to={`/question/${que._id}`}>{que.name}</Link>
               </h2>
               <p className="question-desc">
                 <Link to={`/question/${que._id}`}>
