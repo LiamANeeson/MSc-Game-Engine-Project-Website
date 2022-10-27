@@ -62,3 +62,5 @@ const Question = ({questions}) => {
   </Row>
   )
 }
+
+export default Question
