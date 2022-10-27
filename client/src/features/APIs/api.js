@@ -33,7 +33,8 @@ export async function login(email, password) {
     };
       const response = await axios.default.request(axiosConfig);
 
-      if (response) {
+      if (response.data) {
+          localStorage.setItem('userName', JSON.stringify(response.data.name))
           localStorage.setItem('profile', JSON.stringify(response.data.profile))
       }
       

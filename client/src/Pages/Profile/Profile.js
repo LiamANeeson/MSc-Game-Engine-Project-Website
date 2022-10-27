@@ -1,18 +1,17 @@
 import React from 'react'
 import "./Profile.css"
-import { useLocation, useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { logout, reset } from '../../features/auth/authSlice'
-import { useEffect } from 'react'
 import bootstrap from 'bootstrap'
 
 function Profile() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { pathname } = useLocation();
-    const currentProfile = JSON.parse(localStorage.getItem('profile'))
 
-    const birthday = currentProfile.birthday.slice(0, 10)
+    const currentProfile = JSON.parse(localStorage.getItem('profile'))
+    const userName = JSON.parse(localStorage.getItem('userName'))
+
 
     const toUpdateProfile = () => {
         navigate('/updateProfile')
@@ -39,16 +38,12 @@ function Profile() {
                             <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" value={currentProfile.lastName} disabled="true" /></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" value={currentProfile.contactNumber} disabled="true" /></div>
-                            <div class="col-md-12"><label class="labels">Gender</label><input type="text" class="form-control" value={currentProfile.gender} disabled="true" /></div>
-                            <div class="col-md-12"><label class="labels">Current Address</label><input type="text" class="form-control" value={currentProfile.currentAddress} disabled="true" /></div>
-                            <div class="col-md-12"><label class="labels">Permanent Address</label><input type="text" class="form-control" value={currentProfile.permanentAddress} disabled="true" /></div>
-                            <div class="col-md-12"><label class="labels">Birthday</label><input type="text" class="form-control" value={birthday} disabled="true" /></div>
+                            <div class="col-md-12"><label class="labels">Nick Name</label><input type="text" class="form-control" value={userName} disabled="true" /></div>
                             <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" value={currentProfile.email} disabled="true" /></div>
                         </div>
-                        <div class="row mt-5">
-                            <div class="col-md-6"><button class="btn btn-primary btn-lg" type="button" onClick={toUpdateProfile}>Edit Profile</button></div>
-                            <div class="col-md-6"><button class="btn btn-primary btn-lg" type="button" onClick={onLogout}>Log Out</button></div>
+                        <div class="row mt-3">
+                                <button class="btn btn-primary btn-lg btn-block" type="button" onClick={toUpdateProfile}>Edit Profile</button>
+                                <button class=" btn btn-primary btn-lg btn-block mt-2" type="button" onClick={onLogout}>Log Out</button>
                         </div>
                     </div>
                 </div>
