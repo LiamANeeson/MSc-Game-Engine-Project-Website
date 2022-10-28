@@ -29,12 +29,12 @@ function App() {
                 <Navigationbar />
                 <Routes>
                     {/* Page Routes */}
-                    <Route path='/#/' element={<Home />} />
-                    <Route path='/#/home' element={<Home />} />
-                    <Route path='/#/about' element={<About />} />
-                    <Route path='/#/tutorial' element={<Tutorial />} />
-                    <Route path='/#/docs' element={<Docs />} />
-                    <Route path='/#/download' element={<Download />} />
+                    <Route path='/' element={<Home />} />
+                    <Route path='/home' element={<Home />} />
+                    <Route path='/about' element={<About />} />
+                    <Route path='/tutorial' element={<Tutorial />} />
+                    <Route path='/docs' element={<Docs />} />
+                    <Route path='/download' element={<Download />} />
 
                     {/* Community and Question Routes  */}
                     <Route path='/community' element={<Community />} />
