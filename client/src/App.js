@@ -51,7 +51,7 @@ function App() {
                         <UpdateProfile />
                     </AuthRoute>} />
                 </Routes>
-            </HashRouter>
+            </Router>
             <ToastContainer />
             <Footer />
         </>
