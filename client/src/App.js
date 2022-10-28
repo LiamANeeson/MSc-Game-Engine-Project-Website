@@ -25,7 +25,7 @@ import AskQuestion from './Pages/Community/AskQuestion'
 function App() {
     return (
         <>
-            <Router>
+            <HashRouter>
                 <Navigationbar />
                 <Routes>
                     {/* Page Routes */}
@@ -51,7 +51,7 @@ function App() {
                         <UpdateProfile />
                     </AuthRoute>} />
                 </Routes>
-            </Router>
+            </HashRouter>
             <ToastContainer />
             <Footer />
         </>
