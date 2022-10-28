@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
+import { Routes, Route, HashRouter } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -25,16 +25,16 @@ import AskQuestion from './Pages/Community/AskQuestion'
 function App() {
     return (
         <>
-            <Router>
+            <HashRouter>
                 <Navigationbar />
                 <Routes>
                     {/* Page Routes */}
-                    <Route path='/' element={<Home />} />
-                    <Route path='/home' element={<Home />} />
-                    <Route path='/about' element={<About />} />
-                    <Route path='/tutorial' element={<Tutorial />} />
-                    <Route path='/docs' element={<Docs />} />
-                    <Route path='/download' element={<Download />} />
+                    <Route path='/#/' element={<Home />} />
+                    <Route path='/#/home' element={<Home />} />
+                    <Route path='/#/about' element={<About />} />
+                    <Route path='/#/tutorial' element={<Tutorial />} />
+                    <Route path='/#/docs' element={<Docs />} />
+                    <Route path='/#/download' element={<Download />} />
 
                     {/* Community and Question Routes  */}
                     <Route path='/community' element={<Community />} />
@@ -51,7 +51,7 @@ function App() {
                         <UpdateProfile />
                     </AuthRoute>} />
                 </Routes>
-            </Router>
+            </HashRouter>
             <ToastContainer />
             <Footer />
         </>
