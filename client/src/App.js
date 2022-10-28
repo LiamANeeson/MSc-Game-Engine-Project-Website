@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, HashRouter } from 'react-router-dom'
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -25,7 +25,7 @@ import AskQuestion from './Pages/Community/AskQuestion'
 function App() {
     return (
         <>
-            <HashRouter>
+            <Router>
                 <Navigationbar />
                 <Routes>
                     {/* Page Routes */}
