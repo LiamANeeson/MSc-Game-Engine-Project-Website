@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const dotenv = require('dotenv').config();
 const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
-
+const Profile = require('../models/profileModel')
 
 // @desc Register new user 
 // @route POST /api/users
@@ -37,13 +37,24 @@ const registerUser = asyncHandler(async(req, res) => {
       email,
       password: hashedPassword,
     })
+
+    //Create profile
+    const profile = await Profile.create({
+        email,
+        firstName: '',
+        lastName: '',
+        avata: '',
+    })
+
+
   
     if (user) {
       res.status(201).json({
         _id: user.id,
         name: user.name,
         email: user.email,
-        token: generateToken(user._id)
+        token: generateToken(user._id),
+        profile: profile,
       })
     } else {
       res.status(400)
