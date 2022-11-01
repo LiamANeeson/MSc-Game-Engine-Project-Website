@@ -14,24 +14,26 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 const path = require('path');
-__dirname=path.resolve();
+__dirname = path.resolve();
 
-if(process.env.NODE_ENV=="production")
-{
-  app.use(express.static(path.join(__dirname,'client/build')));
-  app.get('*',(req,res)=>{
-    res.sendFile(path.resolve(__dirname,'client','build','index.html'));
-  })
+console.log(process.env.NODE_ENV);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
 }
-else
-{app.get("/", (req, res) => {
-  res.send("APIs Up && running");
-});
+else {
+  app.get("/", (req, res) => {
+    console.log("This is development mode")
+    res.send("APIs Up && running");
+  });
 }
+
 app.use("/api/users", require("./routes/userRoutes"));
-app.use("/api/question",require("./routes/questionRoutes"))
-app.use("/api/answer",require("./routes/answerRoute"))
+app.use("/api/question", require("./routes/questionRoutes"))
+app.use("/api/answer", require("./routes/answerRoute"))
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
