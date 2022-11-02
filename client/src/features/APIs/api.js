@@ -1,6 +1,6 @@
 import * as axios from "axios";
 
-const apiURL = "http://localhost:5000/api";
+const apiURL = "https://horizonge.herokuapp.com/api";
 
 function normalizeServerResponse(serverResponse) {
   let response = {

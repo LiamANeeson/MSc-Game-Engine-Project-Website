@@ -19,6 +19,7 @@ const path = require('path');
 __dirname = path.resolve();
 
 console.log(process.env.NODE_ENV);
+const path = require("path"); 
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
@@ -40,3 +41,4 @@ app.listen(port, () => console.log(`Server started on port ${port}`));
 app.use(errorHandler);
 
 module.exports = app;
+//module.exports = { outputDir: path.resolve(__dirname, "../server/public"), devServer: { proxy: { "/api": { target: process.env.API_PROXY_URL } } } };
