@@ -18,10 +18,6 @@ app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/question", require("./routes/questionRoutes"))
 app.use("/api/answer", require("./routes/answerRoute"))
 
-app.get("/", (req, res) => {
-    res.send("APIs Up && running");
-});
-
 // Serve Frontend
 if(process.env.NODE_ENV === "production"){
 
