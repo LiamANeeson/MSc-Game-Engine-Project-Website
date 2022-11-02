@@ -12,7 +12,9 @@ app.use(logger("dev"));
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/question", require("./routes/questionRoutes"))
+app.use("/api/answer", require("./routes/answerRoute"))
 const path = require('path');
 __dirname = path.resolve();
 
@@ -20,7 +22,7 @@ console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
-  app.get("(?!\/api)", (req, res) => {
+  app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
@@ -31,9 +33,7 @@ else {
   });
 }
 
-app.use("/api/users", require("./routes/userRoutes"));
-app.use("/api/question", require("./routes/questionRoutes"))
-app.use("/api/answer", require("./routes/answerRoute"))
+
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
