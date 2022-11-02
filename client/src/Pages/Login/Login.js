@@ -6,8 +6,6 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import {login, reset} from '../../features/auth/authSlice'
-import * as Api from "../../features/APIs/api";
-
 import './Login.css'
 
 
@@ -18,13 +16,6 @@ function Login() {
     })
 
     const {email, password} = formData
-
-    const onChange = (e) => {
-        setFormData((prevState) => ({
-            ...prevState,
-            [e.target.name] : e.target.value
-        }))
-    }
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -45,6 +36,13 @@ function Login() {
         dispatch(reset())
     }, [user, isError, isSuccess, message, navigate, dispatch])
 
+    const onChange = (e) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.name] : e.target.value
+        }))
+    }
+
     const onSubmit = (e) => {
         e.preventDefault()
 
@@ -54,7 +52,7 @@ function Login() {
         }
         dispatch(login(userData))
     }
-    
+
     return(
         <>
         <container className="login-container">

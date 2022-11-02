@@ -16,9 +16,12 @@ const register = async (userData) => {
 const login = async (userData) => {
     const response = await axios.post(API_URL + 'login', userData)
     if (response.data) {
-        localStorage.setItem('user', JSON.stringify(response.data))
+        localStorage.setItem('userName', JSON.stringify(response.data.name))
         localStorage.setItem('authToken', response.data.token)
         localStorage.setItem('profile', JSON.stringify(response.data.profile))
+    }
+    else {
+        console.log("Login Unsuccessful")
     }
 
     return response.data
