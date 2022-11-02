@@ -3,7 +3,12 @@ import "./Profile.css"
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logout, reset } from '../../features/auth/authSlice'
-import bootstrap from 'bootstrap'
+import {
+    Container,
+    Row,
+    Card,
+    Button
+} from 'react-bootstrap'
 
 function Profile() {
     const navigate = useNavigate()
@@ -23,32 +28,29 @@ function Profile() {
         navigate('/')
     }
     return (
-        <div class="container rounded bg-white mt-5 mb-5">
-            <div class="row">
-                <div class="col-md-3 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src={currentProfile.avatar} /><span> </span></div>
-                </div>
-                <div class="col-md-5 border-right">
-                    <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">Profile</h4>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">First Name</label><input type="text" class="form-control" value={currentProfile.firstName} disabled="true" /></div>
-                            <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" value={currentProfile.lastName} disabled="true" /></div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Nick Name</label><input type="text" class="form-control" value={userName} disabled="true" /></div>
-                            <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" value={currentProfile.email} disabled="true" /></div>
-                        </div>
-                        <div class="row mt-3">
-                                <button class="btn btn-primary btn-lg btn-block" type="button" onClick={toUpdateProfile}>Edit Profile</button>
-                                <button class=" btn btn-primary btn-lg btn-block mt-2" type="button" onClick={onLogout}>Log Out</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <section>
+            <Container className='py-5'>
+                <Row>
+                    <Card className='mb-4'>
+                        <Card.Body className='text-center'>
+                            <Card.Img
+                                src = " "
+                                alt = "avatar"
+                                className = "rounded-circle"
+                                style={{ width: '150px' }}
+                                fluid
+                            />
+                            <p className = 'text-muted mb-1'>Full Stack Developer</p>
+                            <p className = 'text-muted mb-4'>Dublin, Ireland</p>
+                            <div className = 'd-flex justify-content-center mb-2'>
+                                <Button>Follow</Button>
+                                <Button outline className="ms-1">Message</Button>
+                            </div>
+                        </Card.Body>
+                    </Card>
+                </Row>
+            </Container>
+        </section>        
     )
 }
 

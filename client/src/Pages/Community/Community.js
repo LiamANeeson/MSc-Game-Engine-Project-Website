@@ -21,6 +21,7 @@ function Community() {
   const [page, setPage] = useState(1);
   
   const logedInUser = localStorage.getItem("AuthToken");
+  const authToken = localStorage.getItem("AuthToken");
    
   console.log("sort...",sort)
 
@@ -84,7 +85,7 @@ function Community() {
               <Button
                 variant="primary"
                 onClick={() => navigate("/ask-question")}
-                disabled={!logedInUser}
+                disabled={!authToken}
               >
                 Ask a question
               </Button>{" "}
