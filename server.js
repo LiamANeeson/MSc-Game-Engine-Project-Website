@@ -35,11 +35,8 @@ else {
   });
 }
 
-
-
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
 app.use(errorHandler);
 
 module.exports = app;
-//module.exports = { outputDir: path.resolve(__dirname, "../server/public"), devServer: { proxy: { "/api": { target: process.env.API_PROXY_URL } } } };
