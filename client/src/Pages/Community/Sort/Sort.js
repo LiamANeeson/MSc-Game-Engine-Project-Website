@@ -17,7 +17,7 @@ const Sort = ({ sort, setSort }) => {
   return (
     <>
       <div className={styles.container}>
-        <Form.Select
+      <Form.Select
           aria-label="Default select example"
           onChange={onSelectChange}
         >

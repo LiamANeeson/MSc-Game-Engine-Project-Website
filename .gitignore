@@ -1,3 +1,5 @@
 node_modules
 .env
 /.vs
+coverage
+.nyc_output

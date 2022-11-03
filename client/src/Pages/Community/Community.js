@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Container, Image, Button } from "react-bootstrap";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { 
+  Container, 
+  Image, 
+  Button, 
+  Row, 
+  Col
+} from "react-bootstrap";
+import { 
+  useSelector, 
+  useDispatch
+} from 'react-redux'
 import { Link } from "react-router-dom";
 import "./Community.css";
 import * as Api from "../../features/APIs/api";
-import AskQuestionModel from "./AskQuestionModel";
 import { useNavigate } from "react-router-dom";
-import moment from "moment";
 import Search from "./Search/Search";
 import Sort from "./Sort/Sort";
 import Pagination from "./Pagination/Pagination";
@@ -15,20 +21,21 @@ import Question from "./Question";
 
 function Community() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [obj, setObj] = useState({});
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState({ sort: "createdAt", order: "desc" });
   const [page, setPage] = useState(1);
   
-  const logedInUser = localStorage.getItem("AuthToken");
-   
+  const logedInUser = localStorage.getItem("authToken");
+  const { user } = useSelector((state) => state.auth)
   console.log("sort...",sort)
+  let error, response; 
 
   useEffect(() => {
     const init = async () => {
-      const authToken = localStorage.getItem("AuthToken");
-      console.log({ authToken, page, search });
-      const [error, response] = await Api.getQuestions(
+      const authToken = localStorage.getItem("authToken");
+      [error, response] = await Api.getQuestions(
         authToken,
         page,
         sort.sort,
@@ -47,13 +54,12 @@ function Community() {
       }
     };
     init();
-  }, [sort, page, search]);
+  }, [sort, page, search, logedInUser, user, error, response]);
   return (
     <div className="community-container">
       <div className="community-headline">
         <h2 className="community-headline-text">All Questions</h2>
       </div>
-
       <Container fluid className="que-container">
         <Row
           style={{
