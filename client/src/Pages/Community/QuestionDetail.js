@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Container, Image } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import "./Community.css";
 import * as Api from "../../features/APIs/api";
@@ -16,8 +15,6 @@ const QuestionDetail = (props) => {
   const [answers, setAnswers] = useState([]);
   const [answer, setAnswer] = useState("");
   const [question, setQuestion] = useState();
-
-  const logedInUser = localStorage.getItem("AuthToken");
 
   useEffect(() => {
     const init = async () => {
@@ -128,7 +125,7 @@ const QuestionDetail = (props) => {
                 }}
               >
                 <Button
-                  disabled={!logedInUser}
+                  disabled={!localStorage.getItem("authToken")}
                   variant="secondary"
                   onClick={() => followQuestion()}
                 >
@@ -136,7 +133,7 @@ const QuestionDetail = (props) => {
                 </Button>
 
                 <Button
-                  disabled={!logedInUser}
+                  disabled={!localStorage.getItem("authToken")}
                   variant="secondary"
                   onClick={() => upVoteQuestion()}
                 >
@@ -149,7 +146,7 @@ const QuestionDetail = (props) => {
                 </Button>
 
                 <Button
-                  disabled={!logedInUser}
+                  disabled={!localStorage.getItem("authToken")}
                   variant="secondary"
                   onClick={() => downVoteQuestion()}
                 >
@@ -171,7 +168,7 @@ const QuestionDetail = (props) => {
               </div>*/}
 
                 <Button
-                  disabled={!logedInUser}
+                  disabled={!localStorage.getItem("authToken")}
                   variant="secondary"
                   onClick={() => deleteQuestion()}
                 >
@@ -225,7 +222,7 @@ const QuestionDetail = (props) => {
               </div>
             </Card.Text>
             <br />
-            {!logedInUser ? (
+            {!localStorage.getItem("authToken") ? (
               <>
                 <h5 style={{ color: "red" }}>Please login to post a answer.</h5>
               </>
@@ -244,7 +241,7 @@ const QuestionDetail = (props) => {
 
             <br />
             <br />
-            {!logedInUser ? (
+            {!localStorage.getItem("authToken") ? (
               <></>
             ) : (
               <div style={{ display: "flex", justifyContent: "end" }}>

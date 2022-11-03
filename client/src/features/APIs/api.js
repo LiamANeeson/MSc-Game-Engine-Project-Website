@@ -1,6 +1,6 @@
 import * as axios from "axios";
 
-const apiURL = "http://localhost:5000/api";
+const apiURL = "/api";
 
 function normalizeServerResponse(serverResponse) {
   let response = {
@@ -43,7 +43,7 @@ export async function login(email,password){
 //get user
 export async function getUser() {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "get",
       url: `${apiURL}/users`,
@@ -61,7 +61,7 @@ export async function getUser() {
 //Create a question
 export async function createQuestion(title,description,tags) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "post",
       url: `${apiURL}/question`,
@@ -109,7 +109,7 @@ export async function getQuestions(authToken,page,sort,sortOrder,search) {
 //get a question
 export async function getQuestion(questionID) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "get",
       url: `${apiURL}/question/${questionID}`,
@@ -129,7 +129,7 @@ export async function getQuestion(questionID) {
 //delete question
 export async function deleteQuestion(questionID) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "delete",
       url: `${apiURL}/question/${questionID}`,
@@ -147,7 +147,7 @@ export async function deleteQuestion(questionID) {
 //follow question
 export async function followQuestion(questionID) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "patch",
       url: `${apiURL}/question/${questionID}/follow`,
@@ -165,7 +165,7 @@ export async function followQuestion(questionID) {
 //vote question
 export async function voteQuestion(questionID) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "patch",
       url: `${apiURL}/question/${questionID}/vote`,
@@ -183,7 +183,7 @@ export async function voteQuestion(questionID) {
 //down vote question
 export async function downVoteQuestion(questionID) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "patch",
       url: `${apiURL}/question/${questionID}/down_vote`,
@@ -202,7 +202,7 @@ export async function downVoteQuestion(questionID) {
 //get answer
 export async function getAnswer(answerID) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "get",
       url: `${apiURL}/answer/${answerID}`,
@@ -220,7 +220,7 @@ export async function getAnswer(answerID) {
 //post a answer
 export async function createAnswer(questionId,content) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "post",
       url: `${apiURL}/answer`,
