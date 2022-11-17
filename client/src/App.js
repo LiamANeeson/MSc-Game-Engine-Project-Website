@@ -44,6 +44,7 @@ function App() {
                     {/* Profile Routes */}
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
+                    <Route path="/resetPassword/:id/:token" element={<ResetPassword/>}/>
                     <Route path='/profile' element={<AuthRoute>
                         <Profile />
                     </AuthRoute>} />
