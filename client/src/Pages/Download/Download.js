@@ -14,7 +14,8 @@ function Download() {
       </section>
       </section>
       <section className='download-section'>
-        <button className='download-btn'>Download</button>
+        <button className='download-btn'>Download Horizon Game Engine</button>
+        <button className='gm-btn'>Download Dark Trails Game</button>        
       </section>
       <section className='git-cta'>
         <h2>Horizon GitHub</h2>

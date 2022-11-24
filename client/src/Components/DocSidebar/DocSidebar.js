@@ -18,7 +18,8 @@ const DocSidebar = ({children}) => {
             <FaArrowRight onClick={toggle}/>
           </div>
         </div>
-        {
+        
+        {  
           DocumentationData.map((item, index) => (
             <NavLink 
               to={item.path} 
