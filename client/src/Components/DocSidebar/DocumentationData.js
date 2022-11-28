@@ -4,12 +4,7 @@ import * as AiIcons from 'react-icons/ai';
 import * as HiIcons from 'react-icons/hi'
 
 export const DocumentationData = [
-    {
-        title: "Home",
-        path: '/docs',
-        icon: <AiIcons.AiFillHome/>,
-        cName: 'row'
-    },
+
     {
         title: "Overview",
         path: '/docs/overview',
