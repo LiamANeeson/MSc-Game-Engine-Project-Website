@@ -37,7 +37,8 @@ function Profile() {
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
-    navigate("/");
+      navigate("/");
+      window.location.reload(false);
   };
 
   const modelOpen = async () => {
