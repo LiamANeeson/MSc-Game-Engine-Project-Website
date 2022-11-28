@@ -1,0 +1,19 @@
+Week 9 - Retrospectives
+Glad:
+	1. Got good feedback on the game and game engine from user evaluation.
+	2. People seemed enthusiastic about learning dark patterns through a game, from our quantitative survey.
+	3. Positive qualitative feedback from users on our project, however there is a lot of constructive feedback to be worked on.
+	4. Good teamwork all round on user evaluation.
+	5. Large number of features completed, but still blockers.
+Sad:
+	1. Scripting is an urgency & textures also; these are blockers to creating our game.
+	2. Still haven’t shown substantial functionality to lecturers, beginning to get anxious.
+	3. Outlying blockers to be completed – Scripting -> Dark Pattern Game -> Data -> User evaluation on game and Game Engine.
+Mad:
+	1. Still can’t build a Dark Pattern game, the lecturers are a bit worried about the risk.
+	2. Data aspect is still a blocked by the game.
+	3. The team are anxious about the outlying blockers, with few remaining weeks left.
+Conclusion & future planning:
+	1. Our targets for this week are to work hard on getting scripting and rendering sprites and textures to screen, once this is completed, we can then start to build out the game.
+	2. We will try in the remaining weeks to merge our branches throughout the week, so we don’t end up doing them on Thursdays.
+	3. Need to re-evaluate our Gantt chart for remaining weeks to ensure everything is completed on time – Game and Data aspects are still outstanding.

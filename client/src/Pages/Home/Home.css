@@ -26,8 +26,41 @@
     font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
 }
 
+.game-cta-btn{
+    background-color: #293241 !important;
+    width: 50%;
+    cursor: pointer;
+    border-radius: 6px;
+    backface-visibility: hidden;
+    border-width: 0;
+    box-sizing: border-box;
+    font-size: 100%;
+    height: 44px;
+    line-height: 1.15;
+    margin: 12px;
+    outline: none !important;
+    border-color: #293241 !important;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+}
+
+
 .home-cta-btn:hover {
     background-color: rgb(208, 81, 58) !important;
     border-color: #EE6C4D !important;
     outline: none !important ;
   }
+
+
+.custom-card {
+    
+}
+
+.custom-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
