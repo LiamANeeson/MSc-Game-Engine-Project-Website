@@ -1,11 +1,15 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button'
-
+import Button from 'react-bootstrap/Button';
 import './Navbar.css';
 
+
+
+
+
 function Navigationbar() {
+
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="navContainer" variant="dark">
@@ -25,7 +29,7 @@ function Navigationbar() {
               Register
             </Nav.Link>
             <Nav.Link href="/profile">Profile</Nav.Link>
-            <Button href="/download" className='custom-btn'>Download</Button>
+            <Button href="/download" className='custom-btn'>Downloads</Button>
           </Nav>
         </Navbar.Collapse>
       </Container>

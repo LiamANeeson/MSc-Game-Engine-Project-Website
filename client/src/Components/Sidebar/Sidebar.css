@@ -51,10 +51,10 @@
     color: #EE6C4D;
     transition: all 0.5s;
 }
-.active{
+/* .active{
     background: #3D5A80;
     color: #EE6C4D;
-}
+} */
 .icon, .link_text{
     font-size: 20px;
 }

@@ -1,6 +1,6 @@
 import * as axios from "axios";
 
-const apiURL = "http://localhost:5000/api";
+const apiURL = "/api";
 
 function normalizeServerResponse(serverResponse) {
   let response = {
@@ -21,15 +21,35 @@ function normalizeServerError(serverResponse) {
 }
 
 //Login
-export async function login(email,password){
+export async function login(email, password) {
   try {
     const axiosConfig = {
       method: "post",
       url: `${apiURL}/users/login`,
-      data:{
-        email:email,
-        password:password
-      }
+      data: {
+        email: email,
+        password: password,
+      },
+    };
+    const response = await axios.default.request(axiosConfig);
+    const normalizedResponse = normalizeServerResponse(response);
+    return [null, normalizedResponse];
+  } catch (error) {
+    const errorObject = normalizeServerError(error);
+    return [errorObject, null];
+  }
+}
+
+//Reset PAssword
+export async function resetPass(oldPassword, newPassword, userId) {
+  try {
+    const axiosConfig = {
+      method: "put",
+      url: `http://localhost:5000/api/users/reset-password/${userId}`,
+      data: {
+        oldpassword: oldPassword,
+        newpassword: newPassword,
+      },
     };
     const response = await axios.default.request(axiosConfig);
     const normalizedResponse = normalizeServerResponse(response);
@@ -43,7 +63,7 @@ export async function login(email,password){
 //get user
 export async function getUser() {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "get",
       url: `${apiURL}/users`,
@@ -59,18 +79,18 @@ export async function getUser() {
 }
 
 //Create a question
-export async function createQuestion(title,description,tags) {
+export async function createQuestion(title, description, tags) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "post",
       url: `${apiURL}/question`,
       headers: { Authorization: "Bearer " + token },
-      data:{
-        name:title,
-        description:description,
-        tags:tags.split(',')
-      }
+      data: {
+        name: title,
+        description: description,
+        tags: tags.split(","),
+      },
     };
     const response = await axios.default.request(axiosConfig);
     const normalizedResponse = normalizeServerResponse(response);
@@ -82,14 +102,14 @@ export async function createQuestion(title,description,tags) {
 }
 
 //get all question
-export async function getQuestions(authToken,page,sort,sortOrder,search) {
+export async function getQuestions(authToken, page, sort, sortOrder, search) {
   try {
     const token = authToken;
-    let URL
+    let URL;
     if (search === "") {
-      URL = `${apiURL}/question?page=${page}&sort=${sort},${sortOrder}`
+      URL = `${apiURL}/question?page=${page}&sort=${sort},${sortOrder}`;
     } else {
-      URL = `${apiURL}/question?page=${page}&sort=${sort},${sortOrder}&search=${search}`
+      URL = `${apiURL}/question?page=${page}&sort=${sort},${sortOrder}&search=${search}`;
     }
     const axiosConfig = {
       method: "get",
@@ -109,7 +129,7 @@ export async function getQuestions(authToken,page,sort,sortOrder,search) {
 //get a question
 export async function getQuestion(questionID) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "get",
       url: `${apiURL}/question/${questionID}`,
@@ -129,7 +149,7 @@ export async function getQuestion(questionID) {
 //delete question
 export async function deleteQuestion(questionID) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "delete",
       url: `${apiURL}/question/${questionID}`,
@@ -147,7 +167,7 @@ export async function deleteQuestion(questionID) {
 //follow question
 export async function followQuestion(questionID) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "patch",
       url: `${apiURL}/question/${questionID}/follow`,
@@ -165,7 +185,7 @@ export async function followQuestion(questionID) {
 //vote question
 export async function voteQuestion(questionID) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "patch",
       url: `${apiURL}/question/${questionID}/vote`,
@@ -183,7 +203,7 @@ export async function voteQuestion(questionID) {
 //down vote question
 export async function downVoteQuestion(questionID) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "patch",
       url: `${apiURL}/question/${questionID}/down_vote`,
@@ -198,11 +218,10 @@ export async function downVoteQuestion(questionID) {
   }
 }
 
-
 //get answer
 export async function getAnswer(answerID) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "get",
       url: `${apiURL}/answer/${answerID}`,
@@ -218,17 +237,17 @@ export async function getAnswer(answerID) {
 }
 
 //post a answer
-export async function createAnswer(questionId,content) {
+export async function createAnswer(questionId, content) {
   try {
-    let token = localStorage.getItem("AuthToken");
+    let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "post",
       url: `${apiURL}/answer`,
       headers: { Authorization: "Bearer " + token },
-      data:{
-        questionId:questionId,
-        content:content
-      }
+      data: {
+        questionId: questionId,
+        content: content,
+      },
     };
     const response = await axios.default.request(axiosConfig);
     const normalizedResponse = normalizeServerResponse(response);
