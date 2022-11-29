@@ -13,12 +13,13 @@ const DocSidebar = ({children}) => {
     <div className='sidebar-container'>
       <div style={{width: isOpen ? "30vh" : "6.5vh" }}className='sidebar'>
         <div className='top-section'>
-          <h1 style = {{display: isOpen ? "block" : "none"}}className='logo'>Tutorial</h1>
+          <h1 style = {{display: isOpen ? "block" : "none"}}className='logo'>Docs</h1>
           <div style = {{marginLeft: isOpen ? "50px": "10px"}}className='bars'>
             <FaArrowRight onClick={toggle}/>
           </div>
         </div>
-        {
+        
+        {  
           DocumentationData.map((item, index) => (
             <NavLink 
               to={item.path} 

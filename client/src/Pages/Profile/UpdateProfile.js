@@ -63,7 +63,7 @@ function UpdateProfile() {
             if (!res.payload.fileName) {
                 avatarPath = avatar
             } else {
-                avatarPath = "http://localhost:5000/uploads/" + res.payload.fileName;
+                avatarPath = "uploads/" + res.payload.fileName;
             }
 
             const profileData = {
