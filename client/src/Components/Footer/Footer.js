@@ -22,8 +22,6 @@ function Footer() {
             <h4>About</h4>
             <ui className="list-unstyled">
               <li>2D Game Engine</li>
-              <li>Physics</li>
-              <li>Scene Management</li>
               <li>Documentation</li>
             </ui>
           </div>
@@ -31,7 +29,7 @@ function Footer() {
           <div className="col">
             <h4>Get In Touch</h4>
             <ui className="list-unstyled">
-              <li><FaGithub /> GitHub </li>
+              <li><a href="https://github.com/TejasJD/HorizonEngine2D"><FaGithub /> GitHub</a></li>
               <li><FaDiscord /> Discord</li>
               <li><FaEnvelope /> Email</li>
             </ui>
