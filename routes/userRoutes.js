@@ -20,7 +20,7 @@ router.get('/user', protect, getUser)
 router.post('/profile', updateProfile)
 router.post("/upload", uploadFiles);
 
-router.route('/reset-password/:id').put(resetPassword)
+router.route('/reset-password').post(resetPassword)
 router.route('/forget-password').post(forgotPassword)
 
 module.exports = router
