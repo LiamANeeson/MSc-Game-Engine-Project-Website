@@ -92,9 +92,11 @@ function Login() {
                         }}
                     >
                         <div>
+                        <a href="/forgot">
                             <p style={{ color: "blueviolet", cursor: "pointer" }}>
                                 Forget password?
                             </p>
+                            </a>
                         </div>
                         {/* <div>
               <p style={{ color: "blueviolet", cursor: "pointer" }} onClick={resetPassword} >

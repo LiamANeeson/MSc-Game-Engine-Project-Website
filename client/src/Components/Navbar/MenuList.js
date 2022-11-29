@@ -34,5 +34,9 @@ export const MenuList = [
     {
       title: "Profile",
       url: "/profile",
-  },
+    },
+    {
+    title:"Forgot",
+    url:"/forgot"
+    }
   ];
