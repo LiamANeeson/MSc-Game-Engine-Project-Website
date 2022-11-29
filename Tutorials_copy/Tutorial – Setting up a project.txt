@@ -1,0 +1,16 @@
+Tutorial – Setting up a project
+
+Opening a project
+a. Once the Horizon Game Engine has been opened, you will see the Horizon game engine home screen below:
+Figure 1: Horizon game engine – empty
+b. Next, we need to select the file menu to open the option to select a ‘New Project’.
+
+Figure 2: Horizon game engine – File menu
+c. Next, we need to select ‘New Project’ as seen in the figure below.
+       
+Figure 3: Horizon game engine – File menu open
+d. Clicking ‘New project’ will open up a ‘New project’ dialog box where you can select the name of the project you’re creating. To select the directory of where you wish to store your project, click on the 3 dots (...) action box, to open up a folder dialog box where you can select the folder of your choosing. Once you have selected your desired directory, hit the ‘create’ button to generate your new project.
+
+Figure 3: Horizon game engine – File dialog box
+e. Once you have made your project you will be redirected to the main Horizon game engine desktop where your new project will be loaded and ready for you to build your very own game! See the figure below for reference.
+
