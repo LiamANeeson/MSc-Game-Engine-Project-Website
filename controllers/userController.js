@@ -104,45 +104,53 @@ const generateToken = (id) => {
   });
 };
 
+
 const resetPassword = async (req, res) => {
-  const { oldpassword, newpassword } = req.body;
-  const { id } = req.params;
+  const { oldpassword, newpassword, token } = req.body;
+  
+  const id = token;
+  //const { id } = req.params;
   console.log(newpassword, oldpassword, id);
   try {
-    let user = await User.findOne({ _id: id }).select("+password");
-    console.log(user);
-    if (!user) {
-      return res.status(400).json({ msg: "User not found" });
-    }
-    const checkpassword = await bcrypt.compare(oldpassword, user.password);
-    if (!checkpassword) {
-      return res.status(400).json({ msg: "Wrong password" });
-    }
-    const salt = await bcrypt.genSalt(10);
-    changepassword = await bcrypt.hash(newpassword, salt);
-    await User.findByIdAndUpdate(user._id, {
-      $set: { password: changepassword },
-    });
-    res
-      .status(200)
-      .json({
-        user,
-        message: "password changed successfully thanks for visit",
-      });
-  } catch (error) {
-    next(error);
+  let user = await User.findOne({ token: id }).select("+password");
+  console.log(user);
+  if (!user) {
+  return res.status(400).json({ msg: "User not found" });
   }
-};
-
+  
+  console.log(oldpassword, user.password); //oldpassword.trim()
+  
+  if (newpassword != oldpassword) {
+  return res.status(400).json({ msg: "No New and Old password" });
+  }
+  const salt = await bcrypt.genSalt(10);
+  changepassword = await bcrypt.hash(newpassword, salt);
+  await User.findByIdAndUpdate(user._id, {
+  $set: { password: changepassword },
+  });
+  res
+  .status(200)
+  .json({
+  user,
+  message: "password changed successfully thanks for visit",
+  });
+  } catch (error) {
+  next(error);
+  }
+  };
+  
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  //service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // true for 465, false for other ports
   auth: {
     user: process.env.EMAIL_USERNAME,
     pass: process.env.EMAIL_PASSWORD,
   },
-  tls: {
-    rejectUnauthorized: false,
-  },
+  // tls: {
+  //   rejectUnauthorized: false,
+  // },
 });
 
 const sendMail = async (params) => {
@@ -165,7 +173,7 @@ const sendMail = async (params) => {
     });
     return info;
   } catch (error) {
-    console.log(error);
+    console.log("error",error);
     return false;
   }
 };
@@ -178,7 +186,7 @@ const forgotPassword = async (req, res) => {
       res.status(400).json({ message: "user not found with this email" });
     }
     const PasswordToken = bcrypt.hashSync("123456", 10);
-    await User.updateOne({ _id: user._id }, { $set: { PasswordToken } });
+    await User.updateOne({ _id: user._id},{ $set: {token : PasswordToken } });
 
     const url = `http://localhost:3000/user/reset-password?token=${PasswordToken}`;
     await sendMail({

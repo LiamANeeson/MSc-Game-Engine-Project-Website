@@ -7,7 +7,9 @@ const uploadFiles = async (req, res) => {
     try {
         await upload(req, res);
         if (req.file == undefined) {
-            return res.status(200).send();
+            return res.status(200).send({
+                message: "no file"
+            });
         }
         return res.status(200).send({
             message: "File uploaded successfully",
