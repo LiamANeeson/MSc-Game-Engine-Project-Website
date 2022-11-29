@@ -34,7 +34,8 @@ import Animations from './Pages/Tutorial/Tutorial_Subsections/Animations';
 import AddingLevels from './Pages/Tutorial/Tutorial_Subsections/AddingLevels';
 import Physics from './Pages/Tutorial/Tutorial_Subsections/Physics';
 import LifeCycle from './Pages/Tutorial/Tutorial_Subsections/LifeCycle';
-
+import Forgot from './Pages/Login/Forgot';
+import ResetPassword from "./Pages/Login/ResetPassword";
 
 function App() {
     return (
@@ -72,6 +73,8 @@ function App() {
 
                     {/* Profile Routes */}
                     <Route path='/login' element={<Login />} />
+                    <Route path='/forgot' element={<Forgot />} />
+                    <Route path='/user/reset-password' element={<ResetPassword />} />
                     <Route path='/logout' element={<LogOut />} />
                     <Route path='/register' element={<Register />} />                    
                     <Route path='/profile' element={<AuthRoute>
