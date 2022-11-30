@@ -32,7 +32,7 @@ function Home() {
             <Card.Text>
               Horizon is a free and open-source so you don't have to worry about fees or royalties! All you have to do is create some games!
             </Card.Text>
-            <Button href="/download" variant="primary" className='home-cta-btn'>Download Horizon Game Engine</Button>
+            <Button href="/download" variant="primary" className='home-cta-btn'>Download HorizonGE</Button>
             <Button href="/download" variant="primary" className='game-cta-btn'>Download Dark Trails Game</Button>
           </Card.Body>
         </Card>
@@ -41,61 +41,45 @@ function Home() {
       <Row className='custom-row'>
         <Col lg={3} sm={6}>
           <Card className='custom-card text-center mt-5 mb-5'>
-            <Card.Img src={PhysicsPic}/>
+            <Card.Img src={PhysicsPic} style = {{height: '14rem'}}/>
             <Card.Body>
               <Card.Title>Physics</Card.Title>
-              <Card.Text bsPrefix='card-text'>
-                Learn about physics used in 2D games and how to use it the Horizon GE.
-              </Card.Text>
-              {/*<Button variant="primary" className='home-cta-btn'>Learn More</Button>*/}
             </Card.Body>
             <Card.Footer>
-              <Button variant="primary" className='home-cta-btn'>Learn More</Button>
+              <Button href="/About" variant="primary" className='home-cta-btn'>Learn More</Button>
             </Card.Footer>
           </Card>
         </Col>
         <Col lg={3} sm={6}>
           <Card className='text-center mt-5 mb-5'>
-          <Card.Img src={ScenePic}/>
+          <Card.Img src={ScenePic} style = {{height: '14rem'}}/>
             <Card.Body>
               <Card.Title>Scene Managment</Card.Title>
-              <Card.Text>
-                Learn all about scenes in game development and how they work in Horizon GE.{' '}
-              </Card.Text>
-              {/*<Button variant="primary" className='home-cta-btn'>Learn More</Button>*/}
             </Card.Body>
             <Card.Footer>
-              <Button variant="primary" className='home-cta-btn'>Learn More</Button>
+              <Button href="/About" variant="primary" className='home-cta-btn'>Learn More</Button>
             </Card.Footer>
           </Card>
         </Col>
         <Col lg={3} sm={6}>
           <Card className='text-center mt-5 mb-5'>
-          <Card.Img src={ScriptingPic} />
+          <Card.Img src={ScriptingPic} style = {{height: '14rem'}}/>
             <Card.Body>
               <Card.Title>Scripting</Card.Title>
-              <Card.Text>
-                Horizon GE uses a visual scripting model allowing users to add scripts to objects without the need to learn a scripting language!.{' '}
-              </Card.Text>
-              {/*<Button variant="primary" className='home-cta-btn'>Learn More</Button>*/}
             </Card.Body>
             <Card.Footer>
-              <Button variant="primary" className='home-cta-btn'>Learn More</Button>
+              <Button href="/About" variant="primary" className='home-cta-btn'>Learn More</Button>
             </Card.Footer>
           </Card>
         </Col>
         <Col lg={3} sm={6}>
           <Card className='text-center mt-5 mb-5'>
-          <Card.Img src = {CommunityPic}/>
+          <Card.Img src = {CommunityPic} style = {{height: '14rem'}}/>
             <Card.Body>
               <Card.Title>Horizon Community</Card.Title>
-              <Card.Text> 
-                Horizon Game Engine Community Page allows users to create posts or search for posts to discuss the Horizon Game Engine!.{' '}
-              </Card.Text>
-              {/*<Button variant="primary" className='home-cta-btn'>Learn More</Button>*/}
             </Card.Body>
             <Card.Footer>
-              <Button variant="primary" className='home-cta-btn'>Learn More</Button>
+              <Button href="/About" variant="primary" className='home-cta-btn'>Learn More</Button>
             </Card.Footer>
           </Card>
         </Col>
@@ -105,22 +89,3 @@ function Home() {
 }
 
 export default Home
-
-    // <div className='homePage-container'>
-    //   <div className='headline-content'>
-    //     <h2 className='headline-text'>
-    //       Learn Game Development
-    //       <em>Create Awesome 2D Games with the Horizon Game Engine</em>
-    //     </h2>
-    //     <div className='head-image'>
-    //     </div>
-    //     <p className='blurb'>
-    //     Horizon Game Engine Gives you all the necessary tools you need to create 2D games. Letting you learn and focus on creating games!
-    //     </p>
-    //     <p className='blurb'>
-    //       Horizon is a free and open-source so you don't have to worry about fees or royalties! All you have to do is create some games!
-    //     </p>
-    //     <button className = 'head-btn'>Download</button>
-    //     <button className = 'head-btn'>Learn More</button>
-    //   </div>
-    // </div>
