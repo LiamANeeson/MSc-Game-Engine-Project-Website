@@ -58,3 +58,7 @@
 .icon, .link_text{
     font-size: 20px;
 }
+
+.link_text{
+overflow: hidden;
+}
