@@ -16,6 +16,7 @@
 
 .download-btn {
     width: 100%;
+    color: white;
     background-color: #EE6C4D;
     cursor: pointer;
     border-radius: 6px;
@@ -40,6 +41,7 @@
 
 .gm-btn {
     width: 100%;
+    color: white;
     background-color: #293241;
     cursor: pointer;
     border-radius: 6px;
