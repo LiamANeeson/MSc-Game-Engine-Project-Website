@@ -32,7 +32,7 @@ function Home() {
             <Card.Text>
               Horizon is a free and open-source so you don't have to worry about fees or royalties! All you have to do is create some games!
             </Card.Text>
-            <Button href="/download" variant="primary" className='home-cta-btn'>Download Horizon Game Engine</Button>
+            <Button href="/download" variant="primary" className='home-cta-btn'>Download HorizonGE</Button>
             <Button href="/download" variant="primary" className='game-cta-btn'>Download Dark Trails Game</Button>
           </Card.Body>
         </Card>
@@ -46,7 +46,7 @@ function Home() {
               <Card.Title>Physics</Card.Title>
             </Card.Body>
             <Card.Footer>
-              <Button variant="primary" className='home-cta-btn'>Learn More</Button>
+              <Button href="/About" variant="primary" className='home-cta-btn'>Learn More</Button>
             </Card.Footer>
           </Card>
         </Col>
@@ -57,7 +57,7 @@ function Home() {
               <Card.Title>Scene Managment</Card.Title>
             </Card.Body>
             <Card.Footer>
-              <Button variant="primary" className='home-cta-btn'>Learn More</Button>
+              <Button href="/About" variant="primary" className='home-cta-btn'>Learn More</Button>
             </Card.Footer>
           </Card>
         </Col>
@@ -68,7 +68,7 @@ function Home() {
               <Card.Title>Scripting</Card.Title>
             </Card.Body>
             <Card.Footer>
-              <Button variant="primary" className='home-cta-btn'>Learn More</Button>
+              <Button href="/About" variant="primary" className='home-cta-btn'>Learn More</Button>
             </Card.Footer>
           </Card>
         </Col>
@@ -79,7 +79,7 @@ function Home() {
               <Card.Title>Horizon Community</Card.Title>
             </Card.Body>
             <Card.Footer>
-              <Button variant="primary" className='home-cta-btn'>Learn More</Button>
+              <Button href="/About" variant="primary" className='home-cta-btn'>Learn More</Button>
             </Card.Footer>
           </Card>
         </Col>
