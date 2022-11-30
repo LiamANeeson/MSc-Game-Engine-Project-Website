@@ -10,7 +10,6 @@ const nodemailer = require("nodemailer");
 // @route POST /api/users
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
-  console.log(User.db)
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -114,7 +113,6 @@ const resetPassword = async (req, res) => {
   console.log(newpassword, oldpassword, id);
   try {
   let user = await User.findOne({ token: id }).select("+password");
-  console.log(user);
   if (!user) {
   return res.status(400).json({ msg: "User not found" });
   }
