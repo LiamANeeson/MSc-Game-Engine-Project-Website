@@ -26,7 +26,9 @@ const upload =multer({
         description:req.body.description,
           files:upload.secure_url,
           name:req.body.name,
-          size:req.body.size
+          size:req.body.size,
+          username:req.body.username,
+          tag:req.body.tag
         });
         await uploadfileData.save();
         res.json({ uploadfileData });
