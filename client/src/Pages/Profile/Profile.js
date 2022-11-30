@@ -13,17 +13,23 @@ import {
     ListGroupItem,
     Modal
 } from 'react-bootstrap'
+
 import * as Api from "../../features/APIs/api";
 import { toast } from "react-toastify";
-
 
 function Profile() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
 
+  const currentProfile = JSON.parse(localStorage.getItem("profile"));
+  const userName = JSON.parse(localStorage.getItem("userName"));
+  const email = JSON.parse(localStorage.getItem("email"));
+
+
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
+
 
     const onChangeOldPassword = (e) => {
         setOldPassword(e.target.value);
@@ -37,12 +43,11 @@ function Profile() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const currentProfile = JSON.parse(localStorage.getItem("profile"));
-    const userName = JSON.parse(localStorage.getItem("userName"));
 
-    const toUpdateProfile = () => {
-        navigate("/updateProfile");
-    };
+  const toUpdateProfile = () => {
+    navigate("/updateProfile");
+  };
+
 
     const onLogout = () => {
         dispatch(logout());
@@ -76,7 +81,6 @@ function Profile() {
             toast.info(res?.data?.message)
         }
     }
-
     return (
         <>
             <Container className='py-5'>
