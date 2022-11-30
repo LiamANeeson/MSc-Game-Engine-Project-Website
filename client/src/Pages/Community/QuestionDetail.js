@@ -129,7 +129,7 @@ const QuestionDetail = (props) => {
                   variant="secondary"
                   onClick={() => followQuestion()}
                 >
-                  Follow
+                  Save
                 </Button>
 
                 <Button

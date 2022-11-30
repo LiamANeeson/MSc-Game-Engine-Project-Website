@@ -40,7 +40,7 @@ export async function login(email, password) {
   }
 }
 
-//Reset PAssword
+//Reset Password
 export async function resetPass(oldPassword, newPassword, userId) {
   try {
     const axiosConfig = {

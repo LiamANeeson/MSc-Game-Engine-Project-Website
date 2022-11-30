@@ -10,6 +10,7 @@ const nodemailer = require("nodemailer");
 // @route POST /api/users
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
+  console.log(User.db)
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -27,7 +28,7 @@ const registerUser = asyncHandler(async (req, res) => {
   // Hash password
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
-
+  console.log("Creating User")
   // Create user
   const user = await User.create({
     name,
