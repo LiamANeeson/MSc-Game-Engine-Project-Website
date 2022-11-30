@@ -4,10 +4,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import './Navbar.css';
 
-
-
-
-
 function Navigationbar() {
 
     //check if login
@@ -56,6 +52,7 @@ function Navigationbar() {
                                 <Nav.Link href="/tutorial">Tutorial</Nav.Link>
                                 <Nav.Link href="/docs">Documentation</Nav.Link>
                                 <Nav.Link href="/community">Community</Nav.Link>
+                                <Nav.Link href="/uploadFile">Games</Nav.Link>
                             </Nav>
                             <Nav>
                                 <Nav.Link href="/login">Log in</Nav.Link>
@@ -71,10 +68,6 @@ function Navigationbar() {
             </div>
         )
     }
-
-
-
-
 }
 
 export default Navigationbar;

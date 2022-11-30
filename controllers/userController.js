@@ -201,9 +201,20 @@ const forgotPassword = async (req, res) => {
   }
 };
 
+const getFiles = asyncHandler(async (req, res) => {
+  let results = await userFileData.find();
+
+  try {
+    return res.status(200).json({ data: results});
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = {
   registerUser,
   loginUser,
+  getFiles,
   getUser,
   resetPassword,
   forgotPassword,
