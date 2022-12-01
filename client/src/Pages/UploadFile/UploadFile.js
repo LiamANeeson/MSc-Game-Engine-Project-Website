@@ -16,7 +16,8 @@ import $ from 'jquery';
 
 function UploadFile() {
   
-  const [show, setMessage] = useState(false);
+  const [show1, setMessage] = useState(false);
+  const [show, setShow] = useState(!localStorage.getItem("authToken"));
   const [image, setImage] = useState({ preview: '', data: '' })
   const [games, setGames] = useState([]);
   const [size, setSize] = useState();
@@ -26,8 +27,7 @@ function UploadFile() {
   const [description,setDescription] = useState();
  
   useEffect(() => {
-    const authToken = localStorage.getItem("authToken");
-    console.log(authToken)
+   
     fetch("http://localhost:5000/api/users/getfiles")
     .then((response) => response.json())
     .then((data) => setGames(data.data));
@@ -35,6 +35,8 @@ function UploadFile() {
             LoadDataTable()
         });   
   },[])
+
+  const handleClose = () => setShow(false);
 
   const LoadDataTable = () => {
       setTimeout(function(){
@@ -46,12 +48,16 @@ saveAs(image, 'image.jpg') // Put your image url here.
 }
   const handleSubmit = async(event) => {
     event.preventDefault();
+    if(!localStorage.getItem('authToken')){
+      setShow(true); 
+      return false;
+    }
     let formData = new FormData()
     formData.append('file',image.data)
     formData.append('name',game)
     formData.append('description',description)
     formData.append('size',size)
-    formData.append('tag',tag),
+    formData.append('tag',tag)
     formData.append('username',!localStorage.getItem("authToken") ? 'Test' :localStorage.getItem("userName") )
     console.log(formData);
    axios.post("http://localhost:5000/upload", formData, {
@@ -101,7 +107,7 @@ const fetchData = () => {
         </Col>
         <Col md={6} className="my-5">
           { 
-           show ? 
+           show1 ? 
             <Alert variant="danger" >
             <Alert.Heading>Content Upload Successfully!</Alert.Heading>
             </Alert>
@@ -115,27 +121,27 @@ const fetchData = () => {
             <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Game Name</Form.Label>
-                <Form.Control type="text" onChange={(e) => setGameNAME(e.target.value)} name="game" placeholder="Enter Game Name"/>
+                <Form.Control required type="text" onChange={(e) => setGameNAME(e.target.value)} name="game" placeholder="Enter Game Name"/>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Tag</Form.Label>
-                <Form.Control type="text" onChange={(e) => setTag(e.target.value)} name="tag" placeholder="Enter Game Name"/>
+                <Form.Control required type="text" onChange={(e) => setTag(e.target.value)} name="tag" placeholder="Enter Game Name"/>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Uplaod File</Form.Label>
-                <Form.Control type="file"  onChange={onFileChange} name="file"/>
+                <Form.Control required type="file"  onChange={onFileChange} name="file"/>
                 {image.preview && <img src={image.preview} width='100' height='100' />}
 
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Description</Form.Label>
-                <Form.Control as="textarea" onChange={(e) => setDescription(e.target.value)} name="description" rows={3} />
+                <Form.Control required as="textarea" onChange={(e) => setDescription(e.target.value)} name="description" rows={3} />
               </Form.Group>
 
               <Button variant="primary" type="submit">
                 Submit
-              </Button>
+              </Button> 
             </Form>
           </Card>
 
@@ -181,10 +187,11 @@ const fetchData = () => {
           {
           
             <Modal
-             show={!localStorage.getItem("authToken")}
+            show={show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      onHide={handleClose}
     >
       <Modal.Header closeButton>
       </Modal.Header>
@@ -195,6 +202,7 @@ const fetchData = () => {
       </Modal.Body>
       <Modal.Footer>
         <Button>Close</Button>
+        <Button onClick={handleClose}>Close</Button>
       </Modal.Footer>
     </Modal>
    
