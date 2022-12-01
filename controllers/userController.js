@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const dotenv = require("dotenv").config();
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
+var userFileData = require("../models/files_data");
 const Profile = require("../models/profileModel");
 const nodemailer = require("nodemailer");
 
@@ -202,10 +203,21 @@ const forgotPassword = async (req, res) => {
     }
 };
 
+const getFiles = asyncHandler(async (req, res) => {
+  let results = await userFileData.find().sort({createdAt: -1});
+
+  try {
+    return res.status(200).json({ data: results});
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = {
-    registerUser,
-    loginUser,
-    getUser,
-    resetPassword,
-    forgotPassword,
+  registerUser,
+  loginUser,
+  getFiles,
+  getUser,
+  resetPassword,
+  forgotPassword,
 };

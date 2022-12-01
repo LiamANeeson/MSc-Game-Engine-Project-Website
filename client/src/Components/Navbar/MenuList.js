@@ -24,6 +24,10 @@ export const MenuList = [
       url: "/download",
     },
     {
+      title: "UploadFile",
+      url: "/uploadFile",
+  },
+    {
         title: "Login",
         url: "/login",
     },
