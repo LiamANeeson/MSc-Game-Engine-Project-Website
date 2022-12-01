@@ -5,6 +5,7 @@ function Tutorial() {
   return (
     <div>
       <Sidebar />
+      
     </div>
   )
 }
