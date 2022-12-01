@@ -6,7 +6,7 @@
 .sidebar{
     background: #293241;
     color: #fff;
-    height: 100vh;
+    height: 100%;
     width: 200px;
     transition: all 0.5s;
     text-decoration: none;
