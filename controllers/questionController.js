@@ -1,14 +1,13 @@
 const Question = require("../models/questionModel");
+const User = require("../models/userModel");
 
 //Create a new question.
 const createQuestion = async (req, res) => {
   const information = req.body;
-  console.log(req.user);
   const newQuestion = new Question({
     ...information,
     userObj: req.user,
   });
-  console.log(newQuestion);
   try {
     await newQuestion.save();
     res.status(201).json(newQuestion);
@@ -45,8 +44,6 @@ const getQuestions = async (req, res) => {
     const total = await Question.countDocuments({
       name: { $regex: search, $options: "i" },
     });
-
-    // console.log(questions);
 
     const response = {
       error: false,
@@ -167,28 +164,28 @@ const downVoteQuestion = async (req, res) => {
   }
 };
 
-const followQuestion = async (req, res) => {
+const saveQuestion = async (req, res) => {
   try {
-    console.log(req.user)
-    const question = await Question.find({
-      _id: req.params.id,
-      followedBy: req.user._id,
-    });
-    if (question.length > 0)
-      return res.status(400).json({ msg: "Something went wrong!" });
+    // if (req.user.savedPosts.indexOf(req.params.id) !== -1) {
+      await User.updateOne(
+        { _id: req.user._id },
+        { $push: { savedPosts: req.params.id } }
+      );
+    // }
+    res.json({ msg: "Saved Successfully!" });
+  } catch (err) {
+    console.log(err)
+    return res.status(500).json({ msg: err.message });
+  }
+};
 
-    const follow = await Question.findOneAndUpdate(
-      { _id: req.params.id },
-      {
-        $push: { followedBy: req.user._id },
-      },
-      { new: true }
-    );
-
-    if (!follow)
-      return res.status(400).json({ msg: "This question does not exist." });
-
-    res.json({ msg: "Followed Successfully!" });
+const getSavedQuestions = async (req, res) => {
+  try {
+    const savedQuestions = await Question.find({"_id" : {
+      "$in": req.user.savedPosts.slice(0, 5)
+    }})
+    savedQuestionsArray = savedQuestions ? savedQuestions.map(question => question) : []
+    res.json({ savedQuestions: savedQuestionsArray })
   } catch (err) {
     console.log(err)
     return res.status(500).json({ msg: err.message });
@@ -203,5 +200,6 @@ module.exports = {
   deleteQuestion,
   voteQuestion,
   downVoteQuestion,
-  followQuestion
+  saveQuestion,
+  getSavedQuestions
 };

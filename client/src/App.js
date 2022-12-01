@@ -15,8 +15,9 @@ import LogOut from './Pages/Login/LogOut';
 import Register from './Pages/Register/Register';
 import Home from './Pages/Home/Home';
 import About from './Pages/About/About';
-import Tutorial from './Pages/Tutorial/Tutorial'
-import Docs from './Pages/Docs/Documentation'
+import Tutorial from './Pages/Tutorial/Tutorial';
+import UploadFile from './Pages/UploadFile/UploadFile';
+import Docs from './Pages/Docs/Documentation';
 import Community from './Pages/Community/Community';
 import QuestionDetail from './Pages/Community/QuestionDetail';
 import Download from './Pages/Download/Download';
@@ -50,6 +51,7 @@ function App() {
                     <Route path='/tutorial' element={<Tutorial />} />
                     <Route path='/docs' element={<Docs />} />
                     <Route path='/download' element={<Download />} />
+                    <Route path='/uploadFile' element={<UploadFile />} />
 
                     {/* Routers for Tutorial Pages */}
                     <Route path='tutorial/getting-started' element={<GettingStarted />} />
