@@ -111,7 +111,7 @@ function Profile() {
                     Log Out
                   </Button>
                   <Button outline className="ms-1" onClick={modelOpen}>
-                    Reset Passwrod
+                    Reset Password
                   </Button>
                 </div>
                 <Modal show={show} onHide={handleClose}>
