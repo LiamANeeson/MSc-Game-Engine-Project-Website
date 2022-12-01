@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '../../../Components/Sidebar/Sidebar'
 
-function Animations() {
+function Scripting() {
   return (
     <div>
         <Sidebar />
@@ -9,4 +9,4 @@ function Animations() {
   )
 }
 
-export default Animations
+export default Scripting

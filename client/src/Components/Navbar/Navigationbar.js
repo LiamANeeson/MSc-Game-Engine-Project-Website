@@ -4,10 +4,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import './Navbar.css';
 
-
-
-
-
 function Navigationbar() {
 
     //check if login
@@ -32,9 +28,11 @@ function Navigationbar() {
                             </Nav>
                             <Nav>
                                 <Nav.Link href="/logout">Log out</Nav.Link>
+                                {/* 
                                 <Nav.Link eventKey={2} href="/register">
                                     Register
                                 </Nav.Link>
+                                 */}
                                 <Nav.Link href="/profile">Profile</Nav.Link>
                                 <Button href="/download" className='custom-btn'>Download</Button>
                             </Nav>
@@ -56,13 +54,13 @@ function Navigationbar() {
                                 <Nav.Link href="/tutorial">Tutorial</Nav.Link>
                                 <Nav.Link href="/docs">Documentation</Nav.Link>
                                 <Nav.Link href="/community">Community</Nav.Link>
+                                <Nav.Link href="/uploadFile">Games</Nav.Link>
                             </Nav>
                             <Nav>
                                 <Nav.Link href="/login">Log in</Nav.Link>
                                 <Nav.Link eventKey={2} href="/register">
                                     Register
                                 </Nav.Link>
-                                <Nav.Link href="/profile">Profile</Nav.Link>
                                 <Button href="/download" className='custom-btn'>Download</Button>
                             </Nav>
                         </Navbar.Collapse>
@@ -71,10 +69,6 @@ function Navigationbar() {
             </div>
         )
     }
-
-
-
-
 }
 
 export default Navigationbar;

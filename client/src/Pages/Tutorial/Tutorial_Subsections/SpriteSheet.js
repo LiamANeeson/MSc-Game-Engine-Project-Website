@@ -1,9 +1,7 @@
 import React from 'react'
 import Sidebar from '../../../Components/Sidebar/Sidebar'
-import { Button } from 'react-bootstrap';
-import './GettingStarted.css'
 
-function CreatingObjects() {
+function SpriteSheet() {
   return (
     <div>
         <Sidebar />
@@ -11,4 +9,4 @@ function CreatingObjects() {
   )
 }
 
-export default CreatingObjects
+export default SpriteSheet

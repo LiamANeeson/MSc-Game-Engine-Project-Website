@@ -13,6 +13,7 @@ import CreatingObjects from '../Tutorial_Subsections/CreatingObjects';
 
 function GettingStarted() {
   return (
+<<<<<<< HEAD
     <div className='GS-main-container'>
         <Sidebar />
         <div className='GS-content'>
@@ -38,6 +39,13 @@ function GettingStarted() {
           <p>To continue setting up your game engine please see click <a href={CreatingObjects} className='here-link'>here</a> to see how to set up a new scene</p>
         </div>
     </div>
+||||||| 386fa21
+    <div>
+        <Sidebar />
+    </div>
+=======
+    <div><Sidebar /></div>
+>>>>>>> 64683e130a5f79ba2a61b995895683533bfec2b9
   )
 }
 

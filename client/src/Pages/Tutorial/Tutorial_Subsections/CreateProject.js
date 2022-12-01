@@ -1,12 +1,10 @@
 import React from 'react'
 import Sidebar from '../../../Components/Sidebar/Sidebar'
 
-function AddingLevels() {
+function CreateProject() {
   return (
-    <div>
-        <Sidebar />
-    </div>
+    <div><Sidebar /></div>
   )
 }
 
-export default AddingLevels
+export default CreateProject

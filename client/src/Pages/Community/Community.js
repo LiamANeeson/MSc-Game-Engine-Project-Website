@@ -28,8 +28,7 @@ function Community() {
   const [page, setPage] = useState(1);
   
 
-  const authToken = localStorage.getItem("AuthToken");  
-  const logedInUser = localStorage.getItem("authToken");
+  const authToken = localStorage.getItem("authToken");  
   const { user } = useSelector((state) => state.auth)
   
   let error, response; 
@@ -56,7 +55,7 @@ function Community() {
       }
     };
     init();
-  }, [sort, page, search, logedInUser, user, error, response]);
+  }, [sort, page, search, authToken, user, error, response]);
   return (
     <div className="community-container">
       <div className="community-headline">
