@@ -109,14 +109,14 @@ const fetchData = () => {
           { 
            show1 ? 
             <Alert variant="danger" >
-            <Alert.Heading>Content Upload Successfully!</Alert.Heading>
+            <Alert.Heading>Game Upload Successfully!</Alert.Heading>
             </Alert>
           : ''
           }
        
           <Card className="p-4">
             <div className="text-center">
-              <h3>Uplaod Content</h3>
+              <h3>Uplaod Game</h3>
             </div>
             <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicPassword">
