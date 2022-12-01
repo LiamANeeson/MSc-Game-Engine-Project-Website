@@ -1,10 +1,10 @@
 import React from 'react'
 import Sidebar from '../../../Components/Sidebar/Sidebar'
 
-function GettingStarted() {
+function EntitiesComponents() {
   return (
     <div><Sidebar /></div>
   )
 }
 
-export default GettingStarted
+export default EntitiesComponents
