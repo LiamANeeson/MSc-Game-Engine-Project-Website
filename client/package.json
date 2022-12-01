@@ -14,13 +14,10 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "axios": "^1.2.0",
-<<<<<<< HEAD
-    "bootstrap": "^5.2.2",
-=======
     "bootstrap": "^5.2.3",
     "datatables.net-dt": "^1.13.1",
     "file-saver": "^2.0.5",
->>>>>>> 06371419639c7a36b433558c4104f9ad60344705
+
     "date-fns": "^2.29.3",
     "dayjs": "^1.11.5",
     "iconify": "^1.4.0",
