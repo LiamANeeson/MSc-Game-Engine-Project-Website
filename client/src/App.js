@@ -53,6 +53,7 @@ function App() {
 
                     {/* Routers for Tutorial Pages */}
                     <Route path='tutorial/getting-started' element={<GettingStarted />} />
+                    <Route path='tutorial/creating-scene' element={<GettingStarted />} />
                     <Route path='tutorial/creating-objects' element={<CreatingObjects />} />
                     <Route path='tutorial/add-animations' element={<Animations />} />
                     <Route path='tutorial/adding-levels' element={<AddingLevels />} />

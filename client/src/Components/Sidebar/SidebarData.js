@@ -11,6 +11,12 @@ export const SidebarData = [
         cName: 'row'
     },
     {
+        title: "Creating Scene",
+        path: '/tutorial/creating-scene',
+        icon: <AiIcons.AiOutlineFolderOpen/>,
+        cName: 'row'
+    },
+    {
         title: "Creating Objects",
         path: '/tutorial/creating-objects',
         icon: <AiIcons.AiFillBug/>,
