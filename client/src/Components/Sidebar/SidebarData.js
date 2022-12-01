@@ -6,9 +6,6 @@ import * as RiIcons from 'react-icons/ri'
 import * as BsIcons from 'react-icons/bs'
 import * as CgIcons from 'react-icons/cg'
 
-// TODO : 
-
-// 2. Change Icons
 export const SidebarData = [
     {
         title: "Getting Started",
