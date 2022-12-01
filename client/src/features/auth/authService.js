@@ -8,8 +8,8 @@ const register = async (userData) => {
     if (response.data) {
         localStorage.setItem('userName', JSON.stringify(response.data.name))
         localStorage.setItem('profile', JSON.stringify(response.data.profile))
+        localStorage.setItem('authToken', response.data.token)
     }
-
     return response.data
 }
 

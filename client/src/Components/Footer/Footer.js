@@ -29,16 +29,25 @@ function Footer() {
           <div className="col">
             <h4>Get In Touch</h4>
             <ui className="list-unstyled">
-              <li><a href="https://github.com/TejasJD/HorizonEngine2D"><FaGithub /> GitHub</a></li>
-              <li><FaDiscord /> Discord</li>
-              <li><FaEnvelope /> Email</li>
+              <li>
+                <a href="https://github.com/TejasJD/HorizonEngine2D">
+                  <FaGithub /> GitHub
+                </a>
+              </li>
+              <li>
+                <FaDiscord /> Discord
+              </li>
+              <li>
+                <FaEnvelope /> Email
+              </li>
             </ui>
           </div>
         </div>
         <hr />
         <div className="row">
           <p className="col-sm">
-            &copy;{new Date().getFullYear()} Technological University Dublin | MSc Computer Science |
+            &copy;{new Date().getFullYear()} Technological University Dublin |
+            MSc Computer Science |
           </p>
         </div>
       </div>

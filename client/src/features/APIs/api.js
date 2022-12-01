@@ -40,7 +40,7 @@ export async function login(email, password) {
   }
 }
 
-//Reset PAssword
+//Reset Password
 export async function resetPass(oldPassword, newPassword, userId) {
   try {
     const axiosConfig = {
@@ -116,7 +116,6 @@ export async function getQuestions(authToken, page, sort, sortOrder, search) {
       url: URL,
       headers: { Authorization: "Bearer " + token },
     };
-    console.log(axiosConfig?.url);
     const response = await axios.default.request(axiosConfig);
     const normalizedResponse = normalizeServerResponse(response);
     return [null, normalizedResponse];
@@ -134,6 +133,24 @@ export async function getQuestion(questionID) {
       method: "get",
       url: `${apiURL}/question/${questionID}`,
       headers: { Authorization: "Bearer " + token },
+    };
+    const response = await axios.default.request(axiosConfig);
+    const normalizedResponse = normalizeServerResponse(response);
+    return [null, normalizedResponse];
+  } catch (error) {
+    const errorObject = normalizeServerError(error);
+    return [errorObject, null];
+  }
+}
+
+//Get the questions which have been saved by the user
+export async function getUserSavedQuestions() {
+  try {
+    let token = localStorage.getItem("authToken");
+    const axiosConfig = {
+      method: "get",
+      url: `${apiURL}/question/saved-posts`,
+      headers: { Authorization: "Bearer " + token }
     };
     const response = await axios.default.request(axiosConfig);
     const normalizedResponse = normalizeServerResponse(response);
@@ -164,13 +181,13 @@ export async function deleteQuestion(questionID) {
   }
 }
 
-//follow question
-export async function followQuestion(questionID) {
+// Save question
+export async function saveQuestion(questionID) {
   try {
     let token = localStorage.getItem("authToken");
     const axiosConfig = {
       method: "patch",
-      url: `${apiURL}/question/${questionID}/follow`,
+      url: `${apiURL}/question/${questionID}/save`,
       headers: { Authorization: "Bearer " + token },
     };
     const response = await axios.default.request(axiosConfig);
@@ -200,7 +217,7 @@ export async function voteQuestion(questionID) {
   }
 }
 
-//down vote question
+// Down vote question
 export async function downVoteQuestion(questionID) {
   try {
     let token = localStorage.getItem("authToken");
