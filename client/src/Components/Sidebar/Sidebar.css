@@ -41,8 +41,8 @@
 .link{
     display: flex;
     color: white;
-    padding: 10px 15px;
-    gap: 15px;
+    padding: 17px 15px;
+    gap: 30px;
     transition: all 0.5s;
     text-decoration: none;
 }
