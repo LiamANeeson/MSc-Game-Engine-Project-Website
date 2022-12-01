@@ -10,7 +10,6 @@ const questionSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    followedBy: [{type: mongoose.Types.ObjectId, ref: 'user'}],
     tags: [
       {
         type: String,

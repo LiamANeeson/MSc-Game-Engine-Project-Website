@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getUserSavedQuestions } from "../../features/APIs/api";
 import "./Profile.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout, reset } from "../../features/auth/authSlice";
 import {
@@ -15,7 +16,7 @@ import {
 } from "react-bootstrap";
 import * as Api from "../../features/APIs/api";
 import { toast } from "react-toastify";
-import axios from 'axios';
+
 
 function Profile() {
   const navigate = useNavigate();
@@ -28,6 +29,23 @@ function Profile() {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
+  const [savedPosts, setSavedPosts] = useState([]); 
+
+  useEffect(() => {    
+    getUserSavedQuestions()
+      .then(normalisedResponse => {
+        const savedQuestionsResponse = (
+          (normalisedResponse[1] !== null && normalisedResponse[1].data.savedQuestions !== 'undefined')
+          ? normalisedResponse[1].data.savedQuestions
+          : []
+        )
+        setSavedPosts(savedQuestionsResponse) 
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [setSavedPosts])
+  
   const onChangeOldPassword = (e) => {
     setOldPassword(e.target.value);
   };
@@ -62,7 +80,7 @@ function Profile() {
       if (err) {
         console.log(err);
         if (err?.data === "Request failed with status code 400") {
-          toast.error("Old Passwrod does not match");
+          toast.error("Old Password does not match");
         } else {
           toast.error("Something went wrong ");
         }
@@ -170,6 +188,13 @@ function Profile() {
                 <Card className="mb-4 mb-md-0">
                   <Card.Body>
                     <Card.Text>Saved Posts</Card.Text>
+                    {
+                      savedPosts && (savedPosts.length > 0) ? savedPosts.map(question => (
+                        <Card.Text key={question.name}>
+                          <Link to={`/question/${question._id}`}>{question.name}</Link>
+                        </Card.Text>
+                      )) : <Card.Text className="text-muted">None to display, yet!</Card.Text>
+                    }
                   </Card.Body>
                 </Card>
               </Col>

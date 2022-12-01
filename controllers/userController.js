@@ -27,7 +27,6 @@ const registerUser = asyncHandler(async (req, res) => {
   // Hash password
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
-  console.log("Creating User")
   // Create user
   const user = await User.create({
     name,
@@ -55,7 +54,6 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Invalid user data");
   }
-  res.json({ message: "Register User" });
 });
 
 // @desc Authenticate a user
@@ -110,14 +108,11 @@ const resetPassword = async (req, res) => {
   
   const id = token;
   //const { id } = req.params;
-  console.log(newpassword, oldpassword, id);
   try {
   let user = await User.findOne({ token: id }).select("+password");
   if (!user) {
   return res.status(400).json({ msg: "User not found" });
   }
-  
-  console.log(oldpassword, user.password); //oldpassword.trim()
   
   if (newpassword != oldpassword) {
   return res.status(400).json({ msg: "No New and Old password" });

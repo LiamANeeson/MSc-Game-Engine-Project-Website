@@ -3,14 +3,13 @@ import axios from 'axios'
 const API_URL = '/api/users/'
 
 const register = async (userData) => {
-    console.log(axios.options)
     const response = await axios.post(API_URL, userData)
 
     if (response.data) {
         localStorage.setItem('userName', JSON.stringify(response.data.name))
         localStorage.setItem('profile', JSON.stringify(response.data.profile))
+        localStorage.setItem('authToken', response.data.token)
     }
-    console.log(response.data)
     return response.data
 }
 
