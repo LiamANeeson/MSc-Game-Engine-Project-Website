@@ -76,7 +76,7 @@ const updateProfile = async (profileData) => {
 
 const uploadFile = async (file) => {
 
-    const response = await axios.post(API_URL + 'upload', file)
+    const response = await axios.post("https://api.cloudinary.com/v1_1/dcvifbffb/upload", file)
 
     return response.data
 }

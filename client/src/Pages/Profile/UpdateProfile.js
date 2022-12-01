@@ -56,14 +56,15 @@ function UpdateProfile() {
 
         const fileData = new FormData();
         fileData.append("file", file);
+        fileData.append("upload_preset", "Game-Engine-Project-Website");
         let avatarPath;
 
         dispatch(uploadFile(fileData)).then((res) => {
 
-            if (!res.payload.fileName) {
+            if (!res.payload.secure_url) {
                 avatarPath = avatar
             } else {
-                avatarPath = "uploads/" + res.payload.fileName;
+                avatarPath = res.payload.secure_url;
             }
 
             const profileData = {
