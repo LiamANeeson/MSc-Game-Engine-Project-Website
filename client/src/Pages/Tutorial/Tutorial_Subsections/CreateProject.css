@@ -1,19 +1,16 @@
-.GS-main-container{
+.cp-main-container{
     margin: auto;
     display: flex;
     flex-direction:row;
 }
 
-.GS-content{
+.cp-content{
     margin: 0 auto 0 auto;
     width: 60%;
     padding: 10px;
 }
 
-.here-link{
-    color:blue;
-}
-.tut-cta-btn{
+/*.tut-cta-btn{
     background-color: #EE6C4D !important;
     min-width: 30%;
     cursor: pointer;
@@ -32,4 +29,4 @@
     position: relative;
     text-align: center;
     font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
-}
+}*/

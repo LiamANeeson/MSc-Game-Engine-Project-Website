@@ -58,22 +58,11 @@ function App() {
 
                     {/* Routers for Tutorial Pages */}
                     <Route path='tutorial/getting-started' element={<GettingStarted />} />
-<<<<<<< HEAD
-                    <Route path='tutorial/creating-scene' element={<GettingStarted />} />
-                    <Route path='tutorial/creating-objects' element={<CreatingObjects />} />
-                    <Route path='tutorial/add-animations' element={<Animations />} />
-                    <Route path='tutorial/adding-levels' element={<AddingLevels />} />
-||||||| 386fa21
-                    <Route path='tutorial/creating-objects' element={<CreatingObjects />} />
-                    <Route path='tutorial/add-animations' element={<Animations />} />
-                    <Route path='tutorial/adding-levels' element={<AddingLevels />} />
-=======
                     <Route path='tutorial/create-project' element={<CreateProject />} />
                     <Route path='tutorial/create-scene' element={<CreateScene />} />
                     <Route path='tutorial/adding-objects' element={<AddObjects />} />
                     <Route path='tutorial/ecs' element={<EntitiesComponents />} />
                     <Route path='tutorial/sprite-sheet' element={<SpriteSheet />} />
->>>>>>> 64683e130a5f79ba2a61b995895683533bfec2b9
                     <Route path='tutorial/physics' element={<Physics />} />
                     <Route path='tutorial/scripts' element={<Scripting />} />
                     

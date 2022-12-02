@@ -1,0 +1,11 @@
+.ao-main-container{
+  margin: auto;
+  display: flex;
+  flex-direction:row;
+}
+
+.ao-content{
+  margin: 0 auto 0 auto;
+  width: 60%;
+  padding: 10px;
+}
