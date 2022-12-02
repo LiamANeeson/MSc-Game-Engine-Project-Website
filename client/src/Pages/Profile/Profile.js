@@ -3,7 +3,7 @@ import { getUserSavedQuestions } from "../../features/APIs/api";
 import "./Profile.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { logout, reset } from "../../features/auth/authSlice";
+import { logout, reset, resetPassword1 } from "../../features/auth/authSlice";
 import {
   Container,
   Row,
@@ -74,19 +74,25 @@ function Profile() {
   };
 
   const resetPassword = async () => {
-    const UserId = localStorage.getItem("userId");
-    if (oldPassword && newPassword) {
-      const [err, res] = await Api.resetPass(oldPassword, newPassword, UserId);
-      if (err) {
-        console.log(err);
-        if (err?.data === "Request failed with status code 400") {
-          toast.error("Old Password does not match");
-        } else {
-          toast.error("Something went wrong ");
-        }
-      }
-      handleClose();
-      toast.info(res?.data?.message);
+      const token = localStorage.getItem("authToken");
+      const userData = {
+          token,
+          oldPassword,
+          newPassword
+      };
+
+      if (oldPassword && newPassword) {
+          dispatch(resetPassword1(userData)).then((res) => {
+
+              if (res.payload.user) {
+                  toast.success("Password changed successfully");
+              } else {
+                  toast.error('Old Password does not match')
+              }
+
+              handleClose();
+
+          });
     }
   };
   

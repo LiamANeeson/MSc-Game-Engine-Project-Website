@@ -34,12 +34,7 @@ const resetPassword = async (userData) => {
 
     const response = await axios.post(API_URL + 'reset-password', userData)
     if (response.data) {
-        console.log(response.data);
-        localStorage.removeItem('user')
-        localStorage.removeItem('profile')
-        // localStorage.setItem('userName', JSON.stringify(response.data.name))
-        // localStorage.setItem('authToken', response.data.token)
-        // localStorage.setItem('profile', JSON.stringify(response.data.profile))
+        
     }
     else {
         console.log("Login Unsuccessful")

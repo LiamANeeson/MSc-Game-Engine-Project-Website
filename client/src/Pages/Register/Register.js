@@ -11,13 +11,15 @@ import './Register.css'
 
 function Register() {
     const [formData, setFormData] = useState({
-        name: '',
+        userName: '',
+        firstName: '',
+        lastName: '',
         email: '',
         password: '',
         password_confirm: '',
     })
 
-    const {name, email, password, password_confirm} = formData
+    const { userName, firstName, lastName, email, password, password_confirm } = formData
     
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -33,6 +35,7 @@ function Register() {
 
         if(isSuccess || user) {
             navigate('/profile')
+            window.location.reload(false);
         }
 
         dispatch(reset())
@@ -52,7 +55,9 @@ function Register() {
             toast.error('Passwords do not match')
           } else {
             const userData = {
-              name,
+                userName,
+                firstName,
+                lastName,
               email,
               password,
             }
@@ -69,16 +74,36 @@ function Register() {
                     <p>Create an account for Horizon Game Engine!</p>
                 </section>
                     <form onSubmit={onSubmit} className="submission-form-register">
-                    <label for = "name">Name</label>
+                    <label for = "userName">User Name</label>
                         <input 
                             type = "text" 
                             className = 'form-control' 
-                            id = 'name'
-                            name = 'name'
-                            value = {name}
-                            placeholder = 'Please Enter your name'
+                            id = 'userName'
+                            name = 'userName'
+                            value = {userName}
+                            placeholder = 'Please Enter your user name'
                             onChange={onChange}
-                        />
+                    />
+                    <label for="firstName">First Name</label>
+                    <input
+                        type="text"
+                        className='form-control'
+                        id='firstName'
+                        name='firstName'
+                        value={firstName}
+                        placeholder='Please Enter your first name'
+                        onChange={onChange}
+                    />
+                    <label for="lastName">Last Name</label>
+                    <input
+                        type="text"
+                        className='form-control'
+                        id='lastName'
+                        name='lastName'
+                        value={lastName}
+                        placeholder='Please Enter your last name'
+                        onChange={onChange}
+                    />
                         <label for = "email">Email</label>
                         <input 
                             type = "email" 

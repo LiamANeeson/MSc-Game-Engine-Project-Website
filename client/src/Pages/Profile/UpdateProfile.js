@@ -12,7 +12,6 @@ function UpdateProfile() {
     const dispatch = useDispatch()
 
     const currentProfile = JSON.parse(localStorage.getItem('profile'))
-    const userName = JSON.parse(localStorage.getItem('userName'))
 
     const [file, setFile] = useState()
     const [displayImg, setDisplayImg] = useState(currentProfile.avatar)
@@ -32,7 +31,7 @@ function UpdateProfile() {
         firstName: currentProfile.firstName,
         lastName: currentProfile.lastName,
         avatar: currentProfile.avatar,
-        nickName: userName
+        userName: JSON.parse(localStorage.getItem('userName'))
     })
 
     const {
@@ -40,7 +39,7 @@ function UpdateProfile() {
         firstName,
         lastName,
         avatar,
-        nickName, } = formData
+        userName, } = formData
 
     const onChange = (e) => {
 
@@ -72,7 +71,7 @@ function UpdateProfile() {
                 firstName,
                 lastName,
                 avatar: avatarPath,
-                nickName
+                userName
             }
 
 
@@ -116,7 +115,7 @@ function UpdateProfile() {
                                 <div class="col-md-6"><label class="labels">Name</label><input type="text" id='firstName' name='firstName' class="form-control" value={firstName} onChange={onChange} placeholder="first name" /></div>
                                 <div class="col-md-6"><label class="labels">Last name</label><input type="text" id='lastName' name='lastName' class="form-control" value={lastName} placeholder="last name" onChange={onChange} /></div>
                             </div>
-                            <div class="col-md-12"><label class="labels">Nick Name</label><input type="text" id='nickName' name='nickName' class="form-control" placeholder="nickName" value={nickName} onChange={onChange} /></div>
+                            <div class="col-md-12"><label class="labels">User Name</label><input type="text" id='userName' name='userName' class="form-control" placeholder="userName" value={userName} onChange={onChange} /></div>
                             <div class="mt-5 text-center"><button class="btn btn-primary btn-lg" type="submit">Save Profile</button></div>
                         </div>
                     </form>
