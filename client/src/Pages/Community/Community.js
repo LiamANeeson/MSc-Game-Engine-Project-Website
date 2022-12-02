@@ -86,6 +86,7 @@ function Community() {
     function createPostandClose() {
       handleClose()
       askQuestionOnClickHandler()
+      window.location.reload()
     }
   return (
     <div className="community-container">
