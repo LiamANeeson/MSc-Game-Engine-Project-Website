@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '../../../Components/Sidebar/Sidebar'
 
-function LifeCycle() {
+function CreateScene() {
   return (
     <div>
         <Sidebar />
@@ -9,4 +9,4 @@ function LifeCycle() {
   )
 }
 
-export default LifeCycle
+export default CreateScene
