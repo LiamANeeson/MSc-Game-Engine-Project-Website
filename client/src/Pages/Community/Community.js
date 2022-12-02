@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { 
-  Container, 
-  Image, 
-  Button, 
-  Row, 
-  Col
+import {
+  Container,
+  Image,
+  Button,
+  Row,
+  Col,
+  Modal,
+  Form,
 } from "react-bootstrap";
-import { 
-  useSelector, 
-  useDispatch
-} from 'react-redux'
-import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import "./Community.css";
 import * as Api from "../../features/APIs/api";
 import { useNavigate } from "react-router-dom";
@@ -21,17 +19,19 @@ import Question from "./Question";
 
 function Community() {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
   const [obj, setObj] = useState({});
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState({ sort: "createdAt", order: "desc" });
   const [page, setPage] = useState(1);
-  
+  const [show, setShow] = useState(false);
 
-  const authToken = localStorage.getItem("authToken");  
-  const { user } = useSelector((state) => state.auth)
-  
-  let error, response; 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const authToken = localStorage.getItem("authToken");
+  const { user } = useSelector((state) => state.auth);
+
+  let error, response;
 
   useEffect(() => {
     const init = async () => {
@@ -58,9 +58,6 @@ function Community() {
   }, [sort, page, search, authToken, user, error, response]);
   return (
     <div className="community-container">
-      <div className="community-headline">
-        <h2 className="community-headline-text">All Questions</h2>
-      </div>
       <Container fluid className="que-container">
         <Row
           style={{
@@ -94,11 +91,53 @@ function Community() {
                 disabled={!authToken}
               >
                 Ask a question
-              </Button>{" "}
+              </Button>
+              <Button
+                variant="primary"
+                onClick={handleShow}
+                disabled={!authToken}
+              >
+                Create a Post
+              </Button>
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Create Post</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <Form>
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>Title</Form.Label>
+                      <Form.Control
+                        type="title"
+                        placeholder="Title"
+                        autoFocus
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlTextarea1"
+                    >
+                      <Form.Label>Post Body</Form.Label>
+                      <Form.Control as="textarea" rows={3} />
+                    </Form.Group>
+                  </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    Close
+                  </Button>
+                  <Button variant="primary" onClick={handleClose}>
+                    Create Post
+                  </Button>
+                </Modal.Footer>
+              </Modal>
             </div>
           </div>
         </Row>
-        
+
         <Question questions={obj.questions ? obj.questions : []} />
         <Pagination
           page={page}
