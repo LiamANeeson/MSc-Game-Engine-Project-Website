@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {
   Container,
-  Image,
   Button,
   Row,
-  Col,
   Modal,
   Form,
 } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+
 import "./Community.css";
 import * as Api from "../../features/APIs/api";
 import { useNavigate } from "react-router-dom";
@@ -24,6 +24,9 @@ function Community() {
   const [sort, setSort] = useState({ sort: "createdAt", order: "desc" });
   const [page, setPage] = useState(1);
   const [show, setShow] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [tags, setTags] = useState([]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -56,6 +59,34 @@ function Community() {
     };
     init();
   }, [sort, page, search, authToken, user, error, response]);
+
+    //onChange Handler
+    const onChangeTitle = (e) => {
+      setTitle(e.target.value);
+    };
+    const onChangeDescription = (e) => {
+      setDescription(e.target.value);
+    };
+    const onChangeTags = (e) => {
+      setTags(e.target.value);
+    };
+  
+    const askQuestionOnClickHandler = async () => {
+      const [err, res] = await Api.createQuestion(title, description, tags);
+      if (err) {
+        toast.error("Something went wrong.Please try again later!");
+      }
+      if (res) {
+        //   console.log(res);
+        toast.success("Question Created!");
+        navigate("/community");
+      }
+    };
+
+    function createPostandClose() {
+      handleClose()
+      askQuestionOnClickHandler()
+    }
   return (
     <div className="community-container">
       <Container fluid className="que-container">
@@ -87,13 +118,6 @@ function Community() {
             <div>
               <Button
                 variant="primary"
-                onClick={() => navigate("/ask-question")}
-                disabled={!authToken}
-              >
-                Ask a question
-              </Button>
-              <Button
-                variant="primary"
                 onClick={handleShow}
                 disabled={!authToken}
               >
@@ -114,6 +138,7 @@ function Community() {
                         type="title"
                         placeholder="Title"
                         autoFocus
+                        onChange={onChangeTitle}
                       />
                     </Form.Group>
                     <Form.Group
@@ -121,15 +146,29 @@ function Community() {
                       controlId="exampleForm.ControlTextarea1"
                     >
                       <Form.Label>Post Body</Form.Label>
-                      <Form.Control as="textarea" rows={3} />
+                      <Form.Control 
+                        as="textarea" 
+                        rows={3}
+                        onChange = {onChangeDescription} 
+                      />
                     </Form.Group>
                   </Form>
+                  <Form.Group>
+                    <Form.Label>Tags</Form.Label>
+                    <Form.Control 
+                      placeholder="Separated by Comma"
+                      onChange={onChangeTags} 
+                    />
+                  </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose}>
                     Close
                   </Button>
-                  <Button variant="primary" onClick={handleClose}>
+                  <Button 
+                    variant="primary" 
+                    onClick={createPostandClose}
+                  >
                     Create Post
                   </Button>
                 </Modal.Footer>
