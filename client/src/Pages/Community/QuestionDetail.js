@@ -78,13 +78,13 @@ const QuestionDetail = (props) => {
     }
   };
 
-  const followQuestion = async () => {
-    const [followErr, followRes] = await Api.followQuestion(id);
-    if (followErr) {
+  const saveQuestion = async () => {
+    const [saveErr, saveRes] = await Api.saveQuestion(id);
+    if (saveErr) {
       toast.error("Something went wrong!");
     }
-    if (followRes) {
-      toast.success("Followed!");
+    if (saveRes) {
+      toast.success("Saved!");
     }
   };
 
@@ -127,9 +127,9 @@ const QuestionDetail = (props) => {
                 <Button
                   disabled={!localStorage.getItem("authToken")}
                   variant="secondary"
-                  onClick={() => followQuestion()}
+                  onClick={saveQuestion}
                 >
-                  Follow
+                  Save
                 </Button>
 
                 <Button
@@ -157,16 +157,6 @@ const QuestionDetail = (props) => {
                     style={{ cursor: "pointer" }}
                   />
                 </Button>
-
-                {/*<div style={{ padding: "5px" }}>
-                <Icon
-                  icon="bxs:pencil"
-                  width="30px"
-                  height="30px"
-                  style={{ cursor: "pointer" }}
-                />
-              </div>*/}
-
                 <Button
                   disabled={!localStorage.getItem("authToken")}
                   variant="secondary"

@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '../../../Components/Sidebar/Sidebar'
 
-function AddingLevels() {
+function SpriteSheet() {
   return (
     <div>
         <Sidebar />
@@ -9,4 +9,4 @@ function AddingLevels() {
   )
 }
 
-export default AddingLevels
+export default SpriteSheet

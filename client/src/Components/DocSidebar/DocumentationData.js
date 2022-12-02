@@ -28,11 +28,5 @@ export const DocumentationData = [
         path: '/docs/object-behaviours',
         icon: <FaIcons.FaRunning />,
         cName: 'row'
-    },
-    {
-        title: "Scripting",
-        path: '/docs/scripting',
-        icon: <AiIcons.AiFillCode/>,
-        cName: 'row'
     }
 ]

@@ -15,27 +15,30 @@ import LogOut from './Pages/Login/LogOut';
 import Register from './Pages/Register/Register';
 import Home from './Pages/Home/Home';
 import About from './Pages/About/About';
-import Tutorial from './Pages/Tutorial/Tutorial'
-import Docs from './Pages/Docs/Documentation'
+import Tutorial from './Pages/Tutorial/Tutorial';
+import UploadFile from './Pages/UploadFile/UploadFile';
+import Docs from './Pages/Docs/Documentation';
 import Community from './Pages/Community/Community';
 import QuestionDetail from './Pages/Community/QuestionDetail';
 import Download from './Pages/Download/Download';
-import AskQuestion from './Pages/Community/AskQuestion'
 
 import Overview from './Pages/Docs/Doc_Subsections/Overview'
 import Interface from './Pages/Docs/Doc_Subsections/Interface'
 import Objects from './Pages/Docs/Doc_Subsections/Objects'
-import Object_behaviours from './Pages/Docs/Doc_Subsections/Object_behaviours'
-import Scripting from './Pages/Docs/Doc_Subsections/Scripting'
+import ObjectBehaviours from './Pages/Docs/Doc_Subsections/Object_behaviours'
 
-import GettingStarted from './Pages/Tutorial/Tutorial_Subsections/GettingStarted';
-import CreatingObjects from './Pages/Tutorial/Tutorial_Subsections/CreatingObjects';
-import Animations from './Pages/Tutorial/Tutorial_Subsections/Animations';
-import AddingLevels from './Pages/Tutorial/Tutorial_Subsections/AddingLevels';
-import Physics from './Pages/Tutorial/Tutorial_Subsections/Physics';
-import LifeCycle from './Pages/Tutorial/Tutorial_Subsections/LifeCycle';
 import Forgot from './Pages/Login/Forgot';
 import ResetPassword from "./Pages/Login/ResetPassword";
+
+import GettingStarted from './Pages/Tutorial/Tutorial_Subsections/GettingStarted';
+import CreateProject from './Pages/Tutorial/Tutorial_Subsections/CreateProject';
+import CreateScene from './Pages/Tutorial/Tutorial_Subsections/CreateScene';
+import AddObjects from './Pages/Tutorial/Tutorial_Subsections/AddObjects';
+import EntitiesComponents from './Pages/Tutorial/Tutorial_Subsections/EntitiesComponents'
+import SpriteSheet from './Pages/Tutorial/Tutorial_Subsections/SpriteSheet';
+import Physics from './Pages/Tutorial/Tutorial_Subsections/Physics';
+import Scripting from './Pages/Tutorial/Tutorial_Subsections/Scripting';
+
 
 function App() {
     return (
@@ -50,25 +53,26 @@ function App() {
                     <Route path='/tutorial' element={<Tutorial />} />
                     <Route path='/docs' element={<Docs />} />
                     <Route path='/download' element={<Download />} />
+                    <Route path='/uploadFile' element={<UploadFile />} />
 
                     {/* Routers for Tutorial Pages */}
                     <Route path='tutorial/getting-started' element={<GettingStarted />} />
-                    <Route path='tutorial/creating-objects' element={<CreatingObjects />} />
-                    <Route path='tutorial/add-animations' element={<Animations />} />
-                    <Route path='tutorial/adding-levels' element={<AddingLevels />} />
+                    <Route path='tutorial/create-project' element={<CreateProject />} />
+                    <Route path='tutorial/create-scene' element={<CreateScene />} />
+                    <Route path='tutorial/adding-objects' element={<AddObjects />} />
+                    <Route path='tutorial/ecs' element={<EntitiesComponents />} />
+                    <Route path='tutorial/sprite-sheet' element={<SpriteSheet />} />
                     <Route path='tutorial/physics' element={<Physics />} />
-                    <Route path='tutorial/life-cycle' element={<LifeCycle />} />
-
+                    <Route path='tutorial/scripts' element={<Scripting />} />
+                    
                     {/* Routes for Docuemtation Pages*/}
                     <Route path='/docs/overview' element= {<Overview />} />
                     <Route path='/docs/interface' element= {<Interface />} />
                     <Route path='/docs/objects' element= {<Objects />} />
-                    <Route path='/docs/object-behaviours' element= {<Object_behaviours />} />  
-                    <Route path='/docs/scripting' element= {<Scripting />} />
+                    <Route path='/docs/object-behaviours' element= {<ObjectBehaviours />} />  
 
                     {/* Community and Question Routes  */}
                     <Route path='/community' element={<Community />} />
-                    <Route path='/ask-question' element={<AskQuestion />} />
                     <Route exact path='/question/:id' element={<QuestionDetail />} />
 
                     {/* Profile Routes */}
