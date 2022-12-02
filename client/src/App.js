@@ -21,12 +21,11 @@ import Docs from './Pages/Docs/Documentation';
 import Community from './Pages/Community/Community';
 import QuestionDetail from './Pages/Community/QuestionDetail';
 import Download from './Pages/Download/Download';
-import AskQuestion from './Pages/Community/AskQuestion'
 
 import Overview from './Pages/Docs/Doc_Subsections/Overview'
 import Interface from './Pages/Docs/Doc_Subsections/Interface'
 import Objects from './Pages/Docs/Doc_Subsections/Objects'
-import Object_behaviours from './Pages/Docs/Doc_Subsections/Object_behaviours'
+import ObjectBehaviours from './Pages/Docs/Doc_Subsections/Object_behaviours'
 
 import Forgot from './Pages/Login/Forgot';
 import ResetPassword from "./Pages/Login/ResetPassword";
@@ -70,11 +69,10 @@ function App() {
                     <Route path='/docs/overview' element= {<Overview />} />
                     <Route path='/docs/interface' element= {<Interface />} />
                     <Route path='/docs/objects' element= {<Objects />} />
-                    <Route path='/docs/object-behaviours' element= {<Object_behaviours />} />  
+                    <Route path='/docs/object-behaviours' element= {<ObjectBehaviours />} />  
 
                     {/* Community and Question Routes  */}
                     <Route path='/community' element={<Community />} />
-                    <Route path='/ask-question' element={<AskQuestion />} />
                     <Route exact path='/question/:id' element={<QuestionDetail />} />
 
                     {/* Profile Routes */}
