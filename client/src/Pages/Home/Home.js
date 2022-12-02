@@ -6,8 +6,9 @@ import PhysicsPic from "../../Assets/Images/physics_example.PNG";
 import ScenePic from "../../Assets/Images/scene_example.png";
 import ScriptingPic from "../../Assets/Images/scripting_example.jpg";
 import CommunityPic from "../../Assets/Images/Gamer_Dev_Pic.jpg";
-import GameEngineMedium from "../../Assets/Images/Game_Engine_Medium.PNG";
+import GameEngine from "../../Assets/Images/GameEngine.png";
 import Game2D from "../../Assets/Images/game_art_1.PNG";
+import HorizonGameEngine from "../../Assets/Images/HorizonGameEngine.png"
 
 // Row = 12 cols or 100%
 function Home() {
@@ -131,7 +132,7 @@ function Home() {
         </Col>
         <Col lg={6} sm={6}>
           <Card style = {{border: "none", paddingTop: "50px"}}>
-            <Card.Img variant="bottom" src={GameEngineMedium} />
+            <Card.Img variant="bottom" src={GameEngine} />
           </Card>
         </Col>
       </Row>
@@ -181,9 +182,9 @@ function Home() {
           </Card>
         </Col>
         <Col lg={6} sm={6}>
-          <Card style = {{border: "none"}}>
-            <Card.Title style = {{padding: "25px"}}>Picture</Card.Title>
-
+          <Card style = {{border: "none", paddingBottom: "50px"}}>
+            <Card.Title style = {{padding: "25px"}}></Card.Title>
+            <Card.Img variant="bottom" src={HorizonGameEngine} />
           </Card>
         </Col>
       </Row>
