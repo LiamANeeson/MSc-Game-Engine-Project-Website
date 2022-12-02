@@ -16,7 +16,7 @@ function CreateProject() {
         <div className='cp-content'>
           <h2>Opening a new project</h2>
           <p>Once the Horizon Game Engine has been opened, you will see the Horizon game engine home screen below: </p>
-          <img src={empty_engine} alt="HorizonGE empty dashboard" width='750px'></img>
+          <img src={empty_engine} alt="HorizonGE empty dashboard" className='pic-width'></img>
           <p> Figure 1: Horizon game engine – empty engine dashboard </p>
           <p> Next, we need to select the file menu to open the option to select a ‘New Project’.</p> 
           <img src={File_menu} alt="HorizonGE File menu"></img>
@@ -28,7 +28,7 @@ function CreateProject() {
           <img src={new_project_dialog} alt="HorizonGE File menu"></img>
           <p> Figure 4: Horizon game engine – File dialog box </p>
           <p> Once you have made your project you will be redirected to the main Horizon game engine desktop where your new project will be loaded and ready for you to build your very own scene! See the figure below for reference. </p> 
-          <img src={new_project_setup} alt="HorizonGE project dashboard" width='750px'></img>
+          <img src={new_project_setup} alt="HorizonGE project dashboard" className='pic-width'></img>
           <p> Figure 5: Horizon game engine – New project dashboard</p>
         </div>
     </div>

@@ -23,7 +23,7 @@ function AddObjects() {
           <h2>Adding a new object</h2>
           <p>Now we can look at how to create a new object within our new scene!
              We will continue with our scene (S1) as shown below. </p>
-          <img src={new_scene_toggle} width='750px'></img>
+          <img src={new_scene_toggle} className='pic-width' ></img>
           <p>Figure 1: Horizon game engine – Scene setup </p>
           <p>First, you will need to right-click anywhere in the ‘Object Hierarchy’, 
             then, click ‘create empty’. We can see this in the figure below.</p>
@@ -42,32 +42,32 @@ function AddObjects() {
               to you in the components screen. To render the square on click on ‘Add component’ then ‘RenderComponent’.
                You may need to separate the two squares to see both of your objects on screen. Take a look below,
                 the object you just created should have a XY plane highlighting the object and it should look something like this. </p>
-          <img src={new_object_rendered}  width='750px'></img>
+          <img src={new_object_rendered}  className='pic-width'></img>
           <p>Figure 4: Horizon game engine – Selecting & rendering new object </p>
           <p>This looks quite confusing at the moment, as we have two white squares showing on screen.
              You can rename the new object with the ‘tag’ option at the top of the components panel.
               We can change it to ‘Red Box'. To this end, we can also change its colour in the ‘Render’ section.
               You can input the RGB colour or click on the little colour box to manually select it. Take a look below. </p>
-          <img src={new_object_color}  width='750px'></img>
+          <img src={new_object_color}  className='pic-width'></img>
           <p>Figure 5: Horizon game engine – Change name and colour </p>
           <p>Next, we can exercise some functionality over our new object.
              Use the ‘Q’ ’W’ ’E’ ’R’ keys to select different functionalities on the object.
               ‘Q‘ is the base with no functionality, ‘W’ provides manoeuvrability in terms of the position on the plane,
                ‘E’ provides functionality for rotation and ‘R’ will provide functionality for scale.
                 We can see how in the images below these functions are implemented. </p>
-          <img src={q_func} max-width='750px'></img>
+          <img src={q_func} className='pic-max-width'></img>
           <p>Figure 6: Horizon game engine – Q selected </p>
-          <img src={w_func} max-width='750px'></img>
+          <img src={w_func} className='pic-max-width'></img>
           <p>Figure 7: Horizon game engine – W selected </p>
-          <img src={e_func} max-width='750px'></img>          
+          <img src={e_func} className='pic-max-width'></img>          
           <p>Figure 8: Horizon game engine – E selected </p>
-          <img src={r_func} max-width='750px'></img>
+          <img src={r_func} className='pic-max-width'></img>
           <p>Figure 9: Horizon game engine – R selected </p>
           <p>Finally, we can look at how to delete our new object.
              Simply click back on the ‘Red Box’ in the ‘Object Hierarchy’ and then right-click.
               Click on ‘Delete’ to delete the object, the same goes for the
                other options ‘Copy’, ‘Paste’ & ‘Duplicate’. </p>
-          <img src={delete_object} width='750px'></img>
+          <img src={delete_object} className='pic-width'></img>
           <p>Figure 10: Horizon game engine – Delete object </p>
         </div>
       </div> 

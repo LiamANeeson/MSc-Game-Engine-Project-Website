@@ -9,3 +9,11 @@
   width: 60%;
   padding: 10px;
 }
+
+.pic-width{
+  width: 750px;
+}
+
+.pic-max-width{
+  max-width: 750px;
+}
