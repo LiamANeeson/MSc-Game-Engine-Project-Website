@@ -235,6 +235,19 @@ const getSavedQuestions = async (req, res) => {
   }
 };
 
+const getCreatedQuestions = async (req, res) => {
+    try {
+        const userEmail = req.user.email;
+        const createdQuestions = await Question.find({ 'userObj.email': userEmail });
+
+        createdQuestionsArray = createdQuestions ? createdQuestions.map(question => question) : []
+        res.json({ createdQuestions: createdQuestionsArray })
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json({ msg: err.message });
+    }
+};
+
 module.exports = {
   createQuestion,
   getQuestions,
@@ -245,5 +258,6 @@ module.exports = {
   downVoteQuestion,
   followQuestion,
   saveQuestion,
-  getSavedQuestions
+  getSavedQuestions,
+  getCreatedQuestions
 };
