@@ -49,6 +49,7 @@ const resetPassword = async (userData) => {
 }
 
 const login = async (userData) => {
+    localStorage.clear();
     const response = await axios.post(API_URL + 'login', userData)
     if (response.data) {
         localStorage.setItem('userName', JSON.stringify(response.data.name))
@@ -82,8 +83,7 @@ const uploadFile = async (file) => {
 }
 
 const logout = () => {
-    localStorage.removeItem('user')
-    localStorage.removeItem('profile')
+    localStorage.clear();
 }
 
 const authService = {
@@ -91,7 +91,9 @@ const authService = {
     login,
     logout,
     updateProfile,
-    uploadFile
+    uploadFile,
+    forgot,
+    resetPassword
 }
 
 export default authService
