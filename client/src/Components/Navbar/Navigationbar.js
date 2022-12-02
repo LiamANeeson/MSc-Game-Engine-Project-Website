@@ -25,6 +25,7 @@ function Navigationbar() {
                                 <Nav.Link href="/tutorial">Tutorial</Nav.Link>
                                 <Nav.Link href="/docs">Documentation</Nav.Link>
                                 <Nav.Link href="/community">Community</Nav.Link>
+                                <Nav.Link href="/uploadFile">Games</Nav.Link>
                             </Nav>
                             <Nav>
                                 <Nav.Link href="/logout">Log out</Nav.Link>
