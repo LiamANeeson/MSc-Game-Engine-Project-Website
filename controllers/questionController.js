@@ -1,13 +1,14 @@
 const Question = require("../models/questionModel");
-const User = require("../models/userModel");
 
 //Create a new question.
 const createQuestion = async (req, res) => {
   const information = req.body;
+  console.log(req.user);
   const newQuestion = new Question({
     ...information,
     userObj: req.user,
   });
+  //console.log(newQuestion);
   try {
     await newQuestion.save();
     res.status(201).json(newQuestion);
@@ -19,10 +20,13 @@ const createQuestion = async (req, res) => {
 //Get all questions.
 const getQuestions = async (req, res) => {
   try {
+
     const page = parseInt(req.query.page) - 1 || 0;
     const limit = parseInt(req.query.limit) || 5;
     const search = req.query.search || "";
     let sort = req.query.sort || "createdAt";
+
+    let isAll = req.query.isAll;
 
     req.query.sort ? (sort = req.query.sort.split(",")) : (sort = [sort]);
     let sortBy = {};
@@ -32,18 +36,30 @@ const getQuestions = async (req, res) => {
       sortBy[sort[0]] = "asc";
     }
 
+    let where = {};
+
+    if (isAll == "true") {
+      where = {
+        name: { $regex: search, $options: "i" }
+      };
+    }
+    else {
+      where = {
+        name: { $regex: search, $options: "i" },
+        answers: { $eq: [] },
+      };
+    }
+
     // const questions = await Question.find({})
 
-    const questions = await Question.find({
-      name: { $regex: search, $options: "i" },
-    })
+    const questions = await Question.find(where)
       .sort(sortBy)
       .skip(page * limit)
       .limit(limit);
 
-    const total = await Question.countDocuments({
-      name: { $regex: search, $options: "i" },
-    });
+    const total = await Question.countDocuments(where);
+
+    // console.log(questions);
 
     const response = {
       error: false,
@@ -164,6 +180,33 @@ const downVoteQuestion = async (req, res) => {
   }
 };
 
+const followQuestion = async (req, res) => {
+  try {
+    console.log(req.user)
+    const question = await Question.find({
+      _id: req.params.id,
+      followedBy: req.user._id,
+    });
+    if (question.length > 0)
+      return res.status(400).json({ msg: "Something went wrong!" });
+
+    const follow = await Question.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $push: { followedBy: req.user._id },
+      },
+      { new: true }
+    );
+
+    if (!follow)
+      return res.status(400).json({ msg: "This question does not exist." });
+
+    res.json({ msg: "Followed Successfully!" });
+  } catch (err) {
+    console.log(err)
+    return res.status(500).json({ msg: err.message });
+  }
+};
 const saveQuestion = async (req, res) => {
   try {
     // if (req.user.savedPosts.indexOf(req.params.id) !== -1) {
@@ -200,6 +243,7 @@ module.exports = {
   deleteQuestion,
   voteQuestion,
   downVoteQuestion,
+  followQuestion,
   saveQuestion,
   getSavedQuestions
 };
