@@ -11,15 +11,7 @@ const answerSchema = new mongoose.Schema(
       ref: "Question",
     },
     questionId: mongoose.Types.ObjectId,
-    userObj: Object,
-    comment: [{
-      type: new mongoose.Schema({
-        content: String,
-        userObj: Object,
-        createdAt: { type: Date, default: Date.now }
-      }),
-      default: null
-    }]
+    userObj:Object
   },
   {
     timestamps: true,

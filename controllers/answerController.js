@@ -4,43 +4,29 @@ const Question = require("../models/questionModel");
 //create answer
 const createAnswer = async (req, res) => {
   try {
-    const { questionId, content, isComment } = req.body;
-    if (isComment == "1" || isComment == 1) {
-      let answerObj = await Answer.findOneAndUpdate(
-        { _id: questionId },
-        {
-          $push: {
-            comment: {
-              content: content,
-              userObj: req.user
-            }
-          }
-        }
-      );
-      res.json({ answerObj });
-    }
-    else {
-      const question = await Question.findById(questionId);
-      if (!question)
-        return res.status(400).json({ msg: "This question does not exist." });
-      const newAnswer = new Answer({
-        content,
-        questionId,
-        userObj: req.user
-      });
+    const { questionId, content } = req.body;
 
-      await Question.findOneAndUpdate(
-        { _id: questionId },
-        {
-          $push: { answers: newAnswer },
-        },
-        { new: true }
-      );
+    const question = await Question.findById(questionId);
+    if (!question)
+      return res.status(400).json({ msg: "This question does not exist." });
 
-      await newAnswer.save();
+    const newAnswer = new Answer({
+      content,
+      questionId,
+      userObj: req.user
+    });
 
-      res.json({ newAnswer });
-    }
+    await Question.findOneAndUpdate(
+      { _id: questionId },
+      {
+        $push: { answers: newAnswer },
+      },
+      { new: true }
+    );
+
+    await newAnswer.save();
+
+    res.json({ newAnswer });
   } catch (err) {
     return res.status(500).json({ msg: err.message });
   }
