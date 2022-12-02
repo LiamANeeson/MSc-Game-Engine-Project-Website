@@ -102,14 +102,14 @@ export async function createQuestion(title, description, tags) {
 }
 
 //get all question
-export async function getQuestions(authToken, page, sort, sortOrder, search, isAll) {
+export async function getQuestions(authToken, page, sort, sortOrder, search) {
   try {
     const token = authToken;
     let URL;
     if (search === "") {
-      URL = `${apiURL}/question?page=${page}&isAll=${isAll}&sort=${sort},${sortOrder}`;
+      URL = `${apiURL}/question?page=${page}&sort=${sort},${sortOrder}`;
     } else {
-      URL = `${apiURL}/question?page=${page}&sort=${sort},${sortOrder}&search=${search}&isAll=${isAll}`;
+      URL = `${apiURL}/question?page=${page}&sort=${sort},${sortOrder}&search=${search}`;
     }
     const axiosConfig = {
       method: "get",
@@ -161,23 +161,7 @@ export async function getUserSavedQuestions() {
   }
 }
 
-//follow question
-export async function followQuestion(questionID) {
-  try {
-    let token = localStorage.getItem("authToken");
-    const axiosConfig = {
-      method: "patch",
-      url: `${apiURL}/question/${questionID}/follow`,
-      headers: { Authorization: "Bearer " + token },
-    };
-    const response = await axios.default.request(axiosConfig);
-    const normalizedResponse = normalizeServerResponse(response);
-    return [null, normalizedResponse];
-  } catch (error) {
-    const errorObject = normalizeServerError(error);
-    return [errorObject, null];
-  }
-}
+//update question
 
 //delete question
 export async function deleteQuestion(questionID) {
@@ -204,41 +188,6 @@ export async function saveQuestion(questionID) {
     const axiosConfig = {
       method: "patch",
       url: `${apiURL}/question/${questionID}/save`,
-      headers: { Authorization: "Bearer " + token },
-    };
-    const response = await axios.default.request(axiosConfig);
-    const normalizedResponse = normalizeServerResponse(response);
-    return [null, normalizedResponse];
-  } catch (error) {
-    const errorObject = normalizeServerError(error);
-    return [errorObject, null];
-  }
-}
-//Voet for answer
-export async function voteAnswer(questionID) {
-  try {
-    let token = localStorage.getItem("authToken");
-    const axiosConfig = {
-      method: "patch",
-      url: `${apiURL}/answer/${questionID}/vote`,
-      headers: { Authorization: "Bearer " + token },
-    };
-    const response = await axios.default.request(axiosConfig);
-    const normalizedResponse = normalizeServerResponse(response);
-    return [null, normalizedResponse];
-  } catch (error) {
-    const errorObject = normalizeServerError(error);
-    return [errorObject, null];
-  }
-}
-
-//vot down for answer
-export async function downVoteAnswer(questionID) {
-  try {
-    let token = localStorage.getItem("authToken");
-    const axiosConfig = {
-      method: "patch",
-      url: `${apiURL}/answer/${questionID}/down_vote`,
       headers: { Authorization: "Bearer " + token },
     };
     const response = await axios.default.request(axiosConfig);
@@ -305,7 +254,7 @@ export async function getAnswer(answerID) {
 }
 
 //post a answer
-export async function createAnswer(questionId, content, iscomment) {
+export async function createAnswer(questionId, content) {
   try {
     let token = localStorage.getItem("authToken");
     const axiosConfig = {
@@ -315,7 +264,6 @@ export async function createAnswer(questionId, content, iscomment) {
       data: {
         questionId: questionId,
         content: content,
-        isComment: iscomment
       },
     };
     const response = await axios.default.request(axiosConfig);
