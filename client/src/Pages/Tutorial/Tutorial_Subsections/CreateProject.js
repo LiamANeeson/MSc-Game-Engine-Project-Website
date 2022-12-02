@@ -1,12 +1,10 @@
 import React from 'react'
 import Sidebar from '../../../Components/Sidebar/Sidebar'
 
-function CreatingObjects() {
+function CreateProject() {
   return (
-    <div>
-        <Sidebar />
-    </div>
+    <div><Sidebar /></div>
   )
 }
 
-export default CreatingObjects
+export default CreateProject
