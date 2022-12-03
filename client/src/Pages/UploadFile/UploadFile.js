@@ -28,7 +28,7 @@ function UploadFile() {
  
   useEffect(() => {
    
-    fetch("http://localhost:5000/api/users/getfiles")
+    fetch("/api/users/getfiles")
     .then((response) => response.json())
     .then((data) => setGames(data.data));
         $(document).ready(function () {
@@ -60,7 +60,7 @@ saveAs(image, 'image.jpg') // Put your image url here.
     formData.append('tag',tag)
     formData.append('username',!localStorage.getItem("authToken") ? 'Test' :localStorage.getItem("userName") )
     console.log(formData);
-   axios.post("http://localhost:5000/upload", formData, {
+   axios.post("/upload", formData, {
     headers: {
         "content-type": "multipart/formdata"
     }
