@@ -1,17 +1,21 @@
 .bg-navContainer{
-  background: #293241;
+  background: white;
 }
 
 .custom-btn {
-  background-color: #EE6C4D !important; 
-  border-color: #EE6C4D !important;
+  background-color: #F26430 !important; 
+  border: 2px solid !important; 
+  border-color: #F26430 !important;
   outline: none !important ;
   overflow: hidden !important;
-  color: #293241 !important;
+  color: black !important;
+  border-radius: 4px !important;
+  height: auto !important;
+  text-transform: uppercase !important;
 }
 
 .custom-btn:hover {
-  background-color: rgb(208, 81, 58) !important;
-  border-color: #EE6C4D !important;
-  outline: none !important ;
+  background-color: #F26430 !important;
+  border: 2px solid !important;
+  border-color: black !important;
 }

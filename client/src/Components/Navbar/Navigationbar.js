@@ -15,7 +15,7 @@ function Navigationbar() {
 
         return (
             <div>
-                <Navbar collapseOnSelect expand="lg" bg="navContainer" variant="dark" isLoggedIn>
+                <Navbar collapseOnSelect expand="lg" bg="navContainer" variant="light" isLoggedIn>
                     <Container>
                         <Navbar.Brand href="/">Horizon GE</Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

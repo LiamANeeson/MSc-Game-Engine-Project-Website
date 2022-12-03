@@ -4,7 +4,9 @@ import {
   Image,
   Button,
   Row,
-  Col
+  Col,
+  Modal, 
+  Form 
 } from "react-bootstrap";
 import {
   useSelector,
