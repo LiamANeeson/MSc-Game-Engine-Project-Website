@@ -68,6 +68,8 @@
   margin-left: 10px;
   padding-top: 10px;
   font-weight: 800;
+  font-size: 2rem;
+  text-decoration: underline;
 }
 
 .custom-card {
@@ -88,4 +90,10 @@
   border-color: #F2B830 !important;
   border: 2px solid !important;
   border-color: black !important;
+}
+
+.rowSectionII { 
+  background-color: "#009DDC" !important; 
+  height: "24rem" !important; 
+  padding: "2rem" 
 }

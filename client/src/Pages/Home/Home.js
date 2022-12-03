@@ -30,8 +30,9 @@ function Home() {
       </Row>
       {/* ********** End Main Section ********** */}
       {/* ********** Section Section ********** */}
-      <Row style={{ backgroundColor: "#009DDC", height: "24rem", padding: "2rem" }}>
+      <Row style={{ backgroundColor: "#009DDC", padding: "2rem"}}>
         <h3 className="section-title">Why Horizon?</h3>
+        <div className="highlight"></div>
         <Col>
           <Card className="custom-card" style = {{backgroundColor: "#009DDC", border: "none"}}>
             <Card.Title style={{ fontWeight: "800" }}>
