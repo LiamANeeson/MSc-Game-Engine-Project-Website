@@ -9,12 +9,12 @@
 .title {
   font-size: 6rem;
   font-weight: 600;
-  /* margin-top: 5%;
-  margin-left: 10%; */
+  margin-top: 5%;
+  margin-left: 10%;
 }
 
 .sub-title {
-  /* margin-left: 12%; */
+  margin-left: 12%;
 }
 
 .downlad-cta {
@@ -66,7 +66,8 @@
 
 .section-title{
   margin-left: 10px;
-  padding-top: 30px;
+  padding-top: 10px;
+  font-weight: 800;
 }
 
 .custom-card {

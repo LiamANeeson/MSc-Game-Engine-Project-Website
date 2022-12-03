@@ -10,7 +10,7 @@ import * as BiIcons from "react-icons/bi";
 
 // Row = 12 cols or 100%
 function Home() {
-  let iconStyles = { fontSize: "7rem" };
+  let iconStyles = { fontSize: "7rem", marginLeft: "6rem" , marginBottom: "3rem"};
 
   return (
     <Container fluid>
@@ -30,7 +30,7 @@ function Home() {
       </Row>
       {/* ********** End Main Section ********** */}
       {/* ********** Section Section ********** */}
-      <Row style={{ backgroundColor: "#009DDC", height: "24rem" }}>
+      <Row style={{ backgroundColor: "#009DDC", height: "24rem", padding: "2rem" }}>
         <h3 className="section-title">Why Horizon?</h3>
         <Col>
           <Card className="custom-card" style = {{backgroundColor: "#009DDC", border: "none"}}>
@@ -74,12 +74,13 @@ function Home() {
       <Row style={{ 
         backgroundColor: "#009B72", 
         height: "34rem", 
+        padding: "2rem"
         }}>
         <h2 className="section-title">Features</h2>
         <Col>
           <Card className="custom-card" style = {{backgroundColor: "#009B72", border: "none"}}>
             <BsIcons.BsCameraReels style={iconStyles} />
-            <Card.Title style = {{}}>Multiple Cameras</Card.Title>
+            <Card.Title style={{ fontWeight: "800" }}>Multiple Cameras</Card.Title>
             <Card.Text style={{ height: "8rem" }}>
               The Horizon Game Engine allows you to make games from multiple
               perspectives. If you want to make platformers or top down games
@@ -89,9 +90,9 @@ function Home() {
           </Card>
         </Col>
         <Col>
-          <Card className="custom-card" style = {{backgroundColor: "#009B72", border: "none"}}>
+          <Card className="custom-card" style = {{backgroundColor: "#009B72", border: "none", }}>
             <GiIcons.GiMaterialsScience style={iconStyles} />
-            <Card.Title>Physics</Card.Title>
+            <Card.Title style={{ fontWeight: "800" }}>Physics</Card.Title>
             <Card.Text style={{ height: "8rem" }}>
               Add Physics Rigid Bodies and Coliders to all objects in our game
               using our physics system.
@@ -102,7 +103,7 @@ function Home() {
         <Col>
           <Card className="custom-card" style = {{backgroundColor: "#009B72", border: "none"}}>
             <HiIcons.HiDesktopComputer style={iconStyles} />
-            <Card.Title>Custom API</Card.Title>
+            <Card.Title style={{ fontWeight: "800" }}>Custom API</Card.Title>
             <Card.Text style={{ height: "8rem" }}>
               The Horizon Game Engine was built using a custom API which is
               available to anyone. So if you want to view the source code and
@@ -114,7 +115,7 @@ function Home() {
         <Col>
           <Card className="custom-card" style = {{backgroundColor: "#009B72", border: "none"}}>
             <BiIcons.BiCodeAlt style={iconStyles} />
-            <Card.Title>Scripting</Card.Title>
+            <Card.Title style={{ fontWeight: "800" }}>Scripting</Card.Title>
             <Card.Text style={{ height: "8rem" }}>
               Add Scipts to objects in your game using C# or using our visual
               scripting node editor
@@ -124,11 +125,11 @@ function Home() {
         </Col>
       </Row>
       {/* ********** End of Third Section ********** */}
-      <Row style={{ backgroundColor: "#6761A8", height: "18rem" }}>
+      <Row style={{ backgroundColor: "#6761A8", height: "18rem", padding: "2rem" }}>
         <h2 className="section-title">Get Involved</h2>
         <Col>
           <Card className="custom-card" style = {{backgroundColor: "#6761A8", border: "none"}}>
-            <Card.Title>Tutorial</Card.Title>
+            <Card.Title style={{ fontWeight: "800" }}>Tutorial</Card.Title>
             <Card.Body>
               Take a look at our tutorials so you can start building games
             </Card.Body>
@@ -137,7 +138,7 @@ function Home() {
         </Col>
         <Col>
           <Card className="custom-card" style = {{backgroundColor: "#6761A8", border: "none"}}>
-            <Card.Title>Community</Card.Title>
+            <Card.Title style={{ fontWeight: "800" }}>Community</Card.Title>
             <Card.Body>
               Got a question? Ask the Horizon Engine Community{" "}
             </Card.Body>
@@ -145,7 +146,7 @@ function Home() {
           </Card>
         </Col>
       </Row>
-      <Row style={{ backgroundColor: "#009DDC", height: "10rem" }}>
+      <Row style={{ backgroundColor: "#009DDC", height: "10rem", padding: "2rem" }}>
         <h2 className="section-title">Thanks!</h2>
         <Col>
           The Horizon Game Engine Could not have been made without the help of
