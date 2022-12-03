@@ -1,0 +1,9 @@
+.treemap-container{
+    border-left: 2px solid red;
+    padding: 0 10px;
+}
+
+.youtube-iframe{
+    width: 100%;
+    aspect-ratio: 16/9;
+}
