@@ -167,7 +167,7 @@ export async function getCreatedQuestions() {
         let token = localStorage.getItem("authToken");
         const axiosConfig = {
             method: "get",
-            url: `${apiURL}/question/created-posts?questionId=testGame`,
+            url: `${apiURL}/question/created-posts`,
             headers: { Authorization: "Bearer " + token }
         };
         const response = await axios.default.request(axiosConfig);
@@ -178,6 +178,25 @@ export async function getCreatedQuestions() {
         return [errorObject, null];
     }
 }
+
+//Get the questions which have been created by the user
+export async function getFollowedQuestions() {
+    try {
+        let token = localStorage.getItem("authToken");
+        const axiosConfig = {
+            method: "get",
+            url: `${apiURL}/question/followed-posts`,
+            headers: { Authorization: "Bearer " + token }
+        };
+        const response = await axios.default.request(axiosConfig);
+        const normalizedResponse = normalizeServerResponse(response);
+        return [null, normalizedResponse];
+    } catch (error) {
+        const errorObject = normalizeServerError(error);
+        return [errorObject, null];
+    }
+}
+
 
 //follow question
 export async function followQuestion(questionID) {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getUserSavedQuestions, getCreatedQuestions } from "../../features/APIs/api";
+import { getUserSavedQuestions, getCreatedQuestions, getFollowedQuestions } from "../../features/APIs/api";
 import "./Profile.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -29,23 +29,23 @@ function Profile() {
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
 
-    const [savedPosts, setSavedPosts] = useState([]);
+    const [followedPosts, setFollowedPosts] = useState([]);
     const [yourPosts, setYourPosts] = useState([]);
 
     useEffect(() => {
-        getUserSavedQuestions()
+        getFollowedQuestions()
             .then(normalisedResponse => {
-                const savedQuestionsResponse = (
-                    (normalisedResponse[1] !== null && normalisedResponse[1].data.savedQuestions !== 'undefined')
-                        ? normalisedResponse[1].data.savedQuestions
+                const followedQuestionsResponse = (
+                    (normalisedResponse[1] !== null && normalisedResponse[1].data.followedQuestions !== 'undefined')
+                        ? normalisedResponse[1].data.followedQuestions
                         : []
                 )
-                setSavedPosts(savedQuestionsResponse)
+                setFollowedPosts(followedQuestionsResponse)
             })
             .catch(err => {
                 console.log(err)
             })
-    }, [setSavedPosts])
+    }, [setFollowedPosts])
 
     useEffect(() => {
         getCreatedQuestions()
@@ -209,9 +209,9 @@ function Profile() {
                             <Col md="6">
                                 <Card className="mb-4 mb-md-0">
                                     <Card.Body>
-                                        <Card.Text>Saved Posts</Card.Text>
+                                        <Card.Text>Followed Posts</Card.Text>
                                         {
-                                            savedPosts && (savedPosts.length > 0) ? savedPosts.map(question => (
+                                            followedPosts && (followedPosts.length > 0) ? followedPosts.map(question => (
                                                 <Card.Text key={question.name}>
                                                     <Link to={`/question/${question._id}`}>{question.name}</Link>
                                                 </Card.Text>
