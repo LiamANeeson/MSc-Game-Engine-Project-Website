@@ -1,7 +1,7 @@
 import React from 'react'
 import CodeBox from '../../Components/CodeBox/CodeBox'
 import Sidebar from '../../Components/Sidebar/Sidebar'
-import Treemap from '../../Components/TreeMap/Treemap'
+import Treemap from '../../Components/TreeMap/TreeMap'
 import './Tutorial.css'
 
 
@@ -20,7 +20,7 @@ function Tutorial() {
         <h1>Tutorial - Setting up a project</h1>
         <Treemap links={links} />
         <br />
-        <iframe className='youtube-iframe' src="https://www.youtube.com/embed/kX3nB4PpJko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe className='youtube-iframe' src="https://www.youtube.com/embed/-NYTRSvceDs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <br />
 
         <h2 id='open'>Opening a project</h2>
