@@ -179,21 +179,6 @@ function UpdateProfile() {
                             )
                         }}
                     </Formik>
-
-
-                    {/*<form onSubmit={onSubmit}>*/}
-                    {/*    <div class="p-3 py-5">*/}
-                    {/*        <div class="d-flex justify-content-between align-items-center mb-3">*/}
-                    {/*            <h4 class="text-right">Profile Setting</h4>*/}
-                    {/*        </div>*/}
-                    {/*        <div class="row mt-2">*/}
-                    {/*            <div class="col-md-6"><label class="labels">Name</label><input type="text" id='firstName' name='firstName' class="form-control" value={firstName} onChange={onChange} placeholder="first name" /></div>*/}
-                    {/*            <div class="col-md-6"><label class="labels">Last name</label><input type="text" id='lastName' name='lastName' class="form-control" value={lastName} placeholder="last name" onChange={onChange} /></div>*/}
-                    {/*        </div>*/}
-                    {/*        <div class="col-md-12"><label class="labels">User Name</label><input type="text" id='userName' name='userName' class="form-control" placeholder="userName" value={userName} onChange={onChange} /></div>*/}
-                    {/*        <div class="mt-5 text-center"><button class="btn btn-primary btn-lg" type="submit">Save Profile</button></div>*/}
-                    {/*    </div>*/}
-                    {/*</form>*/}
                 </div>
 
             </div>

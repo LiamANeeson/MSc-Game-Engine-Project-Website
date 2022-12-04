@@ -9,6 +9,9 @@ import { toast } from "react-toastify";
 import moment from "moment";
 import { Icon } from "@iconify/react";
 
+import { createAnswer, createAnswerSchema } from '../../validation/postValidation'
+import { Formik } from 'formik';
+
 const QuestionDetail = (props) => {
 
   const messagesEndRef = React.createRef()
@@ -16,7 +19,6 @@ const QuestionDetail = (props) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [answers, setAnswers] = useState([]);
-  const [answer, setAnswer] = useState("");
   const [question, setQuestion] = useState();
 
 
@@ -42,20 +44,18 @@ const QuestionDetail = (props) => {
     init();
   }, []);
 
-  const onChangeAnswer = (e) => {
-    setAnswer(e.target.value);
-  };
-  const postAnswer = async () => {
+
+  const postAnswer = async (data) => {
 
     if (obj && obj.data) {
-      const [postAnswerErr, postAnswerRes] = await Api.createAnswer(obj.data._id, answer, 1);
+      const [postAnswerErr, postAnswerRes] = await Api.createAnswer(obj.data._id, data.answer, 1);
       if (postAnswerRes) {
         window.location.reload();
         toast.success("Answer Posted!");
       }
     }
     else {
-      const [postAnswerErr, postAnswerRes] = await Api.createAnswer(id, answer, 0);
+      const [postAnswerErr, postAnswerRes] = await Api.createAnswer(id, data.answer, 0);
       if (postAnswerRes) {
         window.location.reload();
         toast.success("Answer Posted!");
@@ -379,28 +379,59 @@ const QuestionDetail = (props) => {
               </>
             ) : (
               <>
-                <Form.Group ref={messagesEndRef} controlId="exampleForm.ControlTextarea1">
-                  <Form.Control
-                    as="textarea"
-                    rows="3"
-                    placeholder="Start writing your answer..."
-                    onChange={onChangeAnswer}
-                  />
-                </Form.Group>
+                                  <Formik
+                                      initialValues={{
+                                          answer: '',
+                                      }}
+                                      validationSchema={createAnswerSchema}
+                                      onSubmit={postAnswer}
+                                  >
+                                      {({
+                                          values,
+                                          errors,
+                                          handleSubmit,
+                                          handleChange,
+                                          handleBlur,
+                                          touched
+                                      }) => {
+                                          return (
+                                              <Form onSubmit={handleSubmit}>
+                                                  <Form.Group ref={messagesEndRef} controlId="exampleForm.ControlTextarea1">
+                                                      <Form.Control
+                                                          as="textarea"
+                                                          rows="3"
+                                                          placeholder="Start writing your answer..."
+                                                          name="answer"
+                                                          onChange={handleChange}
+                                                          onBlur={handleBlur}
+                                                          value={values.answer}
+                                                      />
+                                                      {errors.answer && touched.answer ?
+                                                          <div className="error-message">
+                                                              {errors.answer}
+                                                          </div> : null
+                                                      }
+                                                  </Form.Group>
+                                                  <br />
+                                                  <br />
+                                                  {!localStorage.getItem("authToken") ? (
+                                                      <></>
+                                                  ) : (
+                                                      <div style={{ display: "flex", justifyContent: "end" }}>
+                                                              <Button variant="secondary" onClick={handleSubmit}>
+                                                              Post answer
+                                                          </Button>
+                                                      </div>
+                                                  )}
+                                              </Form>
+                                          )
+                                      }}
+                                  </Formik>
+                
               </>
             )}
 
-            <br />
-            <br />
-            {!localStorage.getItem("authToken") ? (
-              <></>
-            ) : (
-              <div style={{ display: "flex", justifyContent: "end" }}>
-                <Button variant="secondary" onClick={postAnswer}>
-                  Post answer
-                </Button>
-              </div>
-            )}
+            
           </Card.Body>
         </Card>
       </div>
