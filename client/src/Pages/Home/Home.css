@@ -1,67 +1,67 @@
-/* @import url('https://fonts.googleapis.com/css?family=Alfa Slab One');
-
 * {
-  font-family: 'Alfa Slab One';
   padding: 0%;
   margin: 0%;
-} */
+} 
 
 .title {
   font-size: 6rem;
   font-weight: 600;
   margin-top: 5%;
-  margin-left: 10%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sub-title {
-  margin-left: 12%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.downlad-cta {
-  color:black;
-  border: 2px solid;
-  background-color: #F26430;
-  border-color: #F26430;
-  width: 40%;
-  padding: 20px;
-  height: auto;
-  font-size: 1.75rem;
-  font-weight: 600;
+
+.download-cta {
+  align-items: center !important;
+  color: black !important;
+  background-color: #F26430 !important;  
+  border: 2px solid !important;
+  border-color: #F26430 !important;
+  width: 50% !important;
+  height: auto !important;
+  font-size: 1.75rem !important;
+  font-weight: 600 !important;
   text-transform: uppercase;
-  margin-top: 50px;
-  margin-left: 200px;
-  border-radius: 4px;
-  box-sizing: border-box;
+  margin-top: 50px !important;
+  border-radius: 4px !important;
+  box-sizing: border-box !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.downlad-cta:hover {
-  background-color: #F26430;
-  border: 2px solid;
-  border-color: black;
+.download-cta:hover {
+  background-color: #F26430 !important;
+  border: 2px solid !important;
+  border-color: black !important;
 }
 
 .game-cta {
-  color:black;
-  border: 2px solid;
-  background-color: #F2B830;
-  border-color: #F2B830;
-  width: 40%;
-  padding: 20px;
-  height: auto;
-  font-size: 1.75rem;
-  margin-top: 50px;
-  margin-left: 200px;
-  margin-bottom: 50px;
-  font-weight: 600;
+  color: black !important;
+  background-color: #F2B830 !important;  
+  border: 2px solid !important;
+  border-color: #F2B830 !important;
+  width: 50% !important;
+  height: auto !important;
+  font-size: 1.75rem !important;
+  font-weight: 600 !important;
   text-transform: uppercase;
-  border-radius: 4px;
-  box-sizing: border-box;
+  margin-top: 50px !important;
+  border-radius: 4px !important;
+  box-sizing: border-box !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .game-cta:hover {
-  border-color: #F2B830;
-  border: 2px solid;
-  border-color: black;
+  background-color: #F2B830 !important;
+  border: 2px solid !important;
+  border-color: black !important;
 }
 
 .section-title{
@@ -70,6 +70,12 @@
   font-weight: 800;
   font-size: 2rem;
   text-decoration: underline;
+}
+
+.custom-cardOne {
+  padding: 10px !important;
+  margin-bottom: 60px !important;
+  background-color: "#009DDC" !important;
 }
 
 .custom-card {
@@ -92,8 +98,108 @@
   border-color: black !important;
 }
 
-.rowSectionII { 
-  background-color: "#009DDC" !important; 
-  height: "24rem" !important; 
-  padding: "2rem" 
+@media only screen and (max-width: 450px) {
+  .download-cta {
+    align-items: center !important;
+    color: black !important;
+    background-color: #F26430 !important;  
+    border: 2px solid !important;
+    border-color: #F26430 !important;
+    width: 50% !important;
+    height: auto !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    margin-top: 50px !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .download-cta:hover {
+    background-color: #F26430 !important;
+    border: 2px solid !important;
+    border-color: black !important;
+  }
+
+  .game-cta {
+    color: black !important;
+    background-color: #F2B830 !important;  
+    border: 2px solid !important;
+    border-color: #F2B830 !important;
+    width: 50% !important;
+    height: auto !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    margin-top: 50px !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .game-cta:hover {
+    background-color: #F2B830 !important;
+    border: 2px solid !important;
+    border-color: black !important;
+  }
+}
+
+@media only screen and (max-width: 385px) {
+  .title {
+    font-size: 4.5rem;
+    font-weight: 600;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .download-cta {
+    align-items: center !important;
+    color: black !important;
+    background-color: #F26430 !important;  
+    border: 2px solid !important;
+    border-color: #F26430 !important;
+    width: 50% !important;
+    height: auto !important;
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    margin-top: 50px !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .download-cta:hover {
+    background-color: #F26430 !important;
+    border: 2px solid !important;
+    border-color: black !important;
+  }
+
+  .game-cta {
+    color: black !important;
+    background-color: #F2B830 !important;  
+    border: 2px solid !important;
+    border-color: #F2B830 !important;
+    width: 50% !important;
+    height: auto !important;
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    margin-top: 50px !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .game-cta:hover {
+    background-color: #F2B830 !important;
+    border: 2px solid !important;
+    border-color: black !important;
+  }
 }
