@@ -30,9 +30,7 @@ function Footer() {
             <h4>Get In Touch</h4>
             <ui className="list-unstyled">
               <li>
-                <a href="https://github.com/TejasJD/HorizonEngine2D">
                   <FaGithub /> GitHub
-                </a>
               </li>
               <li>
                 <FaDiscord /> Discord

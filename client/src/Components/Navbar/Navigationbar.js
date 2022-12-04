@@ -15,7 +15,7 @@ function Navigationbar() {
 
         return (
             <div>
-                <Navbar collapseOnSelect expand="lg" bg="navContainer" variant="light" isLoggedIn>
+                <Navbar collapseOnSelect expand="lg" bg="navContainer" variant="dark" isLoggedIn>
                     <Container>
                         <Navbar.Brand href="/">Horizon GE</Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -71,16 +71,7 @@ function Navigationbar() {
 }
 
 export default Navigationbar;
-  // const [clicked, setClicked] = useState(false);
-  // const menuList = MenuList.map(({ url, title }, index) => {
-  //   return (
-  //     <li key={index}>
-  //       <NavLink exact to={url} activeClassName="active">
-  //         {title}
-  //       </NavLink>
-  //     </li>
-  //   );
-  // });
+
 
 
 

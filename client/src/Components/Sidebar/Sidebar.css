@@ -4,7 +4,7 @@
 }
 
 .sidebar{
-    background: #293241;
+    background: #2A2D34;
     color: #fff;
     height: 100%;
     width: 200px;
@@ -28,7 +28,7 @@
 }
 .logo{
     font-size: 30px;
-    color: #EE6C4D;
+    color: #F26430;
     padding-left: 15%;
 }
 .bars{
@@ -36,7 +36,7 @@
     font-size: 25px;
     margin-left: 50px;
     align-items: right;
-    color: #EE6C4D;
+    color: #F26430;
 }
 .link{
     display: flex;
