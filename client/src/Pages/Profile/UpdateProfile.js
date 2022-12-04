@@ -7,6 +7,10 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { updateProfile, uploadFile } from '../../features/auth/authSlice'
 
+import { profileSchema } from '../../validation/profileValidation'
+import { Formik } from 'formik';
+import { Form, Button } from 'react-bootstrap';
+
 function UpdateProfile() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -28,30 +32,16 @@ function UpdateProfile() {
 
     const [formData, setFormData] = useState({
         email: currentProfile.email,
-        firstName: currentProfile.firstName,
-        lastName: currentProfile.lastName,
         avatar: currentProfile.avatar,
-        userName: JSON.parse(localStorage.getItem('userName'))
     })
 
     const {
         email,
-        firstName,
-        lastName,
         avatar,
-        userName, } = formData
-
-    const onChange = (e) => {
-
-        setFormData((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value
-        }))
-    }
+    } = formData
 
 
-    const onSubmit = (e) => {
-        e.preventDefault()
+    const updateUserProfile = (e) => {
 
         const fileData = new FormData();
         fileData.append("file", file);
@@ -68,10 +58,10 @@ function UpdateProfile() {
 
             const profileData = {
                 email,
-                firstName,
-                lastName,
+                firstName: e.firstName,
+                lastName: e.lastName,
                 avatar: avatarPath,
-                userName
+                userName: e.userName
             }
 
 
@@ -106,19 +96,104 @@ function UpdateProfile() {
                 </div>
 
                 <div class="col-md-5 border-right">
-                    <form onSubmit={onSubmit}>
-                        <div class="p-3 py-5">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-right">Profile Setting</h4>
-                            </div>
-                            <div class="row mt-2">
-                                <div class="col-md-6"><label class="labels">Name</label><input type="text" id='firstName' name='firstName' class="form-control" value={firstName} onChange={onChange} placeholder="first name" /></div>
-                                <div class="col-md-6"><label class="labels">Last name</label><input type="text" id='lastName' name='lastName' class="form-control" value={lastName} placeholder="last name" onChange={onChange} /></div>
-                            </div>
-                            <div class="col-md-12"><label class="labels">User Name</label><input type="text" id='userName' name='userName' class="form-control" placeholder="userName" value={userName} onChange={onChange} /></div>
-                            <div class="mt-5 text-center"><button class="btn btn-primary btn-lg" type="submit">Save Profile</button></div>
-                        </div>
-                    </form>
+                    <Formik
+                        initialValues={{
+                            email: currentProfile.email,
+                            firstName: currentProfile.firstName,
+                            lastName: currentProfile.lastName,
+                            userName: JSON.parse(localStorage.getItem('userName'))
+                        }}
+                        validationSchema={profileSchema}
+                        onSubmit={updateUserProfile}
+                    >
+                        {({
+                            values,
+                            errors,
+                            handleSubmit,
+                            handleChange,
+                            handleBlur,
+                            touched
+                        }) => {
+                            return (
+                                <form onSubmit={handleSubmit} >
+                                    <div class="p-3 py-5">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h4 class="text-right">Profile Setting</h4>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <Form.Group class="col-md-6">
+                                                <Form.Label>First Name</Form.Label>
+                                                <Form.Control type="text"
+                                                    placeholder="Enter first name"
+                                                    name="firstName"
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.firstName}
+                                                />
+                                                {errors.firstName && touched.firstName ?
+                                                    <div className="error-message">
+                                                        {errors.firstName}
+                                                    </div> : null
+                                                }
+                                            </Form.Group>
+
+                                            <Form.Group class="col-md-6">
+                                                <Form.Label>Last Name</Form.Label>
+                                                <Form.Control type="text"
+                                                    placeholder="Enter last name"
+                                                    name="lastName"
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.lastName}
+                                                />
+                                                {errors.lastName && touched.lastName ?
+                                                    <div className="error-message">
+                                                        {errors.lastName}
+                                                    </div> : null
+                                                }
+                                            </Form.Group>
+                                        </div>
+
+                                        <Form.Group class="col-md-12">
+                                            <Form.Label>User Name</Form.Label>
+                                            <Form.Control type="text"
+                                                placeholder="Enter user name"
+                                                name="userName"
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.userName}
+                                            />
+                                            {errors.userName && touched.userName ?
+                                                <div className="error-message">
+                                                    {errors.userName}
+                                                </div> : null
+                                            }
+                                        </Form.Group>
+                                        <div class="mt-5 text-center">
+                                            <Button className='btn btn-primary btn-lg' type="submit">
+                                                Save Profile
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </form>
+                            )
+                        }}
+                    </Formik>
+
+
+                    {/*<form onSubmit={onSubmit}>*/}
+                    {/*    <div class="p-3 py-5">*/}
+                    {/*        <div class="d-flex justify-content-between align-items-center mb-3">*/}
+                    {/*            <h4 class="text-right">Profile Setting</h4>*/}
+                    {/*        </div>*/}
+                    {/*        <div class="row mt-2">*/}
+                    {/*            <div class="col-md-6"><label class="labels">Name</label><input type="text" id='firstName' name='firstName' class="form-control" value={firstName} onChange={onChange} placeholder="first name" /></div>*/}
+                    {/*            <div class="col-md-6"><label class="labels">Last name</label><input type="text" id='lastName' name='lastName' class="form-control" value={lastName} placeholder="last name" onChange={onChange} /></div>*/}
+                    {/*        </div>*/}
+                    {/*        <div class="col-md-12"><label class="labels">User Name</label><input type="text" id='userName' name='userName' class="form-control" placeholder="userName" value={userName} onChange={onChange} /></div>*/}
+                    {/*        <div class="mt-5 text-center"><button class="btn btn-primary btn-lg" type="submit">Save Profile</button></div>*/}
+                    {/*    </div>*/}
+                    {/*</form>*/}
                 </div>
 
             </div>

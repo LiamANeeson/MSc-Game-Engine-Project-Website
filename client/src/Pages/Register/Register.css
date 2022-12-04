@@ -36,3 +36,18 @@
 .submit-btn:hover {
     background-color: rgb(208, 81, 58);
 }
+
+.form {
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+}
+
+.error-message
+
+{
+    color: red;
+    font-weight: bold;
+    font-size:12px;
+}
+

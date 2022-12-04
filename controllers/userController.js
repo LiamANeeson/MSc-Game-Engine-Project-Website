@@ -11,7 +11,8 @@ const nodemailer = require("nodemailer");
 // @route POST /api/users
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
-    const { userName, firstName,lastName, email, password } = req.body;
+    const { userName, firstName, lastName, email, password } = req.body;
+    console.log(req.body)
 
     if (!userName || !email || !password) {
         res.status(400);
@@ -71,17 +72,20 @@ const loginUser = asyncHandler(async (req, res) => {
     // Check if User Email Exists
     const user = await User.findOne({ email });
 
-    await User.updateOne({ email },
-        {
-            token: generateToken(user._id),
-        })
-
-    console.log(user);
+    
 
     const userProfile = await Profile.findOne({ email });
 
     // Check Password Encrypted and Unencrypted
     if (user && (await bcrypt.compare(password, user.password))) {
+
+        await User.updateOne({ email },
+            {
+                token: generateToken(user._id),
+            })
+
+        console.log(user);
+
         res.status(200).json({
             _id: user.id,
             name: user.name,
