@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 import { login, reset } from "../../features/auth/authSlice";
 import "./Login.css";
+import { Col, Container, Row } from "react-bootstrap";
 
 function Login() {
     const [formData, setFormData] = useState({
@@ -55,17 +56,18 @@ function Login() {
         dispatch(login(userData));
     };
     return (
-        <>
-            <container className="login-container">
-                <section className="head">
+        <Container>
+            <Row className="login-container justify-content-center">
+                <Col md='5' style={{ padding: '16px' }} as='section' className="head">
                     <h1>
                         Login <FaSignInAlt />
                     </h1>
                     <p>Log into your Horizon Game Engine account!</p>
-                </section>
-                <form onSubmit={onSubmit} className="submission-form">
-                    <label for="email">Email</label>
+                </Col>
+                <Col md='5' as='form' onSubmit={onSubmit} className="submission-form">
+                    <label htmlFor="email">Email</label>
                     <input
+
                         type="email"
                         className="form-control"
                         id="email"
@@ -74,8 +76,9 @@ function Login() {
                         placeholder="Please Enter your email"
                         onChange={onChange}
                     />
-                    <label for="password">Password</label>
+                    <label htmlFor="password">Password</label>
                     <input
+
                         type="password"
                         className="form-control"
                         id="password"
@@ -92,10 +95,10 @@ function Login() {
                         }}
                     >
                         <div>
-                        <a href="/forgot">
-                            <p style={{ color: "blueviolet", cursor: "pointer" }}>
-                                Forget password?
-                            </p>
+                            <a href="/forgot">
+                                <p style={{ color: "blueviolet", cursor: "pointer" }}>
+                                    Forget password?
+                                </p>
                             </a>
                         </div>
                         {/* <div>
@@ -107,9 +110,9 @@ function Login() {
                     <button type="submit" className="submit-btn">
                         Submit
                     </button>
-                </form>
-            </container>
-        </>
+                </Col>
+            </Row>
+        </Container>
     );
 }
 

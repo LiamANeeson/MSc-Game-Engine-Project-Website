@@ -2,7 +2,7 @@ import styles from "./style.module.css";
 import React from "react";
 import Form from "react-bootstrap/Form";
 
-const Sort = ({ sort, setSort }) => {
+const Sort = ({ sort, setSort, disabled = false }) => {
   const onSelectChange = (e) => {
     console.log(e.target.value);
     setSort({ sort: e.target.value, order: "desc" });
@@ -18,6 +18,7 @@ const Sort = ({ sort, setSort }) => {
     <>
       <div className={styles.container}>
         <Form.Select
+          disabled={disabled}
           aria-label="Default select example"
           onChange={onSelectChange}
         >
