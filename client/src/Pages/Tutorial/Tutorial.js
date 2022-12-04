@@ -1,4 +1,5 @@
 import React from 'react'
+import { Col, Row } from 'react-bootstrap'
 import CodeBox from '../../Components/CodeBox/CodeBox'
 import Sidebar from '../../Components/Sidebar/Sidebar'
 import Treemap from '../../Components/TreeMap/TreeMap'
@@ -15,45 +16,61 @@ function Tutorial() {
   { id: '#getting-started', text: 'Getting Started' }, { id: '#playback', text: 'Controlling playback of 360° videos' }]
   return (
     <div className='tutorial-container'>
-      <Sidebar />
+      {<Sidebar />}
       <div className='tutorial-content-container'>
         <h1>Tutorial - Setting up a project</h1>
         <Treemap links={links} />
         <br />
-        <iframe className='youtube-iframe' src="https://www.youtube.com/embed/-NYTRSvceDs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <br />
+        <Row>
+          <Col md={6}>
+            <iframe className='youtube-iframe' src="https://www.youtube.com/embed/-NYTRSvceDs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </Col>
+          <Col md={6}>
+            <iframe className='youtube-iframe' src="https://www.youtube.com/embed/-NYTRSvceDs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </Col>
+        </Row>
+
 
         <h2 id='open'>Opening a project</h2>
-        <p>
-          Once the Horizon Game Engine has been opened, you will see the Horizon game engine <code className='gray-highlight'>home screen</code>  below:
-        </p>
-        <img className='tutorial-image' src={require('../../static/image1.png')} alt='Home Screen'></img>
-
+        <Row>
+          <Col md={6} as='p'>
+            Once the Horizon Game Engine has been opened, you will see the Horizon game engine <code className='gray-highlight'>home screen</code>  below:
+          </Col>
+          <Col md={6} as='img' className='tutorial-image' src={require('../../static/image1.png')} alt='Home Screen' />
+        </Row>
         <p id='empty'> Figure 1: Horizon game engine - empty </p>
-        <p> Next, we need to select the file menu to open the option to select a <code className='gray-highlight'>New Project</code>.</p>
 
-        <img className='tutorial-image' src={require('../../static/image2.png')} alt='New Project'></img>
+        <Row>
+          <Col md={6} as='p'>Next, we need to select the file menu to open the option to select a <code className='gray-highlight'>New Project</code>.
+          </Col>
+          <Col md={6} as='img' className='tutorial-image' src={require('../../static/image2.png')} alt='New Project' />
+        </Row>
+
 
         <p id='menu'> Figure 2: Horizon game engine – File menu </p>
-        <p>Next, we need to select <code className='gray-highlight'>New Project</code>  as seen in the figure below. </p>
-        <img className='tutorial-image' src={require('../../static/image3.png')} alt='Menu'></img>
-
+        <Row>
+          <Col md={6} as='p'>Next, we need to select <code className='gray-highlight'>New Project</code>  as seen in the figure.
+          </Col>
+          <Col md={6} as='img' className='tutorial-image' src={require('../../static/image3.png')} alt='Menu' />
+        </Row>
 
 
         <p id='menuopen'> Figure 3: Horizon game engine – File menu open </p>
-        <p>Clicking <code className='gray-highlight'>New Project</code> will open up a <code className='gray-highlight'>New Project</code> dialog box where you can select the name of the project you’re creating. To select the directory of where you wish to store your project, click on the 3 dots (...) action box, to open up a folder dialog box where you can select the folder of your choosing. Once you have selected your desired directory, hit the <code className='gray-highlight'>create</code> button to generate your new project. </p>
 
-        <img className='tutorial-image' src={require('../../static/image4.png')} alt='Menu Open'></img>
+        <Row>
+          <Col md={6} as='p'>Clicking <code className='gray-highlight'>New Project</code> will open up a <code className='gray-highlight'>New Project</code> dialog box where you can select the name of the project you’re creating. To select the directory of where you wish to store your project, click on the 3 dots (...) action box, to open up a folder dialog box where you can select the folder of your choosing. Once you have selected your desired directory, hit the <code className='gray-highlight'>create</code> button to generate your new project.
+          </Col>
+          <Col md={6} as='img' className='tutorial-image' src={require('../../static/image4.png')} alt='Menu Open' />
+        </Row>
+
 
         <p id='box'> Figure 4: Horizon game engine – File dialog box </p>
-        <p> Once you have made your project you will be redirected to the main Horizon game engine desktop where your new project will be loaded and ready for you to build your very own game! See the figure below for reference. </p>
 
-
-        <img className='tutorial-image' src={require('../../static/image5.png')} alt='dialog box'></img>
-
-
-
-
+        <Row>
+          <Col md={6} as='p'>Once you have made your project you will be redirected to the main Horizon game engine desktop where your new project will be loaded and ready for you to build your very own game! See the figure below for reference.
+          </Col>
+          <Col md={6} as='img' className='tutorial-image' src={require('../../static/image5.png')} alt='dialog box' />
+        </Row>
         --------------------------------------------------Demo
         <ul>
           <li><code className='gray-highlight'>onYouTubeIframeAPIReady</code> - The API will call this function when the page has finished downloading the JavaScript for the player API, which enables you to then use the API on your page. Thus, this function might create the player objects that you want to display when the page loads.</li>
