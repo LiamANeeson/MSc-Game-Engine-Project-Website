@@ -84,7 +84,7 @@ const onFileChange = event => {
     setImage(img)
 }
 const fetchData = () => {
-  fetch("http://localhost:5000/api/users/getfiles")
+  fetch("/api/users/getfiles")
        .then((response) => response.json())
        .then((data) => setGames(data.data));
 
