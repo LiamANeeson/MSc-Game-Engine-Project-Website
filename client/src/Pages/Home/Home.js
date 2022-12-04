@@ -38,12 +38,12 @@ function Home() {
       </Row>
       {/* ********** End Main Section ********** */}
       {/* ********** Section Section ********** */}
-      <Row style={{ backgroundColor: "#009DDC", padding: "2rem" }}>
+      <Row style={{ backgroundColor: "#8ECAE6", padding: "2rem" }}>
         <h3 className="section-title">Why Horizon?</h3>
         <Col sm={12} md={4} lg={4}>
           <Card
             className="custom-card"
-            style={{ backgroundColor: "#009DDC", border: "none" }}
+            style={{ backgroundColor: "#8ECAE6", border: "none" }}
           >
             <Card.Title style={{ fontWeight: "800" }}>
               Make Your Own Games
@@ -58,7 +58,7 @@ function Home() {
         <Col sm={12} md={4} lg={4}>
           <Card
             className="custom-card"
-            style={{ backgroundColor: "#009DDC", border: "none" }}
+            style={{ backgroundColor: "#8ECAE6", border: "none" }}
           >
             <Card.Title style={{ fontWeight: "800" }}>
               Make Your Own Games
@@ -73,7 +73,7 @@ function Home() {
         <Col sm={12} md={4} lg={4}>
           <Card
             className="custom-card"
-            style={{ backgroundColor: "#009DDC", border: "none" }}
+            style={{ backgroundColor: "#8ECAE6", border: "none" }}
           >
             <Card.Title style={{ fontWeight: "800" }}>
               Make Your Own Games
@@ -90,7 +90,7 @@ function Home() {
       {/*  ********** Third Section ********** */}
       <Row
         style={{
-          backgroundColor: "#009B72",
+          backgroundColor: "#219EBC",
           padding: "2rem",
         }}
       >
@@ -98,7 +98,7 @@ function Home() {
         <Col lg={3} md={6} sm={12}>
           <Card
             className="custom-card"
-            style={{ backgroundColor: "#009B72", border: "none" }}
+            style={{ backgroundColor: "#219EBC", border: "none" }}
           >
             <Card.Title style={{ fontWeight: "800" }}>
               Multiple Cameras
@@ -114,7 +114,7 @@ function Home() {
         <Col lg={3} md={6}>
           <Card
             className="custom-card"
-            style={{ backgroundColor: "#009B72", border: "none" }}
+            style={{ backgroundColor: "#219EBC", border: "none" }}
           >
             <Card.Title style={{ fontWeight: "800" }}>Physics</Card.Title>
             <Card.Text style={{ height: "8rem" }}>
@@ -127,7 +127,7 @@ function Home() {
         <Col lg={3} md={6}>
           <Card
             className="custom-card"
-            style={{ backgroundColor: "#009B72", border: "none" }}
+            style={{ backgroundColor: "#219EBC", border: "none" }}
           >
             <Card.Title style={{ fontWeight: "800" }}>Custom API</Card.Title>
             <Card.Text style={{ height: "8rem" }}>
@@ -141,7 +141,7 @@ function Home() {
         <Col lg={3} md={6}>
           <Card
             className="custom-card"
-            style={{ backgroundColor: "#009B72", border: "none" }}
+            style={{ backgroundColor: "#219EBC", border: "none" }}
           >
             <Card.Title style={{ fontWeight: "800" }}>Scripting</Card.Title>
             <Card.Text style={{ height: "8rem" }}>
@@ -153,12 +153,12 @@ function Home() {
         </Col>
       </Row>
       {/* ********** End of Third Section ********** */}
-      <Row style={{ backgroundColor: "#6761A8", padding: "2rem" }}>
+      <Row style={{ backgroundColor: "#8ECAE6", padding: "2rem" }}>
         <h2 className="section-title">Get Involved</h2>
         <Col sm={6}>
           <Card
             className="custom-card"
-            style={{ backgroundColor: "#6761A8", border: "none" }}
+            style={{ backgroundColor: "#8ECAE6", border: "none" }}
           >
             <Card.Title style={{ fontWeight: "800" }}>Tutorial</Card.Title>
             <Card.Body>
@@ -170,7 +170,7 @@ function Home() {
         <Col sm={6}>
           <Card
             className="custom-card"
-            style={{ backgroundColor: "#6761A8", border: "none" }}
+            style={{ backgroundColor: "#8ECAE6", border: "none" }}
           >
             <Card.Title style={{ fontWeight: "800" }}>Community</Card.Title>
             <Card.Body>
@@ -180,13 +180,13 @@ function Home() {
           </Card>
         </Col>
       </Row>
-      <Row style={{ backgroundColor: "#009DDC", padding: "2rem" }}>
+      <Row style={{ backgroundColor: "white", padding: "2rem" }}>
         <h2 className="section-title">Thanks!</h2>
         <Col>
           <Card
             className="custom-card"
             style={{
-              backgroundColor: "#009DDC",
+              backgroundColor: "white",
               border: "none",
               paddingBottom: "30px",
             }}

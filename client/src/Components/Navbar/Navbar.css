@@ -1,11 +1,11 @@
 .bg-navContainer{
-  background: #2A2D34;
+  background: #023047;
 }
 
 .custom-btn {
-  background-color: #F26430 !important; 
+  background-color: #FB8500 !important; 
   border: 2px solid !important; 
-  border-color: #F26430 !important;
+  border-color: #FB8500 !important;
   outline: none !important ;
   overflow: hidden !important;
   color: black !important;
@@ -15,7 +15,8 @@
 }
 
 .custom-btn:hover {
-  background-color: #F26430 !important;
+  background-color: #FB8500 !important;
   border: 2px solid !important;
   border-color: black !important;
+  text-decoration: underline;
 }
