@@ -45,7 +45,7 @@ export async function resetPass(oldPassword, newPassword, userId) {
   try {
     const axiosConfig = {
       method: "put",
-      url: `http://localhost:5000/api/users/reset-password/${userId}`,
+      url: `/api/users/reset-password/${userId}`,
       data: {
         oldpassword: oldPassword,
         newpassword: newPassword,

@@ -201,7 +201,7 @@ const forgotPassword = async (req, res) => {
         const PasswordToken = bcrypt.hashSync("123456", 10);
         await User.updateOne({ _id: user._id }, { $set: { token: PasswordToken } });
 
-        const url = `http://localhost:3000/user/reset-password?token=${PasswordToken}`;
+        const url = `/user/reset-password?token=${PasswordToken}`;
         await sendMail({
             to: email,
             url: url,

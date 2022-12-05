@@ -9,3 +9,7 @@ export const createPostSchema = yup.object().shape({
 export const createAnswerSchema = yup.object().shape({
     answer: yup.string().required("Please enter your answer"),
 });
+
+export const createCommentSchema = yup.object().shape({
+    answer_comment: yup.string().required("Please enter your comment"),
+});
