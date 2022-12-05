@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Button, Row, Modal, Form } from "react-bootstrap";
+import { Container, Button, Row, Modal, Form, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 

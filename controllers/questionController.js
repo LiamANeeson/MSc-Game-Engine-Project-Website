@@ -1,4 +1,4 @@
-const Question = require("../models/questionModel");
+const {Question, questionToFrontEndView} = require("../models/questionModel");
 
 //Create a new question.
 const createQuestion = async (req, res) => {
@@ -20,7 +20,6 @@ const createQuestion = async (req, res) => {
 //Get all questions.
 const getQuestions = async (req, res) => {
   try {
-
     const page = parseInt(req.query.page) - 1 || 0;
     const limit = parseInt(req.query.limit) || 5;
     const search = req.query.search || "";
@@ -40,10 +39,9 @@ const getQuestions = async (req, res) => {
 
     if (isAll == "true") {
       where = {
-        name: { $regex: search, $options: "i" }
+        name: { $regex: search, $options: "i" },
       };
-    }
-    else {
+    } else {
       where = {
         name: { $regex: search, $options: "i" },
         answers: { $eq: [] },
@@ -61,12 +59,20 @@ const getQuestions = async (req, res) => {
 
     // console.log(questions);
 
+    let userID = null
+
+    if (req.user) {
+      userID = req.user._id
+    } else {
+      userID = null
+    }
+
     const response = {
       error: false,
       total,
       page: page + 1,
       limit,
-      questions,
+      questions: questions.map(question => questionToFrontEndView(question, userID))
     };
     res.status(200).json(response);
   } catch (error) {
@@ -85,8 +91,18 @@ const getQuestionById = async (req, res) => {
     if (!question) {
       return res.status(404).json({ msg: "Question not found" });
     }
-    res.status(200).json(question);
+
+    let userID = null
+
+    if (req.user) {
+      userID = req.user._id
+    } else {
+      userID = null
+    }
+    
+    res.status(200).json(questionToFrontEndView(question, userID))
   } catch (error) {
+    console.log(error)
     return res.status(500).json({ msg: error.message });
   }
 };
@@ -128,62 +144,74 @@ const deleteQuestion = async (req, res) => {
 
 //Vote Question
 const voteQuestion = async (req, res) => {
+  let question;
+
   try {
-    const question = await Question.findOne({
+    question = await Question.findOne({
       _id: req.params.id,
-    });
-
-    if (!question || (question.votes.indexOf(req.user._id) !== -1))
-      return res.status(400).json({ msg: "Something went wrong!" });
-
-      try{
-      await Question.updateOne(
-        { _id: req.params.id },
-        {
-          $push: { votes: req.user._id },
-        }
-      )
-    } catch (ex) {
-      console.log(ex);
-    } finally {
-      console.log(req.params.id, req.user._id, question.votes)
-    }
-    res.json({ msg: "Liked question!" });
+    })
   } catch (err) {
-    return res.status(500).json({ msg: err.message });
+    console.log("ex: ", err)
+    return res.status(500).json({ msg: "Something went wrong!" })
   }
-};
+
+  if (!question || question.votes.indexOf(req.user._id) !== -1){
+    console.log("Already upvoted!")
+    return res.status(400).json({ msg: "Already upvoted!" })
+  }
+
+  try {
+    await Question.updateOne(
+      { _id: req.params.id },
+      {
+        $push: { votes: req.user._id },
+        $pull: { downVotes: req.user._id },
+      }
+    )
+  } catch (err) {
+    console.log("ex: ", err)
+    return res.status(400).json({ msg: "Something went wrong!" })
+  }
+
+  res.json({ msg: "Upvoted question!" })
+}
 
 //DownVote Question
 const downVoteQuestion = async (req, res) => {
-  try {
-    const question = await Question.find({
-      _id: req.params.id,
-      likes: req.user._id,
-    });
-    if (question.length === 0)
-      return res.status(400).json({ msg: "You did not like this post." });
+  let question;
 
-    const unlike = await Question.findOneAndUpdate(
+  try {
+    question = await Question.findOne({
+      _id: req.params.id,
+    })
+  } catch (err) {
+    console.log("ex: ", err)
+    return res.status(500).json({ msg: "Something went wrong!" })
+  }
+  if (!question || question.downVotes.indexOf(req.user._id) !== -1) {
+    console.log("Already downvoted!")
+    return res.status(400).json({ msg: "Already downvoted!" })
+  }
+
+  try {
+    await Question.updateOne(
       { _id: req.params.id },
       {
         $pull: { votes: req.user._id },
-      },
-      { new: true }
-    );
-
-    if (!unlike)
-      return res.status(400).json({ msg: "This post does not exist." });
-
-    res.json({ msg: "Unliked Post!" });
+        $push: { downVotes: req.user._id },
+      }
+    )
   } catch (err) {
-    return res.status(500).json({ msg: err.message });
+    console.log("ex: ", err)
+    return res.status(400).json({ msg: "Something went wrong!" })
   }
+
+  res.json({ msg: "Downvoted question!" })
 };
 
 const followQuestion = async (req, res) => {
   try {
-    console.log(req.user)
+    console.log(req.user);
     const question = await Question.find({
       _id: req.params.id,
       followedBy: req.user._id,
@@ -204,65 +232,75 @@ const followQuestion = async (req, res) => {
 
     res.json({ msg: "Followed Successfully!" });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     return res.status(500).json({ msg: err.message });
   }
 };
 const saveQuestion = async (req, res) => {
   try {
     // if (req.user.savedPosts.indexOf(req.params.id) !== -1) {
-      await User.updateOne(
-        { _id: req.user._id },
-        { $push: { savedPosts: req.params.id } }
-      );
+    await User.updateOne(
+      { _id: req.user._id },
+      { $push: { savedPosts: req.params.id } }
+    );
     // }
     res.json({ msg: "Saved Successfully!" });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     return res.status(500).json({ msg: err.message });
   }
 };
 
 const getSavedQuestions = async (req, res) => {
   try {
-    const savedQuestions = await Question.find({"_id" : {
-      "$in": req.user.savedPosts.slice(0, 5)
-    }})
-    savedQuestionsArray = savedQuestions ? savedQuestions.map(question => question) : []
-    res.json({ savedQuestions: savedQuestionsArray })
+    const savedQuestions = await Question.find({
+      _id: {
+        $in: req.user.savedPosts.slice(0, 5),
+      },
+    });
+    savedQuestionsArray = savedQuestions
+      ? savedQuestions.map((question) => question)
+      : [];
+    res.json({ savedQuestions: savedQuestionsArray });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     return res.status(500).json({ msg: err.message });
   }
 };
 
 const getCreatedQuestions = async (req, res) => {
-    try {
-        const userEmail = req.user.email;
-        const createdQuestions = await Question.find({ 'userObj.email': userEmail });
+  try {
+    const userEmail = req.user.email;
+    const createdQuestions = await Question.find({
+      "userObj.email": userEmail,
+    });
 
-        createdQuestionsArray = createdQuestions ? createdQuestions.map(question => question) : []
-        res.json({ createdQuestions: createdQuestionsArray })
-    } catch (err) {
-        console.log(err)
-        return res.status(500).json({ msg: err.message });
-    }
+    createdQuestionsArray = createdQuestions
+      ? createdQuestions.map((question) => question)
+      : [];
+    res.json({ createdQuestions: createdQuestionsArray });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ msg: err.message });
+  }
 };
 
 const getFollowedQuestions = async (req, res) => {
-    try {
-        var userID = req.user._id;
+  try {
+    var userID = req.user._id;
 
-        const followedQuestions = await Question.find({ 'followedBy': userID });
+    const followedQuestions = await Question.find({ followedBy: userID });
 
-        console.log(followedQuestions)
+    console.log(followedQuestions);
 
-        followedQuestionsArray = followedQuestions ? followedQuestions.map(question => question) : []
-        res.json({ followedQuestions: followedQuestionsArray })
-    } catch (err) {
-        console.log(err)
-        return res.status(500).json({ msg: err.message });
-    }
+    followedQuestionsArray = followedQuestions
+      ? followedQuestions.map((question) => question)
+      : [];
+    res.json({ followedQuestions: followedQuestionsArray });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ msg: err.message });
+  }
 };
 
 module.exports = {
@@ -277,5 +315,5 @@ module.exports = {
   saveQuestion,
   getSavedQuestions,
   getCreatedQuestions,
-  getFollowedQuestions
+  getFollowedQuestions,
 };

@@ -121,6 +121,7 @@ const QuestionDetail = (props) => {
   const downVoteQuestion = async (answer_id = "") => {
     if (answer_id) {
       const [voteErr, voteRes] = await Api.downVoteAnswer(answer_id);
+      console.log(answer_id)
       if (voteErr) {
         toast.error("Something went wrong!");
       }
