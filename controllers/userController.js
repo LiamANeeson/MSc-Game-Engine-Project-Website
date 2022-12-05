@@ -11,9 +11,10 @@ const nodemailer = require("nodemailer");
 // @route POST /api/users
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
-    const { name, email, password } = req.body;
+    const { userName, firstName, lastName, email, password } = req.body;
+    console.log(req.body)
 
-    if (!name || !email || !password) {
+    if (!userName || !email || !password) {
         res.status(400);
         throw new Error("Please Include All Required Fields");
     }
@@ -31,17 +32,22 @@ const registerUser = asyncHandler(async (req, res) => {
 
     // Create user
     const user = await User.create({
-        name,
+        name: userName,
         email,
         password: hashedPassword,
     });
 
+    await User.updateOne({ email },
+        {
+            token: generateToken(user._id),
+        })
+
     //Create profile
     const profile = await Profile.create({
         email,
-        firstName: "",
-        lastName: "",
-        avatar: "",
+        firstName,
+        lastName,
+        avatar: "/uploads/default_user_photo.png",
     });
 
     if (user) {
@@ -66,10 +72,20 @@ const loginUser = asyncHandler(async (req, res) => {
     // Check if User Email Exists
     const user = await User.findOne({ email });
 
+    
+
     const userProfile = await Profile.findOne({ email });
 
     // Check Password Encrypted and Unencrypted
     if (user && (await bcrypt.compare(password, user.password))) {
+
+        await User.updateOne({ email },
+            {
+                token: generateToken(user._id),
+            })
+
+        console.log(user);
+
         res.status(200).json({
             _id: user.id,
             name: user.name,
@@ -108,25 +124,20 @@ const generateToken = (id) => {
 
 
 const resetPassword = async (req, res) => {
-    const { oldpassword, newpassword, token } = req.body;
+    const { oldPassword, newPassword, token } = req.body;
 
     const id = token;
-    //const { id } = req.params;
-    console.log(newpassword, oldpassword, id);
     try {
         let user = await User.findOne({ token: id }).select("+password");
-        console.log(user);
-        if (!user) {
-            return res.status(400).json({ msg: "User not found" });
+
+        console.log(user)
+
+        if (!(await bcrypt.compare(oldPassword, user.password))) {
+            return res.status(400).json({ msg: "Old Password does not match" });
         }
 
-        console.log(oldpassword, user.password); //oldpassword.trim()
-
-        if (newpassword != oldpassword) {
-            return res.status(400).json({ msg: "No New and Old password" });
-        }
         const salt = await bcrypt.genSalt(10);
-        changepassword = await bcrypt.hash(newpassword, salt);
+        changepassword = await bcrypt.hash(newPassword, salt);
         await User.findByIdAndUpdate(user._id, {
             $set: { password: changepassword },
         });

@@ -9,11 +9,15 @@ const {
   voteQuestion,
   downVoteQuestion,
   saveQuestion,
-  getSavedQuestions
+  getSavedQuestions,
+  getCreatedQuestions,
+  getFollowedQuestions
 } = require("../controllers/questionController");
 const { protect } = require("../middleware/authMiddleware");
 
 router.get("/saved-posts", protect, getSavedQuestions); // Route For Getting Questions Saved by user. Order matters...
+router.get("/created-posts", protect, getCreatedQuestions);
+router.get("/followed-posts", protect, getFollowedQuestions);
 router.post("/", protect, createQuestion);
 router.get("/", getQuestions);
 router.get("/:id", getQuestionById);
