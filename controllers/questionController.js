@@ -129,24 +129,25 @@ const deleteQuestion = async (req, res) => {
 //Vote Question
 const voteQuestion = async (req, res) => {
   try {
-    const question = await Question.find({
+    const question = await Question.findOne({
       _id: req.params.id,
-      votes: req.user._id,
     });
-    if (question.length > 0)
+
+    if (!question || (question.votes.indexOf(req.user._id) !== -1))
       return res.status(400).json({ msg: "Something went wrong!" });
 
-    const vote = await Question.findOneAndUpdate(
-      { _id: req.params.id },
-      {
-        $push: { votes: req.user._id },
-      },
-      { new: true }
-    );
-
-    if (!vote)
-      return res.status(400).json({ msg: "This question does not exist." });
-
+      try{
+      await Question.updateOne(
+        { _id: req.params.id },
+        {
+          $push: { votes: req.user._id },
+        }
+      )
+    } catch (ex) {
+      console.log(ex);
+    } finally {
+      console.log(req.params.id, req.user._id, question.votes)
+    }
     res.json({ msg: "Liked question!" });
   } catch (err) {
     return res.status(500).json({ msg: err.message });

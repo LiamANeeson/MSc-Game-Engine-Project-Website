@@ -16,6 +16,12 @@ const questionSchema = new mongoose.Schema(
                 required: true,
             },
         ],
+        votes : [
+            {
+                type: mongoose.Schema.ObjectId,
+                ref: "User",
+            },
+        ],
         answers: [
             {
                 type: mongoose.Schema.ObjectId,
