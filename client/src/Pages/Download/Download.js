@@ -18,8 +18,8 @@ const downloadImage = (image) => {
       </section>
       </section>
       <section className='download-section'>
-      <button className='download-btn' onClick={() => downloadImage("http://localhost:5000/Upload/HorizonGE.zip")}>Download Horizon Game Engine</button>
-<button className='gm-btn' onClick={() => downloadImage("http://localhost:5000/Upload/HorizonGE.zip")}>Download Dark Trails Game</button>      
+      <button className='download-btn' onClick={() => downloadImage("/Upload/HorizonGE.zip")}>Download Horizon Game Engine</button>
+<button className='gm-btn' onClick={() => downloadImage("/Upload/HorizonGE.zip")}>Download Dark Trails Game</button>      
       </section>
       <section className='git-cta'>
         <h2>Horizon GitHub</h2>
