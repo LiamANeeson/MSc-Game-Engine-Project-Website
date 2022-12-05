@@ -73,14 +73,6 @@ function UploadFile() {
         })
     }
 
-    setSize(size.toFixed(2))
-    setImage(img)
-}
-const fetchData = () => {
-  fetch("/api/users/getfiles")
-       .then((response) => response.json())
-       .then((data) => setGames(data.data));
-
     const onFileChange = event => {
         console.log(event.target.files[0].size / 1024 / 1024);
         let size = event.target.files[0].size / 1024
@@ -96,123 +88,7 @@ const fetchData = () => {
             .then((response) => response.json())
             .then((data) => setGames(data.data));
 
-  return (
-    <Container>
-
-      <Row>
-      <Col md={6}  className="my-5 ">
-          <Card className="p-4 ">
-            <img src="https://3d-ace.com/wp-content/uploads/background_picture_for_2d_game-550x309.jpg" width="100%"/>
-            <h3 className=" mb-3">Upload your own games and Contribute to community</h3>
-            <p>Are you excited to upload your own game and announce to world that you are developing cool games using HorizonEngine.</p>
-            <hr/>
-            <p>You can also download other developers games also. Thats what we call Share and Care !!!
-            </p>
-          </Card>
-        </Col>
-        <Col md={6} className="my-5">
-          { 
-           show1 ? 
-            <Alert variant="danger" >
-            <Alert.Heading>Game Upload Successfully!</Alert.Heading>
-            </Alert>
-          : ''
-          }
-       
-          <Card className="p-4">
-            <div className="text-center">
-              <h3>Uplaod Game</h3>
-            </div>
-            <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Game Name</Form.Label>
-                <Form.Control required type="text" onChange={(e) => setGameNAME(e.target.value)} name="game" placeholder="Enter Game Name"/>
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Tag</Form.Label>
-                <Form.Control required type="text" onChange={(e) => setTag(e.target.value)} name="tag" placeholder="Enter Game Name"/>
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Uplaod File</Form.Label>
-                <Form.Control required type="file"  onChange={onFileChange} name="file"/>
-                {image.preview && <img src={image.preview} width='100' height='100' />}
-
-              </Form.Group>
-
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Description</Form.Label>
-                <Form.Control required as="textarea" onChange={(e) => setDescription(e.target.value)} name="description" rows={3} />
-              </Form.Group>
-
-              <Button variant="primary" type="submit">
-                Submit
-              </Button> 
-            </Form>
-          </Card>
-
-        
-        </Col>
-      </Row>
-      <Table id="example" className="display">
-              <thead>
-                  <tr>
-                  <th>Name</th>
-                    <th>Description</th>
-                    <th>Tag</th>
-                    <th>Uploaded By</th>
-                    <th>Action</th>
-                  </tr>
-              </thead>
-              <tbody>
-              {games && games.length > 0 && games.map((userObj, index) => (
-                <tr key={userObj.id}>
-                    <td>{userObj.name}</td>
-              <td>{userObj.description}</td>
-              <td>{userObj.tag}</td>     
-              <td>{userObj.username}</td>           
-              {/* <td><a href={userObj.files} target="_blank" className="ml-2" download><img src={userObj.files} width="100px" height="100px"/></a></td> */}
-            <td> 
-               <Button variant="primary"  onClick={() => downloadImage(userObj.files)}>Download({userObj.size + "Kb"})</Button>
-              </td> 
-               
-                </tr>
-                 ))}
-              </tbody>
-              <tfoot>
-                  <tr>
-                  <th>Name</th>
-                    <th>Description</th>
-                    <th>Tag</th>
-                    <th>Uploaded By</th>
-                    <th>Action</th>
-                  </tr>
-              </tfoot>
-          </Table>
-
-          {
-          
-            <Modal
-            show={show}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-      onHide={handleClose}
-    >
-      <Modal.Header closeButton>
-      </Modal.Header>
-      <Modal.Body>
-        <p>
-         Please login to upload the file
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-       <Button onClick={handleClose}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-   
-
         LoadDataTable()
-
     }
 
     return (
