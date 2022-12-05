@@ -8,6 +8,10 @@ import { toast } from "react-toastify";
 import { login, reset } from "../../features/auth/authSlice";
 import "./Login.css";
 
+import { userSignInSchema } from '../../validation/userValidation'
+import { Formik } from 'formik';
+import { Form, Button } from 'react-bootstrap';
+
 function Login() {
     const [formData, setFormData] = useState({
         email: "",
@@ -38,22 +42,11 @@ function Login() {
         dispatch(reset());
     }, [user, isError, isSuccess, message, navigate, dispatch]);
 
-    const onChange = (e) => {
-        setFormData((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value,
-        }));
+    const loginUser = (data) => {
+        dispatch(login(data))
     };
 
-    const onSubmit = (e) => {
-        e.preventDefault();
 
-        const userData = {
-            email,
-            password,
-        };
-        dispatch(login(userData));
-    };
     return (
         <>
             <container className="login-container">
@@ -63,51 +56,65 @@ function Login() {
                     </h1>
                     <p>Log into your Horizon Game Engine account!</p>
                 </section>
-                <form onSubmit={onSubmit} className="submission-form">
-                    <label for="email">Email</label>
-                    <input
-                        type="email"
-                        className="form-control"
-                        id="email"
-                        name="email"
-                        value={email}
-                        placeholder="Please Enter your email"
-                        onChange={onChange}
-                    />
-                    <label for="password">Password</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        id="password"
-                        name="password"
-                        value={password}
-                        placeholder="Please enter password"
-                        onChange={onChange}
-                    />
-                    <div
-                        style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            marginTop: "5px",
-                        }}
-                    >
-                        <div>
-                        <a href="/forgot">
-                            <p style={{ color: "blueviolet", cursor: "pointer" }}>
-                                Forget password?
-                            </p>
-                            </a>
-                        </div>
-                        {/* <div>
-              <p style={{ color: "blueviolet", cursor: "pointer" }} onClick={resetPassword} >
-                Reset password
-              </p>
-            </div> */}
-                    </div>
-                    <button type="submit" className="submit-btn">
-                        Submit
-                    </button>
-                </form>
+
+                <Formik
+                    initialValues={{
+                        email: '',
+                        password: '',
+                    }}
+                    validationSchema={userSignInSchema}
+                    onSubmit={loginUser}
+                >
+                    {({
+                        values,
+                        errors,
+                        handleSubmit,
+                        handleChange,
+                        handleBlur,
+                        touched
+                    }) => {
+                        return (
+                            <form onSubmit={handleSubmit} className="submission-form">
+                                <Form.Group>
+                                    <Form.Label>Email</Form.Label>
+                                    <Form.Control type="email"
+                                        placeholder="Enter email"
+                                        name="email"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.email}
+                                    />
+                                    {errors.email && touched.email ?
+                                        <div className="error-message">
+                                            {errors.email}
+                                        </div> : null
+                                    }
+                                </Form.Group>
+
+                                <Form.Group>
+                                    <Form.Label>Password</Form.Label>
+                                    <Form.Control type="password"
+                                        placeholder="Enter password"
+                                        name="password"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.password}
+                                    />
+                                    {errors.password && touched.password ?
+                                        <div className="error-message">
+                                            {errors.password}
+                                        </div> : null
+                                    }
+                                </Form.Group>
+
+                                <Button className='submit-btn' type="submit">
+                                    Submit
+                                </Button>
+                            </form>
+                        )
+                    }}
+                </Formik>
+
             </container>
         </>
     );

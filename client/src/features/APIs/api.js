@@ -45,7 +45,7 @@ export async function resetPass(oldPassword, newPassword, userId) {
   try {
     const axiosConfig = {
       method: "put",
-      url: `http://localhost:5000/api/users/reset-password/${userId}`,
+      url: `/api/users/reset-password/${userId}`,
       data: {
         oldpassword: oldPassword,
         newpassword: newPassword,
@@ -160,6 +160,43 @@ export async function getUserSavedQuestions() {
     return [errorObject, null];
   }
 }
+
+//Get the questions which have been created by the user
+export async function getCreatedQuestions() {
+    try {
+        let token = localStorage.getItem("authToken");
+        const axiosConfig = {
+            method: "get",
+            url: `${apiURL}/question/created-posts`,
+            headers: { Authorization: "Bearer " + token }
+        };
+        const response = await axios.default.request(axiosConfig);
+        const normalizedResponse = normalizeServerResponse(response);
+        return [null, normalizedResponse];
+    } catch (error) {
+        const errorObject = normalizeServerError(error);
+        return [errorObject, null];
+    }
+}
+
+//Get the questions which have been created by the user
+export async function getFollowedQuestions() {
+    try {
+        let token = localStorage.getItem("authToken");
+        const axiosConfig = {
+            method: "get",
+            url: `${apiURL}/question/followed-posts`,
+            headers: { Authorization: "Bearer " + token }
+        };
+        const response = await axios.default.request(axiosConfig);
+        const normalizedResponse = normalizeServerResponse(response);
+        return [null, normalizedResponse];
+    } catch (error) {
+        const errorObject = normalizeServerError(error);
+        return [errorObject, null];
+    }
+}
+
 
 //follow question
 export async function followQuestion(questionID) {

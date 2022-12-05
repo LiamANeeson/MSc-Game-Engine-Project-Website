@@ -235,6 +235,35 @@ const getSavedQuestions = async (req, res) => {
   }
 };
 
+const getCreatedQuestions = async (req, res) => {
+    try {
+        const userEmail = req.user.email;
+        const createdQuestions = await Question.find({ 'userObj.email': userEmail });
+
+        createdQuestionsArray = createdQuestions ? createdQuestions.map(question => question) : []
+        res.json({ createdQuestions: createdQuestionsArray })
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json({ msg: err.message });
+    }
+};
+
+const getFollowedQuestions = async (req, res) => {
+    try {
+        var userID = req.user._id;
+
+        const followedQuestions = await Question.find({ 'followedBy': userID });
+
+        console.log(followedQuestions)
+
+        followedQuestionsArray = followedQuestions ? followedQuestions.map(question => question) : []
+        res.json({ followedQuestions: followedQuestionsArray })
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json({ msg: err.message });
+    }
+};
+
 module.exports = {
   createQuestion,
   getQuestions,
@@ -245,5 +274,7 @@ module.exports = {
   downVoteQuestion,
   followQuestion,
   saveQuestion,
-  getSavedQuestions
+  getSavedQuestions,
+  getCreatedQuestions,
+  getFollowedQuestions
 };
