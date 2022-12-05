@@ -201,8 +201,7 @@ const fetchData = () => {
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button>Close</Button>
-        <Button onClick={handleClose}>Close</Button>
+       <Button onClick={handleClose}>Close</Button>
       </Modal.Footer>
     </Modal>
    
