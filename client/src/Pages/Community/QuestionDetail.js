@@ -23,7 +23,7 @@ const QuestionDetail = (props) => {
   const [question, setQuestion] = useState();
 
   const [showLoading, setShowLoading] = useState(true);
-
+  const [answer_comment, setAnswerComment] = useState("");
 
   const [obj, setObj] = useState({});
 

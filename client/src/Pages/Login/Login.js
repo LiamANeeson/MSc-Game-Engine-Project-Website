@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 import { login, reset } from "../../features/auth/authSlice";
 import "./Login.css";
+import { Col, Container, Row } from "react-bootstrap";
 
 import { userSignInSchema } from '../../validation/userValidation'
 import { Formik } from 'formik';
@@ -48,13 +49,14 @@ function Login() {
 
 
     return (
-        <>
-            <container className="login-container">
-                <section className="head">
+        <Container>
+            <Row className="login-container justify-content-center">
+                <Col md='5' style={{ padding: '16px' }} as='section' className="head">
                     <h1>
                         Login <FaSignInAlt />
                     </h1>
                     <p>Log into your Horizon Game Engine account!</p>
+
                 </section>
 
                 <Formik
