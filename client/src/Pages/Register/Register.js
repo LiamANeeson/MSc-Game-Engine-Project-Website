@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -10,74 +10,40 @@ import { Form, Button } from 'react-bootstrap';
 
 import { register, reset } from '../../features/auth/authSlice'
 import './Register.css'
-import { Col, Container, Row } from 'react-bootstrap'
 
 
 function Register() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: '',
-        password_confirm: '',
-    })
-
-    const { name, email, password, password_confirm } = formData
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const { user, isError, isSuccess, message } = useSelector(
         (state) => state.auth
-    )
+      )
 
     useEffect(() => {
-        if (isError) {
+        if(isError) {
             toast.error(message)
         }
 
-        if (isSuccess || user) {
+        if(isSuccess || user) {
             navigate('/profile')
             window.location.reload(false);
         }
 
         dispatch(reset())
-    }, [user, isError, isSuccess, message, navigate, dispatch])
+    },[user, isError, isSuccess, message, navigate, dispatch])
 
-
-    const onChange = (e) => {
-        setFormData((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value
-        }))
-    }
-
-    const onSubmit = (e) => {
-        e.preventDefault()
-
-        if (password !== password_confirm) {
-            toast.error('Passwords do not match')
-        } else {
-            const userData = {
-                name,
-                email,
-                password,
-            }
-
-            dispatch(register(userData))
-        }
 
     const registerUser = (data) => {
         dispatch(register(data))
-
     }
 
-    return (
-        <Container fluid>
-            <Row className="register-container">
-                <Col md='6' as='section' className='head'>
+    return(
+        <>
+            <container className="register-container">
+                <section className='head'>
                     <h1>Register <FaUserAlt /></h1>
                     <p>Create an account for Horizon Game Engine!</p>
-
                 </section>
 
 
