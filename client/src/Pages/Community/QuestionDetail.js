@@ -20,7 +20,7 @@ const QuestionDetail = (props) => {
   const [question, setQuestion] = useState();
   const [loading, setLoading] = useState(false)
   const [showLoading, setShowLoading] = useState(true);
-
+  const [showLoading, setShowLoading] = useState(true);
   const [answer_comment, setAnswerComment] = useState("");
 
   const [obj, setObj] = useState({});
@@ -35,7 +35,6 @@ const QuestionDetail = (props) => {
         for (let i = 0; i < answerID.length; i++) {
           const [err, res] = await Api.getAnswer(answerID[i]);
           ans.push(res);
-          setAnswers(ans);
         }
         setAnswers(ans);
         setShowLoading(false);
