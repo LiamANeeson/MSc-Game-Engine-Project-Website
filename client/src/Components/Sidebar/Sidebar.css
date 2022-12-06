@@ -4,7 +4,7 @@
 }
 
 .sidebar{
-    background: #293241;
+    background: #023047;
     color: #fff;
     height: 100%;
     width: 200px;
@@ -28,7 +28,7 @@
 }
 .logo{
     font-size: 30px;
-    color: #EE6C4D;
+    color: #FB8500;
     padding-left: 15%;
 }
 .bars{
@@ -36,7 +36,7 @@
     font-size: 25px;
     margin-left: 50px;
     align-items: right;
-    color: #EE6C4D;
+    color: #FB8500;
 }
 .link{
     display: flex;
@@ -48,7 +48,7 @@
 }
 .link:hover{
     background: #3D5A80;
-    color: #EE6C4D;
+    color: #FB8500;
     transition: all 0.5s;
 }
 /* .active{

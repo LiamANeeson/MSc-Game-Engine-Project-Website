@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css'
 import Navigationbar from './Components/Navbar/Navigationbar';
 import { AuthRoute } from './Components/RouterGuard/routerGuard'
 import Footer from './Components/Footer/Footer'
-import './App.css';
 
 import Profile from './Pages/Profile/Profile';
 import UpdateProfile from './Pages/Profile/UpdateProfile'

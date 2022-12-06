@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Container, Button, Row, Modal, Form, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-
 import "./Community.css";
 import * as Api from "../../features/APIs/api";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +9,6 @@ import Search from "./Search/Search";
 import Sort from "./Sort/Sort";
 import Pagination from "./Pagination/Pagination";
 import Question from "./Question";
-
 import { createPostSchema } from "../../validation/postValidation";
 import { Formik } from "formik";
 

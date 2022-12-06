@@ -21,7 +21,6 @@ function Navigationbar() {
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto">
-                                <Nav.Link href="/about">About</Nav.Link>
                                 <Nav.Link href="/tutorial">Tutorial</Nav.Link>
                                 <Nav.Link href="/docs">Documentation</Nav.Link>
                                 <Nav.Link href="/community">Community</Nav.Link>
@@ -51,7 +50,6 @@ function Navigationbar() {
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto">
-                                <Nav.Link href="/about">About</Nav.Link>
                                 <Nav.Link href="/tutorial">Tutorial</Nav.Link>
                                 <Nav.Link href="/docs">Documentation</Nav.Link>
                                 <Nav.Link href="/community">Community</Nav.Link>
@@ -73,16 +71,7 @@ function Navigationbar() {
 }
 
 export default Navigationbar;
-  // const [clicked, setClicked] = useState(false);
-  // const menuList = MenuList.map(({ url, title }, index) => {
-  //   return (
-  //     <li key={index}>
-  //       <NavLink exact to={url} activeClassName="active">
-  //         {title}
-  //       </NavLink>
-  //     </li>
-  //   );
-  // });
+
 
 
 
