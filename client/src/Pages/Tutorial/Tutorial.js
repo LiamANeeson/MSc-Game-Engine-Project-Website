@@ -35,7 +35,15 @@ function Tutorial() {
       </div>
 
 
-    <div className='tutorial-container'>
+    
+      </div>
+  )
+}
+
+export default Tutorial
+
+{/*Demo code*/}
+{/*<div className='tutorial-container'>
       {<Sidebar />}
       <div className='tutorial-content-container'>
         <h1>Tutorial - Setting up a project</h1>
@@ -165,9 +173,4 @@ function Tutorial() {
           <b> Note: </b> The 360° video playback experience has limited support on mobile devices. On unsupported devices, 360° videos appear distorted and there is no supported way to change the viewing perspective at all, including through the API, using orientation sensors, or responding to touch/drag actions on the device's screen.
         </p>
       </div>
-      </div>
-      </div>
-  )
-}
-
-export default Tutorial
+      </div>*/}

@@ -1,14 +1,22 @@
-.tut-main-container{
+/* .tut-main-container{
     margin: auto;
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
 }
 
 .tut-content{
     margin: auto;
     width: 60%;
     padding: 1%;
-}
+} */
+
+/* @media only screen and (max-width: 425px) {
+    .tut-content{
+        width: 60%;
+        padding: 1%;
+    }
+    
+} */
 
 .here-link{
     color:blue;
@@ -22,7 +30,7 @@
 
 
 .pic-max-width{
-    max-width: 750px;
+    max-width: 60%;
 }
 
 .tut-cta-btn{
@@ -47,6 +55,9 @@
 }
 
 
+/* .center_img_code{
+
+} */
 
 .center_img{
     display: block;
@@ -67,3 +78,4 @@
 .pic-max-width_dwnld{
     max-width: 95%;
 }
+
