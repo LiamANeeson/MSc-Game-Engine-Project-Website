@@ -141,3 +141,34 @@
 .questions-desc:hover {
     color: #0073bb;
 }
+
+.follow-btn {
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.que-tags {
+    text-align: center;
+    align-items: center;
+}
+
+.question-interactions {
+    width: "auto";
+    margin: "40px";
+    padding: "40px";
+}
+
+.question-btn {
+    margin: 20px;
+    height: 70px;
+    background-color: #ec7211;
+    border: 2px solid;
+    border-color: #ec7211;
+    color: black;
+}
+
+.question-btn:hover {
+    background-color: #ec7211;
+    border-color: black;
+    color: black;
+}

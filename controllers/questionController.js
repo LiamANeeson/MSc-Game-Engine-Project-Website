@@ -1,4 +1,5 @@
 const {Question, questionToFrontEndView} = require("../models/questionModel");
+const jwt = require('jsonwebtoken')
 
 //Create a new question.
 const createQuestion = async (req, res) => {
@@ -92,12 +93,16 @@ const getQuestionById = async (req, res) => {
       return res.status(404).json({ msg: "Question not found" });
     }
 
-    let userID = null
+    await Question.updateOne(
+      { _id: questionId },
+      { $inc: { viewCount: 1 } }
+    )
 
-    if (req.user) {
-      userID = req.user._id
-    } else {
-      userID = null
+    let userID = null
+    if (req.headers.authorization) {
+      token = req.headers.authorization.split(' ')[1]
+      const decoded = jwt.verify(token, process.env.JWT_SECRET)
+      userID = decoded.id
     }
     
     res.status(200).json(questionToFrontEndView(question, userID))

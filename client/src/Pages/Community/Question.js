@@ -96,7 +96,7 @@ const Question = ({ questions }) => {
                   </div>
                   <div className="question-answer">
                     <span style={{ fontSize: "1.75rem" }}>
-                      {que.totalVotes}
+                      {que.votes}
                       <br />
                     </span>
                     Votes
@@ -104,7 +104,7 @@ const Question = ({ questions }) => {
                   </div>
                   <div className="question-views">
                     <span style={{ fontSize: "1.75rem" }}>
-                      {que.views}
+                      {que.viewCount}
                       <br />
                     </span>
                     Views

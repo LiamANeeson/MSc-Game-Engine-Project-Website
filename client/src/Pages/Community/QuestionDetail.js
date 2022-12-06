@@ -16,11 +16,15 @@ import {
 } from "../../validation/postValidation";
 import { Formik } from "formik";
 
+import * as AiIcons from "react-icons/ai";
+
 const QuestionDetail = (props) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [answers, setAnswers] = useState([]);
   const [question, setQuestion] = useState();
+  const [isUpvotedByThisUser, setIsUpvotedByThisUser] = useState(false);
+  const [isDownvotedByThisUser, setIsDownvotedByThisUser] = useState(false);
 
   const [showLoading, setShowLoading] = useState(true);
 
@@ -37,6 +41,10 @@ const QuestionDetail = (props) => {
           const [err, res] = await Api.getAnswer(answerID[i]);
           ans.push(res);
         }
+
+        if (response.data.isUpvotedByThisUser) setIsUpvotedByThisUser(true);
+        if (response.data.isDownvotedByThisUser) setIsDownvotedByThisUser(true);
+
         setAnswers(ans);
         setShowLoading(false);
       }
@@ -46,7 +54,7 @@ const QuestionDetail = (props) => {
       }
     };
     init();
-  }, []);
+  }, [Api.getQuestion, setAnswers, setShowLoading]);
   //  console.log( "selected" ,obj);
 
   const postAnswerComment = async (data) => {
@@ -100,7 +108,6 @@ const QuestionDetail = (props) => {
     if (answer_id) {
       const [voteErr, voteRes] = await Api.voteAnswer(answer_id);
       if (voteErr) {
-        console.log('voteErr1', voteErr);
         toast.info("You already liked this question!");
       }
       if (voteRes) {
@@ -109,11 +116,12 @@ const QuestionDetail = (props) => {
     } else {
       const [voteErr, voteRes] = await Api.voteQuestion(id);
       if (voteErr) {
-        console.log('voteErr2', voteErr);
         toast.info("You already liked this question!");
       }
       if (voteRes) {
         toast.success("Question Liked!");
+        setIsUpvotedByThisUser(true);
+        setIsDownvotedByThisUser(false);
       }
     }
   };
@@ -121,7 +129,6 @@ const QuestionDetail = (props) => {
   const downVoteQuestion = async (answer_id = "") => {
     if (answer_id) {
       const [voteErr, voteRes] = await Api.downVoteAnswer(answer_id);
-      console.log(answer_id)
       if (voteErr) {
         toast.error("Something went wrong!");
       }
@@ -135,6 +142,8 @@ const QuestionDetail = (props) => {
       }
       if (voteRes) {
         toast.success("Success!");
+        setIsUpvotedByThisUser(false);
+        setIsDownvotedByThisUser(true);
       }
     }
   };
@@ -165,84 +174,55 @@ const QuestionDetail = (props) => {
           <Card.Body style={{ width: "100%" }}>
             <Card.Text className="question-title">
               <div style={{ display: "flex" }}>
-                <h2 className="question-title">{question?.name}</h2>
+                <h2 className="q-title">{question?.name}</h2>
               </div>
               <div>
                 <p>{question?.description}</p>
               </div>
             </Card.Text>
 
-            <div style={{ display: "flex" }}>
-              <div className="que-tags">
-                {question?.tags.map((tag) => (
-                  <span className="tag">{tag}</span>
-                ))}
-              </div>
-              <div
-                style={{
-                  width: "16%",
-                  marginLeft: "5px",
-                  padding: "12px",
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
+            <div className="que-tags">
+              {question?.tags.map((tag) => (
+                <span className="tag">{tag}</span>
+              ))}
+            </div>
+            <div className="question-interactions">
+              <Button
+                className="question-btn"
+                disabled={!localStorage.getItem("authToken")}
+                onClick={() => followQuestion()}
               >
-                <Button
-                  disabled={!localStorage.getItem("authToken")}
-                  variant="secondary"
-                  onClick={() => followQuestion()}
-                >
-                  Follow
-                </Button>
+                <p className="follow-btn">Follow</p>
+              </Button>
 
-                <Button
-                  disabled={!localStorage.getItem("authToken")}
-                  variant="secondary"
-                  onClick={() => upVoteQuestion()}
-                >
-                  <Icon
-                    icon="ant-design:like"
-                    width="15px"
-                    height="15px"
-                    style={{ cursor: "pointer" }}
-                  />
-                </Button>
-
-                <Button
-                  disabled={!localStorage.getItem("authToken")}
-                  variant="secondary"
-                  onClick={() => downVoteQuestion()}
-                >
-                  <Icon
-                    icon="ant-design:dislike"
-                    width="15px"
-                    height="15px"
-                    style={{ cursor: "pointer" }}
-                  />
-                </Button>
-
-                {/*<div style={{ padding: "5px" }}>
-                <Icon
-                  icon="bxs:pencil"
-                  width="30px"
-                  height="30px"
-                  style={{ cursor: "pointer" }}
+              <Button
+                className="question-btn"
+                disabled={!localStorage.getItem("authToken")}
+                onClick={() => upVoteQuestion()}
+              >
+                <AiIcons.AiFillLike
+                  size={40}
+                  style={{ color: isUpvotedByThisUser ? "green" : null }}
                 />
-              </div>*/}
+              </Button>
 
-                <Button
-                  disabled={!localStorage.getItem("authToken")}
-                  variant="secondary"
-                  onClick={() => deleteQuestion()}
-                >
-                  <Icon
-                    icon="ant-design:delete"
-                    width="15px"
-                    height="15px"
-                    style={{ cursor: "pointer" }}
-                  />
-                </Button>
-              </div>
+              <Button
+                className="question-btn"
+                disabled={!localStorage.getItem("authToken")}
+                onClick={() => downVoteQuestion()}
+              >
+                <AiIcons.AiFillDislike
+                  size={40}
+                  style={{ color: isDownvotedByThisUser ? "red" : null }}
+                />
+              </Button>
+              <Button
+                className="question-btn"
+                disabled={!localStorage.getItem("authToken")}
+                onClick={() => deleteQuestion()}
+              >
+                <AiIcons.AiFillDelete size={40} />
+              </Button>
             </div>
           </Card.Body>
         </Card>
