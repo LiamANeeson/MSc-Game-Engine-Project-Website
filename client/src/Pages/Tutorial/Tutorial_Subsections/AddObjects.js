@@ -35,7 +35,7 @@ function AddObjects() {
           <strong>Step 1:</strong>
           <p>First, you will need to right-click anywhere in the ‘Object Hierarchy’, 
             then, click ‘create empty’. We can see this in the figure below.</p>
-          <img src={new_object_create_empty} className='pic-max-width center_img'></img>
+          <img src={new_object_create_empty} className='pic-max-width_add_obj center_img_no_width'></img>
           <p  className='center_txt'>Figure 3: Horizon game engine – Creating new object </p>
 
           <strong>Step 2:</strong>
@@ -45,7 +45,7 @@ function AddObjects() {
                you will notice that there is still only one white square rendered on screen,
                this is because we will need to render the second object.
              Move onto to the next step to see how we can render this object.</p>
-          <img src={new_game_object} className='pic-max-width center_img'></img>
+          <img src={new_game_object} className='pic-max-width_add_obj center_img_no_width'></img>
           <p  className='center_txt'>Figure 4: Horizon game engine – New object created </p>
 
           <strong>Step 3:</strong>

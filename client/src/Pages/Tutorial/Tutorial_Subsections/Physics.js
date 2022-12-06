@@ -85,7 +85,7 @@ function Physics() {
           <img src={play} className='center_img_no_width'></img>
           <p className='center_txt'>Figure 5: Horizon game engine – Play button</p>
           
-          <img src={stop}  className='center_img_no_width' width='20%'></img>
+          <img src={stop}  className='center_img_no_width'></img>
           <p className='center_txt'>Figure 6: Horizon game engine – Stop button</p>
 
           <img src={Scene_in_play} className='pic-width center_img' ></img>
