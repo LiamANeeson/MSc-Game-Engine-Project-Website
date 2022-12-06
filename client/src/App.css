@@ -37,3 +37,7 @@
     transform: translateY(0px);
   }
 }
+
+.hover:hover {
+  cursor: pointer;
+}

@@ -27,6 +27,7 @@ const QuestionDetail = (props) => {
   const [isDownvotedByThisUser, setIsDownvotedByThisUser] = useState(false);
 
   const [showLoading, setShowLoading] = useState(true);
+  const [answer_comment, setAnswerComment] = useState("");
 
   const [obj, setObj] = useState({});
 
