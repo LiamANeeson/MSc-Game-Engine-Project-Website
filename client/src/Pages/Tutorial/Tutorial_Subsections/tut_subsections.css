@@ -5,9 +5,9 @@
 }
 
 .tut-content{
-    margin: 0 auto 0 auto;
+    margin: auto;
     width: 60%;
-    padding: 10px;
+    padding: 1%;
 }
 
 .here-link{
@@ -16,7 +16,7 @@
 
 .pic-width{
     margin: auto;
-    width: 80%;
+    width: 60%;
     height: auto;
   }
 
@@ -46,10 +46,24 @@
     font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
 }
 
-/*CSS for scripting.js*/
-.preCode .Code {
-    background-color: #eee;
-    border: 1px solid #999;
+
+
+.center_img{
     display: block;
-    padding: 20px 
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;  
+}
+.center_img_no_width{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+      
+}
+
+.center_txt{
+    text-align: center;
+}
+.pic-max-width_dwnld{
+    max-width: 95%;
 }

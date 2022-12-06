@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "proxy": "http://localhost:5000",
+  "proxy": "https://herokugame-eng.herokuapp.com/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
@@ -16,9 +16,10 @@
     "axios": "^1.2.0",
     "bootstrap": "^5.2.3",
     "datatables.net-dt": "^1.13.1",
-    "file-saver": "^2.0.5",
     "date-fns": "^2.29.3",
     "dayjs": "^1.11.5",
+    "file-saver": "^2.0.5",
+    "formik": "^2.2.9",
     "iconify": "^1.4.0",
     "jquery": "^3.6.1",
     "luxon": "^2.5.0",

@@ -1,5 +1,4 @@
 import React from "react";
-import { FaSignInAlt } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { resetPassword1 } from "../../features/auth/authSlice";
 import "./Login.css";
+import { Col, Container, Row } from "react-bootstrap";
 
 function ResetPassword() {
 
@@ -15,16 +15,16 @@ function ResetPassword() {
 
 
   const [formData, setFormData] = useState({
-    oldpassword : "",
-    newpassword : "",
+    oldpassword: "",
+    newpassword: "",
   });
 
-  const { oldpassword,newpassword } = formData;
+  const { oldpassword, newpassword } = formData;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const {user,resetMsg, isError, isSuccess,message } = useSelector(
+  const { user, resetMsg, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
 
@@ -32,17 +32,17 @@ function ResetPassword() {
 
 
     if (isError) {
-    toast.error(resetMsg);
+      toast.error(resetMsg);
     }
-    
+
     else if (isSuccess) {
-    toast.success("Password reset successfully");
-    setTimeout(function(){
-    window.location.href = '/login';
-    },1000);
+      toast.success("Password reset successfully");
+      setTimeout(function () {
+        window.location.href = '/login';
+      }, 1000);
     }
-    }, [user,resetMsg, isError, isSuccess,message,navigate]);
-    
+  }, [user, resetMsg, isError, isSuccess, message, navigate]);
+
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -55,27 +55,27 @@ function ResetPassword() {
 
     let token = searchParams.get('token');
     const userData = {
-      oldpassword ,
+      oldpassword,
       newpassword,
       token
     };
-  //  console.log(userData);
+    //  console.log(userData);
     dispatch(resetPassword1(userData));
   };
   return (
-    <>
-      <container className="login-container">
-        <section className="head">
+    <Container>
+      <Row className="login-container">
+        <Col md={6} as='section' className="head">
           <h1>
-            Login <FaSignInAlt />
+            Reset Password
           </h1>
-          <p>Log into your Horizon Game Engine account!</p>
-        </section>
-        <form onSubmit={onSubmit} className="submission-form">
-        {
-          isError? <p style={{ color:"red" }}>{resetMsg}</p> : ""
-        }
-          
+          <p>Reset your Horizon Game Engine account password!</p>
+        </Col>
+        <Col as='form' md='6' onSubmit={onSubmit} className="submission-form">
+          {
+            isError ? <p style={{ color: "red" }}>{resetMsg}</p> : ""
+          }
+
           <label for="email">New Password</label>
           <input
             type="password"
@@ -99,9 +99,9 @@ function ResetPassword() {
           <button type="submit" className="submit-btn">
             Reset Password
           </button>
-        </form>
-      </container>
-    </>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

@@ -21,15 +21,15 @@ function Physics() {
           <h2>Adding physics</h2>
 
           <p>In this tutorial we look at how we can add physics to scene objects, check out the video for visual reference!</p>
-          <iframe className='youtube-iframe' width="640" height="480" src="https://www.youtube.com/embed/49QSz4Lv5WE" title="YouTube video player" frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <p>Figure 1: Video - Horizon game engine – Adding physics to objects</p>
+          <iframe className='youtube-iframe' src="https://www.youtube.com/embed/49QSz4Lv5WE" title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+          <p className='center_txt'>Figure 1: Video - Horizon game engine – Adding physics to objects</p>
 
           <p>Let’s see if we can add some physics to the objects we created in our scene. 
             We will use the scene we created last time in the ‘Adding objects’ article.
           </p>
-          <img src={two_objects} className='pic-width' ></img>
-          <p>Figure 2: Horizon game engine – Scene setup with two objects rendered</p>
+          <img src={two_objects} className='pic-width center_img' ></img>
+          <p className='center_txt'>Figure 2: Horizon game engine – Scene setup with two objects rendered</p>
 
           <strong>Step 1:</strong>
           <p>
@@ -37,8 +37,8 @@ function Physics() {
             on the right-hand side of the screen. Click ‘RigidBody2DComponent’ to place the object under the 
             influence of the of the physics engine.
           </p>
-          <img src={Add_rigidBody2DComponent} className='pic-width' ></img>
-          <p>Figure 3: Horizon game engine – Add Rigid Body to Red Box</p>
+          <img src={Add_rigidBody2DComponent} className='pic-width center_img' ></img>
+          <p className='center_txt'>Figure 3: Horizon game engine – Add Rigid Body to Red Box</p>
           
           <strong>Step 2:</strong>
           <p>
@@ -69,8 +69,8 @@ function Physics() {
             We will select the dynamic option for our object as this will allow us to see a good demonstration 
             of an object in action. 
           </p>
-          <img src={rigidBody2DComponent_options}></img>
-          <p>Figure 4: Horizon game engine – Rigid Body options</p>
+          <img src={rigidBody2DComponent_options} className='center_img'></img>
+          <p className='center_txt'>Figure 4: Horizon game engine – Rigid Body options</p>
 
           <strong>Step 3:</strong>
           <p>
@@ -82,13 +82,14 @@ function Physics() {
             but it is an import step to complete in bilding your scene. If you haven’t already, click stop on your scene. 
           </p>
           
-          <img src={play}></img>
+          <img src={play} className='center_img_no_width'></img>
+          <p className='center_txt'>Figure 5: Horizon game engine – Play button</p>
           
-          <img src={stop} width='19.9%'></img>
-          <p>Figure 5 & 6: Horizon game engine – Play button and Stop button</p>
+          <img src={stop}  className='center_img_no_width' width='20%'></img>
+          <p className='center_txt'>Figure 6: Horizon game engine – Stop button</p>
 
-          <img src={Scene_in_play} className='pic-width' ></img>
-          <p>Figure 7: Horizon game engine – Scene in play</p>
+          <img src={Scene_in_play} className='pic-width center_img' ></img>
+          <p className='center_txt'>Figure 7: Horizon game engine – Scene in play</p>
 
           <strong>Step 4:</strong>
           <p>
@@ -96,8 +97,8 @@ function Physics() {
             and begin building a fuller scene. Follow the video sequence at the top to set up your scene.  
           </p>
 
-          <img src={scene_layout} className='pic-width' ></img>
-          <p>Figure 8: Horizon game engine – Scene setup with added objects</p>
+          <img src={scene_layout} className='pic-width center_img' ></img>
+          <p className='center_txt'>Figure 8: Horizon game engine – Scene setup with added objects</p>
 
           <strong>Step 5:</strong>
           <p>
@@ -106,8 +107,8 @@ function Physics() {
             detection system for the object. To use this property, select the red box in your scene, 
             click add component and then click ‘BoxCollider2DComponent’. 
           </p>
-          <img src={box_collider} className='pic-width' ></img>
-          <p>Figure 9: Horizon game engine – Box Collider</p>
+          <img src={box_collider} className='pic-width center_img' ></img>
+          <p className='center_txt'>Figure 9: Horizon game engine – Box Collider</p>
 
           <strong>Step 6:</strong>
           <p>
@@ -119,8 +120,8 @@ function Physics() {
             of an object in game development is its bounciness once a constraint is violated.
           </p>
 
-          <img src={scene_play} className='pic-width' ></img>
-          <p>Figure 10: Horizon game engine – scene in play with physics</p>
+          <img src={scene_play} className='pic-width center_img' ></img>
+          <p className='center_txt'>Figure 10: Horizon game engine – scene in play with physics</p>
 
           <p>
             What we are trying to show here is that when we hit play, the red & white will fall at their velocity 

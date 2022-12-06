@@ -11,8 +11,8 @@ function EntitiesComponents() {
         <h2>Entity Component system</h2>
 
         <p>In this tutorial we will discuss how to access some of the components that we can apply to an object entity, check out the video for visual reference!</p>
-        <iframe className='youtube-iframe' width="640" height="480" src="https://www.youtube.com/embed/tDCYkakzbqU" title="YouTube video player" frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe className='youtube-iframe' src="https://www.youtube.com/embed/tDCYkakzbqU" title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         <p>Figure 1: Video - Horizon Game Engine – Exploring components</p>
 
         <p>Now that there are objects on screen to work with, we can start to look 

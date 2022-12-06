@@ -63,14 +63,15 @@ function App() {
                     <Route path='tutorial/ecs' element={<EntitiesComponents />} />
                     <Route path='tutorial/physics' element={<Physics />} />
                     <Route path='tutorial/scripts' element={<Scripting />} />
-                    <Route path='tutorial/sprite-sheet' element={<SpriteSheet />} />
+                    {/*<Route path='tutorial/sprite-sheet' element={<SpriteSheet />} />*/}
                     
                     
+
                     {/* Routes for Docuemtation Pages*/}
-                    <Route path='/docs/overview' element= {<Overview />} />
-                    <Route path='/docs/interface' element= {<Interface />} />
-                    <Route path='/docs/objects' element= {<Objects />} />
-                    <Route path='/docs/object-behaviours' element= {<ObjectBehaviours />} />  
+                    <Route path='/docs/overview' element={<Overview />} />
+                    <Route path='/docs/interface' element={<Interface />} />
+                    <Route path='/docs/objects' element={<Objects />} />
+                    <Route path='/docs/object-behaviours' element={<ObjectBehaviours />} />
 
                     {/* Community and Question Routes  */}
                     <Route path='/community' element={<Community />} />
@@ -81,13 +82,14 @@ function App() {
                     <Route path='/forgot' element={<Forgot />} />
                     <Route path='/user/reset-password' element={<ResetPassword />} />
                     <Route path='/logout' element={<LogOut />} />
-                    <Route path='/register' element={<Register />} />                    
+                    <Route path='/register' element={<Register />} />
                     <Route path='/profile' element={<AuthRoute>
                         <Profile />
                     </AuthRoute>} />
                     <Route path='/updateProfile' element={<AuthRoute>
                         <UpdateProfile />
                     </AuthRoute>} />
+                    <Route path='*' element={<p style={{ padding: '16px', textAlign: 'center' }}>404 Page Not Found</p>} />
                 </Routes>
             </Router>
             <ToastContainer />

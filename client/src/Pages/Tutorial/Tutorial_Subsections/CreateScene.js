@@ -18,28 +18,28 @@ function CreateScene() {
           <h2>Opening a scene</h2>
 
           <p>In this tutorial we look at how we can set up a new scene, check out the video for visual reference!</p>
-          <iframe className='youtube-iframe' width="640" height="480" src="https://www.youtube.com/embed/R0BXTMvrg6w" title="YouTube video player" frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <p>Figure 1: Video - Horizon game engine – New Scene</p>
+          <iframe className='youtube-iframe' src="https://www.youtube.com/embed/R0BXTMvrg6w" title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+          <p  className='center_txt'>Figure 1: Video - Horizon game engine – New Scene</p>
 
           <strong>Step 1:</strong>
           <p>Now that a new project has been opened, you will need to create a scene. To start click on the ‘File’ menu at the top of the screen. See figure below:</p>
-          <img src={File_menu} alt="HorizonGE empty dashboard" ></img>
-          <p>Figure 2: Horizon game engine – File menu </p>
+          <img src={File_menu} alt="HorizonGE empty dashboard" className='center_img_no_width'></img>
+          <p  className='center_txt'>Figure 2: Horizon game engine – File menu </p>
           <strong>Step 2:</strong>
           <p>Next, we need to select ‘New Scene’ as seen in the figure below. </p>
-          <img src={File_menu_open} alt="HorizonGE empty dashboard" ></img>
-          <p>Figure 2: Horizon game engine – File menu open with new scene option </p>
+          <img src={File_menu_open} alt="HorizonGE empty dashboard" className='center_img_no_width'></img>
+          <p  className='center_txt'>Figure 2: Horizon game engine – File menu open with new scene option </p>
           <strong>Step 3:</strong>
           <p>Once, you click on 'File' -&gt; 'New Scene' a dialog box will open. You will be prompted to name your new scene and then hit ‘create’. 
              We can see this process in the visual below.</p>
-          <img src={new_scene_dialog} alt="HorizonGE empty dashboard" ></img>
-          <p>Figure 3: Horizon game engine – Scene dialog box</p>
+          <img src={new_scene_dialog} alt="HorizonGE empty dashboard" className='center_img_no_width'></img>
+          <p  className='center_txt'>Figure 3: Horizon game engine – Scene dialog box</p>
           <strong>Step 4:</strong>
           <p>Now that you have created a new scene, you will be brought back to the
              main dashboard with your new scene pre-loaded. As in the image below. </p>
-          <img src={new_scene_loaded} alt="HorizonGE empty dashboard" className='pic-width' ></img>
-          <p>Figure 4: Horizon game engine – New Scene setup</p>
+          <img src={new_scene_loaded} alt="HorizonGE empty dashboard" className='pic-width center_img' ></img>
+          <p  className='center_txt'>Figure 4: Horizon game engine – New Scene setup</p>
           <strong>Step 5:</strong>
           <p>To create a second scene, simply repeat the process. Once this is completed,
              you will be returned to the main dashboard as seen above.</p>
@@ -47,8 +47,8 @@ function CreateScene() {
           <p>To access your scenes, and to toggle between them simply double click on your scenes folder in the content browser which will reveal your scene files as below.
             To toggle between your scenes, click and drag your desired scene from the
             content browser into the viewport.</p>
-          <img src={new_scene_toggle} alt="HorizonGE empty dashboard" className='pic-width'></img>
-          <p>Figure 5: Horizon game engine – Second Scene toggle files setup</p>
+          <img src={new_scene_toggle} alt="HorizonGE empty dashboard" className='pic-width center_img'></img>
+          <p  className='center_txt'>Figure 5: Horizon game engine – Second Scene toggle files setup</p>
         </div> 
     </div>
   )
