@@ -38,12 +38,6 @@ export const SidebarData = [
         cName: 'row'
     },
     {
-        title: "Sprite Sheets",
-        path: '/tutorial/sprite-sheet',
-        icon: <CgIcons.CgGhost/>,
-        cName: 'row'
-    },
-    {
         title: "Physics",
         path: '/tutorial/physics',
         icon: <GiIcons.GiMaterialsScience/>,
@@ -53,6 +47,12 @@ export const SidebarData = [
         title: "Scripting",
         path: '/tutorial/scripts',
         icon: <RiIcons.RiFileCodeFill/>,
+        cName: 'row'
+    },
+    {
+        title: "Sprite Sheets",
+        path: '/tutorial/sprite-sheet',
+        icon: <CgIcons.CgGhost/>,
         cName: 'row'
     }
 ]

@@ -1,21 +1,31 @@
-.cp-main-container{
+.tut-main-container{
     margin: auto;
     display: flex;
     flex-direction:row;
 }
 
-.cp-content{
+.tut-content{
     margin: 0 auto 0 auto;
     width: 60%;
     padding: 10px;
 }
 
+.here-link{
+    color:blue;
+}
 
 .pic-width{
-    width: 750px;
+    margin: auto;
+    width: 80%;
+    height: auto;
   }
 
-/*.tut-cta-btn{
+
+.pic-max-width{
+    max-width: 750px;
+}
+
+.tut-cta-btn{
     background-color: #EE6C4D !important;
     min-width: 30%;
     cursor: pointer;
@@ -34,4 +44,12 @@
     position: relative;
     text-align: center;
     font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
-}*/
+}
+
+/*CSS for scripting.js*/
+.preCode .Code {
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    padding: 20px 
+}

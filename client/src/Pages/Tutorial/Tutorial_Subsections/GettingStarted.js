@@ -1,7 +1,6 @@
 import React from 'react'
 import Sidebar from '../../../Components/Sidebar/Sidebar'
-import { Button } from 'react-bootstrap';
-import './GettingStarted.css'
+import './tut_subsections.css'
 
 import Download_GE from '../../../Assets/Images/dwnldHGE/Download_GE.png'
 import empty_engine from '../../../Assets/Images/newProject/empty_engine.jpg';
@@ -10,10 +9,11 @@ import empty_engine from '../../../Assets/Images/newProject/empty_engine.jpg';
 
 function GettingStarted() {
   return (
-    <div className='GS-main-container'>
+    <div className='tut-main-container'>
         <Sidebar />
-        <div className='GS-content'>
+        <div className='tut-content'>
           <h2>Getting started with HorizonGE</h2>
+          <p></p>
           <p>Get started with building scenes in HorizonGE, to start select 'Download HorizonGE' from the home page!</p>
           <img src={Download_GE} width='750px'></img>
           <p> Figure 1: Horizon game engine – empty engine dashboard </p>
