@@ -1,5 +1,5 @@
 import React from 'react'
-import DocSidebar from '../../Components/DocSidebar/DocSidebar'
+//import DocSidebar from '../../Components/DocSidebar/DocSidebar'
 import { Button } from 'react-bootstrap';
 import './Documentation.css'
 

@@ -6,9 +6,6 @@ import * as RiIcons from 'react-icons/ri'
 import * as BsIcons from 'react-icons/bs'
 import * as CgIcons from 'react-icons/cg'
 
-// TODO : 
-
-// 2. Change Icons
 export const SidebarData = [
     {
         title: "Getting Started",
@@ -41,12 +38,6 @@ export const SidebarData = [
         cName: 'row'
     },
     {
-        title: "Sprite Sheets",
-        path: '/tutorial/sprite-sheet',
-        icon: <CgIcons.CgGhost/>,
-        cName: 'row'
-    },
-    {
         title: "Physics",
         path: '/tutorial/physics',
         icon: <GiIcons.GiMaterialsScience/>,
@@ -57,5 +48,11 @@ export const SidebarData = [
         path: '/tutorial/scripts',
         icon: <RiIcons.RiFileCodeFill/>,
         cName: 'row'
-    }
+    },
+    {/*{
+        title: "Sprite Sheets",
+        path: '/tutorial/sprite-sheet',
+        icon: <CgIcons.CgGhost/>,
+        cName: 'row'
+    }*/}
 ]

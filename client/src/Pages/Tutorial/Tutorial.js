@@ -2,6 +2,8 @@ import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import CodeBox from '../../Components/CodeBox/CodeBox'
 import Sidebar from '../../Components/Sidebar/Sidebar'
+import { Button } from 'react-bootstrap';
+import './Tutorial.css';
 import Treemap from '../../Components/TreeMap/TreeMap'
 import './Tutorial.css'
 
@@ -15,6 +17,24 @@ function Tutorial() {
 
   { id: '#getting-started', text: 'Getting Started' }, { id: '#playback', text: 'Controlling playback of 360° videos' }]
   return (
+    <div >
+
+      <div className='tut-main-container'>
+        <Sidebar />
+        <div className='tut-content'>
+          <h2>HorizonGE Tutorials</h2>
+          <p className='par-text'>Welcome to our Tutorials page, here you can learn the "ins and outs" 
+            of the Horizon game engine. To navigate through our tutorials use the side bar provided. This will show you how to do things like 
+            opening the game engine, setting up a new project, opening a scene, adding a new object and creating you own game!</p>
+          <p>Use this video for reference throughout the tutorial series to help you follow the steps that will be described. There are also subsection videos in each tutorial to folow also.</p>
+          <iframe className='youtube-iframe' src="https://www.youtube.com/embed/1Gsn6ALwpyM" title="YouTube vceDs"
+             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+             allowFullScreen></iframe>
+          <p>To get started click on the 'Getting started' tab on the sidebar on the left-hand side!</p>
+        </div>
+      </div>
+
+
     <div className='tutorial-container'>
       {<Sidebar />}
       <div className='tutorial-content-container'>
@@ -25,9 +45,7 @@ function Tutorial() {
           <Col md={6}>
             <iframe className='youtube-iframe' src="https://www.youtube.com/embed/-NYTRSvceDs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </Col>
-          <Col md={6}>
-            <iframe className='youtube-iframe' src="https://www.youtube.com/embed/-NYTRSvceDs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </Col>
+          
         </Row>
 
 
@@ -147,7 +165,8 @@ function Tutorial() {
           <b> Note: </b> The 360° video playback experience has limited support on mobile devices. On unsupported devices, 360° videos appear distorted and there is no supported way to change the viewing perspective at all, including through the API, using orientation sensors, or responding to touch/drag actions on the device's screen.
         </p>
       </div>
-    </div>
+      </div>
+      </div>
   )
 }
 
