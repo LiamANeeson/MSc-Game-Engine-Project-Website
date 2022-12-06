@@ -67,3 +67,16 @@
 .pic-max-width_dwnld{
     max-width: 95%;
 }
+
+
+.pre_container{
+    background-color: rgb(250 ,250, 250);
+}
+
+.css_class{
+    display: block;
+    overflow-wrap:normal;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;  
+}

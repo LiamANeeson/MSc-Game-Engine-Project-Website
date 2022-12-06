@@ -15,6 +15,9 @@ import scripting_VS_template from '../../../Assets/Images/scripting/scripting_VS
 import './tut_subsections.css'
 
 function Scripting() {
+
+
+
   return (
     <div className='tut-main-container'>
         <Sidebar />
@@ -62,53 +65,61 @@ function Scripting() {
           <p>This is where we can input our scripts. To test this out copy and paste the following example code below into the player.cs file. 
             It will provide control over the Red Box and allow you to move it around using the WSAD keys. </p>
           <p>Code for Player.cs:</p>
+
+
           
+          
+          
+          <pre class="line-numbers pre_container">
+            <code class="language-csharp css_class">
+                        using Hzn;<br/>
+                        using System;<br/>
+                        <br/>
+                        namespace Hzn<br/>
+                        &#123;<br/>
+                          class Player: GameObject<br/>
+                          &#123;<br/>
+                            private TransformComponent m_Transform;<br/>
+                            private RigidBody2DComponent m_RigidBody;<br/>
+                            <br/>
+                            public void OnCreate()<br/>
+                            &#123; {/*open*/}<br/>
+                              Console.WriteLine($&quot;Player1.OnCreate - &#123;ID&#125;&quot;);<br/>
+                              m_Transform = GetComponent&lt;TransformComponent&gt;();<br/>
+                              m_RigidBody = GetComponent&lt;RigidBody2DComponent&gt;();<br/>
+                            &#125;	{/*close*/}<br/>
+      
+                            public void OnUpdate(float ts)<br/>
+                            &#123; {/*open*/}<br/>
+                              Vector3 velocity = Vector3.Zero;<br/>
+      
+                              //Control direction according to keyboard input<br/>
+                              if(Input.IsKeyDown(KeyCode.W))<br/>
+                              &#123; {/*open*/}<br/>
+                                  velocity.Y = 1.0f;<br/>
+                              &#125;	{/*close*/}<br/>
+                              else if(Input.IsKeyDown(KeyCode.S))<br/>
+                              &#123; {/*open*/}<br/>
+                                  velocity.Y = -1.0f;<br/>
+                              &#125;	{/*close*/}<br/>
+                              if(Input.IsKeyDown(KeyCode.A))<br/>
+                              &#123; {/*open*/}<br/>
+                                  velocity.X = -1.0f;<br/>
+                              &#125;	{/*close*/}<br/>
+                              else if(Input.IsKeyDown(KeyCode.D))<br/>
+                              &#123; {/*open*/}<br/>
+                                  velocity.X = 1.0f;<br/>
+                              &#125;{/*close*/}<br/>
+                              velocity *= 35.0f * ts;<br/>
+      
+                              m_RigidBody.ApplyLinearImpulse(velocity.XY, true);<br/>
+                            &#125;{/*close*/}<br/>
+                            &#125;{/*close*/}<br/>
+                          &#125;	{/*close*/}<br/>
+            </code>
+          </pre>
 
-
-          <CodeBox className='center_img'>
-                {`
-                        using Hzn;
-                        using System;
-                        namespace Hzn
-                        {
-                          class Player : GameObject
-                          {
-                            private TransformComponent m_Transform;
-                            private RigidBody2DComponent m_RigidBody;
-                            public void OnCreate()
-                            {
-                              Console.WriteLine($"Player1.OnCreate - {ID}");
-                  
-                              m_Transform = GetComponent<TransformComponent>();
-                              m_RigidBody = GetComponent<RigidBody2DComponent>();
-                            }
-                            public void OnUpdate(float ts)
-                            {
-                              Vector3 velocity = Vector3.Zero;
-                              //Control direction according to keyboard input
-                              if (Input.IsKeyDown(KeyCode.W))
-                              {
-                                  velocity.Y = 1.0f;
-                              }
-                              else if (Input.IsKeyDown(KeyCode.S))
-                              {
-                                  velocity.Y = -1.0f;
-                              }
-                              if (Input.IsKeyDown(KeyCode.A))
-                              {
-                                  velocity.X = -1.0f;
-                              }
-                              else if (Input.IsKeyDown(KeyCode.D))
-                              {
-                                  velocity.X = 1.0f;
-                              }
-                              velocity *= 35.0f * ts;
-                              m_RigidBody.ApplyLinearImpulse(velocity.XY, true);
-                            }
-                          }
-                        }
-                `}
-          </CodeBox>
+         
 
           <p>
             Your player.cs file should look like this:
