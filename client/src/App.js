@@ -60,11 +60,9 @@ function App() {
                     <Route path='tutorial/create-scene' element={<CreateScene />} />
                     <Route path='tutorial/adding-objects' element={<AddObjects />} />
                     <Route path='tutorial/ecs' element={<EntitiesComponents />} />
+                    <Route path='tutorial/sprite-sheet' element={<SpriteSheet />} />
                     <Route path='tutorial/physics' element={<Physics />} />
                     <Route path='tutorial/scripts' element={<Scripting />} />
-                    {/*<Route path='tutorial/sprite-sheet' element={<SpriteSheet />} />*/}
-                    
-                    
 
                     {/* Routes for Docuemtation Pages*/}
                     <Route path='/docs/overview' element={<Overview />} />

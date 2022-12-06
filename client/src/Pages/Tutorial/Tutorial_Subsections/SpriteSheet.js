@@ -3,9 +3,8 @@ import Sidebar from '../../../Components/Sidebar/Sidebar'
 
 function SpriteSheet() {
   return (
-    <div className='tut-main-container'>
+    <div>
         <Sidebar />
-        <div className='tut-content'></div>
     </div>
   )
 }
