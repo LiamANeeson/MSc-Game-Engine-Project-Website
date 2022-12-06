@@ -15,9 +15,6 @@ import scripting_VS_template from '../../../Assets/Images/scripting/scripting_VS
 import './tut_subsections.css'
 
 function Scripting() {
-
-  let code = `var a = 1` 
-
   return (
     <div className='tut-main-container'>
         <Sidebar />
@@ -68,15 +65,50 @@ function Scripting() {
           
 
 
-          <CodeBox
-            style={{color: "red"}}
-            title="~code-box-dark.js"
-            variant="dark"
-            code={code}
-            id="code-box-dark"
-          
-          />
-
+          <CodeBox className='center_img'>
+                {`
+                        using Hzn;
+                        using System;
+                        namespace Hzn
+                        {
+                          class Player : GameObject
+                          {
+                            private TransformComponent m_Transform;
+                            private RigidBody2DComponent m_RigidBody;
+                            public void OnCreate()
+                            {
+                              Console.WriteLine($"Player1.OnCreate - {ID}");
+                  
+                              m_Transform = GetComponent<TransformComponent>();
+                              m_RigidBody = GetComponent<RigidBody2DComponent>();
+                            }
+                            public void OnUpdate(float ts)
+                            {
+                              Vector3 velocity = Vector3.Zero;
+                              //Control direction according to keyboard input
+                              if (Input.IsKeyDown(KeyCode.W))
+                              {
+                                  velocity.Y = 1.0f;
+                              }
+                              else if (Input.IsKeyDown(KeyCode.S))
+                              {
+                                  velocity.Y = -1.0f;
+                              }
+                              if (Input.IsKeyDown(KeyCode.A))
+                              {
+                                  velocity.X = -1.0f;
+                              }
+                              else if (Input.IsKeyDown(KeyCode.D))
+                              {
+                                  velocity.X = 1.0f;
+                              }
+                              velocity *= 35.0f * ts;
+                              m_RigidBody.ApplyLinearImpulse(velocity.XY, true);
+                            }
+                          }
+                        }
+                `}
+          </CodeBox>
 
           <p>
             Your player.cs file should look like this:
@@ -172,46 +204,3 @@ function Scripting() {
 }
 
 export default Scripting
-
-
-
-/*using Hzn;
-                        using System;
-                        namespace Hzn
-                        {
-                          class Player : GameObject
-                          {
-                            private TransformComponent m_Transform;
-                            private RigidBody2DComponent m_RigidBody;
-                            public void OnCreate()
-                            {
-                              Console.WriteLine($"Player1.OnCreate - {ID}");
-                  
-                              m_Transform = GetComponent<TransformComponent>();
-                              m_RigidBody = GetComponent<RigidBody2DComponent>();
-                            }
-                            public void OnUpdate(float ts)
-                            {
-                              Vector3 velocity = Vector3.Zero;
-                              //Control direction according to keyboard input
-                              if (Input.IsKeyDown(KeyCode.W))
-                              {
-                                  velocity.Y = 1.0f;
-                              }
-                              else if (Input.IsKeyDown(KeyCode.S))
-                              {
-                                  velocity.Y = -1.0f;
-                              }
-                              if (Input.IsKeyDown(KeyCode.A))
-                              {
-                                  velocity.X = -1.0f;
-                              }
-                              else if (Input.IsKeyDown(KeyCode.D))
-                              {
-                                  velocity.X = 1.0f;
-                              }
-                              velocity *= 35.0f * ts;
-                              m_RigidBody.ApplyLinearImpulse(velocity.XY, true);
-                            }
-                          }
-                        }*/

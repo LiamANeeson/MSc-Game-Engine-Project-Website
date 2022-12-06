@@ -24,7 +24,7 @@ function CreateScene() {
 
           <strong>Step 1:</strong>
           <p>Now that a new project has been opened, you will need to create a scene. To start click on the ‘File’ menu at the top of the screen. See figure below:</p>
-          <img src={File_menu} alt="HorizonGE empty dashboard" className=' pic-max-width center_img_no_width'></img>
+          <img src={File_menu} alt="HorizonGE empty dashboard" className='center_img_no_width'></img>
           <p  className='center_txt'>Figure 2: Horizon game engine – File menu </p>
           <strong>Step 2:</strong>
           <p>Next, we need to select ‘New Scene’ as seen in the figure below. </p>
@@ -33,7 +33,7 @@ function CreateScene() {
           <strong>Step 3:</strong>
           <p>Once, you click on 'File' -&gt; 'New Scene' a dialog box will open. You will be prompted to name your new scene and then hit ‘create’. 
              We can see this process in the visual below.</p>
-          <img src={new_scene_dialog} alt="HorizonGE empty dashboard" className='pic-max-width center_img_no_width'></img>
+          <img src={new_scene_dialog} alt="HorizonGE empty dashboard" className='center_img_no_width'></img>
           <p  className='center_txt'>Figure 3: Horizon game engine – Scene dialog box</p>
           <strong>Step 4:</strong>
           <p>Now that you have created a new scene, you will be brought back to the
