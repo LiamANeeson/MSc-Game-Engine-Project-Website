@@ -1,8 +1,9 @@
 import styles from "./style.module.css";
 
-const Search = ({ setSearch }) => {
+const Search = ({ setSearch, disabled }) => {
 	return (
 		<input
+			disabled={disabled}
 			type="text"
 			className={styles.search}
 			placeholder="Search"

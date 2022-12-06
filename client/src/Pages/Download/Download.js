@@ -1,9 +1,13 @@
 import React from 'react'
 import { FaGithub, FaWindows } from 'react-icons/fa'
-
+import { saveAs } from 'file-saver'
 import './Download.css'
 
 function Download() {
+  
+const downloadImage = (image) => {
+  saveAs(image, 'HorizonGE.zip') 
+  }
   return (
     <div className='download-container'>
       <section className='download-info'>
@@ -14,8 +18,8 @@ function Download() {
       </section>
       </section>
       <section className='download-section'>
-        <button className='download-btn'>Download Horizon Game Engine</button>
-        <button className='gm-btn'>Download Dark Trails Game</button>        
+      <button className='download-btn' onClick={() => downloadImage("/Upload/HorizonGE.zip")}>Download Horizon Game Engine</button>
+<button className='gm-btn' onClick={() => downloadImage("/Upload/HorizonGE.zip")}>Download Dark Trails Game</button>      
       </section>
       <section className='git-cta'>
         <h2>Horizon GitHub</h2>

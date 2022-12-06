@@ -1,5 +1,4 @@
 import React from "react";
-import { FaSignInAlt } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { resetPassword1 } from "../../features/auth/authSlice";
 import "./Login.css";
+import { Col, Container, Row } from "react-bootstrap";
 
 function ResetPassword() {
 
@@ -63,15 +63,15 @@ function ResetPassword() {
     dispatch(resetPassword1(userData));
   };
   return (
-    <>
-      <container className="login-container">
-        <section className="head">
+    <Container>
+      <Row className="login-container">
+        <Col md={6} as='section' className="head">
           <h1>
-            Login <FaSignInAlt />
+            Reset Password
           </h1>
-          <p>Log into your Horizon Game Engine account!</p>
-        </section>
-        <form onSubmit={onSubmit} className="submission-form">
+          <p>Reset your Horizon Game Engine account password!</p>
+        </Col>
+        <Col as='form' md='6' onSubmit={onSubmit} className="submission-form">
           {
             isError ? <p style={{ color: "red" }}>{resetMsg}</p> : ""
           }
@@ -99,9 +99,9 @@ function ResetPassword() {
           <button type="submit" className="submit-btn">
             Reset Password
           </button>
-        </form>
-      </container>
-    </>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

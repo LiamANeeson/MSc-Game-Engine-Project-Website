@@ -1,11 +1,11 @@
 import React from "react";
-import { FaSignInAlt } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { forgot, reset } from "../../features/auth/authSlice";
 import "./Login.css";
+import { Col, Container, Row } from "react-bootstrap";
 
 function Forgot() {
   const [formData, setFormData] = useState({
@@ -29,12 +29,12 @@ function Forgot() {
 
     if (isSuccess || forgotMsg) {
       toast.success(forgotMsg.message);
-       setTimeout(function(){
-            window.location.href = '/login';
-      },1000);
+      setTimeout(function () {
+        window.location.href = '/login';
+      }, 1000);
 
     }
-  }, [forgotMsg, isError, isSuccess,message,navigate]);
+  }, [forgotMsg, isError, isSuccess, message, navigate]);
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -52,15 +52,15 @@ function Forgot() {
     dispatch(forgot(userData));
   };
   return (
-    <>
-      <container className="login-container">
-        <section className="head">
+    <Container>
+      <Row className="login-container">
+        <Col md='6' as='section' className="head">
           <h1>
-            Login <FaSignInAlt />
+            Password Recovery
           </h1>
-          <p>Log into your Horizon Game Engine account!</p>
-        </section>
-        <form onSubmit={onSubmit} className="submission-form">
+          <p>reciver your  Horizon Game Engine account password!</p>
+        </Col>
+        <Col md={6} as='form' onSubmit={onSubmit} className="submission-form">
           <label for="email">Email</label>
           <input
             type="email"
@@ -74,9 +74,9 @@ function Forgot() {
           <button type="submit" className="submit-btn">
             Submit Email
           </button>
-        </form>
-      </container>
-    </>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
