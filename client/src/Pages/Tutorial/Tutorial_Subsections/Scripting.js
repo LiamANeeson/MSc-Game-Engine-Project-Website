@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from '../../../Components/Sidebar/Sidebar'
 
 import CodeBox from '../../../Components/CodeBox/CodeBox'
@@ -14,8 +14,104 @@ import scripting_VS_template from '../../../Assets/Images/scripting/scripting_VS
 
 import './tut_subsections.css'
 
+import { Prism as SyntaxHighlighter, style } from 'react-syntax-highlighter';
+import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import {FaRegCopy, FaRegClipboard} from 'react-icons/fa'
+
+
+
+
 function Scripting() {
 
+
+  const [isCopied, setIsCopied] = useState(false);
+
+
+  const codeString = `
+using Hzn;
+using System;
+namespace Hzn
+{
+  class Player : GameObject
+  {
+    private TransformComponent m_Transform;
+    private RigidBody2DComponent m_RigidBody;
+    public void OnCreate()
+    {
+      Console.WriteLine($"Player1.OnCreate - {ID}");
+
+      m_Transform = GetComponent<TransformComponent>();
+      m_RigidBody = GetComponent<RigidBody2DComponent>();
+    }
+    public void OnUpdate(float ts)
+    {
+      Vector3 velocity = Vector3.Zero;
+      //Control direction according to keyboard input
+      if (Input.IsKeyDown(KeyCode.W))
+      {
+          velocity.Y = 1.0f;
+      }
+      else if (Input.IsKeyDown(KeyCode.S))
+      {
+          velocity.Y = -1.0f;
+      }
+      if (Input.IsKeyDown(KeyCode.A))
+      {
+          velocity.X = -1.0f;
+      }
+      else if (Input.IsKeyDown(KeyCode.D))
+      {
+          velocity.X = 1.0f;
+      }
+      velocity *= 35.0f * ts;
+      m_RigidBody.ApplyLinearImpulse(velocity.XY, true);
+    }
+  }
+  
+    `;
+
+    const codeStringPlayer2 = `
+using Hzn;
+using System;
+namespace Hzn
+{
+  class Player2 : GameObject
+  {
+    private TransformComponent m_Transform;
+    private RigidBody2DComponent m_RigidBody;
+    public void OnCreate()
+    {
+      Console.WriteLine($"Player1.OnCreate - {ID}");
+
+      m_Transform = GetComponent<TransformComponent>();
+      m_RigidBody = GetComponent<RigidBody2DComponent>();
+    }
+    public void OnUpdate(float ts)
+    {
+      Vector3 velocity = Vector3.Zero;
+      //Control direction according to keyboard input
+      if (Input.IsKeyDown(KeyCode.Up))
+      {
+          velocity.Y = 1.0f;
+      }
+      else if (Input.IsKeyDown(KeyCode.Down))
+      {
+          velocity.Y = -1.0f;
+      }
+      if (Input.IsKeyDown(KeyCode.Left))
+      {
+          velocity.X = -1.0f;
+      }
+      else if (Input.IsKeyDown(KeyCode.Right))
+      {
+          velocity.X = 1.0f;
+      }
+      velocity *= 35.0f * ts;
+      m_RigidBody.ApplyLinearImpulse(velocity.XY, true);
+    }
+  }
+    `;
 
 
   return (
@@ -65,61 +161,16 @@ function Scripting() {
           <p>This is where we can input our scripts. To test this out copy and paste the following example code below into the player.cs file. 
             It will provide control over the Red Box and allow you to move it around using the WSAD keys. </p>
           <p>Code for Player.cs:</p>
-
-
           
-          
-          
-          <pre class="line-numbers pre_container">
-            <code class="language-csharp css_class">
-                        using Hzn;<br/>
-                        using System;<br/>
-                        <br/>
-                        namespace Hzn<br/>
-                        &#123;<br/>
-                          class Player: GameObject<br/>
-                          &#123;<br/>
-                            private TransformComponent m_Transform;<br/>
-                            private RigidBody2DComponent m_RigidBody;<br/>
-                            <br/>
-                            public void OnCreate()<br/>
-                            &#123; {/*open*/}<br/>
-                              Console.WriteLine($&quot;Player1.OnCreate - &#123;ID&#125;&quot;);<br/>
-                              m_Transform = GetComponent&lt;TransformComponent&gt;();<br/>
-                              m_RigidBody = GetComponent&lt;RigidBody2DComponent&gt;();<br/>
-                            &#125;	{/*close*/}<br/>
-      
-                            public void OnUpdate(float ts)<br/>
-                            &#123; {/*open*/}<br/>
-                              Vector3 velocity = Vector3.Zero;<br/>
-      
-                              //Control direction according to keyboard input<br/>
-                              if(Input.IsKeyDown(KeyCode.W))<br/>
-                              &#123; {/*open*/}<br/>
-                                  velocity.Y = 1.0f;<br/>
-                              &#125;	{/*close*/}<br/>
-                              else if(Input.IsKeyDown(KeyCode.S))<br/>
-                              &#123; {/*open*/}<br/>
-                                  velocity.Y = -1.0f;<br/>
-                              &#125;	{/*close*/}<br/>
-                              if(Input.IsKeyDown(KeyCode.A))<br/>
-                              &#123; {/*open*/}<br/>
-                                  velocity.X = -1.0f;<br/>
-                              &#125;	{/*close*/}<br/>
-                              else if(Input.IsKeyDown(KeyCode.D))<br/>
-                              &#123; {/*open*/}<br/>
-                                  velocity.X = 1.0f;<br/>
-                              &#125;{/*close*/}<br/>
-                              velocity *= 35.0f * ts;<br/>
-      
-                              m_RigidBody.ApplyLinearImpulse(velocity.XY, true);<br/>
-                            &#125;{/*close*/}<br/>
-                            &#125;{/*close*/}<br/>
-                          &#125;	{/*close*/}<br/>
-            </code>
-          </pre>
+          <div className='parent_code_snipp_div'>
+          <CopyToClipboard onCopy={() => setIsCopied(true)} className='copy_button' text={codeString}>
+              <button className="copy_icon_btn">{isCopied? <FaRegClipboard/> : <FaRegCopy  className="copy_icon"/>}</button>
+          </CopyToClipboard>
 
-         
+          <SyntaxHighlighter language="csharp" style={darcula}>
+            {codeString}
+          </SyntaxHighlighter>
+          </div>
 
           <p>
             Your player.cs file should look like this:
@@ -155,49 +206,18 @@ function Scripting() {
             reference. Check out the video at the top to see how this step should work.
           </p>
           <p>Code for Player2.cs: </p>
-          <CodeBox>
-                {`
-                        using Hzn;
-                        using System;
-                        namespace Hzn
-                        {
-                          class Player2 : GameObject
-                          {
-                            private TransformComponent m_Transform;
-                            private RigidBody2DComponent m_RigidBody;
-                            public void OnCreate()
-                            {
-                              Console.WriteLine($"Player1.OnCreate - {ID}");
-                  
-                              m_Transform = GetComponent<TransformComponent>();
-                              m_RigidBody = GetComponent<RigidBody2DComponent>();
-                            }
-                            public void OnUpdate(float ts)
-                            {
-                              Vector3 velocity = Vector3.Zero;
-                              //Control direction according to keyboard input
-                              if (Input.IsKeyDown(KeyCode.Up))
-                              {
-                                  velocity.Y = 1.0f;
-                              }
-                              else if (Input.IsKeyDown(KeyCode.Down))
-                              {
-                                  velocity.Y = -1.0f;
-                              }
-                              if (Input.IsKeyDown(KeyCode.Left))
-                              {
-                                  velocity.X = -1.0f;
-                              }
-                              else if (Input.IsKeyDown(KeyCode.Right))
-                              {
-                                  velocity.X = 1.0f;
-                              }
-                              velocity *= 35.0f * ts;
-                              m_RigidBody.ApplyLinearImpulse(velocity.XY, true);
-                            }
-                          }
-                          `}
-          </CodeBox>
+
+          <div className='parent_code_snipp_div'>
+          <CopyToClipboard onCopy={() => setIsCopied(true)} className='copy_button' text={codeString}>
+              <button className="copy_icon_btn">{isCopied? <FaRegClipboard/> : <FaRegCopy  className="copy_icon"/>}</button>
+          </CopyToClipboard>
+
+          <SyntaxHighlighter language="csharp" style={darcula}>
+            {codeStringPlayer2}
+          </SyntaxHighlighter>
+          </div>
+
+
           <strong>Step 8:</strong>
           <p>
             Go back to the Horizon Game Engine and click on the White Box, click on the drop-down menu for 

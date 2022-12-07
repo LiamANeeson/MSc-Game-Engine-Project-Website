@@ -22,7 +22,7 @@
 
 
 .pic-max-width{
-    max-width: 750px;
+    max-width: 60%;
 }
 
 .tut-cta-btn{
@@ -80,3 +80,32 @@
     margin-right: auto;
     width: 70%;  
 }
+
+
+.parent_code_snipp_div{
+    position: relative;
+}
+.copy_button{
+    color: white;
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    font-size: 30px;
+    transition: 500ms;
+    background: transparent;
+    border: none transparent; 
+}
+
+.copy_button:hover{
+    color:#616161;
+}
+.copy_icon_btn{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+
+}
+      
