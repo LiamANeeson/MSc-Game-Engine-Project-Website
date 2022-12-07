@@ -106,6 +106,9 @@
     cursor: pointer;
     overflow: hidden;
     outline: none;
+}
 
+.test_code_tag{
+    overflow-wrap: break-word;
 }
       

@@ -4,18 +4,11 @@ import CodeBox from '../../Components/CodeBox/CodeBox'
 import Sidebar from '../../Components/Sidebar/Sidebar'
 import { Button } from 'react-bootstrap';
 import './Tutorial.css';
-import Treemap from '../../Components/TreeMap/TreeMap'
 import './Tutorial.css'
 
 
 function Tutorial() {
-  const links = [{ id: '#open', text: 'Opening a project' },
-  { id: '#empty', text: 'Figure 1: empty' },
-  { id: '#menu', text: 'Figure 2: File menu' },
-  { id: '#menuopen', text: 'Figure 3: File menu open' },
-  { id: '#box', text: 'Figure 4: File dialog box ' },
 
-  { id: '#getting-started', text: 'Getting Started' }, { id: '#playback', text: 'Controlling playback of 360° videos' }]
   return (
     <div >
 
@@ -137,7 +130,7 @@ export default Tutorial
 //             'onStateChange': onPlayerStateChange
 //           }
 //         });
-//       }
+//       }syntax-h
 
 //       // 4. The API will call this function when the video player is ready.
 //       function onPlayerReady(event) {

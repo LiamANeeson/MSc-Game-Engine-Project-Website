@@ -19,98 +19,107 @@ import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import {FaRegCopy, FaRegClipboard} from 'react-icons/fa'
 
+import Treemap from '../../../Components/TreeMap/TreeMap'
 
 
 
 function Scripting() {
 
+  const links = [{ id: '#step1', text: 'Figure 1: Add Script component' },
+  { id: '#step2', text: 'Figure 2: Open ScriptAppLib' },
+  { id: '#step3', text: 'Figure 3: Project template in Visual Studio' },
+  { id: '#step4', text: 'Figure 4: Player.cs code snippet' },
+  { id: '#step5', text: 'Figure 5: Build Succeeded' },
+  { id: '#step6', text: 'Figure 6: Add built scene to object' },
+  { id: '#step7', text: 'Figure 7: Player2.cs code snippet' },
+  { id: '#step8', text: 'Figure 8: Play with both object controls' },]
 
   const [isCopied, setIsCopied] = useState(false);
 
 
-  const codeString = `
-using Hzn;
-using System;
-namespace Hzn
-{
-  class Player : GameObject
+  const codeString = 
+`  using Hzn;
+  using System;
+  namespace Hzn
   {
-    private TransformComponent m_Transform;
-    private RigidBody2DComponent m_RigidBody;
-    public void OnCreate()
+    class Player : GameObject
     {
-      Console.WriteLine($"Player1.OnCreate - {ID}");
+      private TransformComponent m_Transform;
+      private RigidBody2DComponent m_RigidBody;
+      public void OnCreate()
+      {
+        Console.WriteLine($"Player1.OnCreate - {ID}");
 
-      m_Transform = GetComponent<TransformComponent>();
-      m_RigidBody = GetComponent<RigidBody2DComponent>();
+        m_Transform = GetComponent<TransformComponent>();
+        m_RigidBody = GetComponent<RigidBody2DComponent>();
+      }
+      public void OnUpdate(float ts)
+      {
+        Vector3 velocity = Vector3.Zero;
+        //Control direction according to keyboard input
+        if (Input.IsKeyDown(KeyCode.W))
+        {
+            velocity.Y = 1.0f;
+        }
+        else if (Input.IsKeyDown(KeyCode.S))
+        {
+            velocity.Y = -1.0f;
+        }
+        if (Input.IsKeyDown(KeyCode.A))
+        {
+            velocity.X = -1.0f;
+        }
+        else if (Input.IsKeyDown(KeyCode.D))
+        {
+            velocity.X = 1.0f;
+        }
+        velocity *= 35.0f * ts;
+        m_RigidBody.ApplyLinearImpulse(velocity.XY, true);
+      }
     }
-    public void OnUpdate(float ts)
-    {
-      Vector3 velocity = Vector3.Zero;
-      //Control direction according to keyboard input
-      if (Input.IsKeyDown(KeyCode.W))
-      {
-          velocity.Y = 1.0f;
-      }
-      else if (Input.IsKeyDown(KeyCode.S))
-      {
-          velocity.Y = -1.0f;
-      }
-      if (Input.IsKeyDown(KeyCode.A))
-      {
-          velocity.X = -1.0f;
-      }
-      else if (Input.IsKeyDown(KeyCode.D))
-      {
-          velocity.X = 1.0f;
-      }
-      velocity *= 35.0f * ts;
-      m_RigidBody.ApplyLinearImpulse(velocity.XY, true);
-    }
-  }
   
     `;
 
-    const codeStringPlayer2 = `
-using Hzn;
-using System;
-namespace Hzn
-{
-  class Player2 : GameObject
+    const codeStringPlayer2 = 
+`  using Hzn;
+  using System;
+  namespace Hzn
   {
-    private TransformComponent m_Transform;
-    private RigidBody2DComponent m_RigidBody;
-    public void OnCreate()
+    class Player2 : GameObject
     {
-      Console.WriteLine($"Player1.OnCreate - {ID}");
+      private TransformComponent m_Transform;
+      private RigidBody2DComponent m_RigidBody;
+      public void OnCreate()
+      {
+        Console.WriteLine($"Player1.OnCreate - {ID}");
 
-      m_Transform = GetComponent<TransformComponent>();
-      m_RigidBody = GetComponent<RigidBody2DComponent>();
+        m_Transform = GetComponent<TransformComponent>();
+        m_RigidBody = GetComponent<RigidBody2DComponent>();
+      }
+      public void OnUpdate(float ts)
+      {
+        Vector3 velocity = Vector3.Zero;
+        //Control direction according to keyboard input
+        if (Input.IsKeyDown(KeyCode.Up))
+        {
+            velocity.Y = 1.0f;
+        }
+        else if (Input.IsKeyDown(KeyCode.Down))
+        {
+            velocity.Y = -1.0f;
+        }
+        if (Input.IsKeyDown(KeyCode.Left))
+        {
+            velocity.X = -1.0f;
+        }
+        else if (Input.IsKeyDown(KeyCode.Right))
+        {
+            velocity.X = 1.0f;
+        }
+        velocity *= 35.0f * ts;
+        m_RigidBody.ApplyLinearImpulse(velocity.XY, true);
+      }
     }
-    public void OnUpdate(float ts)
-    {
-      Vector3 velocity = Vector3.Zero;
-      //Control direction according to keyboard input
-      if (Input.IsKeyDown(KeyCode.Up))
-      {
-          velocity.Y = 1.0f;
-      }
-      else if (Input.IsKeyDown(KeyCode.Down))
-      {
-          velocity.Y = -1.0f;
-      }
-      if (Input.IsKeyDown(KeyCode.Left))
-      {
-          velocity.X = -1.0f;
-      }
-      else if (Input.IsKeyDown(KeyCode.Right))
-      {
-          velocity.X = 1.0f;
-      }
-      velocity *= 35.0f * ts;
-      m_RigidBody.ApplyLinearImpulse(velocity.XY, true);
-    }
-  }
     `;
 
 
@@ -119,7 +128,8 @@ namespace Hzn
         <Sidebar />
         <div className='tut-content'>
           <h2>Adding Scripts</h2>
-
+          <Treemap links={links} />
+          <br></br>
           <p>In this tutorial we look at how we can add scripting to scene objects, check out the video for visual reference!</p>
           
           <iframe className='youtube-iframe' src="https://www.youtube.com/embed/lZtUc3ZCHHk" title="YouTube video player" frameborder="0" 
@@ -132,7 +142,7 @@ namespace Hzn
           <img src={box_collider} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 2: Horizon game engine – Scene setup with two objects rendered</p>
 
-          <strong>Step 1:</strong>
+          <strong id='step1'>Step 1:</strong>
           <p>To start off with, click on the ‘Red Box’, go to the components section on the right-hand side and click on the ‘ScriptComponent’ 
             button. This will add a scripting component to the object's components section. If you click on the drop-down menu of 
             script component, you will see that there are no scripts available to select. This is what we will be working on next. Repeat the 
@@ -141,7 +151,7 @@ namespace Hzn
           <img src={Add_script_component} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 3: Horizon game engine – Add script component</p>
           
-          <strong>Step 2:</strong>
+          <strong id='step2'>Step 2:</strong>
           <p>To start making a script you will need to open up the directory that the project is saved to. Navigate to the 
             ‘ScriptAppLib’ folder where you will see ‘ScriptAppLib.sln’. Double-click the ‘ScriptAppLib.sln’ ‘solution’ file to open 
             up the scripting project template using visual studio.
@@ -149,7 +159,7 @@ namespace Hzn
           <img src={project_files} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 4: Horizon game engine – Project Files</p>
 
-          <strong>Step 3:</strong>
+          <strong id='step3'>Step 3:</strong>
           <p>The Horizon Game Engine will use the Visual Studio IDE to allow us to build C# scripts.</p>
           <p>Once visual studio is opened, it will produce a project template with a ‘player.cs’ file in the source folder. Open this 
             file. See the figure below on how your visual studio setup should look.
@@ -157,7 +167,7 @@ namespace Hzn
           <img src={scripting_VS_template} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 5: Horizon game engine – Scripting template in Visual studio</p>
 
-          <strong>Step 4:</strong>
+          <strong id='step4'>Step 4:</strong>
           <p>This is where we can input our scripts. To test this out copy and paste the following example code below into the player.cs file. 
             It will provide control over the Red Box and allow you to move it around using the WSAD keys. </p>
           <p>Code for Player.cs:</p>
@@ -167,7 +177,7 @@ namespace Hzn
               <button className="copy_icon_btn">{isCopied? <FaRegClipboard/> : <FaRegCopy  className="copy_icon"/>}</button>
           </CopyToClipboard>
 
-          <SyntaxHighlighter language="csharp" style={darcula}>
+          <SyntaxHighlighter wrapLongLines  showLineNumbers language="csharp" style={darcula}>
             {codeString}
           </SyntaxHighlighter>
           </div>
@@ -179,7 +189,7 @@ namespace Hzn
           <img src={script_in_player_file} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 6: Horizon game engine – Scripting in Player.cs file</p>
           
-            <strong>Step 5:</strong>
+            <strong id='step5'>Step 5:</strong>
           <p>Great! Now we build the ‘Player.cs’ file. Click then right–click on the ‘scriptAppLib’ line at the top of the solution 
             explorer in visual studio and click build, you should see build succeded at the bottom of the output 
             section in the visual studio window. That’s it, we can now head back over to Horizon game engine and 
@@ -188,7 +198,7 @@ namespace Hzn
           <img src={build_succeded} className='pic-width center_img' ></img>
           <p>Figure 7: Horizon game engine – Script build succeded</p>
           
-          <strong>Step 6:</strong>
+          <strong id='step6'>Step 6:</strong>
           <p>Now let’s go back to Horizon Game Engine with our newly built scripts. Click on the Red Box again, 
             and check out the drop-down menu of the script component and you should see your ‘Player.cs’ script there. 
             Select it, now the script has been applied to the Red Box object. Let’s hit play see if it works!
@@ -197,7 +207,7 @@ namespace Hzn
           <img src={Add_script} className='pic-width center_img'></img>
           <p>Figure 8: Horizon game engine – Add script to object</p>
 
-          <strong>Step 7:</strong>
+          <strong id='step7'>Step 7:</strong>
           <p>We can now do the same thing for the White Box. Go back to visual studio and in the ‘Solution Explorer’ click 
             on the ‘Player.cs’ file, make a copy of this using ‘Ctrl + C’ & ‘Ctrl + V’. Rename the second file to 
             ‘Player2.cs’ by right clicking the file and clicking rename. We just need to change 5 lines of the code to 
@@ -212,13 +222,13 @@ namespace Hzn
               <button className="copy_icon_btn">{isCopied? <FaRegClipboard/> : <FaRegCopy  className="copy_icon"/>}</button>
           </CopyToClipboard>
 
-          <SyntaxHighlighter language="csharp" style={darcula}>
+          <SyntaxHighlighter wrapLongLines  showLineNumbers language="csharp" style={darcula}>
             {codeStringPlayer2}
           </SyntaxHighlighter>
           </div>
 
 
-          <strong>Step 8:</strong>
+          <strong id='step8'>Step 8:</strong>
           <p>
             Go back to the Horizon Game Engine and click on the White Box, click on the drop-down menu for 
             the script component in the components section and select ‘Player2.cs’ this will apply the script to the 
