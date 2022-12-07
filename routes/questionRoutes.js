@@ -17,12 +17,11 @@ const {
 const { protect } = require("../middleware/authMiddleware");
 
 router.get("/", getQuestions);
-router.get("/:id", getQuestionById);
-
 router.get("/saved-posts", protect, getSavedQuestions); // Route For Getting Questions Saved by user. Order matters...
 router.get("/created-posts", protect, getCreatedQuestions);
 router.get("/followed-posts", protect, getFollowedQuestions);
 router.post("/", protect, createQuestion);
+router.get("/:id", getQuestionById);
 router.patch("/:id", protect, updateQuestion); 
 router.delete("/:id", protect, deleteQuestion);
 router.patch("/:id/vote", protect, voteQuestion);
