@@ -132,3 +132,46 @@ div a {
     text-decoration: none;
 }
 
+.community-btn {
+    display: flex !important;
+    align-items: center !important;
+    text-align: center !important;
+    color: black !important;
+    background-color: #FB8500 !important;  
+    border: 2px solid !important;
+    border-color: #FB8500 !important;
+    width: auto !important;
+    height: auto !important;
+    font-weight: 400 !important;
+    text-transform: uppercase;
+    margin-top: 8px !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.community-btn:hover {
+    background-color: #FB8500 !important;
+    border: 2px solid !important;
+    border-color: black !important;
+}
+
+.community-btn-modal {
+    color: black !important;
+    background-color: #FB8500 !important;  
+    border: 2px solid !important;
+    border-color: #FB8500 !important;
+    width: auto !important;
+    height: auto !important;
+    font-weight: 400 !important;
+    text-transform: uppercase;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+}
+
+.community-btn-modal:hover {
+    background-color: #FB8500 !important;
+    border: 2px solid !important;
+    border-color: black !important;
+}

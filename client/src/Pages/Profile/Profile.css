@@ -1,0 +1,19 @@
+.profile-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.profile-btn {
+    width: 100%;
+    color: black !important;
+    border: 2px solid !important;
+    border-color: #FB8500 !important;
+    background-color: #FB8500 !important;
+    margin: 10px !important;
+    border-radius: 4px !important;
+}
+
+.profile-btn:hover {
+    border: 2px solid !important;
+    border-color: black !important;
+}

@@ -126,13 +126,13 @@ function Profile() {
                                 />
                                 <p className="text-muted mb-1">{userName}</p>
                                 <div className="d-flex justify-content-center mb-2">
-                                    <Button outline className="ms-1" onClick={toUpdateProfile}>
+                                    <Button className = "profile-btn" onClick={toUpdateProfile}>
                                         Edit Profile
                                     </Button>
-                                    <Button outline className="ms-1" onClick={onLogout}>
+                                    <Button className = "profile-btn" onClick={onLogout}>
                                         Log Out
                                     </Button>
-                                    <Button outline className="ms-1" onClick={modelOpen}>
+                                    <Button className = "profile-btn" onClick={modelOpen}>
                                         Reset Password
                                     </Button>
                                 </div>
@@ -184,7 +184,7 @@ function Profile() {
                             <Card.Body>
                                 <Row>
                                     <Col sm="3">
-                                        <Card.Text>Full Name</Card.Text>
+                                        <Card.Text style = {{fontWeight: "600"}}>Full Name</Card.Text>
                                     </Col>
                                     <Col sm="9">
                                         <Card.Text className="text-muted">
@@ -195,7 +195,7 @@ function Profile() {
                                 <hr />
                                 <Row>
                                     <Col sm="3">
-                                        <Card.Text>Email</Card.Text>
+                                        <Card.Text style = {{fontWeight: "600"}}>Email</Card.Text>
                                     </Col>
                                     <Col sm="9">
                                         <Card.Text className="text-muted">
@@ -209,7 +209,7 @@ function Profile() {
                             <Col md="6">
                                 <Card className="mb-4 mb-md-0">
                                     <Card.Body>
-                                        <Card.Text>Followed Posts</Card.Text>
+                                        <Card.Text className="profile-title">Followed Posts</Card.Text>
                                         {
                                             followedPosts && (followedPosts.length > 0) ? followedPosts.map(question => (
                                                 <Card.Text key={question.name}>
@@ -223,7 +223,7 @@ function Profile() {
                             <Col md="6">
                                 <Card className="mb-4 mb-md-0">
                                     <Card.Body>
-                                        <Card.Text>Your Posts</Card.Text>
+                                        <Card.Text className="profile-title">Your Posts</Card.Text>
                                         {
                                             yourPosts && (yourPosts.length > 0) ? yourPosts.map(question => (
                                                 <Card.Text key={question.name}>

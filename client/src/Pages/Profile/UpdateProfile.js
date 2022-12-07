@@ -170,7 +170,7 @@ function UpdateProfile() {
                                             }
                                         </Form.Group>
                                         <div class="mt-5 text-center">
-                                            <Button className='btn btn-primary btn-lg' type="submit">
+                                            <Button className='edit-profile-btn' type="submit">
                                                 Save Profile
                                             </Button>
                                         </div>
