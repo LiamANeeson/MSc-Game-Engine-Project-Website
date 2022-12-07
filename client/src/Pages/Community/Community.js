@@ -83,183 +83,115 @@ function Community() {
   return (
     <>
       {showLoading ? <div className="loadingDiv"></div> : ""}
-      <div className="community-container">
-        <Container fluid className="que-container">
-          <Row
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItem: "center",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                width: "80%",
-                padding: "10px",
-                marginTop: "2%",
-                justifyContent: "space-around",
-              }}
+      <Container>
+        <Row>
+          <Col></Col>
+          <Col md = {4}>
+            <Search setSearch={(search) => setSearch(search)} />
+          </Col>
+          <Col md = {4}>
+            <Button
+              className="community-btn"
+              onClick={handleShow}
+              disabled={!authToken}
             >
-              <div>
-                {isAll == true ? (
-                  <>
-                    <Button
-                      variant="primary"
-                      disabled={false}
-                      onClick={() => {
-                        setIsAll(!isAll);
-                      }}
-                    >
-                      All
-                    </Button>{" "}
-                    <Button
-                      variant="primary"
-                      disabled={true}
-                      onClick={() => {
-                        setIsAll(!isAll);
-                      }}
-                    >
-                      UnAnswered
-                    </Button>{" "}
-                  </>
-                ) : (
-                  <>
-                    <Button
-                      variant="primary"
-                      disabled={true}
-                      onClick={() => {
-                        setIsAll(!isAll);
-                      }}
-                    >
-                      All
-                    </Button>{" "}
-                    <Button
-                      variant="primary"
-                      disabled={false}
-                      onClick={() => {
-                        setIsAll(!isAll);
-                      }}
-                    >
-                      UnAnswered
-                    </Button>{" "}
-                  </>
-                )}
-              </div>
+              Create Post
+            </Button>
+          </Col>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Create Post</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Formik
+                initialValues={{
+                  title: "",
+                  description: "",
+                  tags: "",
+                }}
+                validationSchema={createPostSchema}
+                onSubmit={createPostandClose}
+              >
+                {({
+                  values,
+                  errors,
+                  handleSubmit,
+                  handleChange,
+                  handleBlur,
+                  touched,
+                }) => {
+                  return (
+                    <Form onSubmit={handleSubmit} className="mb-3">
+                      <Form.Group>
+                        <Form.Label>Title</Form.Label>
+                        <Form.Control
+                          type="title"
+                          placeholder="Enter title"
+                          name="title"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.title}
+                        />
+                        {errors.title && touched.title ? (
+                          <div className="error-message">{errors.title}</div>
+                        ) : null}
+                      </Form.Group>
 
-              <div style={{ display: "flex", marginTop: "-19px" }}>
-                <Search setSearch={(search) => setSearch(search)} />{" "}
-                <Sort sort={sort} setSort={(sort) => setSort(sort)} />
-              </div>
-              <div>
-                <Button
-                  variant="primary"
-                  onClick={handleShow}
-                  disabled={!authToken}
-                >
-                  Create a Post
-                </Button>
-                <Modal show={show} onHide={handleClose}>
-                  <Modal.Header closeButton>
-                    <Modal.Title>Create Post</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <Formik
-                      initialValues={{
-                        title: "",
-                        description: "",
-                        tags: "",
-                      }}
-                      validationSchema={createPostSchema}
-                      onSubmit={createPostandClose}
-                    >
-                      {({
-                        values,
-                        errors,
-                        handleSubmit,
-                        handleChange,
-                        handleBlur,
-                        touched,
-                      }) => {
-                        return (
-                          <Form onSubmit={handleSubmit} className="mb-3">
-                            <Form.Group>
-                              <Form.Label>Title</Form.Label>
-                              <Form.Control
-                                type="title"
-                                placeholder="Enter title"
-                                name="title"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.title}
-                              />
-                              {errors.title && touched.title ? (
-                                <div className="error-message">
-                                  {errors.title}
-                                </div>
-                              ) : null}
-                            </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Post Body</Form.Label>
+                        <Form.Control
+                          as="textarea"
+                          rows={3}
+                          placeholder="Enter description"
+                          name="description"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.description}
+                        />
+                        {errors.description && touched.description ? (
+                          <div className="error-message">
+                            {errors.description}
+                          </div>
+                        ) : null}
+                      </Form.Group>
 
-                            <Form.Group className="mb-3">
-                              <Form.Label>Post Body</Form.Label>
-                              <Form.Control
-                                as="textarea"
-                                rows={3}
-                                placeholder="Enter description"
-                                name="description"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.description}
-                              />
-                              {errors.description && touched.description ? (
-                                <div className="error-message">
-                                  {errors.description}
-                                </div>
-                              ) : null}
-                            </Form.Group>
+                      <Form.Group>
+                        <Form.Label>Tags</Form.Label>
+                        <Form.Control
+                          placeholder="Separated by Comma"
+                          name="tags"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.tags}
+                        />
+                        {errors.tags && touched.tags ? (
+                          <div className="error-message">{errors.tags}</div>
+                        ) : null}
+                      </Form.Group>
+                      <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                          Close
+                        </Button>
+                        <Button className="community-btn-modal" onClick={handleSubmit}>
+                          Create Post
+                        </Button>
+                      </Modal.Footer>
+                    </Form>
+                  );
+                }}
+              </Formik>
+            </Modal.Body>
+          </Modal>
+        </Row>
 
-                            <Form.Group>
-                              <Form.Label>Tags</Form.Label>
-                              <Form.Control
-                                placeholder="Separated by Comma"
-                                name="tags"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.tags}
-                              />
-                              {errors.tags && touched.tags ? (
-                                <div className="error-message">
-                                  {errors.tags}
-                                </div>
-                              ) : null}
-                            </Form.Group>
-                            <Modal.Footer>
-                              <Button variant="secondary" onClick={handleClose}>
-                                Close
-                              </Button>
-                              <Button variant="primary" onClick={handleSubmit}>
-                                Create Post
-                              </Button>
-                            </Modal.Footer>
-                          </Form>
-                        );
-                      }}
-                    </Formik>
-                  </Modal.Body>
-                </Modal>
-              </div>
-            </div>
-          </Row>
-
-          <Question questions={obj.questions ? obj.questions : []} />
-          <Pagination
-            page={page}
-            limit={obj.limit ? obj.limit : 0}
-            total={obj.total ? obj.total : 0}
-            setPage={(page) => setPage(page)}
-          />
-        </Container>
-      </div>
+        <Question questions={obj.questions ? obj.questions : []} />
+        <Pagination
+          page={page}
+          limit={obj.limit ? obj.limit : 0}
+          total={obj.total ? obj.total : 0}
+          setPage={(page) => setPage(page)}
+        />
+      </Container>
     </>
   );
 }

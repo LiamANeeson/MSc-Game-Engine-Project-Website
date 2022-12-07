@@ -1,0 +1,14 @@
+.edit-profile-btn{
+    width: 100%;
+    color: black !important;
+    border: 2px solid !important;
+    border-color: #FB8500 !important;
+    background-color: #FB8500 !important;
+    margin: 10px !important;
+    border-radius: 4px !important;
+}
+
+.edit-profile-btn:hover {
+    border: 2px solid !important;
+    border-color: black !important;
+}
