@@ -1,5 +1,4 @@
 import React from 'react'
-import CodeBox from '../../../Components/CodeBox/CodeBox'
 import Sidebar from '../../../Components/Sidebar/Sidebar'
 import './tut_subsections.css'
 import { Container } from 'react-bootstrap'
@@ -28,7 +27,7 @@ function CreateProject() {
             <h2>Opening a new project</h2>
             <Treemap links={links} />
             <br></br>
-            <p>In this tutorial we look at how we can set up a new project, check out the vid={6}</p>
+            <p>In this tutorial we look at how we can set up a new project, check out this video</p>
             <iframe className='youtube-iframe' src="https://www.youtube.com/embed/mYV7JOc1bnU" title="YouTube vceDs"
              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
              allowFullScreen></iframe>

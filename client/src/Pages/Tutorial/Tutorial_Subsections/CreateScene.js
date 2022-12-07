@@ -16,8 +16,8 @@ function CreateScene() {
   { id: '#step2', text: 'Figure 2: File menu open' },
   { id: '#step3', text: 'Figure 3: Scene Dialog' },
   { id: '#step4', text: 'Figure 4: Dashboard scene created' },
-  { id: '#step5', text: 'Second scene created' },
-  { id: '#step6', text: 'Figure 5: Accessing scenes created' },]
+  { id: '#step5', text: 'Figure 5: Second scene created' },
+  { id: '#step6', text: 'Figure 6: Accessing scenes created' },]
 
   return (
     <div className='tut-main-container'>
@@ -32,7 +32,7 @@ function CreateScene() {
           <p  className='center_txt'>Figure 1: Video - Horizon game engine – New Scene</p>
 
           <strong id='step1'>Step 1:</strong>
-          <p>Now that a new project has been opened, you will need to create a scene. To start click on the ‘File’ menu at the top of the screen. See figure below:</p>
+          <p>Now that a new project has been opened, you will need to create a scene. To start, click on the ‘File’ menu at the top of the screen. See figure below:</p>
           <img src={File_menu} alt="HorizonGE empty dashboard" className='pic-max-width center_img_no_width'></img>
           <p  className='center_txt'>Figure 2: Horizon game engine – File menu </p>
 

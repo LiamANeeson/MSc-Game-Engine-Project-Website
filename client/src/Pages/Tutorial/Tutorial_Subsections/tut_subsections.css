@@ -16,13 +16,17 @@
 
 .pic-width{
     margin: auto;
-    width: 60%;
+    width: 100%;
     height: auto;
   }
 
 
 .pic-max-width{
-    max-width: 60%;
+    max-width: 100%;
+}
+
+.dwnld_ge{
+    border: 1px solid #616161;
 }
 
 .tut-cta-btn{
@@ -47,12 +51,11 @@
 }
 
 
-
 .center_img{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;  
+    width: 100%;  
 }
 .center_img_no_width{
     display: block;
@@ -80,7 +83,6 @@
     margin-right: auto;
     width: 70%;  
 }
-
 
 .parent_code_snipp_div{
     position: relative;

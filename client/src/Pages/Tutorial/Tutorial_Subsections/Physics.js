@@ -53,15 +53,16 @@ function Physics() {
           <img src={Add_rigidBody2DComponent} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 3: Horizon game engine – Add Rigid Body to Red Box</p>
           
-          <strong id='step1'>Step 2:</strong>
+          <strong id='step2'>Step 2:</strong>
           <p>
           You will notice that the extra Rigid Body physics component has been added to your red box object. 
           Let’s take a closer look at this Rigid Body component to see how it works and what you can do with it. 
           If you click on the drop arrow of the rigid body component bar, you will see that there are three 
-          options: - static, kinematic and dynamic:
+          options: - Static, Kinematic and Dynamic:
           </p>
           <p>
-            We can refer to the Box2D: Dynamics Module &#40;2022&#41;	 documentation dynamics module to explain what each 
+            We can refer to the Box2D: Dynamics Module &#40;2022&#41;	 documentation dynamics module - 
+            <a href="https://box2d.org/documentation/md__d_1__git_hub_box2d_docs_dynamics.html" target="_blank"> here</a> to explain what each 
             of these three options are:
           </p>
           <p>
@@ -85,14 +86,14 @@ function Physics() {
           <img src={rigidBody2DComponent_options} className='center_img'></img>
           <p className='center_txt'>Figure 4: Horizon game engine – Rigid Body options</p>
 
-          <strong id='step1'>Step 3:</strong>
+          <strong id='step3'>Step 3:</strong>
           <p>
             To test out this new dynamic component on our object, we can play our scene. 
             To do this click File -&gt; Play. To stop, click File -&gt; stop. When you hit play 
             you will notice that the red box ‘falls down’ off the screen. This is because the Rigid 
             Body 2D component has acted on the object to provide an artificial gravity. 
             This doesn’t allow you to provide much function for your scene, 
-            but it is an import step to complete in bilding your scene. If you haven’t already, click stop on your scene. 
+            but it is an import step to complete in building your scene. If you haven’t already, click stop on your scene. 
           </p>
           
           <img src={play} className='center_img_no_width'></img>
@@ -104,7 +105,7 @@ function Physics() {
           <img src={Scene_in_play} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 7: Horizon game engine – Scene in play</p>
 
-          <strong id='step1'>Step 4:</strong>
+          <strong id='step4'>Step 4:</strong>
           <p>
             Now that we have seen how to add a rigid body to our objects, we start can set up multiple objects 
             and begin building a fuller scene. Follow the video sequence at the top to set up your scene.  
@@ -113,23 +114,23 @@ function Physics() {
           <img src={scene_layout} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 8: Horizon game engine – Scene setup with added objects</p>
 
-          <strong id='step1'>Step 5:</strong>
+          <strong id='step5'>Step 5:</strong>
           <p>
             Now that we have our scene set up, we can look into the next physics property – ‘Box Collider’. 
             The box collider allows the object to interact with the physics system and provide collision 
             detection system for the object. To use this property, select the red box in your scene, 
-            click add component and then click ‘BoxCollider2DComponent’. 
+            click add component and then click ‘BoxCollider2DComponent’. Repeat this step for the remianing three objects.
           </p>
           <img src={box_collider} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 9: Horizon game engine – Box Collider</p>
 
-          <strong id='step1'>Step 6:</strong>
+          <strong id='step6'>Step 6:</strong>
           <p>
             Now that we have the box collider and rigid body components installed on our objects, 
             we can ‘play’ the scene again to see how the objects will interact with each other. 
             Once you click play you will notice that both squares ‘fall down’ but are caught by the 
-            overlapping platforms. You will notice that when setting up the scene we applied the Box Collider 
-            2D and set the restitution of the left and right platforms to ‘0.780’, essentially the restitution 
+            overlapping platforms. You will notice that when setting up the scene in the video we applied the Box Collider 
+            2D and set the 'restitution' of the left and right platforms to ‘0.780’, essentially the restitution 
             of an object in game development is its bounciness once a constraint is violated.
           </p>
 
@@ -138,7 +139,8 @@ function Physics() {
 
           <p>
             What we are trying to show here is that when we hit play, the red & white will fall at their velocity 
-            given by the rigid body the and then ‘bounce’ up again at’0.780’ of the velocity it fell at. 
+            given by the rigid body and then ‘bounce’ up again at’0.780’ of the velocity it fell at, as they bounced off 
+            Left and right platfoms.
           </p>
           <p>
             This tutorial showed the basic functionality of how to add a physics component to an object and 
@@ -146,7 +148,10 @@ function Physics() {
           </p>
           <p>
             <strong id='references'>Reference:</strong><br/>
-            - "Box2D: Dynamics Module. &#40;2022&#41;. Box2d.org. https://box2d.org/documentation/md__d_1__git_hub_box2d_docs_dynamics.html"
+            - "Box2D: Dynamics Module. &#40;2022&#41;. Box2d.org. 
+            <a href="https://box2d.org/documentation/md__d_1__git_hub_box2d_docs_dynamics.html" target="_blank">
+              https://box2d.org/documentation/md__d_1__git_hub_box2d_docs_dynamics.html"
+            </a>
           </p>
         </div>
     </div>
