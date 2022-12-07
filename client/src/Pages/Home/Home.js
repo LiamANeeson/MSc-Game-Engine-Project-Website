@@ -3,11 +3,6 @@ import { Container, Row, Col, Card, Button, NavLink } from "react-bootstrap";
 
 import "./Home.css";
 
-import * as HiIcons from "react-icons/hi";
-import * as BsIcons from "react-icons/bs";
-import * as GiIcons from "react-icons/gi";
-import * as BiIcons from "react-icons/bi";
-
 // Row = 12 cols or 100%
 function Home() {
   let iconStyles = {
@@ -31,8 +26,8 @@ function Home() {
         </Col>
         <Col sm={12} md = {12} lg = {6}>
           <Card  className = "custom-cardOne" style={{ border: "none" }}>
-            <Button className = "download-cta">Get Started</Button>
-            <Button className = "game-cta">Download Game</Button>
+            <Button className = "download-cta" href="/download">Get Started</Button>
+            <Button className = "game-cta" href="/download">Download Game</Button>
           </Card>
         </Col>
       </Row>
@@ -121,7 +116,7 @@ function Home() {
               Add Physics Rigid Bodies and Coliders to all objects in our game
               using our physics system.
             </Card.Text>
-            <Button className="learnMoreBtns">See More On Physics</Button>
+            <Button className="learnMoreBtns" href="/tutorial/physics">See More On Physics</Button>
           </Card>
         </Col>
         <Col lg={3} md={6}>
@@ -135,7 +130,7 @@ function Home() {
               available to anyone. So if you want to view the source code and
               use it directly you can!
             </Card.Text>
-            <Button className="learnMoreBtns">See Custom API</Button>
+            <Button className="learnMoreBtns" href="/docs">See Custom API</Button>
           </Card>
         </Col>
         <Col lg={3} md={6}>
@@ -148,7 +143,7 @@ function Home() {
               Add Scipts to objects in your game using C# or using our visual
               scripting node editor
             </Card.Text>
-            <Button className="learnMoreBtns">See More About Scripting</Button>
+            <Button className="learnMoreBtns" href="/tutorial/scripting">See More About Scripting</Button>
           </Card>
         </Col>
       </Row>
@@ -164,7 +159,7 @@ function Home() {
             <Card.Body>
               Take a look at our tutorials so you can start building games
             </Card.Body>
-            <Button className="learnMoreBtns">View Tutorials</Button>
+            <Button className="learnMoreBtns" href="/tutorial">View Tutorials</Button>
           </Card>
         </Col>
         <Col sm={6}>
@@ -176,7 +171,7 @@ function Home() {
             <Card.Body>
               Got a question? Ask the Horizon Engine Community{" "}
             </Card.Body>
-            <Button className="learnMoreBtns">Community Section</Button>
+            <Button className="learnMoreBtns" href="/community">Community Section</Button>
           </Card>
         </Col>
       </Row>

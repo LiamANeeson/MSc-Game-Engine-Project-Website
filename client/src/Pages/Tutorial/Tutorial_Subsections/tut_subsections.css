@@ -16,13 +16,17 @@
 
 .pic-width{
     margin: auto;
-    width: 60%;
+    width: 100%;
     height: auto;
   }
 
 
 .pic-max-width{
-    max-width: 750px;
+    max-width: 100%;
+}
+
+.dwnld_ge{
+    border: 1px solid #616161;
 }
 
 .tut-cta-btn{
@@ -47,12 +51,11 @@
 }
 
 
-
 .center_img{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;  
+    width: 100%;  
 }
 .center_img_no_width{
     display: block;
@@ -67,3 +70,47 @@
 .pic-max-width_dwnld{
     max-width: 95%;
 }
+
+
+.pre_container{
+    background-color: rgb(250 ,250, 250);
+}
+
+.css_class{
+    display: block;
+    overflow-wrap:normal;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;  
+}
+
+.parent_code_snipp_div{
+    position: relative;
+}
+.copy_button{
+    color: white;
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    font-size: 30px;
+    transition: 500ms;
+    background: transparent;
+    border: none transparent; 
+}
+
+.copy_button:hover{
+    color:#616161;
+}
+.copy_icon_btn{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+.test_code_tag{
+    overflow-wrap: break-word;
+}
+      

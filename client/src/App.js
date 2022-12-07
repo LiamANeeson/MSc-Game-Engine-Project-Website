@@ -34,7 +34,7 @@ import CreateProject from './Pages/Tutorial/Tutorial_Subsections/CreateProject';
 import CreateScene from './Pages/Tutorial/Tutorial_Subsections/CreateScene';
 import AddObjects from './Pages/Tutorial/Tutorial_Subsections/AddObjects';
 import EntitiesComponents from './Pages/Tutorial/Tutorial_Subsections/EntitiesComponents'
-import SpriteSheet from './Pages/Tutorial/Tutorial_Subsections/SpriteSheet';
+//import SpriteSheet from './Pages/Tutorial/Tutorial_Subsections/SpriteSheet';
 import Physics from './Pages/Tutorial/Tutorial_Subsections/Physics';
 import Scripting from './Pages/Tutorial/Tutorial_Subsections/Scripting';
 

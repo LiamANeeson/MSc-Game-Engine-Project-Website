@@ -214,7 +214,7 @@ const QuestionDetail = (props) => {
               <div style={{ display: "flex" }}>
                 <h2 className="q-title">{question?.name}</h2>
               </div>
-              <div>
+              <div className="q-desc">
                 <p>{question?.description}</p>
               </div>
             </Card.Text>
@@ -260,8 +260,8 @@ const QuestionDetail = (props) => {
                   }}
               >
                 <AiIcons.AiFillLike
-                  size={40}
-                  style={{ color: isUpvotedByThisUser ? "green" : null }}
+                  size={30}
+                  style={{ color: isUpvotedByThisUser ? "white" : null }}
                 />
               </Button>
 
@@ -282,8 +282,8 @@ const QuestionDetail = (props) => {
                   }}
               >
                 <AiIcons.AiFillDislike
-                  size={40}
-                  style={{ color: isDownvotedByThisUser ? "red" : null }}
+                  size={30}
+                  style={{ color: isDownvotedByThisUser ? "white" : null }}
                 />
               </Button>
               <Button

@@ -1,19 +1,27 @@
 .questions-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     color: #232f3e;
     line-height: 1.3rem;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 800;
     letter-spacing: 0;
-    margin: 0;
+    margin: 10px;
     text-align: left;
 }
 
 .questions-desc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     color: #545b64;
-    font-size: .8rem;
+    font-size: 1rem;
     letter-spacing: 0;
     line-height: 1.1rem;
-    margin: 0;
+    margin: 10px;
 }
 
 .questions-action-block {
@@ -159,8 +167,9 @@
 }
 
 .question-btn {
-    margin: 20px;
-    height: 70px;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 50px;
     background-color: #ec7211;
     border: 2px solid;
     border-color: #ec7211;
