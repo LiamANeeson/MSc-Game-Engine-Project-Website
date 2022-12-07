@@ -1,5 +1,5 @@
 const Answer = require("../models/answerModel");
-const Question = require("../models/questionModel");
+const Question = require("../models/questionModel").Question;
 
 //create answer
 const createAnswer = async (req, res) => {
@@ -20,9 +20,11 @@ const createAnswer = async (req, res) => {
       res.json({ answerObj });
     }
     else {
-      const question = await Question.findById(questionId);
+   
+      const question = await Question.findOne({_id:questionId});
       if (!question)
         return res.status(400).json({ msg: "This question does not exist." });
+  
       const newAnswer = new Answer({
         content,
         questionId,

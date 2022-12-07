@@ -110,12 +110,18 @@ function Login() {
                                 <Button className='submit-btn' type="submit">
                                     Submit
                                 </Button>
+                                <a href="/forgot">
+                            <p style={{ color: "blueviolet", cursor: "pointer" }}>
+                                Forget password?
+                            </p>
+                            </a>
                             </form>
                         )
                     }}
                 </Formik>
 
             </container>
+
         </>
     );
 }

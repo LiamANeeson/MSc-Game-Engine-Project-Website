@@ -8,6 +8,9 @@ import { useSearchParams } from 'react-router-dom';
 import { resetPassword1 } from "../../features/auth/authSlice";
 import "./Login.css";
 import { Col, Container, Row } from "react-bootstrap";
+import { userResetPasswordSchema } from '../../validation/userValidation'
+import { Formik } from 'formik';
+import { Form, Button } from 'react-bootstrap';
 
 function ResetPassword() {
 
@@ -30,7 +33,7 @@ function ResetPassword() {
 
   useEffect(() => {
 
-
+    console.log(isSuccess);
     if (isError) {
       toast.error(resetMsg);
     }
@@ -50,58 +53,80 @@ function ResetPassword() {
     }));
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    let token = searchParams.get('token');
-    const userData = {
-      oldpassword,
-      newpassword,
-      token
-    };
-    //  console.log(userData);
-    dispatch(resetPassword1(userData));
-  };
+  const onSubmit = (data) => {
+  
+      let token = searchParams.get('token');
+      data["token"] = token;
+      dispatch(resetPassword1(data));
+  }
   return (
-    <Container>
-      <Row className="login-container">
-        <Col md={6} as='section' className="head">
-          <h1>
-            Reset Password
-          </h1>
-          <p>Reset your Horizon Game Engine account password!</p>
-        </Col>
-        <Col as='form' md='6' onSubmit={onSubmit} className="submission-form">
-          {
-            isError ? <p style={{ color: "red" }}>{resetMsg}</p> : ""
-          }
+    <container className="login-container">
+                <section className="head">
+                    <h1>
+                        Reset Password
+                    </h1>
+                    <p>Log into your Horizon Game Engine account!</p>
+                </section>
 
-          <label for="email">New Password</label>
-          <input
-            type="password"
-            className="form-control"
-            id="oldpassword"
-            name="oldpassword"
-            value={oldpassword}
-            placeholder="Please Enter your new password"
-            onChange={onChange}
-          />
-          <label for="email">Confirm Password</label>
-          <input
-            type="password"
-            className="form-control"
-            id="newpassword"
-            name="newpassword"
-            value={newpassword}
-            placeholder="Please confirm your new password"
-            onChange={onChange}
-          />
-          <button type="submit" className="submit-btn">
-            Reset Password
-          </button>
-        </Col>
-      </Row>
-    </Container>
+                <Formik
+                    initialValues={{
+                        newpassword: '',
+                        oldpassword: '',
+                    }}
+                    validationSchema={userResetPasswordSchema}
+                    onSubmit={onSubmit}
+                >
+                    {({
+                        values,
+                        errors,
+                        handleSubmit,
+                        handleChange,
+                        handleBlur,
+                        touched
+                    }) => {
+                        return (
+                            <form onSubmit={handleSubmit} className="submission-form">
+                                <Form.Group>
+                                    <Form.Label>New Password</Form.Label>
+                                    <Form.Control type="password"
+                                        placeholder="Enter password"
+                                        name="oldpassword"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.oldpassword}
+                                    />
+                                    {errors.oldpassword && touched.oldpassword ?
+                                        <div className="error-message">
+                                            {errors.oldpassword}
+                                        </div> : null
+                                    }
+                                </Form.Group>
+
+                                <Form.Group>
+                                    <Form.Label>Confirm Password</Form.Label>
+                                    <Form.Control type="password"
+                                        placeholder="Enter password"
+                                        name="newpassword"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.newpassword}
+                                    />
+                                    {errors.newpassword && touched.newpassword ?
+                                        <div className="error-message">
+                                            {errors.newpassword}
+                                        </div> : null
+                                    }
+                                </Form.Group>
+
+                                <Button className='submit-btn' type="submit">
+                                    Submit
+                                </Button>
+                            </form>
+                        )
+                    }}
+                </Formik>
+
+            </container>
   );
 }
 
