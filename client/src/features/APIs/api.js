@@ -166,9 +166,9 @@ export async function getCreatedQuestions() {
     try {
         let token = localStorage.getItem("authToken");
         const axiosConfig = {
-            method: "get",
+            method: "post",
             url: `${apiURL}/question/created-posts`,
-            headers: { Authorization: "Bearer " + token }
+            headers: { Authorization: "Bearer " + token },
         };
         const response = await axios.default.request(axiosConfig);
         const normalizedResponse = normalizeServerResponse(response);
@@ -179,12 +179,12 @@ export async function getCreatedQuestions() {
     }
 }
 
-//Get the questions which have been created by the user
+//Get the questions which have been followed by the user
 export async function getFollowedQuestions() {
     try {
         let token = localStorage.getItem("authToken");
         const axiosConfig = {
-            method: "get",
+            method: "post",
             url: `${apiURL}/question/followed-posts`,
             headers: { Authorization: "Bearer " + token }
         };

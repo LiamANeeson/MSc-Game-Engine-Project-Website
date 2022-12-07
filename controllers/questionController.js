@@ -303,8 +303,6 @@ const getFollowedQuestions = async (req, res) => {
 
     const followedQuestions = await Question.find({ followedBy: userID });
 
-    console.log(followedQuestions);
-
     followedQuestionsArray = followedQuestions
       ? followedQuestions.map((question) => question)
       : [];

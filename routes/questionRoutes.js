@@ -20,8 +20,8 @@ router.get("/", getQuestions);
 router.get("/:id", getQuestionById);
 
 router.get("/saved-posts", protect, getSavedQuestions); // Route For Getting Questions Saved by user. Order matters...
-router.get("/created-posts", protect, getCreatedQuestions);
-router.get("/followed-posts", protect, getFollowedQuestions);
+router.post("/created-posts", protect, getCreatedQuestions);
+router.post("/followed-posts", protect, getFollowedQuestions);
 router.post("/", protect, createQuestion);
 router.patch("/:id", protect, updateQuestion); 
 router.delete("/:id", protect, deleteQuestion);
