@@ -49,10 +49,11 @@ export const SidebarData = [
         icon: <RiIcons.RiFileCodeFill/>,
         cName: 'row'
     },
-    {/*{
+]
+
+{/*{
         title: "Sprite Sheets",
         path: '/tutorial/sprite-sheet',
         icon: <CgIcons.CgGhost/>,
         cName: 'row'
-    }*/}
-]
+}*/}

@@ -1,6 +1,6 @@
 import React, { Children, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { FaArrowRight } from 'react-icons/fa'
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'
 
 import './Sidebar.css'
 import {SidebarData} from './SidebarData'
@@ -15,7 +15,7 @@ const Sidebar = ({children}) => {
         <div className='top-section'>
           <h1 style = {{display: isOpen ? "block" : "none"}}className='logo'>Tutorial</h1>
           <div style = {{marginLeft: isOpen ? "50px": "10px"}}className='bars'>
-            <FaArrowRight onClick={toggle}/>
+            {isOpen? <FaArrowLeft onClick={toggle}/> : <FaArrowRight onClick={toggle}/>}
           </div>
         </div>
         {
