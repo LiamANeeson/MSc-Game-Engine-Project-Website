@@ -1,4 +1,4 @@
-const {Question, questionToFrontEndView} = require("../models/questionModel");
+const { Question, questionToFrontEndView } = require("../models/questionModel");
 const jwt = require('jsonwebtoken')
 
 //Create a new question.
@@ -99,12 +99,17 @@ const getQuestionById = async (req, res) => {
     )
 
     let userID = null
-    if (req.headers.authorization) {
-      token = req.headers.authorization.split(' ')[1]
-      const decoded = jwt.verify(token, process.env.JWT_SECRET)
-      userID = decoded.id
+    if (req.user) {
+      userID = req.user._id
+    } else {
+      userID = null
     }
-    
+    // if (req.headers.authorization) {
+    //   token = req.headers.authorization.split(' ')[1]
+    //   const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    //   userID = decoded.id
+    // }
+
     res.status(200).json(questionToFrontEndView(question, userID))
   } catch (error) {
     console.log(error)
@@ -160,7 +165,7 @@ const voteQuestion = async (req, res) => {
     return res.status(500).json({ msg: "Something went wrong!" })
   }
 
-  if (!question || question.votes.indexOf(req.user._id) !== -1){
+  if (!question || question.votes.indexOf(req.user._id) !== -1) {
     console.log("Already upvoted!")
     return res.status(400).json({ msg: "Already upvoted!" })
   }
@@ -217,10 +222,12 @@ const downVoteQuestion = async (req, res) => {
 const followQuestion = async (req, res) => {
   try {
     console.log(req.user);
-    const question = await Question.find({
-      _id: req.params.id,
-      followedBy: req.user._id,
-    });
+    const question = await Question.findById(req.params.id);
+    /*
+   const question = await Question.find({
+     _id: req.params.id,
+     followedBy: req.user._id,
+   });*/
     if (question.length > 0)
       return res.status(400).json({ msg: "Something went wrong!" });
 
@@ -295,8 +302,6 @@ const getFollowedQuestions = async (req, res) => {
     var userID = req.user._id;
 
     const followedQuestions = await Question.find({ followedBy: userID });
-
-    console.log(followedQuestions);
 
     followedQuestionsArray = followedQuestions
       ? followedQuestions.map((question) => question)

@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import moment from "moment";
 import { Icon } from "@iconify/react";
 import "./QuestionDetail.css";
+import Modal from 'react-bootstrap/Modal';
 
 import {
   createCommentSchema,
@@ -18,6 +19,37 @@ import { Formik } from "formik";
 
 import * as AiIcons from "react-icons/ai";
 
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="md"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Body>
+        <p style={{ marginTop: "1rem", marginLeft: "1rem" }}>
+          <svg style={{ color: "orange" }} viewBox="64 64 896 896" focusable="false" data-icon="exclamation-circle"
+            width="1em" height="1em" fill="currentColor" aria-hidden="true">
+            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+            <path d="M464 688a48 48 0 1096 0 48 48 0 10-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z"></path>
+          </svg>
+          &nbsp;You need to sign in to perform this operation
+
+          <br />
+          <div style={{ float: "right", marginTop: "24px" }}>
+            <button type="button" onClick={props.onHide} className='login-cancel-button'><span>Cancel</span></button>
+            <button type="button" className='login-do-button'>
+              <a href='/login' style={{ color: "white" }}>
+                <span>Sign in</span>
+              </a></button>
+          </div>
+        </p>
+      </Modal.Body>
+    </Modal>
+  );
+}
+
 const QuestionDetail = (props) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -26,6 +58,11 @@ const QuestionDetail = (props) => {
   const [isUpvotedByThisUser, setIsUpvotedByThisUser] = useState(false);
   const [isDownvotedByThisUser, setIsDownvotedByThisUser] = useState(false);
 
+
+  const [modalShow, setModalShow] = React.useState(false);
+
+
+  const authToken = localStorage.getItem("authToken");
   const [showLoading, setShowLoading] = useState(true);
   const [answer_comment, setAnswerComment] = useState("");
 
@@ -190,16 +227,37 @@ const QuestionDetail = (props) => {
             <div className="question-interactions">
               <Button
                 className="question-btn"
-                disabled={!localStorage.getItem("authToken")}
-                onClick={() => followQuestion()}
+
+                onClick={
+                  () => {
+
+                    if (!authToken) {
+                      setModalShow(true);
+                    }
+                    else {
+                      followQuestion()
+                    }
+
+                  }}
               >
                 <p className="follow-btn">Follow</p>
               </Button>
 
               <Button
                 className="question-btn"
-                disabled={!localStorage.getItem("authToken")}
-                onClick={() => upVoteQuestion()}
+
+
+                onClick={
+                  () => {
+
+                    if (!authToken) {
+                      setModalShow(true);
+                    }
+                    else {
+                      upVoteQuestion()
+                    }
+
+                  }}
               >
                 <AiIcons.AiFillLike
                   size={30}
@@ -209,8 +267,19 @@ const QuestionDetail = (props) => {
 
               <Button
                 className="question-btn"
-                disabled={!localStorage.getItem("authToken")}
-                onClick={() => downVoteQuestion()}
+
+
+                onClick={
+                  () => {
+
+                    if (!authToken) {
+                      setModalShow(true);
+                    }
+                    else {
+                      downVoteQuestion()
+                    }
+
+                  }}
               >
                 <AiIcons.AiFillDislike
                   size={30}
@@ -219,8 +288,19 @@ const QuestionDetail = (props) => {
               </Button>
               <Button
                 className="question-btn"
-                disabled={!localStorage.getItem("authToken")}
-                onClick={() => deleteQuestion()}
+
+
+                onClick={
+                  () => {
+
+                    if (!authToken) {
+                      setModalShow(true);
+                    }
+                    else {
+                      deleteQuestion()
+                    }
+
+                  }}
               >
                 <AiIcons.AiFillDelete size={40} />
               </Button>
@@ -249,7 +329,17 @@ const QuestionDetail = (props) => {
                       <Icon
                         icon="ant-design:like"
                         width="1rem"
-                        onClick={() => upVoteQuestion(answer.data._id)}
+                        onClick={
+                          () => {
+
+                            if (!authToken) {
+                              setModalShow(true);
+                            }
+                            else {
+                              upVoteQuestion(answer.data._id)
+                            }
+
+                          }}
                         height="1rem"
                         style={{
                           cursor: "pointer",
@@ -264,7 +354,17 @@ const QuestionDetail = (props) => {
                         icon="ant-design:dislike"
                         width="1rem"
                         height="1rem"
-                        onClick={() => downVoteQuestion(answer.data._id)}
+                        onClick={
+                          () => {
+
+                            if (!authToken) {
+                              setModalShow(true);
+                            }
+                            else {
+                              downVoteQuestion(answer.data._id)
+                            }
+
+                          }}
                         style={{
                           cursor: "pointer",
                           marginLeft: "5px",
@@ -274,12 +374,20 @@ const QuestionDetail = (props) => {
                     </div>
                   </div>
                   <div className="answer-detail">
-                    <div>{answer.data.content}</div>
+                    <div>{answer?.data?.content}</div>
                     <div className="other-section">
                       <div className="answer-detail-comment">
                         <button
                           onClick={() => {
-                            setObj(answer);
+
+                            if (!authToken) {
+                              setModalShow(true);
+                            }
+                            else {
+                              setObj(answer);
+                            }
+                            //tariq
+
                           }}
                           className="answer-detail-commen-button"
                         >
@@ -389,7 +497,7 @@ const QuestionDetail = (props) => {
                                       value={values.answer_comment}
                                     />
                                     {errors.answer_comment &&
-                                    touched.answer_comment ? (
+                                      touched.answer_comment ? (
                                       <div className="error-message">
                                         {errors.answer_comment}
                                       </div>
@@ -508,6 +616,10 @@ const QuestionDetail = (props) => {
           </Card.Body>
         </Card>
       </div>
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </>
   );
 };

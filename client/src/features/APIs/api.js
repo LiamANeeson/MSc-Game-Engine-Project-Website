@@ -179,7 +179,7 @@ export async function getCreatedQuestions() {
     }
 }
 
-//Get the questions which have been created by the user
+//Get the questions which have been followed by the user
 export async function getFollowedQuestions() {
     try {
         let token = localStorage.getItem("authToken");

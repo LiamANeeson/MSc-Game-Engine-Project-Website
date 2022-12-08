@@ -124,20 +124,25 @@ const generateToken = (id) => {
 
 
 const resetPassword = async (req, res) => {
-    const { oldPassword, newPassword, token } = req.body;
+     const { oldpassword, newpassword, token } = req.body;
 
     const id = token;
+    //const { id } = req.params;
+    console.log(newpassword, oldpassword, id);
     try {
         let user = await User.findOne({ token: id }).select("+password");
-
-        console.log(user)
-
-        if (!(await bcrypt.compare(oldPassword, user.password))) {
-            return res.status(400).json({ msg: "Old Password does not match" });
+        console.log(user);
+        if (!user) {
+            return res.status(400).json({ msg: "User not found" });
         }
 
+        console.log(oldpassword, user.password); //oldpassword.trim()
+
+        if (newpassword != oldpassword) {
+            return res.status(400).json({ msg: "No New and Old password" });
+        }
         const salt = await bcrypt.genSalt(10);
-        changepassword = await bcrypt.hash(newPassword, salt);
+        changepassword = await bcrypt.hash(newpassword, salt);
         await User.findByIdAndUpdate(user._id, {
             $set: { password: changepassword },
         });
@@ -148,7 +153,7 @@ const resetPassword = async (req, res) => {
                 message: "password changed successfully thanks for visit",
             });
     } catch (error) {
-        next(error);
+        return res.status(400).json({ msg: "somthing got wrong!" });
     }
 };
 
@@ -200,8 +205,7 @@ const forgotPassword = async (req, res) => {
         }
         const PasswordToken = bcrypt.hashSync("123456", 10);
         await User.updateOne({ _id: user._id }, { $set: { token: PasswordToken } });
-
-        const url = `/user/reset-password?token=${PasswordToken}`;
+        const url = `${process.env.API_PROXY_URL}/user/reset-password?token=${PasswordToken}`;
         await sendMail({
             to: email,
             url: url,
