@@ -223,11 +223,6 @@ const followQuestion = async (req, res) => {
   try {
     console.log(req.user);
     const question = await Question.findById(req.params.id);
-    /*
-   const question = await Question.find({
-     _id: req.params.id,
-     followedBy: req.user._id,
-   });*/
     if (question.length > 0)
       return res.status(400).json({ msg: "Something went wrong!" });
 
@@ -238,6 +233,11 @@ const followQuestion = async (req, res) => {
       },
       { new: true }
     );
+
+    if (!question || question.followedBy.indexOf(req.user._id) !== -1) {
+      console.log("Already upvoted!")
+      return res.status(400).json({ msg: "Already Following!"})
+    }
 
     if (!follow)
       return res.status(400).json({ msg: "This question does not exist." });

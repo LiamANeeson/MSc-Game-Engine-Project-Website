@@ -60,6 +60,7 @@ const questionToFrontEndView = (question, userID) => {
 
     frontEndQuestion.isUpvotedByThisUser = (question.votes.indexOf(userID) !== -1)
     frontEndQuestion.isDownvotedByThisUser = (question.downVotes.indexOf(userID) !== -1)
+    frontEndQuestion.isFollowedByThisUser = (question.followedBy.indexOf(userID) !== -1)
 
     frontEndQuestion.votes = question.votes.length
     frontEndQuestion.downVotes = question.downVotes.length
