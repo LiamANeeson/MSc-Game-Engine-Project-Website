@@ -2,11 +2,32 @@ import React from 'react'
 import { FaGithub, FaWindows } from 'react-icons/fa'
 import { saveAs } from 'file-saver'
 import './Download.css'
+import axios from 'axios';
+import JSZip from "jszip";
 
 function Download() {
   
 const downloadImage = (image) => {
-  saveAs(image, 'HorizonGE.zip') 
+  //saveAs(image, 'HorizonGE.zip') 
+   // console.log(image)
+  // saveAs(image, 'HorizonGE.zip') 
+  let formData = new FormData()
+  formData={};
+        axios.get("/download", {  
+      }).then(response => {
+        var zip = new JSZip();
+        var zipData = response.data //
+        zip.file("HorizonGE.zip", zipData); 
+        zip.generateAsync({type:"blob"})
+      .then(function(content) {
+          // Force down of the Zip file
+          saveAs(content, "HorizonGE.zip");
+        }).catch((error)=>{
+          console.log(error)
+});
+
+
+      })
   }
   return (
     <div className='download-container'>
@@ -18,8 +39,8 @@ const downloadImage = (image) => {
       </section>
       </section>
       <section className='download-section'>
-      <button className='download-btn' onClick={() => downloadImage("/Upload/HorizonGE.zip")}>Download Horizon Game Engine</button>
-<button className='gm-btn' onClick={() => downloadImage("/Upload/HorizonGE.zip")}>Download Dark Trails Game</button>      
+      <button className='download-btn' onClick={event =>  window.location.href='https://drive.google.com/u/0/uc?id=1kuAqqF0FH9wlIAmSiLKOCnnYggpxzV-k&export=download&confirm=t&uuid=3c815635-3b9c-4404-93ae-0344c01edbc0&at=AHV7M3ddB2lAGGQgFgDCpEzOba6h:1670537242668'}>Download Horizon Game Engine</button>
+      <button className='gm-btn' onClick={event =>  window.location.href='https://drive.google.com/u/0/uc?id=1kuAqqF0FH9wlIAmSiLKOCnnYggpxzV-k&export=download&confirm=t&uuid=3c815635-3b9c-4404-93ae-0344c01edbc0&at=AHV7M3ddB2lAGGQgFgDCpEzOba6h:1670537242668'}>Download Dark Trails Game</button> 
       </section>
       <section className='git-cta'>
         <h2>Horizon GitHub</h2>
