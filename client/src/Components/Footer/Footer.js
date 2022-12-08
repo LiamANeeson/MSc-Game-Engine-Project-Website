@@ -30,10 +30,12 @@ function Footer() {
             <h4>Get In Touch</h4>
             <ui className="list-unstyled">
               <li>
-              <a className="external-links" href="https://github.com/TejasJD/HorizonEngine2D"><FaGithub /> GitHub</a>
+              <a className="external-links" href="https://github.com/TejasJD/HorizonEngine2D"
+              target={"_blank"}><FaGithub /> GitHub</a>
               </li>
               <li>
-              <a className="external-links" href="https://discord.gg/g5S9s23Q"><FaDiscord /> Discord</a>
+              <a className="external-links" href="https://discord.gg/g5S9s23Q"
+              target={"_blank"}><FaDiscord /> Discord</a>
               </li>
               <li>
               <a className="external-links" href="mailto:horizonengineteam@gmail.com"><FaEnvelope /> Email </a>
