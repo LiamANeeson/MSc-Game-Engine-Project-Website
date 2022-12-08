@@ -6,3 +6,12 @@
     bottom: 0;
     width: 100%;
   }
+
+.external-links {
+  color: #FFB703
+}
+
+.external-links:hover
+{
+  color:#ffffff
+}
