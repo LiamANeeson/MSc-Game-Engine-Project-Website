@@ -209,7 +209,6 @@ const downVoteQuestion = async (req, res) => {
 
 const followQuestion = async (req, res) => {
   try {
-    console.log(req.user);
     const question = await Question.findById(req.params.id);
     if (question.length > 0)
       return res.status(400).json({ msg: "Something went wrong!" });
