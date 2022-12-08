@@ -8,6 +8,12 @@ import * as CgIcons from 'react-icons/cg'
 
 export const SidebarData = [
     {
+        title: "Game",
+        path: '/tutorial/game',
+        icon: <AiIcons.AiFillHome/>,
+        cName: 'row'
+    },
+    {
         title: "Getting Started",
         path: '/tutorial/getting-started',
         icon: <AiIcons.AiFillHome/>,

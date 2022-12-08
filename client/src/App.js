@@ -37,6 +37,7 @@ import EntitiesComponents from './Pages/Tutorial/Tutorial_Subsections/EntitiesCo
 //import SpriteSheet from './Pages/Tutorial/Tutorial_Subsections/SpriteSheet';
 import Physics from './Pages/Tutorial/Tutorial_Subsections/Physics';
 import Scripting from './Pages/Tutorial/Tutorial_Subsections/Scripting';
+import Game from './Pages/Tutorial/Tutorial_Subsections/game';
 
 
 function App() {
@@ -52,9 +53,11 @@ function App() {
                     <Route path='/tutorial' element={<Tutorial />} />
                     <Route path='/docs' element={<Docs />} />
                     <Route path='/download' element={<Download />} />
+
                     <Route path='/uploadFile' element={<UploadFile />} />
 
                     {/* Routers for Tutorial Pages */}
+                    <Route path='tutorial/game' element={<Game />} />
                     <Route path='tutorial/getting-started' element={<GettingStarted />} />
                     <Route path='tutorial/create-project' element={<CreateProject />} />
                     <Route path='tutorial/create-scene' element={<CreateScene />} />
