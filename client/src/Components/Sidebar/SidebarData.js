@@ -10,7 +10,7 @@ export const SidebarData = [
     {
         title: "Game",
         path: '/tutorial/game',
-        icon: <AiIcons.AiFillHome/>,
+        icon: <FaIcons.FaGamepad/>,
         cName: 'row'
     },
     {
@@ -22,7 +22,7 @@ export const SidebarData = [
     {
         title: "Create Project",
         path: '/tutorial/create-project',
-        icon: <FaIcons.FaGamepad/>,
+        icon: <FaIcons.FaFolder/>,
         cName: 'row'
     },
     {
@@ -34,7 +34,7 @@ export const SidebarData = [
     {
         title: "Add Objects",
         path: '/tutorial/adding-objects',
-        icon: <BsIcons.BsBoxSeam/>,
+        icon: <FaIcons.FaCube/>,
         cName: 'row'
     },
     {
@@ -46,7 +46,7 @@ export const SidebarData = [
     {
         title: "Physics",
         path: '/tutorial/physics',
-        icon: <GiIcons.GiMaterialsScience/>,
+        icon: <FaIcons.FaAtom/>,
         cName: 'row'
     },
     {
@@ -63,3 +63,6 @@ export const SidebarData = [
         icon: <CgIcons.CgGhost/>,
         cName: 'row'
 }*/}
+
+
+{/*<GiIcons.GiMaterialsScience/>*/}

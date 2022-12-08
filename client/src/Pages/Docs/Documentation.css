@@ -4,8 +4,29 @@
     padding: 20px;
 }
 
+.docs-cta-btn {
+    background-color: #FB8500 !important; 
+    border: 2px solid !important; 
+    border-color: #FB8500 !important;
+    outline: none !important ;
+    overflow: hidden !important;
+    color: black !important;
+    border-radius: 4px !important;
+    height: auto !important;
+    text-transform: uppercase !important;
+    
+  }
+  
+  .docs-cta-btn:hover {
+    background-color: #FB8500 !important;
+    border: 2px solid !important;
+    border-color: black !important;
+    text-decoration: underline;
+  }
 
-.docs-cta-btn{
+
+
+/* .docs-cta-btn{
     background-color: #EE6C4D !important;
     min-width: 30%;
     cursor: pointer;
@@ -23,4 +44,4 @@
     position: relative;
     justify-content: center;
     font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
-}
+} */
