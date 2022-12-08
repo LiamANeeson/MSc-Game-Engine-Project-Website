@@ -33,10 +33,10 @@ function Footer() {
               <a className="external-links" href="https://github.com/TejasJD/HorizonEngine2D"><FaGithub /> GitHub</a>
               </li>
               <li>
-              <FaDiscord /> Discord
+              <a className="external-links" href="https://discord.gg/g5S9s23Q"><FaDiscord /> Discord</a>
               </li>
               <li>
-                <FaEnvelope /> Email
+              <a className="external-links" href="mailto:horizonengineteam@gmail.com"><FaEnvelope /> Email </a>
               </li>
             </ui>
           </div>
