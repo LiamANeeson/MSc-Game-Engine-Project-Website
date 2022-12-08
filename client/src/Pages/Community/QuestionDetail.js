@@ -67,12 +67,16 @@ const QuestionDetail = (props) => {
   const [answer_comment, setAnswerComment] = useState("");
 
   const [obj, setObj] = useState({});
+  const [isDelete, setDelete] = useState(false);
 
   useEffect(() => {
     const init = async () => {
       const [error, response] = await Api.getQuestion(id);
       if (response) {
         setQuestion(response.data);
+        if (localStorage.getItem("userId") == response?.data?.userObj?._id) {
+          setDelete(true);
+        }
         let ans = [];
         let answerID = response?.data?.answers?.map((answer) => answer);
         for (let i = 0; i < answerID.length; i++) {
@@ -286,13 +290,13 @@ const QuestionDetail = (props) => {
                   style={{ color: isDownvotedByThisUser ? "white" : null }}
                 />
               </Button>
+
+              {
+                isDelete ?
               <Button
-                className="question-btn"
-
-
+                className="question-btn"             
                 onClick={
                   () => {
-
                     if (!authToken) {
                       setModalShow(true);
                     }
@@ -304,6 +308,7 @@ const QuestionDetail = (props) => {
               >
                 <AiIcons.AiFillDelete size={40} />
               </Button>
+              : ""}
             </div>
           </Card.Body>
         </Card>
