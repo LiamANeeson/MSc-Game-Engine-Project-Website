@@ -1,5 +1,5 @@
 ﻿const upload = require("../middleware/fileUploadMiddleware");
-
+const express = require('express')
 const uploadFiles = async (req, res) => {
     try {
         await upload(req, res);
@@ -48,8 +48,16 @@ const upload_Files = async (req, res) => {
     }
 };
 
+const download = async (req, res) => {
+    var uploadDir = fs.readdirSync(__dirname+"/Upload"); 
+    console.log(uploadDir)
+        // return res.status(200).send({
+        //     message: "File uploaded successfully",
+        // });
+    };
 
 module.exports = {
     uploadFiles,
-    upload_Files
+    upload_Files,
+    download
 };
