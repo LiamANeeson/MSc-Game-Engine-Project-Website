@@ -3,9 +3,9 @@ import * as yup from 'yup';
 export const createPostSchema = yup.object().shape({
     title: yup.string().required("Please enter a title"),
     description: yup.string().required("Please enter description"),
-    tags: yup.string().required("Please enter tag").matches(
-        /^([\,a-zA-Z0-9]{1,30})$/,
-        "tags must not be longer than 30 characters, only numbers and letters, separated by comma"
+    tags: yup.string().max(30, "Tags must not be longer than 30 characters").required("Please enter tag").matches(
+        /^(?!,)(?!.*,$)[\a-zA-Z]+(?:[,][\a-zA-Z]+)*$/,
+        "Tags must include only letters and be separated by commas"
     ),
 });
 
