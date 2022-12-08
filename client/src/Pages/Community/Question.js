@@ -30,14 +30,6 @@ const Question = ({ questions }) => {
                       {que?.description.slice(0, 75)}...
                     </Link>
                   </p>
-                  {/* <p className="questions-desc" style={{ cursor: "pointer" }}
-                  
-                  // onClick={() => {
-                  //   if (!authToken)
-                  //     setModalShow(true)
-                  // }>
-                  
-                </p> */}
                 </div>
                 <div className="que-tags">
                   {que.tags.map((tag) => (
