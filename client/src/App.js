@@ -38,10 +38,12 @@ import EntitiesComponents from './Pages/Tutorial/Tutorial_Subsections/EntitiesCo
 import Physics from './Pages/Tutorial/Tutorial_Subsections/Physics';
 import Scripting from './Pages/Tutorial/Tutorial_Subsections/Scripting';
 
+import './App.css'
 
 function App() {
     return (
         <>
+            <main className="body-container">
             <Router>
                 <Navigationbar />
                 <Routes>
@@ -91,6 +93,7 @@ function App() {
                     <Route path='*' element={<p style={{ padding: '16px', textAlign: 'center' }}>404 Page Not Found</p>} />
                 </Routes>
             </Router>
+            </main>
             <ToastContainer />
             <Footer />
         </>
