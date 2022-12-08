@@ -21,13 +21,13 @@ const Question = ({ questions }) => {
           <Col md={4} className="que-wrapper">
             <div className="que-inner-wrapper">
               <div className='question-level-1'>
-                <div className="">
+                <div className="questions-desc-and-title">
                   <h2 className="questions-title" style={{ cursor: "pointer" }} >
                     <Link to={`/question/${que._id}`}>{que.name}</Link>
                   </h2>
                   <p className="questions-desc" style={{ cursor: "pointer" }}>
                     <Link to={`/question/${que._id}`}>
-                      {que?.description.slice(0, 250)}...
+                      {que?.description.slice(0, 75)}...
                     </Link>
                   </p>
                   {/* <p className="questions-desc" style={{ cursor: "pointer" }}

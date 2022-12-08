@@ -10,7 +10,7 @@ function Footer() {
         <div className="row">
           {/* Column1 */}
           <div className="col">
-            <h4>Horizon Game Engine</h4>
+            <a className="external-links" href="/"><h4>Horizon Game Engine</h4></a>
             <h1 className="list-unstyled">
               <li></li>
               <li></li>
@@ -22,7 +22,7 @@ function Footer() {
             <h4>About</h4>
             <ui className="list-unstyled">
               <li>2D Game Engine</li>
-              <li>Documentation</li>
+              <a className="external-links" href="/docs"><li>Documentation</li></a>
             </ui>
           </div>
           {/* Column3 */}
@@ -30,13 +30,15 @@ function Footer() {
             <h4>Get In Touch</h4>
             <ui className="list-unstyled">
               <li>
-                  <FaGithub /> GitHub
+              <a className="external-links" href="https://github.com/TejasJD/HorizonEngine2D"
+              target={"_blank"}><FaGithub /> GitHub</a>
               </li>
               <li>
-                <FaDiscord /> Discord
+              <a className="external-links" href="https://discord.gg/g5S9s23Q"
+              target={"_blank"}><FaDiscord /> Discord</a>
               </li>
               <li>
-                <FaEnvelope /> Email
+              <a className="external-links" href="mailto:horizonengineteam@gmail.com"><FaEnvelope /> Email </a>
               </li>
             </ui>
           </div>

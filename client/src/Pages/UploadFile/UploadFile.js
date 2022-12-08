@@ -116,7 +116,7 @@ function UploadFile() {
 
                     <Card className="p-4">
                         <div className="text-center">
-                            <h3>Uplaod Game</h3>
+                            <h3>Upload Game</h3>
                         </div>
                         <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -128,7 +128,7 @@ function UploadFile() {
                                 <Form.Control required type="text" onChange={(e) => setTag(e.target.value)} name="tag" placeholder="Enter Game Name" />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label>Uplaod File</Form.Label>
+                                <Form.Label>Upload File</Form.Label>
                                 <Form.Control required type="file" onChange={onFileChange} name="file" />
                                 {image.preview && <img src={image.preview} width='100' height='100' />}
 
@@ -201,7 +201,6 @@ function UploadFile() {
                         </p>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button>Close</Button>
                         <Button onClick={handleClose}>Close</Button>
                     </Modal.Footer>
                 </Modal>
