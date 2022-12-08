@@ -98,19 +98,7 @@ const getQuestionById = async (req, res) => {
       { $inc: { viewCount: 1 } }
     )
 
-    let userID = null
-    if (req.user) {
-      userID = req.user._id
-    } else {
-      userID = null
-    }
-    // if (req.headers.authorization) {
-    //   token = req.headers.authorization.split(' ')[1]
-    //   const decoded = jwt.verify(token, process.env.JWT_SECRET)
-    //   userID = decoded.id
-    // }
-
-    res.status(200).json(questionToFrontEndView(question, userID))
+    res.status(200).json(questionToFrontEndView(question, req.user._id))
   } catch (error) {
     console.log(error)
     return res.status(500).json({ msg: error.message });
@@ -234,11 +222,6 @@ const followQuestion = async (req, res) => {
       { new: true }
     );
 
-    if (!question || question.followedBy.indexOf(req.user._id) !== -1) {
-      console.log("Already upvoted!")
-      return res.status(400).json({ msg: "Already Following!"})
-    }
-
     if (!follow)
       return res.status(400).json({ msg: "This question does not exist." });
 
@@ -248,6 +231,27 @@ const followQuestion = async (req, res) => {
     return res.status(500).json({ msg: err.message });
   }
 };
+
+const unfollowQuestion = async (req, res) => {
+  try {
+    const unfollowedQuestion = await Question.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $pull: { followedBy: req.user._id },
+      },
+      { new: true }
+    );
+
+    if (!unfollowedQuestion)
+      return res.status(400).json({ msg: "Something went wrong!" });
+
+    res.json({ msg: "Unfollowed Successfully!" });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ msg: err.message });
+  }
+};
+
 const saveQuestion = async (req, res) => {
   try {
     // if (req.user.savedPosts.indexOf(req.params.id) !== -1) {
@@ -322,6 +326,7 @@ module.exports = {
   voteQuestion,
   downVoteQuestion,
   followQuestion,
+  unfollowQuestion,
   saveQuestion,
   getSavedQuestions,
   getCreatedQuestions,

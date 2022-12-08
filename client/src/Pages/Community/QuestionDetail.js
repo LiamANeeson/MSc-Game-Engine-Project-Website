@@ -215,6 +215,17 @@ const QuestionDetail = (props) => {
     }
   };
 
+  const unfollowQuestion = async () => {
+    const [unfollowErr, unfollowRes] = await Api.unfollowQuestion(id);
+    if (unfollowErr) {
+      toast.error("Something went wrong!");
+    }
+    if (unfollowRes) {
+      toast.success("Unfollowed!");
+      setisFollowedByThisUser(false);
+    }
+  };
+
   return (
     <>
       <div style={{ padding: "10px" }}>
@@ -250,7 +261,7 @@ const QuestionDetail = (props) => {
                   if (!authToken) {
                     setModalShow(true);
                   } else {
-                    followQuestion();
+                    isFollowedByThisUser ? unfollowQuestion(): followQuestion();
                   }
                 }}
               >
