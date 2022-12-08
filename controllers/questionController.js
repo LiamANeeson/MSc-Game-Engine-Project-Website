@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const { Question, questionToFrontEndView } = require("../models/questionModel");
 const jwt = require('jsonwebtoken')
 
@@ -248,6 +249,7 @@ const followQuestion = async (req, res) => {
     return res.status(500).json({ msg: err.message });
   }
 };
+
 const saveQuestion = async (req, res) => {
   try {
     // if (req.user.savedPosts.indexOf(req.params.id) !== -1) {
@@ -313,6 +315,36 @@ const getFollowedQuestions = async (req, res) => {
   }
 };
 
+const unFollowQuestion = async (req, res) => {
+  try {
+    const question = await Question.findOne({
+      _id: req.params.id,
+      followedBy: new ObjectId(req.user._id),
+    });
+    if (question) {
+
+      const follow = await Question.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $pull: { followedBy: req.user._id },
+        },
+        { new: true }
+      );
+  
+      if (!follow)
+        return res.status(400).json({ msg: "This question does not exist." });
+  
+      return res.json({ msg: "UnFollowed Successfully!" });
+    }
+    else {
+      return res.status(400).json({ msg: "you are not followed already!" });
+    }
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ msg: err.message });
+  }
+};
+
 module.exports = {
   createQuestion,
   getQuestions,
@@ -326,4 +358,6 @@ module.exports = {
   getSavedQuestions,
   getCreatedQuestions,
   getFollowedQuestions,
+  unFollowQuestion
 };
+

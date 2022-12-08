@@ -363,3 +363,20 @@ export async function createAnswer(questionId, content, iscomment) {
     return [errorObject, null];
   }
 }
+
+export async function unfollowQuestion(questionID) {
+  try {
+    let token = localStorage.getItem("authToken");
+    const axiosConfig = {
+      method: "post",
+      url: `${apiURL}/question/${questionID}/unfollow`,
+      headers: { Authorization: "Bearer " + token },
+    };
+    const response = await axios.default.request(axiosConfig);
+    const normalizedResponse = normalizeServerResponse(response);
+    return [null, normalizedResponse];
+  } catch (error) {
+    const errorObject = normalizeServerError(error);
+    return [errorObject, null];
+  }
+}

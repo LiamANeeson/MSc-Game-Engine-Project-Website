@@ -68,11 +68,26 @@ const QuestionDetail = (props) => {
 
   const [obj, setObj] = useState({});
 
+  const [isFollow, setFollow] = useState(true);
+  const [isDelete, setDelete] = useState(false);
+
   useEffect(() => {
     const init = async () => {
       const [error, response] = await Api.getQuestion(id);
       if (response) {
         setQuestion(response.data);
+
+        if (localStorage.getItem("userId") == response?.data?.userObj?._id) {
+          setDelete(true);
+        }
+        if (response?.data?.followedBy) {
+          for (let row of response.data.followedBy) {
+            if (row == localStorage.getItem("userId")) {
+              setFollow(false);
+              break;
+            }
+          }
+        }
         let ans = [];
         let answerID = response?.data?.answers?.map((answer) => answer);
         for (let i = 0; i < answerID.length; i++) {
@@ -182,17 +197,40 @@ const QuestionDetail = (props) => {
         toast.success("Success!");
         setIsUpvotedByThisUser(false);
         setIsDownvotedByThisUser(true);
+
       }
     }
   };
 
   const followQuestion = async () => {
     const [followErr, followRes] = await Api.followQuestion(id);
+
+    //console.log(followErr,followRes);
     if (followErr) {
       toast.error("Something went wrong!");
     }
-    if (followRes) {
-      toast.success("Followed!");
+    if (followRes && followRes.data && followRes.data.msg) {
+      toast.success(followRes.data.msg);
+      setTimeout(function () {
+        window.location.href = window.location.href;
+      }, 1000);
+    }
+  };
+
+  const unfollowQuestion = async () => {
+    const [followErr, followRes] = await Api.unfollowQuestion(id);
+
+    //console.log(followErr,followRes);
+    if (followErr) {
+      toast.error("Something went wrong!");
+
+    }
+    if (followRes && followRes.data && followRes.data.msg) {
+      toast.success(followRes.data.msg);
+
+      setTimeout(function () {
+        window.location.href = window.location.href;
+      }, 1000);
     }
   };
 
@@ -214,7 +252,7 @@ const QuestionDetail = (props) => {
               <div style={{ display: "flex" }}>
                 <h2 className="q-title">{question?.name}</h2>
               </div>
-              <div className="q-desc">
+              <div>
                 <p>{question?.description}</p>
               </div>
             </Card.Text>
@@ -225,23 +263,45 @@ const QuestionDetail = (props) => {
               ))}
             </div>
             <div className="question-interactions">
-              <Button
-                className="question-btn"
+              {
+                isFollow ?
+                  <Button
+                    className="question-btn"
 
-                onClick={
-                  () => {
+                    onClick={
+                      () => {
 
-                    if (!authToken) {
-                      setModalShow(true);
-                    }
-                    else {
-                      followQuestion()
-                    }
+                        if (!authToken) {
+                          setModalShow(true);
+                        }
+                        else {
+                          followQuestion()
+                        }
 
-                  }}
-              >
-                <p className="follow-btn">Follow</p>
-              </Button>
+                      }}
+                  >
+                    <p className="follow-btn">Follow</p>
+                  </Button>
+                  :
+                  <Button
+                    className="question-btn"
+
+                    onClick={
+                      () => {
+
+                        if (!authToken) {
+                          setModalShow(true);
+                        }
+                        else {
+                          unfollowQuestion()
+                        }
+
+                      }}
+                  >
+                    <p className="follow-btn">UnFollow</p>
+                  </Button>
+              }
+
 
               <Button
                 className="question-btn"
@@ -260,8 +320,8 @@ const QuestionDetail = (props) => {
                   }}
               >
                 <AiIcons.AiFillLike
-                  size={30}
-                  style={{ color: isUpvotedByThisUser ? "white" : null }}
+                  size={40}
+                  style={{ color: isUpvotedByThisUser ? "green" : null }}
                 />
               </Button>
 
@@ -282,28 +342,32 @@ const QuestionDetail = (props) => {
                   }}
               >
                 <AiIcons.AiFillDislike
-                  size={30}
-                  style={{ color: isDownvotedByThisUser ? "white" : null }}
+                  size={40}
+                  style={{ color: isDownvotedByThisUser ? "red" : null }}
                 />
               </Button>
-              <Button
-                className="question-btn"
+              {
+                isDelete ?
+
+                  <Button
+                    className="question-btn"
 
 
-                onClick={
-                  () => {
+                    onClick={
+                      () => {
 
-                    if (!authToken) {
-                      setModalShow(true);
-                    }
-                    else {
-                      deleteQuestion()
-                    }
+                        if (!authToken) {
+                          setModalShow(true);
+                        }
+                        else {
+                          deleteQuestion()
+                        }
 
-                  }}
-              >
-                <AiIcons.AiFillDelete size={40} />
-              </Button>
+                      }}
+                  >
+                    <AiIcons.AiFillDelete size={40} />
+                  </Button>
+                  : ""}
             </div>
           </Card.Body>
         </Card>
@@ -374,7 +438,7 @@ const QuestionDetail = (props) => {
                     </div>
                   </div>
                   <div className="answer-detail">
-                    <div>{answer?.data?.content}</div>
+                    <div>{answer.data.content}</div>
                     <div className="other-section">
                       <div className="answer-detail-comment">
                         <button
