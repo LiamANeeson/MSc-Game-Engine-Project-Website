@@ -19,7 +19,7 @@ function Navigationbar() {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="/tutorial">Tutorial</Nav.Link>
-                            <Nav.Link href="/docs">Documentation</Nav.Link>
+                            <Nav.Link href="https://horizondocs.herokuapp.com/">Documentation</Nav.Link>
                             <Nav.Link href="/community">Community</Nav.Link>
                             <Nav.Link href="/uploadFile">Games</Nav.Link>
                         </Nav>
