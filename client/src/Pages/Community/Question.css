@@ -24,6 +24,14 @@
     margin: 10px;
 }
 
+.questions-desc-and-title {
+    display: flex;
+    flex-direction: column;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space: pre-wrap;
+}
+
 .questions-action-block {
     margin-left: 0px;
     width: 100%;

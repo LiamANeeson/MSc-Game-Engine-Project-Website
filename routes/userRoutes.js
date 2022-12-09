@@ -12,8 +12,7 @@ const {
 const { protect } = require('../middleware/authMiddleware')
 
 const { updateProfile } = require('../controllers/profileController')
-const { uploadFiles,upload_Files } = require('../controllers/fileUploadController')
-
+const { uploadFiles,upload_Files,download } = require('../controllers/fileUploadController')
 router.post('/', registerUser)
 router.post('/login', loginUser)
 router.get("/getfiles", getFiles);
@@ -22,7 +21,7 @@ router.get('/', protect , getUser)
 router.get('/user', protect, getUser)
 router.post('/profile', updateProfile)
 router.post("/upload", uploadFiles);
-
+router.post("/download", download);
 router.route('/reset-password').post(resetPassword)
 router.route('/forget-password').post(forgotPassword)
 
