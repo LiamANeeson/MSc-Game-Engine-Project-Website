@@ -46,7 +46,7 @@ export const SidebarData = [
     {
         title: "Physics",
         path: '/tutorial/physics',
-        icon: <FaIcons.FaAtom/>,
+        icon: <GiIcons.GiMaterialsScience/>,
         cName: 'row'
     },
     {
