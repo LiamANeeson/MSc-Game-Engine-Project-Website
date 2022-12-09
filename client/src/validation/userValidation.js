@@ -24,10 +24,10 @@ export const userSignUpSchema = yup.object().shape({
 
 export const userSignInSchema = yup.object().shape({
     email: yup.string().email("Invalid email").required("Please enter an email"),
-    password: yup.string().required('Please Enter your password')
+    password: yup.string().required('Please enter your password')
         .matches(
-            /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*,\.])[0-9a-zA-Z!@#$%^&*,\.]{8,20}$/,
-            "Password at least 8 characters, including numbers, upper and lower case letters and special characters three or more"
+            /^(?!(\s+$))/,
+            "Please enter your password"
         ),
 });
 
