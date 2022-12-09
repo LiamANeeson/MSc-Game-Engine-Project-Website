@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export const createPostSchema = yup.object().shape({
-    title: yup.string().required("Please enter a title").matches(
+    title: yup.string().max(80, "Title must not be longer than 80 characters").required("Please enter a title").matches(
         /^(?!(\s+$))/,
         "Please enter a title "
     ),
@@ -16,9 +16,15 @@ export const createPostSchema = yup.object().shape({
 });
 
 export const createAnswerSchema = yup.object().shape({
-    answer: yup.string().required("Please enter your answer"),
+    answer: yup.string().required("Please enter your answer").matches(
+        /^(?!(\s+$))/,
+        "Please enter your answer"
+    ),
 });
 
 export const createCommentSchema = yup.object().shape({
-    answer_comment: yup.string().required("Please enter your comment"),
+    answer_comment: yup.string().required("Please enter your comment").matches(
+        /^(?!(\s+$))/,
+        "Please enter your comment"
+    ),
 });
