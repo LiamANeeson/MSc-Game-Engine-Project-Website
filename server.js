@@ -37,6 +37,34 @@ const upload =multer({
           file: upload.secure_url,          
         }); 
   })
+
+  app.get('/download', (req, res) => {
+
+    const zip = new AdmZip();
+
+    for(var i = 0; i < uploadDir.length;i++){
+        zip.addLocalFile(__dirname+"/Upload/"+uploadDir[i]);
+    }
+
+    let folder = 'HorizonGE';
+
+    // Define zip file name
+    const downloadName = `${folder}.zip`;
+
+    const data = zip.toBuffer();
+
+    // save file zip in root directory
+  //  zip.writeZip(__dirname+"/"+downloadName);
+
+    // code to download zip file
+
+    res.set('Content-Type','application/octet-stream');
+    res.set('Content-Disposition',`attachment; filename=${downloadName}`);
+    res.set('Content-Length',data.length);
+    res.send(data);
+
+})
+
 app.use(logger("dev"));
 app.use(cors())
 app.use(express.json());
