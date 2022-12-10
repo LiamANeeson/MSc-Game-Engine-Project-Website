@@ -52,12 +52,6 @@ const upload =multer({
     const downloadName = `${folder}.zip`;
 
     const data = zip.toBuffer();
-
-    // save file zip in root directory
-  //  zip.writeZip(__dirname+"/"+downloadName);
-
-    // code to download zip file
-
     res.set('Content-Type','application/octet-stream');
     res.set('Content-Disposition',`attachment; filename=${downloadName}`);
     res.set('Content-Length',data.length);
