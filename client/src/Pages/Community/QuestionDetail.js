@@ -72,13 +72,10 @@ const QuestionDetail = (props) => {
   const [isUpvotedByThisUser, setIsUpvotedByThisUser] = useState(false);
   const [isDownvotedByThisUser, setIsDownvotedByThisUser] = useState(false);
   const [isFollowedByThisUser, setisFollowedByThisUser] = useState(false);
-
   const [modalShow, setModalShow] = React.useState(false);
-
   const authToken = localStorage.getItem("authToken");
   const [showLoading, setShowLoading] = useState(true);
   const [answer_comment, setAnswerComment] = useState("");
-
   const [obj, setObj] = useState({});
   const [isDelete, setDelete] = useState(false);
 
@@ -261,11 +258,15 @@ const QuestionDetail = (props) => {
                   if (!authToken) {
                     setModalShow(true);
                   } else {
-                    isFollowedByThisUser ? unfollowQuestion(): followQuestion();
+                    isFollowedByThisUser
+                      ? unfollowQuestion()
+                      : followQuestion();
                   }
                 }}
               >
-                <p style={{ color: isFollowedByThisUser ? "white" : null }}>Follow</p>
+                <p style={{ color: isFollowedByThisUser ? "white" : null }}>
+                  {isFollowedByThisUser ? "Following" : "Follow"}
+                </p>
               </Button>
 
               <Button
@@ -300,25 +301,22 @@ const QuestionDetail = (props) => {
                 />
               </Button>
 
-              {
-                isDelete ?
-              <Button
-                className="question-btn"             
-                onClick={
-                  () => {
+              {isDelete ? (
+                <Button
+                  className="question-btn"
+                  onClick={() => {
                     if (!authToken) {
                       setModalShow(true);
+                    } else {
+                      deleteQuestion();
                     }
-                    else {
-                      deleteQuestion()
-                    }
-
                   }}
-
-              >
-                <AiIcons.AiFillDelete size={40} />
-              </Button>
-              : ""}
+                >
+                  <AiIcons.AiFillDelete size={40} />
+                </Button>
+              ) : (
+                ""
+              )}
             </div>
           </Card.Body>
         </Card>
