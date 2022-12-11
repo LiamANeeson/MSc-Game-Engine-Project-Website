@@ -12,8 +12,7 @@ const {
   getSavedQuestions,
   getCreatedQuestions,
   getFollowedQuestions,
-  followQuestion,
-  unfollowQuestion
+  followQuestion
 } = require("../controllers/questionController");
 const { protect } = require("../middleware/authMiddleware");
 
@@ -22,13 +21,12 @@ router.get("/saved-posts", protect, getSavedQuestions); // Route For Getting Que
 router.get("/created-posts", protect, getCreatedQuestions);
 router.get("/followed-posts", protect, getFollowedQuestions);
 router.post("/", protect, createQuestion);
-router.get("/:id", protect, getQuestionById);
+router.get("/:id", getQuestionById);
 router.patch("/:id", protect, updateQuestion); 
 router.delete("/:id", protect, deleteQuestion);
 router.patch("/:id/vote", protect, voteQuestion);
 router.patch("/:id/down_vote", protect, downVoteQuestion);
 router.patch("/:id/save", protect, saveQuestion);
 router.patch("/:id/follow", protect, followQuestion);
-router.patch("/:id/unfollow", protect, unfollowQuestion);
 
 module.exports = router;
