@@ -10,10 +10,6 @@ import File_menu_open from '../../../Assets/Images/newProject/File_menu_open.png
 import new_project_dialog from '../../../Assets/Images/newProject/new_project_dialog.png';
 import new_project_setup from '../../../Assets/Images/newProject/new_project_setup.png';
 
-
-
-
-
 import Treemap from '../../../Components/TreeMap/TreeMap'
 
 function GameCreateProject() {
