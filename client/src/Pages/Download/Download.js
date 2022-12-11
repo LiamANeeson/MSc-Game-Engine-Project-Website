@@ -39,8 +39,8 @@ const downloadImage = (image) => {
       </section>
       </section>
       <section className='download-section'>
-      <button className='download-btn' onClick={event =>  window.location.href='https://drive.google.com/u/0/uc?id=1kuAqqF0FH9wlIAmSiLKOCnnYggpxzV-k&export=download&confirm=t&uuid=3c815635-3b9c-4404-93ae-0344c01edbc0&at=AHV7M3ddB2lAGGQgFgDCpEzOba6h:1670537242668'}>Download Horizon Game Engine</button>
-      <button className='gm-btn' onClick={event =>  window.location.href='https://drive.google.com/u/0/uc?id=1kuAqqF0FH9wlIAmSiLKOCnnYggpxzV-k&export=download&confirm=t&uuid=3c815635-3b9c-4404-93ae-0344c01edbc0&at=AHV7M3ddB2lAGGQgFgDCpEzOba6h:1670537242668'}>Download Dark Trails Game</button> 
+      <button className='download-btn' onClick={event =>  window.location.href='https://drive.google.com/u/0/uc?id=1kuAqqF0FH9wlIAmSiLKOCnnYggpxzV-k&export=download&confirm=t&uuid=17e9c003-7f68-42aa-aa90-5a4d0ba69148&at=AHV7M3e9Upq0T9Fuyn-DN3Whus6j:1670691281187'}>Download Horizon Game Engine</button>
+      <button className='gm-btn' onClick={event =>  window.location.href='https://drive.google.com/u/0/uc?id=1kuAqqF0FH9wlIAmSiLKOCnnYggpxzV-k&export=download&confirm=t&uuid=17e9c003-7f68-42aa-aa90-5a4d0ba69148&at=AHV7M3e9Upq0T9Fuyn-DN3Whus6j:1670691281187'}>Download Dark Trails Game</button> 
       </section>
       <section className='git-cta'>
         <h2>Horizon GitHub</h2>
