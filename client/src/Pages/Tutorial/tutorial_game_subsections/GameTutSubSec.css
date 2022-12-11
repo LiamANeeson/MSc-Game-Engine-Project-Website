@@ -1,0 +1,113 @@
+.tut-main-container{
+    margin: auto;
+    display: flex;
+    flex-direction:row;
+    background-color: #EE6C4D !important;
+}
+
+/*.tut-content{
+    margin: auto;
+    width: 60%;
+    padding: 1%;
+}
+
+.pic-width{
+    margin: auto;
+    width: 100%;
+    height: auto;
+  }
+
+
+.pic-max-width{
+    max-width: 60%;
+}
+
+.dwnld_ge{
+    border: 1px solid #616161;
+}
+
+.tut-cta-btn{
+    background-color: #EE6C4D !important;
+    min-width: 30%;
+    cursor: pointer;
+    border-radius: 6px;
+    backface-visibility: hidden;
+    border-width: 0;
+    box-sizing: border-box;
+    font-size: 100%;
+    height: 35px;
+    line-height: 1.15;
+    margin: auto;
+    outline: none !important;
+    border-color: #EE6C4D !important;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+}
+
+
+.center_img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;  
+}
+.center_img_no_width{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+      
+}
+
+.center_txt{
+    text-align: center;
+}
+.pic-max-width_dwnld{
+    max-width: 95%;
+}
+
+
+.pre_container{
+    background-color: rgb(250 ,250, 250);
+}
+
+.css_class{
+    display: block;
+    overflow-wrap:normal;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;  
+}
+
+.parent_code_snipp_div{
+    position: relative;
+}
+.copy_button{
+    color: white;
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    font-size: 30px;
+    transition: 500ms;
+    background: transparent;
+    border: none transparent; 
+}
+
+.copy_button:hover{
+    color:#616161;
+}
+.copy_icon_btn{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+.test_code_tag{
+    overflow-wrap: break-word;
+} */
+      

@@ -28,7 +28,7 @@ function Home() {
           <Card  className = "custom-cardOne" style={{ border: "none" }}>
             <Button className = "download-cta" href="/download">Download HorizonGE</Button>
             <Button className = "game-cta" href="/download">Download Game</Button>
-            <Button className = "make-game-cta" href="/download">Make a game</Button>
+            <Button className = "make-game-cta" href="/tutorial/beginner/game-getting-started">Make a game!</Button>
           </Card>
         </Col>
       </Row>

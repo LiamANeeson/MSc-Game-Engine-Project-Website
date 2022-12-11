@@ -9,13 +9,13 @@ import * as CgIcons from 'react-icons/cg'
 export const SidebarData = [
     {
         title: "Getting Started",
-        path: '/tutorial/getting-started',
+        path: '/tutorial/advanced/getting-started',
         icon: <AiIcons.AiFillHome/>,
         cName: 'row'
     },
     {
         title: "Create Project",
-        path: '/tutorial/create-project',
+        path: '/tutorial/advanced/create-project',
         icon: <FaIcons.FaGamepad/>,
         cName: 'row'
     },
@@ -27,25 +27,25 @@ export const SidebarData = [
     },
     {
         title: "Add Objects",
-        path: '/tutorial/adding-objects',
+        path: '/tutorial/advanced/adding-objects',
         icon: <BsIcons.BsBoxSeam/>,
         cName: 'row'
     },
     {
         title: "Entities & Components",
-        path: '/tutorial/ecs',
+        path: '/tutorial/advanced/ecs',
         icon: <GiIcons.GiAppleSeeds />,
         cName: 'row'
     },
     {
         title: "Physics",
-        path: '/tutorial/physics',
+        path: '/tutorial/advanced/physics',
         icon: <GiIcons.GiMaterialsScience/>,
         cName: 'row'
     },
     {
         title: "Scripting",
-        path: '/tutorial/scripts',
+        path: '/tutorial/advanced/scripts',
         icon: <RiIcons.RiFileCodeFill/>,
         cName: 'row'
     },
