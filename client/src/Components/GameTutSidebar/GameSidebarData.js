@@ -9,46 +9,21 @@ import * as CgIcons from 'react-icons/cg'
 export const GameSidebarData = [
     {
         title: "Getting Started",
-        path: '/tutorial/beginner/getting-started',
+        path: '/tutorial/beginner/game-getting-started',
         icon: <AiIcons.AiFillHome/>,
         cName: 'row'
     },
     {
         title: "Create Project",
-        path: 'tutorial/beginner/game-create-project',
+        path: '/tutorial/beginner/game-create-project',
         icon: <FaIcons.FaGamepad/>,
         cName: 'row'
     },
     {
         title: "Create Scene",
-        path: 'tutorial/beginner/game-create-scene',
+        path: '/tutorial/beginner/game-create-scene',
         icon: <RiIcons.RiMovieFill/>,
         cName: 'row'
     }
 
 ]
-
-// {
-//     title: "Add Objects",
-//     path: '/tutorial/adding-objects',
-//     icon: <BsIcons.BsBoxSeam/>,
-//     cName: 'row'
-// },
-// {
-//     title: "Entities & Components",
-//     path: '/tutorial/ecs',
-//     icon: <GiIcons.GiAppleSeeds />,
-//     cName: 'row'
-// },
-// {
-//     title: "Physics",
-//     path: '/tutorial/physics',
-//     icon: <GiIcons.GiMaterialsScience/>,
-//     cName: 'row'
-// },
-// {
-//     title: "Scripting",
-//     path: '/tutorial/scripts',
-//     icon: <RiIcons.RiFileCodeFill/>,
-//     cName: 'row'
-// },

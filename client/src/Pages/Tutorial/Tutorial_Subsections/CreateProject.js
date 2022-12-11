@@ -21,7 +21,7 @@ function CreateProject() {
 
  
   return (
-    <div className='tutorial-container'>
+    <div className='tut-main-container'>
       <Sidebar />
           <div className='tut-content'>
             <h2>Opening a new project</h2>

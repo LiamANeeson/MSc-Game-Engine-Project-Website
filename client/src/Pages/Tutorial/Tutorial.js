@@ -29,7 +29,7 @@ function Tutorial() {
               <Card.Text>
                 Learn Horizon GE
               </Card.Text>
-              <Button className='card-btn' href='/tutorial/getting-started'>Learn HorizonGE</Button>
+              <Button className='card-btn' href='/tutorial/advanced/getting-started'>Learn HorizonGE</Button>
             </Card.Body>
           </Card>
       </div>

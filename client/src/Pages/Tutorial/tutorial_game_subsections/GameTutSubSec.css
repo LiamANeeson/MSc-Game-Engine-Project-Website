@@ -2,10 +2,9 @@
     margin: auto;
     display: flex;
     flex-direction:row;
-    background-color: #EE6C4D !important;
 }
 
-/*.tut-content{
+tut-content{
     margin: auto;
     width: 60%;
     padding: 1%;
@@ -109,5 +108,5 @@
 
 .test_code_tag{
     overflow-wrap: break-word;
-} */
+}
       

@@ -21,7 +21,7 @@ export const SidebarData = [
     },
     {
         title: "Create Scene",
-        path: '/tutorial/create-scene',
+        path: '/tutorial/advanced/create-scene',
         icon: <RiIcons.RiMovieFill/>,
         cName: 'row'
     },

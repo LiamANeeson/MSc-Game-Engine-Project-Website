@@ -1,6 +1,6 @@
 import React from 'react'
-import Sidebar from '../../../Components/Sidebar/Sidebar'
-import './tut_subsections.css'
+import GameSidebar from '../../../Components/GameTutSidebar/GameSidebar';
+import './GameTutSubSec.css'
 
 import File_menu from '../../../Assets/Images/newScene/File_menu.png'
 import File_menu_open from '../../../Assets/Images/newScene/file_menu_new_scene.png'
@@ -21,7 +21,7 @@ function GameCreateScene() {
 
   return (
     <div className='tut-main-container'>
-        <Sidebar />
+        <GameSidebar />
           <div className='tut-content'>
           <h2>Opening a scene</h2>
           <Treemap links={links} />

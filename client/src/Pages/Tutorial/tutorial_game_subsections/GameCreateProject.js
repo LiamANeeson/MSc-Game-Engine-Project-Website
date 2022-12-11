@@ -1,6 +1,6 @@
 import React from 'react'
-import Sidebar from '../../../Components/Sidebar/Sidebar'
-import './tut_subsections.css'
+import GameSidebar from '../../../Components/GameTutSidebar/GameSidebar';
+import './GameTutSubSec.css'
 import { Container } from 'react-bootstrap'
 
 //pics
@@ -9,6 +9,10 @@ import File_menu from '../../../Assets/Images/newProject/File_menu.png';
 import File_menu_open from '../../../Assets/Images/newProject/File_menu_open.png';
 import new_project_dialog from '../../../Assets/Images/newProject/new_project_dialog.png';
 import new_project_setup from '../../../Assets/Images/newProject/new_project_setup.png';
+
+
+
+
 
 import Treemap from '../../../Components/TreeMap/TreeMap'
 
@@ -21,8 +25,8 @@ function GameCreateProject() {
 
  
   return (
-    <div className='tutorial-container'>
-      <Sidebar />
+    <div className='tut-main-container'>
+      <GameSidebar />
           <div className='tut-content'>
             <h2>Opening a new project</h2>
             <Treemap links={links} />
