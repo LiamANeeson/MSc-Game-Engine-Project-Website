@@ -1,14 +1,15 @@
 .tutorial-main-container{
   margin: auto;
+  display:flex;
 }
 
-@media only screen and (max-width: 426px) {
-  .tut-main-container {
+@media only screen and (max-width: 768px) {
+  .tutorial-main-container {
     display: block !important;    
   }
   .card-comp{
     max-width: 15.2rem !important;
-    margin-bottom: 2% !important;
+    margin-bottom: 8% !important;
   }
 }
 
