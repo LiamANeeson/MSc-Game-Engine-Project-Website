@@ -216,24 +216,6 @@ export async function followQuestion(questionID) {
   }
 }
 
-//unfollow question
-export async function unfollowQuestion(questionID) {
-  try {
-    let token = localStorage.getItem("authToken");
-    const axiosConfig = {
-      method: "patch",
-      url: `${apiURL}/question/${questionID}/unfollow`,
-      headers: { Authorization: "Bearer " + token },
-    };
-    const response = await axios.default.request(axiosConfig);
-    const normalizedResponse = normalizeServerResponse(response);
-    return [null, normalizedResponse];
-  } catch (error) {
-    const errorObject = normalizeServerError(error);
-    return [errorObject, null];
-  }
-}
-
 //delete question
 export async function deleteQuestion(questionID) {
   try {
