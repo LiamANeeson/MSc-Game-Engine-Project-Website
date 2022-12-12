@@ -33,12 +33,6 @@ const forgot = async (userData) => {
 const resetPassword = async (userData) => {
 
     const response = await axios.post(API_URL + 'reset-password', userData)
-    if (response.data) {
-        
-    }
-    else {
-        console.log("Login Unsuccessful")
-    }
 
     return response.data
 }

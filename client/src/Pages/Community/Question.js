@@ -81,11 +81,12 @@ const Question = ({ questions }) => {
                     <div className="user-info float-right" style={{ width: "100%" }}>
 
                       <div className="question-user-name">
-                        <Icon
-                          icon="ant-design:user"
+                       <img
+                          class="rounded-circle mt-2"
+                          src={que?.userObj?.avatar}
                           width="30px"
                           height="30px"
-                        />{que?.userObj?.name}</div>
+                        /> {que?.userObj?.name}</div>
                       <div className="question-user-date" >
                         {moment(que.createdAt).fromNow()}
                       </div>

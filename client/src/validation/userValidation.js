@@ -32,12 +32,8 @@ export const userSignInSchema = yup.object().shape({
 });
 
 export const userResetPasswordSchema = yup.object().shape({
-    oldpassword: yup.string().required('Please Enter your password')
-        .matches(
-            /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*,\.])[0-9a-zA-Z!@#$%^&*,\.]{8,20}$/,
-            "Password at least 8 characters, including numbers, upper and lower case letters and special characters three or more"
-        ),
-    newpassword: yup.string().required('Please Enter your password')
+    
+    newPassword: yup.string().required('')
         .matches(
             /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*,\.])[0-9a-zA-Z!@#$%^&*,\.]{8,20}$/,
             "Password at least 8 characters, including numbers, upper and lower case letters and special characters three or more"
