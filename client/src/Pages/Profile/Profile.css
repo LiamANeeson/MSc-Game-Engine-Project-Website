@@ -43,3 +43,8 @@
     background-color: #FB8500 !important;
     border-radius: 4px !important;
 }
+
+.reset_pwd {
+    margin-top: .5rem !important;
+    margin-left: .5rem !important;
+}

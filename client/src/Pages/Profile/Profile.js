@@ -242,10 +242,11 @@ function Profile() {
                                                             }
                                                         </Form.Group>
 
-                                                        <Button variant="secondary" onClick={handleClose}>
+                                                        <Button className="mt-2" variant="secondary" onClick={handleClose}>
                                                             Close
                                                         </Button>
                                                         <Button
+                                                            className="reset_pwd"
                                                             variant="primary"
                                                             disabled={!values.oldPassword || !values.newPassword}
                                                             type="submit"
