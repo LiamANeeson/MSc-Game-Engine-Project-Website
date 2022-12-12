@@ -35,6 +35,7 @@ const registerUser = asyncHandler(async (req, res) => {
         name: userName,
         email,
         password: hashedPassword,
+        avatar: "/uploads/default_user_photo.png",
     });
 
     await User.updateOne({ email },
@@ -124,25 +125,22 @@ const generateToken = (id) => {
 
 
 const resetPassword = async (req, res) => {
-     const { oldpassword, newpassword, token } = req.body;
+     const { oldPassword, newPassword, token } = req.body;
 
     const id = token;
-    //const { id } = req.params;
-    console.log(newpassword, oldpassword, id);
     try {
         let user = await User.findOne({ token: id }).select("+password");
-        console.log(user);
+
         if (!user) {
-            return res.status(400).json({ msg: "User not found" });
+            return res.status(400).json({ msg: "Old Password does not match" });
         }
 
-        console.log(oldpassword, user.password); //oldpassword.trim()
-
-        if (newpassword != oldpassword) {
-            return res.status(400).json({ msg: "No New and Old password" });
+        if (!(await bcrypt.compare(oldPassword, user.password))) {
+            return res.status(400).json({ msg: "Old Password does not match" });
         }
+
         const salt = await bcrypt.genSalt(10);
-        changepassword = await bcrypt.hash(newpassword, salt);
+        changepassword = await bcrypt.hash(newPassword, salt);
         await User.findByIdAndUpdate(user._id, {
             $set: { password: changepassword },
         });
