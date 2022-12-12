@@ -100,10 +100,10 @@ function Profile() {
     const handleShow = () => setShow(true);
 
     const [showAllYourPosts, setShowAllYourPosts] = useState(false);
-    const closeShowAllYourPosts = () => { setShowAllYourPosts(false); };
+    const closeShowAllYourPosts = () => { setShowAllYourPosts(false); setCreatedPostSearch("") };
 
     const [showAllFollowedPosts, setShowAllFollowedPosts] = useState(false);
-    const closeShowAllFollowedPosts = () => { setShowAllFollowedPosts(false); };
+    const closeShowAllFollowedPosts = () => { setShowAllFollowedPosts(false); setFollowedPostSearch("") };
 
     const toUpdateProfile = () => {
         navigate("/updateProfile");
