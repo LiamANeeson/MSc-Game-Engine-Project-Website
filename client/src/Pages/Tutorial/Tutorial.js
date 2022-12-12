@@ -10,7 +10,7 @@ import pic2 from '../../Assets/Images/open_game_art_download.PNG';
 function Tutorial() {
 
   return (
-      <div className='tut-main-container'>
+      <div className='tutorial-main-container'>
             <Card className='card-comp'>
               <Card.Img variant="top" src={pic1} />
               <Card.Body>
@@ -18,7 +18,7 @@ function Tutorial() {
                 <Card.Text>
                   Make a game
                 </Card.Text>
-                <Button className='card-btn' href='/tutorial/beginner/game-getting-started'>Make game!</Button>
+                <Button className='card-btn' href='/tutorial/beginner/game-getting-started'>Make a game!</Button>
               </Card.Body>
             </Card>
 

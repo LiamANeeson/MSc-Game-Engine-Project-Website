@@ -29,7 +29,7 @@ function Physics() {
   return (
     <div className='tut-main-container'>
         <Sidebar />
-        <div className='tut-content'>
+        <div className='adv-tut-content'>
           <h2>Adding physics</h2>
           <Treemap links={links} />
           <br></br>
@@ -149,7 +149,7 @@ function Physics() {
           <p>
             <strong id='references'>Reference:</strong><br/>
             - "Box2D: Dynamics Module. &#40;2022&#41;. Box2d.org. 
-            <a href="https://box2d.org/documentation/md__d_1__git_hub_box2d_docs_dynamics.html" target="_blank">
+            <a className='break-ref' href="https://box2d.org/documentation/md__d_1__git_hub_box2d_docs_dynamics.html" target="_blank">
               https://box2d.org/documentation/md__d_1__git_hub_box2d_docs_dynamics.html"
             </a>
           </p>

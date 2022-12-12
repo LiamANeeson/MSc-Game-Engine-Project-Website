@@ -11,7 +11,7 @@ function GettingStarted() {
   return (
     <div className='tut-main-container'>
         <Sidebar />
-          <div className='tut-content'>
+          <div className='adv-tut-content'>
             <h2>Getting started with HorizonGE</h2>
             <p></p>
             <p>Get started with building scenes in HorizonGE, to start select 'Download HorizonGE' from the home page!</p>
@@ -21,9 +21,8 @@ function GettingStarted() {
             
             <p>Once you download the Horizon Game Engine, place the executable in the directory of your choosing.
               You will need to navigate to where the .exe file is and launch it!</p>
-            <p>The HznEditor.exe can be found in directory path
-               "../HorizonEngine2D\bin\build\x64-debug\HorizonEditor\Debug"
-            </p>  
+            <p>The HznEditor.exe can be found in directory path</p>
+            <p className='break-path'>"../HorizonEngine2D\bin\build\x64-debug\HorizonEditor\Debug"</p>  
             <p>You will be brought to the empty dashboard screen, as seen below.</p>
             <img src={empty_engine} className='pic-width center_img' alt="HorizonGE empty dashboard"></img>
             <p className='center_txt'> Figure 2: Horizon game engine – empty engine dashboard </p>

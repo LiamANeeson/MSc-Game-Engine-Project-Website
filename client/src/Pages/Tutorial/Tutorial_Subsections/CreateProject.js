@@ -23,7 +23,7 @@ function CreateProject() {
   return (
     <div className='tut-main-container'>
       <Sidebar />
-          <div className='tut-content'>
+          <div className='adv-tut-content'>
             <h2>Opening a new project</h2>
             <Treemap links={links} />
             <br></br>

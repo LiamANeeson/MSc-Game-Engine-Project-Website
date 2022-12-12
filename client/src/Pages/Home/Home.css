@@ -4,17 +4,20 @@
 } 
 
 .title {
-  font-size: 6rem !important;
+  font-size: 5rem !important;
   font-weight: 600 !important;
   margin-top: 5% !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
+
+
 .sub-title {
   margin-left: auto !important;
   margin-right: auto !important;
   font-size: 1.5rem !important;
+  text-align: center;
 }
 
 
@@ -24,7 +27,8 @@
   background-color: #FB8500 !important;  
   border: 2px solid !important;
   border-color: #FB8500 !important;
-  width: 50% !important;
+  width: 65% !important;
+  min-width: 150px !important;
   height: auto !important;
   font-size: 1.3rem !important;
   font-weight: 600 !important;
@@ -47,7 +51,8 @@
   background-color: #FFB703 !important;  
   border: 2px solid !important;
   border-color: #FFB703 !important;
-  width: 50% !important;
+  width: 65% !important;
+  min-width: 150px !important;
   height: auto !important;
   font-size: 1.3rem !important;
   font-weight: 600 !important;
@@ -71,7 +76,7 @@
   background-color: #FFD903 !important;  
   border: 2px solid !important;
   border-color: #FFD903 !important;
-  width: 50% !important;
+  width: 65% !important;
   height: auto !important;
   font-size: 1.3rem !important;
   font-weight: 600 !important;

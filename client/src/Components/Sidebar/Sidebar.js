@@ -11,7 +11,7 @@ const Sidebar = ({children}) => {
 
   return (
     <div className='sidebar-container'>
-      <div style={{width: isOpen ? "200px" : "50px" }}className='sidebar'>
+      <div style={{width: isOpen ? "200px" : "50px" }} className= {isOpen ? 'sidebar openSidebar' : 'sidebar closeSidebar'}>
         <div className='top-section'>
           <h1 style = {{display: isOpen ? "block" : "none"}}className='logo'>Tutorial</h1>
           <div style = {{marginLeft: isOpen ? "50px": "10px"}}className='bars'>

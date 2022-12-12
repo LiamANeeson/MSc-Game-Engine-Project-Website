@@ -8,9 +8,26 @@
     color: #fff;
     height: 100%;
     width: 200px;
-    transition: all 0.5s;
+    transition: all 0.6s;
     text-decoration: none;
 }
+
+@media screen and (max-width: 426px) {
+    .closeSidebar{
+        height: 60px !important;
+        width: 100% !important;
+        overflow: hidden;
+        position: absolute;
+    }
+    .openSidebar{
+        width: 100% !important;
+        height: 100%;
+        overflow: visible;
+        position: absolute;
+    }
+}
+
+
 
 .sidebar .row {
     width: 100%;
@@ -45,11 +62,13 @@
     gap: 30px;
     transition: all 0.5s;
     text-decoration: none;
+    overflow: hidden;
 }
 .link:hover{
     background: #3D5A80;
     color: #FB8500;
     transition: all 0.5s;
+    overflow: visible;
 }
 /* .active{
     background: #3D5A80;

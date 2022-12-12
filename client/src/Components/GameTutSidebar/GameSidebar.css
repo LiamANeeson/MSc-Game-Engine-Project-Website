@@ -12,6 +12,22 @@
     text-decoration: none;
 }
 
+@media screen and (max-width: 426px) {
+    
+    .gCloseSidebar{
+        height: 60px;
+        width: 100% !important;
+        overflow: hidden;
+        position: absolute;
+    }
+    .gOpenSidebar{
+        width: 100% !important;
+        overflow: visible;
+        position: absolute;
+    }
+}
+
+
 .sidebar .row {
     width: 100%;
     height: 12vh;
@@ -45,11 +61,13 @@
     gap: 30px;
     transition: all 0.5s;
     text-decoration: none;
+    overflow: hidden;
 }
 .link:hover{
     background: #3D5A80;
     color: #FB8500;
     transition: all 0.5s;
+    overflow: visible;
 }
 /* .active{
     background: #3D5A80;

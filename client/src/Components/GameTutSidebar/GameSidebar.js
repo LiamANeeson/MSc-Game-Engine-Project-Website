@@ -2,6 +2,8 @@ import React, { Children, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'
 
+import './GameSidebar.css'
+
 import { GameSidebarData } from './GameSidebarData'
 
 const GameSidebar = ({children}) => {
@@ -10,7 +12,7 @@ const GameSidebar = ({children}) => {
 
   return (
     <div className='sidebar-container'>
-      <div style={{width: isOpen ? "200px" : "50px" }}className='sidebar'>
+      <div style={{width: isOpen ? "200px" : "50px" }} className= {isOpen ? 'sidebar gOpenSidebar' : 'sidebar gCloseSidebar'}>
         <div className='top-section'>
           <h1 style = {{display: isOpen ? "block" : "none"}}className='logo'>Game Tutorial</h1>
           <div style = {{marginLeft: isOpen ? "50px": "10px"}}className='bars'>

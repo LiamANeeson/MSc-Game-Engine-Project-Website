@@ -10,6 +10,30 @@
     padding: 1%;
 }
 
+@media screen and (max-width: 425px) {
+    .tut-main-container{
+        margin: 0% !important;
+        display: flex;
+        flex-direction:row;
+    }
+    
+    .adv-tut-content{
+        margin-top: 20% !important;
+        width: 80% !important;
+        padding: 1%;
+    }
+    .sidebar-container{
+        width: 100% !important;
+        height: 100%;
+    }
+    /* .sidebar-container{
+        height: 100%
+    } */
+    .break-ref{
+        overflow-wrap: break-word !important;
+    } 
+}
+
 .pic-width{
     margin: auto;
     width: 100%;

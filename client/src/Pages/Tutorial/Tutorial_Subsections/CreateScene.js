@@ -22,7 +22,7 @@ function CreateScene() {
   return (
     <div className='tut-main-container'>
         <Sidebar />
-          <div className='tut-content'>
+          <div className='adv-tut-content'>
           <h2>Opening a scene</h2>
           <Treemap links={links} />
           <br></br>
