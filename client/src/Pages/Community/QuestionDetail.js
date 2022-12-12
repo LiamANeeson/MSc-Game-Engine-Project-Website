@@ -5,11 +5,12 @@ import * as Api from "../../features/APIs/api";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
 import { toast } from "react-toastify";
 import moment from "moment";
 import { Icon } from "@iconify/react";
 import "./QuestionDetail.css";
-import Modal from 'react-bootstrap/Modal';
+import Modal from "react-bootstrap/Modal";
 
 import {
   createCommentSchema,
@@ -29,20 +30,34 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Body>
         <p style={{ marginTop: "1rem", marginLeft: "1rem" }}>
-          <svg style={{ color: "orange" }} viewBox="64 64 896 896" focusable="false" data-icon="exclamation-circle"
-            width="1em" height="1em" fill="currentColor" aria-hidden="true">
+          <svg
+            style={{ color: "orange" }}
+            viewBox="64 64 896 896"
+            focusable="false"
+            data-icon="exclamation-circle"
+            width="1em"
+            height="1em"
+            fill="currentColor"
+            aria-hidden="true"
+          >
             <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
             <path d="M464 688a48 48 0 1096 0 48 48 0 10-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z"></path>
           </svg>
           &nbsp;You need to sign in to perform this operation
-
           <br />
           <div style={{ float: "right", marginTop: "24px" }}>
-            <button type="button" onClick={props.onHide} className='login-cancel-button'><span>Cancel</span></button>
-            <button type="button" className='login-do-button'>
-              <a href='/login' style={{ color: "white" }}>
+            <button
+              type="button"
+              onClick={props.onHide}
+              className="login-cancel-button"
+            >
+              <span>Cancel</span>
+            </button>
+            <button type="button" className="login-do-button">
+              <a href="/login" style={{ color: "white" }}>
                 <span>Sign in</span>
-              </a></button>
+              </a>
+            </button>
           </div>
         </p>
       </Modal.Body>
@@ -58,9 +73,7 @@ const QuestionDetail = (props) => {
   const [isUpvotedByThisUser, setIsUpvotedByThisUser] = useState(false);
   const [isDownvotedByThisUser, setIsDownvotedByThisUser] = useState(false);
 
-
   const [modalShow, setModalShow] = React.useState(false);
-
 
   const authToken = localStorage.getItem("authToken");
   const [showLoading, setShowLoading] = useState(true);
@@ -202,429 +215,405 @@ const QuestionDetail = (props) => {
 
   return (
     <>
-      <div style={{ padding: "10px" }}>
-        {showLoading ? <div className="loadingDiv"></div> : ""}
+      <Container>
+        <div style={{ padding: "10px" }}>
+          {showLoading ? <div className="loadingDiv"></div> : ""}
 
-        <Card
-          className="text-center"
-          style={{
-            height: "fix-layout",
-            border: "none",
-            backgroundColor: "#c0c0c045",
-          }}
-        >
-          <Card.Body style={{ width: "100%" }}>
-            <Card.Text className="question-title">
-              <div style={{ display: "flex" }}>
-                <h2 className="q-title">{question?.name}</h2>
+          <Card
+            // className="text-center"
+            style={{
+              height: "fix-layout",
+              border: "none",
+              backgroundColor: "#c0c0c045",
+            }}
+          >
+            <Card.Body style={{ width: "100%" }}>
+              <Card.Text className="question-title">
+                <div>
+                  <h2 className="q-title">{question?.name}</h2>
+                </div>
+                <div className="q-desc">
+                  <p>{question?.description}</p>
+                </div>
+              </Card.Text>
+
+              <div className="que-tags">
+                {question?.tags.map((tag) => (
+                  <span className="tag">{tag}</span>
+                ))}
               </div>
-              <div className="q-desc">
-                <p>{question?.description}</p>
+              <div className="question-interactions">
+                <Button
+                  className="question-btn"
+                  onClick={() => {
+                    if (!authToken) {
+                      setModalShow(true);
+                    } else {
+                      followQuestion();
+                    }
+                  }}
+                >
+                  Follow
+                </Button>
+
+                <Button
+                  className="question-btn"
+                  onClick={() => {
+                    if (!authToken) {
+                      setModalShow(true);
+                    } else {
+                      upVoteQuestion();
+                    }
+                  }}
+                >
+                  <AiIcons.AiFillLike
+                    size={25}
+                    style={{ color: isUpvotedByThisUser ? "white" : null }}
+                  />
+                </Button>
+
+                <Button
+                  className="question-btn"
+                  onClick={() => {
+                    if (!authToken) {
+                      setModalShow(true);
+                    } else {
+                      downVoteQuestion();
+                    }
+                  }}
+                >
+                  <AiIcons.AiFillDislike
+                    size={25}
+                    style={{ color: isDownvotedByThisUser ? "white" : null }}
+                  />
+                </Button>
+
+                {isDelete ? (
+                  <Button
+                    className="question-btn"
+                    onClick={() => {
+                      if (!authToken) {
+                        setModalShow(true);
+                      } else {
+                        deleteQuestion();
+                      }
+                    }}
+                  >
+                    <AiIcons.AiFillDelete size={40} />
+                  </Button>
+                ) : (
+                  ""
+                )}
               </div>
-            </Card.Text>
-
-            <div className="que-tags">
-              {question?.tags.map((tag) => (
-                <span className="tag">{tag}</span>
-              ))}
-            </div>
-            <div className="question-interactions">
-              <Button
-                className="question-btn"
-
-                onClick={
-                  () => {
-
-                    if (!authToken) {
-                      setModalShow(true);
-                    }
-                    else {
-                      followQuestion()
-                    }
-
-                  }}
-              >
-                <p className="follow-btn">Follow</p>
-              </Button>
-
-              <Button
-                className="question-btn"
-
-
-                onClick={
-                  () => {
-
-                    if (!authToken) {
-                      setModalShow(true);
-                    }
-                    else {
-                      upVoteQuestion()
-                    }
-
-                  }}
-              >
-                <AiIcons.AiFillLike
-                  size={30}
-                  style={{ color: isUpvotedByThisUser ? "white" : null }}
-                />
-              </Button>
-
-              <Button
-                className="question-btn"
-
-
-                onClick={
-                  () => {
-
-                    if (!authToken) {
-                      setModalShow(true);
-                    }
-                    else {
-                      downVoteQuestion()
-                    }
-
-                  }}
-              >
-                <AiIcons.AiFillDislike
-                  size={30}
-                  style={{ color: isDownvotedByThisUser ? "white" : null }}
-                />
-              </Button>
-
-              {
-                isDelete ?
-              <Button
-                className="question-btn"             
-                onClick={
-                  () => {
-                    if (!authToken) {
-                      setModalShow(true);
-                    }
-                    else {
-                      deleteQuestion()
-                    }
-
-                  }}
-              >
-                <AiIcons.AiFillDelete size={40} />
-              </Button>
-              : ""}
-            </div>
-          </Card.Body>
-        </Card>
-        <hr />
-        <Card
-          // className="text-center"
-          style={{ width: "100%", height: "fix-layout", border: "none" }}
-        >
-          <Card.Body>
-            <Card.Text className="question-title">
-              <div style={{ display: "flex" }}>
-                <h2 className="answer-heading">
-                  {question?.answers?.length} Answers
-                </h2>
-              </div>
-              <hr />
-            </Card.Text>
-            <div>
-              {answers?.map((answer) => (
-                <div className="answer-gird" key={answer.data._id}>
-                  <div className="like-dislike">
-                    <div className="count-like">
-                      <Icon
-                        icon="ant-design:like"
-                        width="1rem"
-                        onClick={
-                          () => {
-
-                            if (!authToken) {
-                              setModalShow(true);
-                            }
-                            else {
-                              upVoteQuestion(answer.data._id)
-                            }
-
-                          }}
-                        height="1rem"
-                        style={{
-                          cursor: "pointer",
-                          marginLeft: "5px",
-                          marginRight: "5px",
-                        }}
-                      />
-                      <div className="count-middle">
-                        {answer?.data?.votes?.length}
-                      </div>
-                      <Icon
-                        icon="ant-design:dislike"
-                        width="1rem"
-                        height="1rem"
-                        onClick={
-                          () => {
-
-                            if (!authToken) {
-                              setModalShow(true);
-                            }
-                            else {
-                              downVoteQuestion(answer.data._id)
-                            }
-
-                          }}
-                        style={{
-                          cursor: "pointer",
-                          marginLeft: "5px",
-                          marginRight: "5px",
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="answer-detail">
-                    <div>{answer?.data?.content}</div>
-                    <div className="other-section">
-                      <div className="answer-detail-comment">
-                        <button
+            </Card.Body>
+          </Card>
+          <hr />
+          <Card
+            // className="text-center"
+            style={{ width: "100%", height: "fix-layout", border: "none" }}
+          >
+            <Card.Body>
+              <Card.Text className="question-title">
+                <div style={{ display: "flex" }}>
+                  <h2 className="answer-heading">
+                    {question?.answers?.length} Answers
+                  </h2>
+                </div>
+                <hr />
+              </Card.Text>
+              <div>
+                {answers?.map((answer) => (
+                  <div className="answer-gird" key={answer.data._id}>
+                    <div className="like-dislike">
+                      <div className="count-like">
+                        <Icon
+                          icon="ant-design:like"
+                          width="1rem"
                           onClick={() => {
-
                             if (!authToken) {
                               setModalShow(true);
+                            } else {
+                              upVoteQuestion(answer.data._id);
                             }
-                            else {
-                              setObj(answer);
-                            }
-                            //tariq
-
                           }}
-                          className="answer-detail-commen-button"
-                        >
-                          <span>
-                            Comment
-                            {/* {
-                              answer.data.comment.length ?
-                                <sup className="comment-count">{answer.data.comment.length}</sup>
-                                : ""
-                            } */}
-                          </span>
-                        </button>
+                          height="1rem"
+                          style={{
+                            cursor: "pointer",
+                            marginLeft: "5px",
+                            marginRight: "5px",
+                          }}
+                        />
+                        <div className="count-middle">
+                          {answer?.data?.votes?.length}
+                        </div>
+                        <Icon
+                          icon="ant-design:dislike"
+                          width="1rem"
+                          height="1rem"
+                          onClick={() => {
+                            if (!authToken) {
+                              setModalShow(true);
+                            } else {
+                              downVoteQuestion(answer.data._id);
+                            }
+                          }}
+                          style={{
+                            cursor: "pointer",
+                            marginLeft: "5px",
+                            marginRight: "5px",
+                          }}
+                        />
                       </div>
-                      <div className="comment-userinfo">
-                        <div className="comment-userinfo-img">
-                          <div className="question-user-name">
-                            <Icon
-                              icon="ant-design:user"
-                              width="30px"
-                              height="30px"
-                            />
-                            {answer?.data?.userObj?.name}
-                          </div>
-                          <div className="question-user-date">
-                            {moment(answer.data.createdAt).fromNow()}
+                    </div>
+                    <div className="answer-detail">
+                      <div>{answer?.data?.content}</div>
+                      <div className="other-section">
+                        <div className="answer-detail-comment">
+                          <button
+                            onClick={() => {
+                              if (!authToken) {
+                                setModalShow(true);
+                              } else {
+                                setObj(answer);
+                              }
+                            }}
+                            className="answer-detail-commen-button"
+                          >
+                            <span>Comment</span>
+                          </button>
+                        </div>
+                        <div className="comment-userinfo">
+                          <div className="comment-userinfo-img">
+                            <div className="question-user-name">
+                              <Icon
+                                icon="ant-design:user"
+                                width="30px"
+                                height="30px"
+                              />
+                              {answer?.data?.userObj?.name}
+                            </div>
+                            <div className="question-user-date">
+                              {moment(answer.data.createdAt).fromNow()}
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="answer-comment">
-                    <div className="answer-commnet-list">
-                      <ul className="answer-comment-ul">
-                        {answer.data.comment &&
-                          answer.data.comment.length >= 1 &&
-                          answer.data.comment.map((row) => {
-                            return (
-                              <>
-                                <li key={row._id} className="answer-comment-li">
-                                  <div className="answer-commnet-li-div">
-                                    <div className="ant-comment-content-author">
-                                      <span className="ant-comment-content-author-name">
-                                        {row.userObj.name}
-                                      </span>
-                                      <span className="ant-comment-content-author-time">
-                                        <span>
-                                          {moment(
-                                            row.userObj.createdAt
-                                          ).fromNow()}
-                                        </span>
-                                      </span>
-                                    </div>
-                                    <div className="ant-comment-content-detail">
-                                      <div className="custom-md-style">
-                                        <p> {row.content}</p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </li>
-                              </>
-                            );
-                          })}
-                      </ul>
-                    </div>
-                    <div
-                      className="answer-comment-text"
-                      style={{
-                        display:
-                          obj?.data?._id == answer.data._id ? "block" : "none",
-                      }}
-                    >
-                      <h2 className="question-title">Post your comment</h2>
-                      <br />
-                      {!localStorage.getItem("authToken") ? (
-                        <>
-                          <h5 style={{ color: "red" }}>
-                            Please login to post a Comment.
-                          </h5>
-                        </>
-                      ) : (
-                        <>
-                          <Formik
-                            initialValues={{
-                              answer_comment: "",
-                            }}
-                            validationSchema={createCommentSchema}
-                            onSubmit={postAnswerComment}
-                          >
-                            {({
-                              values,
-                              errors,
-                              handleSubmit,
-                              handleChange,
-                              handleBlur,
-                              touched,
-                            }) => {
+                    <div className="answer-comment">
+                      <div className="answer-commnet-list">
+                        <ul className="answer-comment-ul">
+                          {answer.data.comment &&
+                            answer.data.comment.length >= 1 &&
+                            answer.data.comment.map((row) => {
                               return (
-                                <Form onSubmit={handleSubmit}>
-                                  <Form.Group controlId="exampleForm.ControlTextarea1">
-                                    <Form.Control
-                                      as="textarea"
-                                      rows="3"
-                                      placeholder="Start writing your comment..."
-                                      name="answer_comment"
-                                      onChange={handleChange}
-                                      onBlur={handleBlur}
-                                      value={values.answer_comment}
-                                    />
-                                    {errors.answer_comment &&
-                                      touched.answer_comment ? (
-                                      <div className="error-message">
-                                        {errors.answer_comment}
+                                <>
+                                  <li
+                                    key={row._id}
+                                    className="answer-comment-li"
+                                  >
+                                    <div className="answer-commnet-li-div">
+                                      <div className="ant-comment-content-author">
+                                        <span className="ant-comment-content-author-name">
+                                          {row.userObj.name}
+                                        </span>
+                                        <span className="ant-comment-content-author-time">
+                                          <span>
+                                            {moment(
+                                              row.userObj.createdAt
+                                            ).fromNow()}
+                                          </span>
+                                        </span>
                                       </div>
-                                    ) : null}
-                                  </Form.Group>
-                                  <br />
-                                  <br />
-                                  {!localStorage.getItem("authToken") ? (
-                                    <></>
-                                  ) : (
-                                    <div
-                                      style={{
-                                        display: "flex",
-                                        justifyContent: "end",
-                                        marginTop: "1rem",
-                                      }}
-                                    >
-                                      <Button
-                                        className="cancel-button"
-                                        variant="secondary"
-                                        onClick={() => {
-                                          setObj({});
-                                        }}
-                                      >
-                                        Cancel
-                                      </Button>
-                                      <Button
-                                        className="post-button"
-                                        variant="secondary"
-                                        onClick={handleSubmit}
-                                      >
-                                        Post Comment
-                                      </Button>
+                                      <div className="ant-comment-content-detail">
+                                        <div className="custom-md-style">
+                                          <p> {row.content}</p>
+                                        </div>
+                                      </div>
                                     </div>
-                                  )}
-                                </Form>
+                                  </li>
+                                </>
                               );
-                            }}
-                          </Formik>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Card.Body>
-        </Card>
-        <Card className="text-center" style={{ marginBottom: "5%" }}>
-          <Card.Body>
-            <Card.Text className="question-title">
-              <div style={{ display: "flex" }}>
-                <h2 className="question-title">Add your answer</h2>
-              </div>
-            </Card.Text>
-            <br />
-            {!localStorage.getItem("authToken") ? (
-              <>
-                <h5 style={{ color: "red" }}>Please login to post a answer.</h5>
-              </>
-            ) : (
-              <>
-                <Formik
-                  initialValues={{
-                    answer: "",
-                  }}
-                  validationSchema={createAnswerSchema}
-                  onSubmit={postAnswer}
-                >
-                  {({
-                    values,
-                    errors,
-                    handleSubmit,
-                    handleChange,
-                    handleBlur,
-                    touched,
-                  }) => {
-                    return (
-                      <Form onSubmit={handleSubmit}>
-                        <Form.Group controlId="exampleForm.ControlTextarea1">
-                          <Form.Control
-                            as="textarea"
-                            rows="3"
-                            placeholder="Start writing your answer..."
-                            name="answer"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.answer}
-                          />
-                          {errors.answer && touched.answer ? (
-                            <div className="error-message">{errors.answer}</div>
-                          ) : null}
-                        </Form.Group>
-                        <br />
+                            })}
+                        </ul>
+                      </div>
+                      <div
+                        className="answer-comment-text"
+                        style={{
+                          display:
+                            obj?.data?._id == answer.data._id
+                              ? "block"
+                              : "none",
+                        }}
+                      >
+                        <h2 className="question-title">Post your comment</h2>
                         <br />
                         {!localStorage.getItem("authToken") ? (
-                          <></>
+                          <>
+                            <h5 style={{ color: "red" }}>
+                              Please login to post a Comment.
+                            </h5>
+                          </>
                         ) : (
-                          <div
-                            style={{ display: "flex", justifyContent: "end" }}
-                          >
-                            <Button variant="secondary" onClick={handleSubmit}>
-                              Post answer
-                            </Button>
-                          </div>
+                          <>
+                            <Formik
+                              initialValues={{
+                                answer_comment: "",
+                              }}
+                              validationSchema={createCommentSchema}
+                              onSubmit={postAnswerComment}
+                            >
+                              {({
+                                values,
+                                errors,
+                                handleSubmit,
+                                handleChange,
+                                handleBlur,
+                                touched,
+                              }) => {
+                                return (
+                                  <Form onSubmit={handleSubmit}>
+                                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                                      <Form.Control
+                                        as="textarea"
+                                        rows="3"
+                                        placeholder="Start writing your comment..."
+                                        name="answer_comment"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.answer_comment}
+                                      />
+                                      {errors.answer_comment &&
+                                      touched.answer_comment ? (
+                                        <div className="error-message">
+                                          {errors.answer_comment}
+                                        </div>
+                                      ) : null}
+                                    </Form.Group>
+                                    <br />
+                                    <br />
+                                    {!localStorage.getItem("authToken") ? (
+                                      <></>
+                                    ) : (
+                                      <div
+                                        style={{
+                                          display: "flex",
+                                          justifyContent: "end",
+                                          marginTop: "1rem",
+                                        }}
+                                      >
+                                        <Button
+                                          className="cancel-button"
+                                          variant="secondary"
+                                          onClick={() => {
+                                            setObj({});
+                                          }}
+                                        >
+                                          Cancel
+                                        </Button>
+                                        <Button
+                                          className="post-button"
+                                          onClick={handleSubmit}
+                                        >
+                                          Post Comment
+                                        </Button>
+                                      </div>
+                                    )}
+                                  </Form>
+                                );
+                              }}
+                            </Formik>
+                          </>
                         )}
-                      </Form>
-                    );
-                  }}
-                </Formik>
-              </>
-            )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card.Body>
+          </Card>
+          <Card className="text-center" style={{ marginBottom: "5%" }}>
+            <Card.Body>
+              <Card.Text className="question-title">
+                <div style={{ display: "flex" }}>
+                  <h2 className="question-title">Add your answer</h2>
+                </div>
+              </Card.Text>
+              <br />
+              {!localStorage.getItem("authToken") ? (
+                <>
+                  <h5 style={{ color: "red" }}>
+                    Please login to post a answer.
+                  </h5>
+                </>
+              ) : (
+                <>
+                  <Formik
+                    initialValues={{
+                      answer: "",
+                    }}
+                    validationSchema={createAnswerSchema}
+                    onSubmit={postAnswer}
+                  >
+                    {({
+                      values,
+                      errors,
+                      handleSubmit,
+                      handleChange,
+                      handleBlur,
+                      touched,
+                    }) => {
+                      return (
+                        <Form onSubmit={handleSubmit}>
+                          <Form.Group controlId="exampleForm.ControlTextarea1">
+                            <Form.Control
+                              as="textarea"
+                              rows="3"
+                              placeholder="Start writing your answer..."
+                              name="answer"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              value={values.answer}
+                            />
+                            {errors.answer && touched.answer ? (
+                              <div className="error-message">
+                                {errors.answer}
+                              </div>
+                            ) : null}
+                          </Form.Group>
+                          <br />
+                          <br />
+                          {!localStorage.getItem("authToken") ? (
+                            <></>
+                          ) : (
+                            <div
+                              style={{ display: "flex", justifyContent: "end" }}
+                            >
+                              <Button
+                                className="post-answer"
+                                variant="secondary"
+                                onClick={handleSubmit}
+                              >
+                                Post answer
+                              </Button>
+                            </div>
+                          )}
+                        </Form>
+                      );
+                    }}
+                  </Formik>
+                </>
+              )}
 
-            <br />
-            <br />
-          </Card.Body>
-        </Card>
-      </div>
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+              <br />
+              <br />
+            </Card.Body>
+          </Card>
+        </div>
+        <MyVerticallyCenteredModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
+      </Container>
     </>
   );
 };

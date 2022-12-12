@@ -280,10 +280,9 @@ const getCreatedQuestions = async (req, res) => {
     try {
 
         const page = parseInt(req.body.page) - 1 || 0;
-        const limit = parseInt(req.body.limit);
         const search = req.body.search || "";
+        const limit = parseInt(req.body.limit) || 5;
 
-        console.log(page)
 
         const userEmail = req.user.email;
 
@@ -294,14 +293,18 @@ const getCreatedQuestions = async (req, res) => {
 
         let createdQuestions;
 
-        if (limit == 0) {
-            createdQuestions = await Question.find(where).sort({ "createdAt": -1 });
-        } else {
-            createdQuestions = await Question.find(where).sort({ "createdAt": -1 }).skip(page * limit)
-                .limit(limit);
-        }
+        allCreatedQuestions = await Question.find({ "userObj.email": userEmail }).sort({ "createdAt": -1 });
+
+        createdQuestions = await Question.find(where).sort({ "createdAt": -1 }).skip(page * limit)
+            .limit(limit);
+
+        console.log(createdQuestions);
 
         const total = await Question.countDocuments(where);
+
+        allCreatedQuestionsArray = allCreatedQuestions
+            ? allCreatedQuestions.map((question) => question)
+            : [];
 
         createdQuestionsArray = createdQuestions
             ? createdQuestions.map((question) => question)
@@ -311,7 +314,8 @@ const getCreatedQuestions = async (req, res) => {
             error: false,
             total: total,
             page: page + 1,
-            createdQuestions: createdQuestionsArray
+            createdQuestions: createdQuestionsArray,
+            allCreatedQuestions: allCreatedQuestionsArray
         };
         res.json(response);
     } catch (err) {
@@ -324,8 +328,9 @@ const getFollowedQuestions = async (req, res) => {
     try {
 
         const page = parseInt(req.body.page) - 1 || 0;
-        const limit = parseInt(req.body.limit);
+        const limit = parseInt(req.body.limit) || 5;
         const search = req.body.search || "";
+
 
         var userID = req.user._id;
 
@@ -336,15 +341,17 @@ const getFollowedQuestions = async (req, res) => {
 
         let followedQuestions;
 
-        if (limit == 0) {
-           
-            followedQuestions = await Question.find(where).sort({ "followedBy.followTime": -1 });
-        } else {
-            followedQuestions = await Question.find(where).sort({ "followedBy.followTime": -1 }).skip(page * limit)
-                .limit(limit);
-        }
+
+        allFollowedQuestions = await Question.find({ "followedBy._id": userID }).sort({ "followedBy.followTime": -1 });
+
+        followedQuestions = await Question.find(where).sort({ "followedBy.followTime": -1 }).skip(page * limit)
+            .limit(limit);
 
         const total = await Question.countDocuments(where);
+
+        allFollowedQuestionsArray = allFollowedQuestions
+            ? allFollowedQuestions.map((question) => question)
+            : [];
 
         followedQuestionsArray = followedQuestions
             ? followedQuestions.map((question) => question)
@@ -352,9 +359,10 @@ const getFollowedQuestions = async (req, res) => {
 
         const response = {
             error: false,
-            total:total,
+            total: total,
             page: page + 1,
-            followedQuestions: followedQuestionsArray
+            followedQuestions: followedQuestionsArray,
+            allFollowedQuestions: allFollowedQuestionsArray
         };
         res.json(response);
     } catch (err) {
