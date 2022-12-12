@@ -355,7 +355,7 @@ function Profile() {
                                         <Card.Text key={question.name} className="post-link">
                                             <Link to={`/question/${question._id}`}>{question.name}</Link>
                                         </Card.Text>
-                                    )) : <Card.Text className="text-muted">None to display, yet!</Card.Text>
+                                    )) : <Card.Text className="text-muted">No posts found</Card.Text>
                                 }
                             </Card.Body>
                         </Card>
@@ -391,7 +391,7 @@ function Profile() {
                                                 }}>Unfollow</button>
                                             <Link to={`/question/${question._id}`}>{question.name}</Link>
                                         </Card.Text>
-                                    )) : <Card.Text className="text-muted">None to display, yet!</Card.Text>
+                                    )) : <Card.Text className="text-muted">No posts found</Card.Text>
                                 }
                             </Card.Body>
                             
