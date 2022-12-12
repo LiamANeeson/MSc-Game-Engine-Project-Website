@@ -23,6 +23,7 @@ const updateProfile = async (req, res) => {
         await User.updateOne({ email },
             {
                 name: req.body.userName,
+                avatar: req.body.avatar,
             })
 
         const currentProfile = await Profile.findOne({ email })

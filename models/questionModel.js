@@ -38,7 +38,7 @@ const questionSchema = new mongoose.Schema(
             type: Number,
             default: 0
         },
-        followedBy: [{ type: mongoose.Types.ObjectId, ref: 'user' }],
+        followedBy: [Object],
         userObj: Object
     },
     {
