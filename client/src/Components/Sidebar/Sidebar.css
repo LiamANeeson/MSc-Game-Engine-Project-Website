@@ -1,9 +1,10 @@
 .sidebar-container{
     display:flex;
+    flex-direction: row;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.sidebar{
+.advSidebar{
     background: #023047;
     color: #fff;
     height: 100%;
@@ -13,13 +14,14 @@
 }
 
 @media screen and (max-width: 426px) {
-    .closeSidebar{
-        height: 60px !important;
+    
+    .advCloseSidebar{
+        height: 50px !important;
         width: 100% !important;
         overflow: hidden;
         position: absolute;
     }
-    .openSidebar{
+    .advOpenSidebar{
         width: 100% !important;
         height: 100%;
         overflow: visible;

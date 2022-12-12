@@ -1,28 +1,30 @@
-.tut-main-container{
-    margin: auto;
+.gmTutMainContainer{
     display: flex;
     flex-direction:row;
 }
 
-.adv-tut-content{
+.gmTutContent{
     margin: auto;
-    width: 60%;
+    width: 90%;
     padding: 1%;
 }
 
 
 @media screen and (max-width: 426px) {
-    .tut-main-container{
+    .gmTutMainContainer{
         display: flex;
         flex-direction:row;
     }
     
-    .tut-content{
-        margin: auto !important;
-        margin-top: 20% !important;
-        width: 60%;
-        padding: 1%;
+    .gmTutContent{
+        margin-top: 20%;
     }
+
+/* margin: auto !important;
+margin-top: 20% !important;
+width: 60%;
+padding: 1%; */
+
 }
 
 

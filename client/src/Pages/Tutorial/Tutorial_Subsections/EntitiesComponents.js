@@ -5,7 +5,7 @@ import './tut_subsections.css'
 
 function EntitiesComponents() {
   return (
-    <div className='tut-main-container'>
+    <div className='advTutMainContainer'>
       <Sidebar />
       <div className='adv-tut-content'>
         <h2>Entity Component system</h2>

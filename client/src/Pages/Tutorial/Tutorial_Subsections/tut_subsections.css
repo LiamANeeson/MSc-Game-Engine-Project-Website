@@ -1,37 +1,29 @@
-.tut-main-container{
-    margin: auto;
+.advTutMainContainer{
     display: flex;
     flex-direction:row;
 }
 
-.tut-content{
+.advTutContent{
     margin: auto;
-    width: 60%;
+    width: 90%;
     padding: 1%;
 }
 
-@media screen and (max-width: 425px) {
-    .tut-main-container{
-        margin: 0% !important;
+
+@media screen and (max-width: 426px) {
+    .advTutMainContainer{
         display: flex;
         flex-direction:row;
     }
-    
-    .adv-tut-content{
-        margin-top: 20% !important;
-        width: 80% !important;
-        padding: 1%;
+    .advTutContent{
+        margin-top: 20%;
     }
-    .sidebar-container{
-        width: 100% !important;
-        height: 100%;
-    }
-    /* .sidebar-container{
-        height: 100%
-    } */
     .break-ref{
         overflow-wrap: break-word !important;
-    } 
+    }
+    .breakPath{
+        overflow-wrap: break-word !important;
+    }
 }
 
 .pic-width{

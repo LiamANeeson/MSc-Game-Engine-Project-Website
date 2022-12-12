@@ -20,9 +20,9 @@ function GameCreateScene() {
   { id: '#step6', text: 'Figure 6: Accessing scenes created' },]
 
   return (
-    <div className='tut-main-container'>
+    <div className='gmTutMainContainer'>
         <GameSidebar />
-          <div className='tut-content'>
+          <div className='gmTutContent'>
           <h2>Opening a scene</h2>
           <Treemap links={links} />
           <br></br>

@@ -21,9 +21,9 @@ function GameCreateProject() {
 
  
   return (
-    <div className='tut-main-container'>
+    <div className='gmTutMainContainer'>
       <GameSidebar />
-          <div className='tut-content'>
+          <div className='gmTutContent'>
             <h2>Opening a new project</h2>
             <Treemap links={links} />
             <br></br>

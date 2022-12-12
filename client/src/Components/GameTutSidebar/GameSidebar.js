@@ -11,8 +11,8 @@ const GameSidebar = ({children}) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div className='sidebar-container'>
-      <div style={{width: isOpen ? "200px" : "50px" }} className= {isOpen ? 'sidebar gOpenSidebar' : 'sidebar gCloseSidebar'}>
+    <div className='gSidebar-container'>
+      <div style={{width: isOpen ? "200px" : "50px" }} className= {isOpen ? 'gSidebar gOpenSidebar' : 'gSidebar gCloseSidebar'}>
         <div className='top-section'>
           <h1 style = {{display: isOpen ? "block" : "none"}}className='logo'>Game Tutorial</h1>
           <div style = {{marginLeft: isOpen ? "50px": "10px"}}className='bars'>

@@ -27,9 +27,9 @@ function Physics() {
 
   
   return (
-    <div className='tut-main-container'>
+    <div className='advTutMainContainer'>
         <Sidebar />
-        <div className='adv-tut-content'>
+        <div className='advTutContent'>
           <h2>Adding physics</h2>
           <Treemap links={links} />
           <br></br>

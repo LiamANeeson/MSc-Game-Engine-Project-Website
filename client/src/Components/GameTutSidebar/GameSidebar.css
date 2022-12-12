@@ -1,9 +1,9 @@
-.sidebar-container{
+.gSidebar-container{
     display:flex;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.sidebar{
+.gSidebar{
     background: #023047;
     color: #fff;
     height: 100%;
@@ -15,7 +15,7 @@
 @media screen and (max-width: 426px) {
     
     .gCloseSidebar{
-        height: 60px;
+        height: 50px;
         width: 100% !important;
         overflow: hidden;
         position: absolute;

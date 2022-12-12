@@ -98,7 +98,19 @@ const getQuestionById = async (req, res) => {
       { $inc: { viewCount: 1 } }
     )
 
-    res.status(200).json(questionToFrontEndView(question, req.user._id))
+    let userID = null
+    if (req.user) {
+      userID = req.user._id
+    } else {
+      userID = null
+    }
+    // if (req.headers.authorization) {
+    //   token = req.headers.authorization.split(' ')[1]
+    //   const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    //   userID = decoded.id
+    // }
+
+    res.status(200).json(questionToFrontEndView(question, userID))
   } catch (error) {
     console.log(error)
     return res.status(500).json({ msg: error.message });
@@ -209,7 +221,13 @@ const downVoteQuestion = async (req, res) => {
 
 const followQuestion = async (req, res) => {
   try {
+    console.log(req.user);
     const question = await Question.findById(req.params.id);
+    /*
+   const question = await Question.find({
+     _id: req.params.id,
+     followedBy: req.user._id,
+   });*/
     if (question.length > 0)
       return res.status(400).json({ msg: "Something went wrong!" });
 
@@ -230,27 +248,6 @@ const followQuestion = async (req, res) => {
     return res.status(500).json({ msg: err.message });
   }
 };
-
-const unfollowQuestion = async (req, res) => {
-  try {
-    const unfollowedQuestion = await Question.findOneAndUpdate(
-      { _id: req.params.id },
-      {
-        $pull: { followedBy: req.user._id },
-      },
-      { new: true }
-    );
-
-    if (!unfollowedQuestion)
-      return res.status(400).json({ msg: "Something went wrong!" });
-
-    res.json({ msg: "Unfollowed Successfully!" });
-  } catch (err) {
-    console.log(err);
-    return res.status(500).json({ msg: err.message });
-  }
-};
-
 const saveQuestion = async (req, res) => {
   try {
     // if (req.user.savedPosts.indexOf(req.params.id) !== -1) {
@@ -325,7 +322,6 @@ module.exports = {
   voteQuestion,
   downVoteQuestion,
   followQuestion,
-  unfollowQuestion,
   saveQuestion,
   getSavedQuestions,
   getCreatedQuestions,

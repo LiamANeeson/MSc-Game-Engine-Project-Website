@@ -7,10 +7,10 @@ import empty_engine from '../../../Assets/Images/newProject/empty_engine.jpg';
 
 function GameGettingStarted() {
   return (
-    <div className='tut-main-container'>
+    <div className='gmTutMainContainer'>
        
           <GameSidebar />
-          <div className='tut-content'>
+          <div className='gmTutContent'>
             <h2>Getting started with HorizonGE</h2>
             <p></p>
             <p>Get started with building scenes in HorizonGE, to start select 'Download HorizonGE' from the home page!</p>
