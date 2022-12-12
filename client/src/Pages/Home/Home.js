@@ -26,9 +26,9 @@ function Home() {
         </Col>
         <Col sm={12} md = {12} lg = {6}>
           <Card  className = "custom-cardOne" style={{ border: "none" }}>
-            <Button className = "download-cta" href="/download">Download HorizonGE</Button>
-            <Button className = "game-cta" href="/download">Download Game</Button>
-            <Button className = "make-game-cta" href="/tutorial/beginner/game-getting-started">Make a game!</Button>
+            <Button className = "download-cta" href="/download">Downloads</Button>
+            <Button className = "game-cta" href="/download">Make A Game</Button>
+            {/* <Button className = "make-game-cta" href="/tutorial/beginner/game-getting-started">Make a game!</Button> */}
           </Card>
         </Col>
       </Row>
