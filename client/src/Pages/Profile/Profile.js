@@ -272,7 +272,7 @@ function Profile() {
                                     </Col>
                                     <Col sm="9">
                                         <Card.Text className="text-muted">
-                                            {currentProfile.firstName + currentProfile.lastName}
+                                            {currentProfile.firstName + " " + currentProfile.lastName}
                                         </Card.Text>
                                     </Col>
                                 </Row>
