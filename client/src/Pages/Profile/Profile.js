@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { getUserSavedQuestions, getCreatedQuestions, getFollowedQuestions } from "../../features/APIs/api";
+import { getCreatedQuestions, getFollowedQuestions } from "../../features/APIs/api";
 import "./Profile.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout, reset, resetPassword1 } from "../../features/auth/authSlice";
+import { userResetPasswordSchema } from '../../validation/userValidation'
+import { Formik } from 'formik';
 import {
     Container,
     Row,
@@ -13,9 +15,12 @@ import {
     ListGroup,
     ListGroupItem,
     Modal,
+    Form,
 } from "react-bootstrap";
 import * as Api from "../../features/APIs/api";
 import { toast } from "react-toastify";
+import Search from "../Community/Search/Search";
+import Pagination from "../Community/Pagination/Pagination";
 
 
 function Profile() {
@@ -25,54 +30,78 @@ function Profile() {
     const currentProfile = JSON.parse(localStorage.getItem("profile"));
     const userName = JSON.parse(localStorage.getItem("userName"));
     const email = JSON.parse(localStorage.getItem("email"));
-
-    const [oldPassword, setOldPassword] = useState("");
-    const [newPassword, setNewPassword] = useState("");
+    const [createdPostSearch, setCreatedPostSearch] = useState("");
+    const [createdPostpage, setCreatedPostPage] = useState(1);
+    const [limit, setLimit] = useState(0);
+    const [createdPostTotal, setCreatedPostTotal] = useState();
+    const [followedPostSearch, setFollowedPostSearch] = useState("");
+    const [followedPostpage, setFollowedPostPage] = useState(1);
+    const [followedPostTotal, setFollowedPostTotal] = useState();
+    const [showLoading, setShowLoading] = useState(true);
+    const [matchPassword, setMatchPassword] = useState(true);
 
     const [followedPosts, setFollowedPosts] = useState([]);
+    const [showFollowedPosts, setShowFollowedPosts] = useState([]);
+    const [followedPostsLength, setFollowedPostsLength] = useState();
     const [yourPosts, setYourPosts] = useState([]);
+    const [showYourPosts, setShowYourPosts] = useState([]);
+    const [yourPostsLength, setYourPostsLength] = useState();
 
     useEffect(() => {
-        getFollowedQuestions()
+        setShowLoading(true)
+        getFollowedQuestions(limit, followedPostpage, followedPostSearch)
             .then(normalisedResponse => {
                 const followedQuestionsResponse = (
                     (normalisedResponse[1] !== null && normalisedResponse[1].data.followedQuestions !== 'undefined')
                         ? normalisedResponse[1].data.followedQuestions
                         : []
                 )
-                setFollowedPosts(followedQuestionsResponse)
+                setFollowedPostsLength(followedQuestionsResponse.length)
+                setShowFollowedPosts(followedQuestionsResponse.slice(0, 5))
+                setFollowedPosts(followedQuestionsResponse.slice(0, 5))
+                setFollowedPostPage(normalisedResponse[1].data.page)
+                setFollowedPostTotal(normalisedResponse[1].data.total)
+                setShowLoading(false)
             })
             .catch(err => {
                 console.log(err)
+                setShowLoading(false)
             })
-    }, [setFollowedPosts])
+    }, [followedPostpage, followedPostSearch, limit, followedPostTotal])
 
     useEffect(() => {
-        getCreatedQuestions()
+        setShowLoading(true)
+        getCreatedQuestions(limit, createdPostpage, createdPostSearch)
             .then(normalisedResponse => {
                 const userQuestionsResponse = (
                     (normalisedResponse[1] !== null && normalisedResponse[1].data.createdQuestions !== 'undefined')
                         ? normalisedResponse[1].data.createdQuestions
                         : []
                 )
-                setYourPosts(userQuestionsResponse)
+
+                setYourPostsLength(userQuestionsResponse.length)
+                setShowYourPosts(userQuestionsResponse.slice(0, 5))
+                setYourPosts(userQuestionsResponse.slice(0, 5))
+                setCreatedPostPage(normalisedResponse[1].data.page)
+                setCreatedPostTotal(normalisedResponse[1].data.total)
+                setShowLoading(false)
             })
             .catch(err => {
                 console.log(err)
+                setShowLoading(false)
             })
-    }, [setYourPosts])
+    }, [createdPostpage, createdPostSearch, limit, createdPostTotal])
 
-    const onChangeOldPassword = (e) => {
-        setOldPassword(e.target.value);
-    };
-
-    const onChangeNewPassword = (e) => {
-        setNewPassword(e.target.value);
-    };
 
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => { setShow(false); setMatchPassword(true) }
     const handleShow = () => setShow(true);
+
+    const [showAllYourPosts, setShowAllYourPosts] = useState(false);
+    const closeShowAllYourPosts = () => { setShowAllYourPosts(false); setLimit(0); window.location.reload(false); };
+
+    const [showAllFollowedPosts, setShowAllFollowedPosts] = useState(false);
+    const closeShowAllFollowedPosts = () => { setShowAllFollowedPosts(false); setLimit(0); window.location.reload(false); };
 
     const toUpdateProfile = () => {
         navigate("/updateProfile");
@@ -89,26 +118,37 @@ function Profile() {
         handleShow();
     };
 
-    const resetPassword = async () => {
+    const resetPassword = (data) => {
         const token = localStorage.getItem("authToken");
         const userData = {
             token,
-            oldPassword,
-            newPassword
+            oldPassword: data.oldPassword,
+            newPassword: data.newPassword
         };
 
-        if (oldPassword && newPassword) {
+        if (data.oldPassword && data.newPassword) {
             dispatch(resetPassword1(userData)).then((res) => {
 
                 if (res.payload.user) {
                     toast.success("Password changed successfully");
+                    setMatchPassword(true);
+                    handleClose();
                 } else {
-                    toast.error('Old Password does not match')
+                    setMatchPassword(false);
                 }
 
-                handleClose();
-
             });
+        }
+    };
+
+    const unfollowQuestion = async (id) => {
+        const [unfollowErr, unfollowRes] = await Api.unfollowQuestion(id);
+        if (unfollowErr) {
+            toast.error("Something went wrong!");
+        }
+        if (unfollowRes) {
+            toast.success("unfollowed!");
+            window.location.reload(false);
         }
     };
 
@@ -126,13 +166,13 @@ function Profile() {
                                 />
                                 <p className="text-muted mb-1">{userName}</p>
                                 <div className="d-flex justify-content-center mb-2">
-                                    <Button className = "profile-btn" onClick={toUpdateProfile}>
+                                    <Button className="profile-btn" onClick={toUpdateProfile}>
                                         Edit Profile
                                     </Button>
-                                    <Button className = "profile-btn" onClick={onLogout}>
+                                    <Button className="profile-btn" onClick={onLogout}>
                                         Log Out
                                     </Button>
-                                    <Button className = "profile-btn" onClick={modelOpen}>
+                                    <Button className="profile-btn" onClick={modelOpen}>
                                         Reset Password
                                     </Button>
                                 </div>
@@ -141,40 +181,83 @@ function Profile() {
                                         <Modal.Title>Reset Password</Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
-                                        <div
-                                            style={{
-                                                padding: "15px",
-                                                height: "fix-layout",
-                                                width: "fix-layout",
+
+                                        <Formik
+                                            initialValues={{
+                                                oldPassword: '',
+                                                newPassword: '',
                                             }}
+                                            validationSchema={userResetPasswordSchema}
+                                            onSubmit={resetPassword}
                                         >
-                                            <input
-                                                type="password"
-                                                class="form-control"
-                                                placeholder="Old Password"
-                                                onChange={onChangeOldPassword}
-                                            />
-                                            <input
-                                                type="password"
-                                                class="form-control"
-                                                placeholder="New Password"
-                                                style={{ marginTop: "10px" }}
-                                                onChange={onChangeNewPassword}
-                                            />
-                                        </div>
+                                            {({
+                                                values,
+                                                errors,
+                                                handleSubmit,
+                                                handleChange,
+                                                handleBlur,
+                                                touched
+                                            }) => {
+                                                return (
+                                                    <form onSubmit={handleSubmit} className="submission-form">
+                                                        <Form.Group>
+                                                            <Form.Label>Old Password</Form.Label>
+                                                            <Form.Control type="password"
+                                                                placeholder="Enter old password"
+                                                                name="oldPassword"
+                                                                onChange={handleChange}
+                                                                onBlur={handleBlur}
+                                                                value={values.oldPassword}
+                                                            />
+                                                            {errors.oldPassword && touched.oldPassword ?
+                                                                <div className="error-message">
+                                                                    {errors.oldPassword}
+                                                                </div> : null
+                                                            }
+                                                        </Form.Group>
+
+                                                        <Form.Group>
+                                                            <Form.Label>New Password</Form.Label>
+                                                            <Form.Control type="password"
+                                                                placeholder="Enter new password"
+                                                                name="newPassword"
+                                                                onChange={handleChange}
+                                                                onBlur={handleBlur}
+                                                                value={values.newPassword}
+                                                            />
+                                                            {errors.newPassword && touched.newPassword ?
+                                                                <div className="error-message">
+                                                                    {errors.newPassword}
+                                                                </div> : null
+                                                            }
+                                                            {values.oldPassword == values.newPassword && values.newPassword ?
+                                                                <div className="error-message">
+                                                                    Old password and new password cannot be the same
+                                                                </div> : null
+                                                            }
+                                                            {!matchPassword ?
+                                                                <div className="error-message">
+                                                                    Old password does not match
+                                                                </div> : null
+                                                            }
+                                                        </Form.Group>
+
+                                                        <Button variant="secondary" onClick={handleClose}>
+                                                            Close
+                                                        </Button>
+                                                        <Button
+                                                            variant="primary"
+                                                            disabled={!values.oldPassword || !values.newPassword}
+                                                            type="submit"
+                                                        >
+                                                            Save Changes
+                                                        </Button>
+                                                        
+                                                    </form>
+                                                )
+                                            }}
+                                        </Formik>
                                     </Modal.Body>
-                                    <Modal.Footer>
-                                        <Button variant="secondary" onClick={handleClose}>
-                                            Close
-                                        </Button>
-                                        <Button
-                                            variant="primary"
-                                            disabled={!oldPassword || !newPassword}
-                                            onClick={resetPassword}
-                                        >
-                                            Save Changes
-                                        </Button>
-                                    </Modal.Footer>
                                 </Modal>
                             </Card.Body>
                         </Card>
@@ -184,7 +267,7 @@ function Profile() {
                             <Card.Body>
                                 <Row>
                                     <Col sm="3">
-                                        <Card.Text style = {{fontWeight: "600"}}>Full Name</Card.Text>
+                                        <Card.Text style={{ fontWeight: "600" }}>Full Name</Card.Text>
                                     </Col>
                                     <Col sm="9">
                                         <Card.Text className="text-muted">
@@ -195,7 +278,7 @@ function Profile() {
                                 <hr />
                                 <Row>
                                     <Col sm="3">
-                                        <Card.Text style = {{fontWeight: "600"}}>Email</Card.Text>
+                                        <Card.Text style={{ fontWeight: "600" }}>Email</Card.Text>
                                     </Col>
                                     <Col sm="9">
                                         <Card.Text className="text-muted">
@@ -211,12 +294,24 @@ function Profile() {
                                     <Card.Body>
                                         <Card.Text className="profile-title">Followed Posts</Card.Text>
                                         {
-                                            followedPosts && (followedPosts.length > 0) ? followedPosts.map(question => (
-                                                <Card.Text key={question.name}>
+                                            showFollowedPosts && (showFollowedPosts.length > 0) ? showFollowedPosts.map(question => (
+                                                <Card.Text key={question.name} className="post-link">
+                                                    <button className="post-button float-end" onClick={
+                                                        () => {
+                                                            unfollowQuestion(question._id)
+                                                        }}>Unfollow</button>
                                                     <Link to={`/question/${question._id}`}>{question.name}</Link>
                                                 </Card.Text>
+
                                             )) : <Card.Text className="text-muted">None to display, yet!</Card.Text>
                                         }
+                                        {followedPostsLength > 5 ? <div className="text-center"><button className="viewAll-button"
+                                            onClick={() => {
+                                                setLimit(5);
+                                                setShowAllFollowedPosts(true)
+                                               
+                                            }}
+                                        >View all</button></div> : []}
                                     </Card.Body>
                                 </Card>
                             </Col>
@@ -225,18 +320,94 @@ function Profile() {
                                     <Card.Body>
                                         <Card.Text className="profile-title">Your Posts</Card.Text>
                                         {
-                                            yourPosts && (yourPosts.length > 0) ? yourPosts.map(question => (
-                                                <Card.Text key={question.name}>
+                                            showYourPosts && (showYourPosts.length > 0) ? showYourPosts.map(question => (
+                                                <Card.Text key={question.name} className="post-link">
                                                     <Link to={`/question/${question._id}`}>{question.name}</Link>
                                                 </Card.Text>
                                             )) : <Card.Text className="text-muted">None to display, yet!</Card.Text>
                                         }
+                                        {yourPostsLength > 5 ? <div className="text-center"><button className="viewAll-button"
+                                            onClick={() => {
+                                                setLimit(5);
+                                                setShowAllYourPosts(true)
+                                            }}
+                                        >View all</button></div> : []}
+
                                     </Card.Body>
                                 </Card>
                             </Col>
                         </Row>
                     </Col>
                 </Row>
+
+                <Modal show={showAllYourPosts} onHide={closeShowAllYourPosts}>
+                    {showLoading ? <div className="loadingDiv"></div> : ""}
+                    <Modal.Header closeButton>
+                        <Modal.Title>Your Posts</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Search setSearch={(createdPostSearch) => setCreatedPostSearch(createdPostSearch)} />
+                        <Card className="mb-4 mb-md-0">
+                            <Card.Body>
+                                {
+                                    yourPosts && (yourPosts.length > 0) ? yourPosts.map(question => (
+                                        <Card.Text key={question.name} className="post-link">
+                                            <Link to={`/question/${question._id}`}>{question.name}</Link>
+                                        </Card.Text>
+                                    )) : <Card.Text className="text-muted">None to display, yet!</Card.Text>
+                                }
+                            </Card.Body>
+                        </Card>
+                        <Pagination
+                            page={createdPostpage}
+                            limit={limit ? limit : 0}
+                            total={createdPostTotal ? createdPostTotal : 0}
+                            setPage={(createdPostpage) => setCreatedPostPage(createdPostpage)}
+                        />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={closeShowAllYourPosts}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+
+                <Modal show={showAllFollowedPosts} onHide={closeShowAllFollowedPosts}>
+                    {showLoading ? <div className="loadingDiv"></div> : ""}
+                    <Modal.Header closeButton>
+                        <Modal.Title>Followed Posts</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Search setSearch={(followedPostSearch) => setFollowedPostSearch(followedPostSearch)} />
+                        <Card className="mb-4 mb-md-0">
+                            <Card.Body>
+                                {
+                                    followedPosts && (followedPosts.length > 0) ? followedPosts.map(question => (
+                                        <Card.Text key={question.name} className="post-link">
+                                            <button className="post-button float-end" onClick={
+                                                () => {
+                                                    unfollowQuestion(question._id)
+                                                }}>Unfollow</button>
+                                            <Link to={`/question/${question._id}`}>{question.name}</Link>
+                                        </Card.Text>
+                                    )) : <Card.Text className="text-muted">None to display, yet!</Card.Text>
+                                }
+                            </Card.Body>
+                            
+                        </Card>
+                        <Pagination
+                            page={followedPostpage}
+                            limit={limit ? limit : 0}
+                            total={followedPostTotal ? followedPostTotal : 0}
+                            setPage={(followedPostpage) => setFollowedPostPage(followedPostpage)}
+                        />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={closeShowAllFollowedPosts}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </Container>
         </>
     );

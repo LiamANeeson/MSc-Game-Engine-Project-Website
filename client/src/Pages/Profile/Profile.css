@@ -1,4 +1,4 @@
-.profile-title {
+﻿.profile-title {
     font-size: 1.5rem;
     font-weight: 600;
 }
@@ -16,4 +16,30 @@
 .profile-btn:hover {
     border: 2px solid !important;
     border-color: black !important;
+}
+
+.post-link {
+    word-break: keep-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.post-button {
+    color: black !important;
+    border: 2px solid !important;
+    border-color: #FB8500 !important;
+    background-color: #FB8500 !important;
+    border-radius: 4px !important;
+}
+
+.viewAll-button {
+    font-weight: 500;
+    width: 30%;
+    height: 40px;
+    color: black !important;
+    border: 2px solid !important;
+    border-color: #FB8500 !important;
+    background-color: #FB8500 !important;
+    border-radius: 4px !important;
 }

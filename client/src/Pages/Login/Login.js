@@ -33,7 +33,6 @@ function Login() {
         }
 
         if (isSuccess || user) {
-            console.log(user, "user______________profile");
             localStorage.setItem("userId", user._id)
             navigate("/profile");
             window.location.reload(false);
