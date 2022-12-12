@@ -12,10 +12,12 @@
   border-radius: 4px !important;
   height: auto !important;
   text-transform: uppercase !important;
+  text-decoration: none !important;
 }
 
 .custom-btn:hover {
   background-color: #FB8500 !important;
   border: 2px solid !important;
   border-color: black !important;
+  text-decoration: underline;
 }
