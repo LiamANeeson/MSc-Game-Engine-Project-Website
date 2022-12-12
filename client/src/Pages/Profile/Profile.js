@@ -29,10 +29,10 @@ function Profile() {
 
     const currentProfile = JSON.parse(localStorage.getItem("profile"));
     const userName = JSON.parse(localStorage.getItem("userName"));
-    const email = JSON.parse(localStorage.getItem("email"));
     const [createdPostSearch, setCreatedPostSearch] = useState("");
     const [createdPostpage, setCreatedPostPage] = useState(1);
-    const [limit, setLimit] = useState(0);
+    const [followedPostLimit, setFollowedLimit] = useState(0);
+    const [createdPostLimit, setCreatedLimit] = useState(0);
     const [createdPostTotal, setCreatedPostTotal] = useState();
     const [followedPostSearch, setFollowedPostSearch] = useState("");
     const [followedPostpage, setFollowedPostPage] = useState(1);
@@ -49,29 +49,30 @@ function Profile() {
 
     useEffect(() => {
         setShowLoading(true)
-        getFollowedQuestions(limit, followedPostpage, followedPostSearch)
+        getFollowedQuestions(followedPostLimit, followedPostpage, followedPostSearch)
             .then(normalisedResponse => {
                 const followedQuestionsResponse = (
                     (normalisedResponse[1] !== null && normalisedResponse[1].data.followedQuestions !== 'undefined')
                         ? normalisedResponse[1].data.followedQuestions
                         : []
                 )
-                setFollowedPostsLength(followedQuestionsResponse.length)
-                setShowFollowedPosts(followedQuestionsResponse.slice(0, 5))
+                setFollowedPostsLength(normalisedResponse[1].data.allFollowedQuestions.length)
+                setShowFollowedPosts(normalisedResponse[1].data.allFollowedQuestions.slice(0, 5))
                 setFollowedPosts(followedQuestionsResponse.slice(0, 5))
                 setFollowedPostPage(normalisedResponse[1].data.page)
                 setFollowedPostTotal(normalisedResponse[1].data.total)
+                setFollowedLimit(normalisedResponse[1].data.limit)
                 setShowLoading(false)
             })
             .catch(err => {
                 console.log(err)
                 setShowLoading(false)
             })
-    }, [followedPostpage, followedPostSearch, limit, followedPostTotal])
+    }, [followedPostpage, followedPostSearch, followedPostTotal, followedPostLimit])
 
     useEffect(() => {
         setShowLoading(true)
-        getCreatedQuestions(limit, createdPostpage, createdPostSearch)
+        getCreatedQuestions(createdPostLimit, createdPostpage, createdPostSearch)
             .then(normalisedResponse => {
                 const userQuestionsResponse = (
                     (normalisedResponse[1] !== null && normalisedResponse[1].data.createdQuestions !== 'undefined')
@@ -79,18 +80,19 @@ function Profile() {
                         : []
                 )
 
-                setYourPostsLength(userQuestionsResponse.length)
-                setShowYourPosts(userQuestionsResponse.slice(0, 5))
+                setYourPostsLength(normalisedResponse[1].data.allCreatedQuestions.length)
+                setShowYourPosts(normalisedResponse[1].data.allCreatedQuestions.slice(0, 5))
                 setYourPosts(userQuestionsResponse.slice(0, 5))
                 setCreatedPostPage(normalisedResponse[1].data.page)
                 setCreatedPostTotal(normalisedResponse[1].data.total)
+                setCreatedLimit(normalisedResponse[1].data.limit)
                 setShowLoading(false)
             })
             .catch(err => {
                 console.log(err)
                 setShowLoading(false)
             })
-    }, [createdPostpage, createdPostSearch, limit, createdPostTotal])
+    }, [createdPostpage, createdPostSearch, createdPostTotal, createdPostLimit])
 
 
     const [show, setShow] = useState(false);
@@ -98,10 +100,10 @@ function Profile() {
     const handleShow = () => setShow(true);
 
     const [showAllYourPosts, setShowAllYourPosts] = useState(false);
-    const closeShowAllYourPosts = () => { setShowAllYourPosts(false); setLimit(0); window.location.reload(false); };
+    const closeShowAllYourPosts = () => { setShowAllYourPosts(false); };
 
     const [showAllFollowedPosts, setShowAllFollowedPosts] = useState(false);
-    const closeShowAllFollowedPosts = () => { setShowAllFollowedPosts(false); setLimit(0); window.location.reload(false); };
+    const closeShowAllFollowedPosts = () => { setShowAllFollowedPosts(false); };
 
     const toUpdateProfile = () => {
         navigate("/updateProfile");
@@ -149,6 +151,7 @@ function Profile() {
         if (unfollowRes) {
             toast.success("unfollowed!");
             window.location.reload(false);
+            
         }
     };
 
@@ -295,7 +298,7 @@ function Profile() {
                                     <Card.Body>
                                         <Card.Text className="profile-title">Followed Posts</Card.Text>
                                         {
-                                            showFollowedPosts && (showFollowedPosts.length > 0) ? showFollowedPosts.map(question => (
+                                            showFollowedPosts && (followedPosts.length > 0) ? showFollowedPosts.map(question => (
                                                 <Card.Text key={question.name} className="post-link">
                                                     <button className="post-button float-end" onClick={
                                                         () => {
@@ -308,7 +311,7 @@ function Profile() {
                                         }
                                         {followedPostsLength > 5 ? <div className="text-center"><button className="viewAll-button"
                                             onClick={() => {
-                                                setLimit(5);
+                                             
                                                 setShowAllFollowedPosts(true)
                                                
                                             }}
@@ -329,7 +332,7 @@ function Profile() {
                                         }
                                         {yourPostsLength > 5 ? <div className="text-center"><button className="viewAll-button"
                                             onClick={() => {
-                                                setLimit(5);
+                                                
                                                 setShowAllYourPosts(true)
                                             }}
                                         >View all</button></div> : []}
@@ -361,7 +364,7 @@ function Profile() {
                         </Card>
                         <Pagination
                             page={createdPostpage}
-                            limit={limit ? limit : 0}
+                            limit={createdPostLimit ? createdPostLimit : 5}
                             total={createdPostTotal ? createdPostTotal : 0}
                             setPage={(createdPostpage) => setCreatedPostPage(createdPostpage)}
                         />
@@ -398,7 +401,7 @@ function Profile() {
                         </Card>
                         <Pagination
                             page={followedPostpage}
-                            limit={limit ? limit : 0}
+                            limit={followedPostLimit ? followedPostLimit : 5}
                             total={followedPostTotal ? followedPostTotal : 0}
                             setPage={(followedPostpage) => setFollowedPostPage(followedPostpage)}
                         />
