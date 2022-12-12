@@ -14,9 +14,6 @@
 
 .questions-desc {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     color: #545b64;
     font-size: 1rem;
     letter-spacing: 0;
@@ -164,6 +161,7 @@
 }
 
 .que-tags {
+    display: flex;
     text-align: center;
     align-items: center;
 }

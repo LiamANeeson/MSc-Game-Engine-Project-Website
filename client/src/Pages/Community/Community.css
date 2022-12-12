@@ -1,7 +1,3 @@
-.community-container {
-    background-color: #293241;
-}
-
 
 .pagination {
     display: inline-block;
@@ -26,9 +22,9 @@
   .pagination a:hover:not(.active) {background-color: #ddd;}
 .Filter-btn {
 
-    background-color: rgb(208, 81, 58);
+    background-color: #ec7211;
     border: none;
-    color: black;
+    color: #023047;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -39,8 +35,8 @@
 }
 
 select.mySelect{
-    background:  rgb(208, 81, 58);
-    color: black;
+    background:  #ec7211;
+    color: #023047;
     padding: 0 10px;
     font-size: 12px; 
     height: 40px;
