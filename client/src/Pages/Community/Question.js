@@ -68,8 +68,9 @@ const Question = ({ questions }) => {
                       style={{ width: "100%" }}
                     >
                       <div className="question-user-name">
-                        <Icon
-                          icon="ant-design:user"
+                        <img
+                          class="rounded-circle mt-2"
+                          src={que?.userObj?.avatar}
                           width="30px"
                           height="30px"
                         />
