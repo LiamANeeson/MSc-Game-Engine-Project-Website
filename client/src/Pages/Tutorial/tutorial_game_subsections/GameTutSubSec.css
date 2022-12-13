@@ -1,9 +1,9 @@
-.advTutMainContainer{
+.gmTutMainContainer{
     display: flex;
     flex-direction:row;
 }
 
-.advTutContent{
+.gmTutContent{
     margin: auto;
     width: 90%;
     padding: 1%;
@@ -11,20 +11,22 @@
 
 
 @media screen and (max-width: 426px) {
-    .advTutMainContainer{
+    .gmTutMainContainer{
         display: flex;
         flex-direction:row;
     }
-    .advTutContent{
+    
+    .gmTutContent{
         margin-top: 20%;
     }
-    .break-ref{
-        overflow-wrap: break-word !important;
-    }
-    .breakPath{
-        overflow-wrap: break-word !important;
-    }
+
+/* margin: auto !important;
+margin-top: 20% !important;
+width: 60%;
+padding: 1%; */
+
 }
+
 
 .pic-width{
     margin: auto;

@@ -121,9 +121,9 @@ function Scripting() {
 
 
   return (
-    <div className='tut-main-container'>
+    <div className='advTutMainContainer'>
         <Sidebar />
-        <div className='tut-content'>
+        <div className='advTutContent'>
           <h2>Adding Scripts</h2>
           <Treemap links={links} />
           <br></br>

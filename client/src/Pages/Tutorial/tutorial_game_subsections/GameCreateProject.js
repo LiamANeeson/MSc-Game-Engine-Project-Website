@@ -1,6 +1,6 @@
 import React from 'react'
-import Sidebar from '../../../Components/Sidebar/Sidebar'
-import './tut_subsections.css'
+import GameSidebar from '../../../Components/GameTutSidebar/GameSidebar';
+import './GameTutSubSec.css'
 import { Container } from 'react-bootstrap'
 
 //pics
@@ -12,7 +12,7 @@ import new_project_setup from '../../../Assets/Images/newProject/new_project_set
 
 import Treemap from '../../../Components/TreeMap/TreeMap'
 
-function CreateProject() {
+function GameCreateProject() {
   
   const links = [{ id: '#step1', text: 'Figure 1: File menu' },
   { id: '#step2', text: 'Figure 2: File menu open' },
@@ -21,9 +21,9 @@ function CreateProject() {
 
  
   return (
-    <div className='advTutMainContainer'>
-      <Sidebar />
-          <div className='adv-tut-content'>
+    <div className='gmTutMainContainer'>
+      <GameSidebar />
+          <div className='gmTutContent'>
             <h2>Opening a new project</h2>
             <Treemap links={links} />
             <br></br>
@@ -64,4 +64,4 @@ function CreateProject() {
   )
 }
 
-export default CreateProject;
+export default GameCreateProject;
