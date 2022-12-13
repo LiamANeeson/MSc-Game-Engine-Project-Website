@@ -74,7 +74,7 @@ const Question = ({ questions }) => {
                           width="30px"
                           height="30px"
                         />
-                        {que?.userObj?.name}
+                        {" " + que?.userObj?.name}
                       </div>
                       <div className="question-user-date">
                         {moment(que.createdAt).fromNow()}

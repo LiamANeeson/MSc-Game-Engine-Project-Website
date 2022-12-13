@@ -1,5 +1,7 @@
 const Profile = require('../models/profileModel')
 const User = require('../models/userModel')
+const { Question } = require("../models/questionModel");
+const Answer = require("../models/answerModel");
 
 
 const updateProfile = async (req, res) => {
@@ -25,6 +27,38 @@ const updateProfile = async (req, res) => {
                 name: req.body.userName,
                 avatar: req.body.avatar,
             })
+
+        await Question.update({ "userObj.email": email },
+            {
+                'userObj.avatar': req.body.avatar,
+                'userObj.name': req.body.userName,
+            },
+            {
+                multi: true
+            })
+
+        await Answer.update({ "userObj.email": email },
+            {
+                'userObj.avatar': req.body.avatar,
+                'userObj.name': req.body.userName,
+            },
+            {
+                multi: true
+            })
+        await Answer.update({ "comment.userEmail": email },
+            {
+                "$set": {
+                    "comment.$[elem].userAvatar": req.body.avatar,
+                    "comment.$[elem].userName": req.body.userName,
+                }
+            },
+            {
+                "arrayFilters": [{ "elem.userEmail": email }], 
+                multi: true
+            })
+
+        const comments = await Answer.find({ "comment.userEmail": email });
+            
 
         const currentProfile = await Profile.findOne({ email })
         const currentUser = await User.findOne({ email })
