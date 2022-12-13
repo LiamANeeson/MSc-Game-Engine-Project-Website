@@ -92,24 +92,16 @@ const getQuestionById = async (req, res) => {
         if (!question) {
             return res.status(404).json({ msg: "Question not found" });
         }
-
         await Question.updateOne(
             { _id: questionId },
             { $inc: { viewCount: 1 } }
         )
-
         let userID = null
         if (req.user) {
             userID = req.user._id
         } else {
             userID = null
         }
-        // if (req.headers.authorization) {
-        //   token = req.headers.authorization.split(' ')[1]
-        //   const decoded = jwt.verify(token, process.env.JWT_SECRET)
-        //   userID = decoded.id
-        // }
-
         res.status(200).json(questionToFrontEndView(question, userID))
     } catch (error) {
         console.log(error)
@@ -166,6 +158,7 @@ const voteQuestion = async (req, res) => {
     }
 
     if (!question || question.votes.indexOf(req.user._id) !== -1) {
+        console.log(req.user._id, question.votes)
         console.log("Already upvoted!")
         return res.status(400).json({ msg: "Already upvoted!" })
     }
@@ -184,6 +177,34 @@ const voteQuestion = async (req, res) => {
     }
 
     res.json({ msg: "Upvoted question!" })
+}
+
+//Undo vote Question
+const undoVoteQuestion = async (req, res) => {
+    let question;
+
+    try {
+        question = await Question.findOne({
+            _id: req.params.id,
+        })
+    } catch (err) {
+        console.log("ex: ", err)
+        return res.status(500).json({ msg: "Something went wrong!" })
+    }
+
+    try {
+        await Question.updateOne(
+            { _id: req.params.id },
+            {
+                $pull: { votes: req.user._id },
+            }
+        )
+    } catch (err) {
+        console.log("ex: ", err)
+        return res.status(400).json({ msg: "Something went wrong!" })
+    }
+
+    res.json({ msg: "Undo upvote question successful!" })
 }
 
 //DownVote Question
@@ -217,6 +238,34 @@ const downVoteQuestion = async (req, res) => {
     }
 
     res.json({ msg: "Downvoted question!" })
+};
+
+//DownVote Question
+const undoDownVoteQuestion = async (req, res) => {
+    let question;
+
+    try {
+        question = await Question.findOne({
+            _id: req.params.id,
+        })
+    } catch (err) {
+        console.log("ex: ", err)
+        return res.status(500).json({ msg: "Something went wrong!" })
+    }
+
+    try {
+        await Question.updateOne(
+            { _id: req.params.id },
+            {
+                $pull: { downVotes: req.user._id },
+            }
+        )
+    } catch (err) {
+        console.log("ex: ", err)
+        return res.status(400).json({ msg: "Something went wrong!" })
+    }
+
+    res.json({ msg: "Undo downvote question successful!" })
 };
 
 const followQuestion = async (req, res) => {
@@ -378,7 +427,9 @@ module.exports = {
     updateQuestion,
     deleteQuestion,
     voteQuestion,
+    undoVoteQuestion,
     downVoteQuestion,
+    undoDownVoteQuestion,
     followQuestion,
     unfollowQuestion,
     getCreatedQuestions,

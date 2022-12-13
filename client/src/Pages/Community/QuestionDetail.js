@@ -169,17 +169,17 @@ const QuestionDetail = (props) => {
         toast.success("Question Liked!");
       }
     } else {
-      const [voteErr, voteRes] = await Api.voteQuestion(id);
+      const isUndoAction = isUpvotedByThisUser;
+      const [voteErr, voteRes] = (isUndoAction ? await Api.undoVoteQuestion(id) : await Api.voteQuestion(id));
       if (voteErr) {
         toast.info("You already liked this question!");
-      }
-      if (voteRes) {
-        toast.success("Question Liked!");
-        setIsUpvotedByThisUser(true);
+      } else if (voteRes) {
+        toast.success(isUndoAction ? "Question Unliked!" : "Question Liked!");
+        setIsUpvotedByThisUser(isUndoAction ? false : true);
         setIsDownvotedByThisUser(false);
       }
     }
-  };
+  }
 
   const downVoteQuestion = async (answer_id = "") => {
     if (answer_id) {
@@ -191,14 +191,14 @@ const QuestionDetail = (props) => {
         toast.success("Success!");
       }
     } else {
-      const [voteErr, voteRes] = await Api.downVoteQuestion(id);
+      const isUndoAction = isDownvotedByThisUser;
+      const [voteErr, voteRes] = (isUndoAction ? await Api.undoDownVoteQuestion(id) : await Api.downVoteQuestion(id));
       if (voteErr) {
         toast.error("Something went wrong!");
-      }
-      if (voteRes) {
+      } else if (voteRes) {
         toast.success("Success!");
+        setIsDownvotedByThisUser(isUndoAction ? false : true);
         setIsUpvotedByThisUser(false);
-        setIsDownvotedByThisUser(true);
       }
     }
   };
