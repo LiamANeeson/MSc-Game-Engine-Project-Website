@@ -1,5 +1,6 @@
 const Profile = require('../models/profileModel')
 const User = require('../models/userModel')
+const { Question, questionToFrontEndView } = require("../models/questionModel");
 
 
 const updateProfile = async (req, res) => {
@@ -24,6 +25,15 @@ const updateProfile = async (req, res) => {
             {
                 name: req.body.userName,
                 avatar: req.body.avatar,
+            })
+
+        await Question.update({ "userObj.email": email },
+            {
+                'userObj.avatar': req.body.avatar,
+                'userObj.name': req.body.userName,
+            },
+            {
+                multi: true
             })
 
         const currentProfile = await Profile.findOne({ email })
