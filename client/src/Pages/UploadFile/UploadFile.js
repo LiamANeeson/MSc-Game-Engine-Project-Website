@@ -133,7 +133,7 @@ function UploadFile() {
         console.log(res);
         if (res.status == 200) {
           setMessage(true);
-          setModalShow(false);
+          handleClose();
           fetchData();
         }
       });
@@ -150,7 +150,7 @@ function UploadFile() {
     setImage(img);
   };
   const fetchData = () => {
-    fetch("http://localhost:5000/api/users/getfiles")
+    fetch("/api/users/getfiles")
       .then((response) => response.json())
       .then((data) => setGames(data.data));
 
