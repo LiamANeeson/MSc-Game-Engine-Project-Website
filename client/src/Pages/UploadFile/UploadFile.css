@@ -1,0 +1,62 @@
+.upload-game-btn {
+  align-items: center !important;
+  color: black !important;
+  background-color: #fb8500 !important;
+  border: 2px solid !important;
+  border-color: #fb8500 !important;
+  width: 50% !important;
+  height: auto !important;
+  font-size: 1.75rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  margin-top: 50px !important;
+  border-radius: 4px !important;
+  box-sizing: border-box !important;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5%;
+}
+
+.upload-game-btn:hover {
+  background-color: #fb8500 !important;
+  border: 2px solid !important;
+  border-color: black !important;
+}
+
+.table-btn {
+  color: black !important;
+  background-color: #fb8500 !important;
+  border: 2px solid !important;
+  border-color: #fb8500 !important;
+  width: 200px;
+}
+
+.table-btn:hover {
+  background-color: #fb8500 !important;
+  border: 2px solid !important;
+  border-color: black !important;
+}
+
+.upload-modal-btn {
+  background-color: #fb8500 !important;
+  color: black !important;
+  background-color: #fb8500 !important;
+  border: 2px solid !important;
+  border-color: #fb8500 !important;
+}
+
+.upload-modal-btn:hover {
+  border: 2px solid black !important;
+}
+
+.secondary-upload-modal-btn{
+  background-color: #ffb703 !important;
+  color: black !important;
+  background-color: #ffb703 !important;
+  border: 2px solid !important;
+  border-color: #ffb703 !important;
+}
+
+.secondary-upload-modal-btn:hover{
+  border: 2px solid black !important;
+}
