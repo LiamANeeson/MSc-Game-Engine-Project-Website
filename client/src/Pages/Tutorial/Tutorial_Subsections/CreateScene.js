@@ -20,9 +20,9 @@ function CreateScene() {
   { id: '#step6', text: 'Figure 6: Accessing scenes created' },]
 
   return (
-    <div className='adv-tut-main-container'>
+    <div className='tut-main-container'>
         <Sidebar />
-          <div className='adv-tut-content'>
+          <div className='tut-content'>
           <h2>Opening a scene</h2>
           <Treemap links={links} />
           <br></br>

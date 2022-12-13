@@ -27,9 +27,9 @@ function AddObjects() {
 
   return (
     <div>
-      <div className='advTutMainContainer'>
+      <div className='tut-main-container'>
         <Sidebar />
-          <div className='advTutContent'>
+          <div className='tut-content'>
           <h2>Adding a new object</h2>
           <Treemap links={links} />
           <br></br>

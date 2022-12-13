@@ -29,22 +29,15 @@ import ObjectBehaviours from './Pages/Docs/Doc_Subsections/Object_behaviours'
 import Forgot from './Pages/Login/Forgot';
 import ResetPassword from "./Pages/Login/ResetPassword";
 
-//Advanced tutorials imports
 import GettingStarted from './Pages/Tutorial/Tutorial_Subsections/GettingStarted';
 import CreateProject from './Pages/Tutorial/Tutorial_Subsections/CreateProject';
 import CreateScene from './Pages/Tutorial/Tutorial_Subsections/CreateScene';
 import AddObjects from './Pages/Tutorial/Tutorial_Subsections/AddObjects';
-import EntitiesComponents from './Pages/Tutorial/Tutorial_Subsections/EntitiesComponents';
+import EntitiesComponents from './Pages/Tutorial/Tutorial_Subsections/EntitiesComponents'
+//import SpriteSheet from './Pages/Tutorial/Tutorial_Subsections/SpriteSheet';
 import Physics from './Pages/Tutorial/Tutorial_Subsections/Physics';
 import Scripting from './Pages/Tutorial/Tutorial_Subsections/Scripting';
 
-
-//game tutorials imports
-import GameGettingStarted from './Pages/Tutorial/tutorial_game_subsections/GameGettingStarted';
-import GameCreateProject from './Pages/Tutorial/tutorial_game_subsections/GameCreateProject';
-import GameCreateScene from './Pages/Tutorial/tutorial_game_subsections/GameCreateScene';
-
-//css
 import './App.css'
 
 function App() {
@@ -64,22 +57,14 @@ function App() {
                     <Route path='/uploadFile' element={<UploadFile />} />
 
                     {/* Routers for Tutorial Pages */}
-                    <Route path='/tutorial/advanced/getting-started' element={<GettingStarted />} />
-                    <Route path='/tutorial/advanced/create-project' element={<CreateProject />} />
-                    <Route path='/tutorial/advanced/create-scene' element={<CreateScene />} />
-                    <Route path='/tutorial/advanced/adding-objects' element={<AddObjects />} />
-                    <Route path='/tutorial/advanced/ecs' element={<EntitiesComponents />} />
-                    <Route path='/tutorial/advanced/physics' element={<Physics />} />
-                    <Route path='/tutorial/advanced/scripts' element={<Scripting />} />
+                    <Route path='tutorial/getting-started' element={<GettingStarted />} />
+                    <Route path='tutorial/create-project' element={<CreateProject />} />
+                    <Route path='tutorial/create-scene' element={<CreateScene />} />
+                    <Route path='tutorial/adding-objects' element={<AddObjects />} />
+                    <Route path='tutorial/ecs' element={<EntitiesComponents />} />
+                    <Route path='tutorial/physics' element={<Physics />} />
+                    <Route path='tutorial/scripts' element={<Scripting />} />
                     {/*<Route path='tutorial/sprite-sheet' element={<SpriteSheet />} />*/}
-
-
-                    {/* Game Tutorial pages */}
-                    <Route path='/tutorial/beginner/game-getting-started' element={<GameGettingStarted />} />
-                    <Route path='/tutorial/beginner/game-create-project' element={<GameCreateProject />} />
-                    <Route path='/tutorial/beginner/game-create-scene' element={<GameCreateScene />} />
-                    {/*<Route path='tutorial/game-adding-objects' element={<GameAddObjects />} /> */}
-                    {/* End routes for game tutorial pages */}
                     
                     
 

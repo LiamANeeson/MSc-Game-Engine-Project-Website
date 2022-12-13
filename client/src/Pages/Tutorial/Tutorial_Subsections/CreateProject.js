@@ -21,9 +21,9 @@ function CreateProject() {
 
  
   return (
-    <div className='advTutMainContainer'>
+    <div className='tutorial-container'>
       <Sidebar />
-          <div className='adv-tut-content'>
+          <div className='tut-content'>
             <h2>Opening a new project</h2>
             <Treemap links={links} />
             <br></br>

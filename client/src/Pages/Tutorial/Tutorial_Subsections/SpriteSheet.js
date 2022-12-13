@@ -3,9 +3,9 @@ import Sidebar from '../../../Components/Sidebar/Sidebar'
 
 function SpriteSheet() {
   return (
-    <div className='advTutMainContainer'>
+    <div className='tut-main-container'>
         <Sidebar />
-        <div className='advTutContent'></div>
+        <div className='tut-content'></div>
     </div>
   )
 }

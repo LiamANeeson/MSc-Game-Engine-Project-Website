@@ -1,29 +1,17 @@
-.advTutMainContainer{
+.tut-main-container{
+    margin: auto;
     display: flex;
     flex-direction:row;
 }
 
-.advTutContent{
+.tut-content{
     margin: auto;
-    width: 90%;
+    width: 60%;
     padding: 1%;
 }
 
-
-@media screen and (max-width: 426px) {
-    .advTutMainContainer{
-        display: flex;
-        flex-direction:row;
-    }
-    .advTutContent{
-        margin-top: 20%;
-    }
-    .break-ref{
-        overflow-wrap: break-word !important;
-    }
-    .breakPath{
-        overflow-wrap: break-word !important;
-    }
+.here-link{
+    color:blue;
 }
 
 .pic-width{

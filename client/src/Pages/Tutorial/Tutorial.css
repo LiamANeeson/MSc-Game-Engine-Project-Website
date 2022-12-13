@@ -1,16 +1,47 @@
-.tutorial-main-container{
-  margin: auto;
-  display:flex;
+.tut-main-container{
+    margin: auto;
+    display: flex;
+    flex-direction:row;
 }
 
-@media only screen and (max-width: 768px) {
-  .tutorial-main-container {
-    display: block !important;    
-  }
-  .card-comp{
-    max-width: 15.2rem !important;
-    margin-bottom: 8% !important;
-  }
+.tut-content{
+    margin: 0 auto 0 auto;
+    width: 70%;
+}
+
+.par-text{
+    
+}
+
+
+.tut-cta-btn{
+    background-color: #EE6C4D !important;
+    min-width: 30%;
+    cursor: pointer;
+    border-radius: 6px;
+    backface-visibility: hidden;
+    border-width: 0;
+    box-sizing: border-box;
+    font-size: 100%;
+    height: 44px;
+    line-height: 1.15;
+    margin: auto;
+    left: 0%;
+    outline: none !important;
+    border-color: #EE6C4D !important;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+}
+.tutorial-container {
+  display: flex;
+}
+
+.tutorial-content-container {
+  flex-grow: 1;
+  padding: 10px;
 }
 
 .gray-highlight {
@@ -25,70 +56,7 @@
   padding: 10px;
 }
 
-.card-comp{
-  width:  30rem !important;
-  margin: 3%;
-  box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
-}
-
-.card-btn{
-    color: black !important;
-    background-color: #FFB703 !important;  
-    border: 2px solid !important;
-    border-color: #FFB703 !important;
-    width: 100% !important;
-    font-size: 1.2rem !important;
-    font-weight: 600 !important;
-    text-transform: uppercase;
-    margin-top: 50px !important;
-    border-radius: 4px !important;
-    box-sizing: border-box !important;
-    margin-top:10%;
-    bottom: 0 !important;
-
-}
-
-.card-btn:hover {
-  background-color: #FFB703 !important;
-  border: 2px solid !important;
-  border-color: black !important;
-}
-.card-img{
-  max-height: 54% !important;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .tut-cta-btn{
-  background-color: #EE6C4D !important;
-  min-width: 30%;
-  cursor: pointer;
-  border-radius: 6px;
-  backface-visibility: hidden;
-  border-width: 0;
-  box-sizing: border-box;
-  font-size: 100%;
-  height: 44px;
-  line-height: 1.15;
-  margin: auto;
-  left: 0%;
-  outline: none !important;
-  border-color: #EE6C4D !important;
-  overflow: hidden;
-  padding: 0 25px;
-  position: relative;
-  text-align: center;
-  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+/* .tutorial-image {
+  width: 100%;
+  margin: 16px 0;
 } */

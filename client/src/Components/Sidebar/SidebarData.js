@@ -9,43 +9,43 @@ import * as CgIcons from 'react-icons/cg'
 export const SidebarData = [
     {
         title: "Getting Started",
-        path: '/tutorial/advanced/getting-started',
+        path: '/tutorial/getting-started',
         icon: <AiIcons.AiFillHome/>,
         cName: 'row'
     },
     {
         title: "Create Project",
-        path: '/tutorial/advanced/create-project',
+        path: '/tutorial/create-project',
         icon: <FaIcons.FaGamepad/>,
         cName: 'row'
     },
     {
         title: "Create Scene",
-        path: '/tutorial/advanced/create-scene',
+        path: '/tutorial/create-scene',
         icon: <RiIcons.RiMovieFill/>,
         cName: 'row'
     },
     {
         title: "Add Objects",
-        path: '/tutorial/advanced/adding-objects',
+        path: '/tutorial/adding-objects',
         icon: <BsIcons.BsBoxSeam/>,
         cName: 'row'
     },
     {
         title: "Entities & Components",
-        path: '/tutorial/advanced/ecs',
+        path: '/tutorial/ecs',
         icon: <GiIcons.GiAppleSeeds />,
         cName: 'row'
     },
     {
         title: "Physics",
-        path: '/tutorial/advanced/physics',
+        path: '/tutorial/physics',
         icon: <GiIcons.GiMaterialsScience/>,
         cName: 'row'
     },
     {
         title: "Scripting",
-        path: '/tutorial/advanced/scripts',
+        path: '/tutorial/scripts',
         icon: <RiIcons.RiFileCodeFill/>,
         cName: 'row'
     },
