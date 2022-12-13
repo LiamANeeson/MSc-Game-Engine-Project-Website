@@ -133,6 +133,7 @@ function UploadFile() {
         console.log(res);
         if (res.status == 200) {
           setMessage(true);
+          setModalShow(false);
           fetchData();
         }
       });
@@ -232,7 +233,7 @@ function UploadFile() {
             <Button className = "secondary-upload-modal-btn" onClick = {handleClose}>
                 Close
             </Button>
-            <Button className = "upload-modal-btn"onClick={handleClose}>
+            <Button className = "upload-modal-btn" onClick = {handleSubmit} type="submit">
                 Upload
             </Button>
           </Modal.Footer>
