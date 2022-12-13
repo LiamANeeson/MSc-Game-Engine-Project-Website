@@ -1,35 +1,34 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: [true, 'Please add a name'],
+    {
+        name: {
+            type: String,
+            required: [true, 'Please add a name'],
+        },
+        email: {
+            type: String,
+            required: [true, 'Please add an email'],
+            unique: true,
+        },
+        password: {
+            type: String,
+            required: [true, 'Please add a password'],
+        },
+        token: {
+            type: String,
+            default: ""
+        },
+        avatar: {
+            type: String,
+        }
     },
-    email: {
-      type: String,
-      required: [true, 'Please add an email'],
-      unique: true,
+    {
+        timestamps: true,
     },
-    password: {
-      type: String,
-      required: [true, 'Please add a password'],
-    },
-    token: {
-      type: String,
-      default: ""
-    },
-    savedPosts: {
-      type: Array,
-      default: []    
+    {
+        collection: 'users'
     }
-  },
-  {
-    timestamps: true,
-  },
-  {
-    collection: 'users'
-  }
 )
 
 module.exports = mongoose.model('User', userSchema)

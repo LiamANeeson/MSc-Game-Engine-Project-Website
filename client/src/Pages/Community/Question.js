@@ -1,28 +1,24 @@
-import React from 'react'
+import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import "./Question.css";
 import { Icon } from "@iconify/react";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-
-
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 const Question = ({ questions }) => {
-
-
   const authToken = localStorage.getItem("authToken");
   return (
     <Row>
-      {questions && questions.length >= 1 ?
+      {questions && questions.length >= 1 ? (
         questions?.map((que) => (
           <Col md={4} className="que-wrapper">
             <div className="que-inner-wrapper">
-              <div className='question-level-1'>
+              <div className="question-level-1">
                 <div className="questions-desc-and-title">
-                  <h2 className="questions-title" style={{ cursor: "pointer" }} >
+                  <h2 className="questions-title" style={{ cursor: "pointer" }}>
                     <Link to={`/question/${que._id}`}>{que.name}</Link>
                   </h2>
                   <p className="questions-desc" style={{ cursor: "pointer" }}>
@@ -30,14 +26,6 @@ const Question = ({ questions }) => {
                       {que?.description.slice(0, 75)}...
                     </Link>
                   </p>
-                  {/* <p className="questions-desc" style={{ cursor: "pointer" }}
-                  
-                  // onClick={() => {
-                  //   if (!authToken)
-                  //     setModalShow(true)
-                  // }>
-                  
-                </p> */}
                 </div>
                 <div className="que-tags">
                   {que.tags.map((tag) => (
@@ -46,7 +34,6 @@ const Question = ({ questions }) => {
                 </div>
               </div>
               <Row className="questions-action-block">
-
                 <div
                   style={{
                     display: "flex",
@@ -54,7 +41,7 @@ const Question = ({ questions }) => {
                   }}
                 >
                   <div className="question-answer">
-                    <span style={{ fontSize: "1.75rem" }} >
+                    <span style={{ fontSize: "1.75rem" }}>
                       {que.answers?.length}
                       <br />
                     </span>
@@ -66,7 +53,6 @@ const Question = ({ questions }) => {
                       <br />
                     </span>
                     Votes
-
                   </div>
                   <div className="question-views">
                     <span style={{ fontSize: "1.75rem" }}>
@@ -74,19 +60,23 @@ const Question = ({ questions }) => {
                       <br />
                     </span>
                     Views
-
                   </div>
 
                   <div>
-                    <div className="user-info float-right" style={{ width: "100%" }}>
-
+                    <div
+                      className="user-info float-right"
+                      style={{ width: "100%" }}
+                    >
                       <div className="question-user-name">
-                        <Icon
-                          icon="ant-design:user"
+                        <img
+                          class="rounded-circle mt-2"
+                          src={que?.userObj?.avatar}
                           width="30px"
                           height="30px"
-                        />{que?.userObj?.name}</div>
-                      <div className="question-user-date" >
+                        />
+                        {que?.userObj?.name}
+                      </div>
+                      <div className="question-user-date">
                         {moment(que.createdAt).fromNow()}
                       </div>
                     </div>
@@ -95,10 +85,14 @@ const Question = ({ questions }) => {
               </Row>
             </div>
           </Col>
-        )) : <p style={{ textAlign: "center", fontSize: "1.3rem" }}>Data Not Found!</p>
-      }
-    </Row >
-  )
-}
+        ))
+      ) : (
+        <p style={{ textAlign: "center", fontSize: "1.3rem" }}>
+          Data Not Found!
+        </p>
+      )}
+    </Row>
+  );
+};
 
-export default Question
+export default Question;

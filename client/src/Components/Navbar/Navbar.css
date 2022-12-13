@@ -12,6 +12,7 @@
   border-radius: 4px !important;
   height: auto !important;
   text-transform: uppercase !important;
+  text-decoration: none !important;
 }
 
 .custom-btn:hover {

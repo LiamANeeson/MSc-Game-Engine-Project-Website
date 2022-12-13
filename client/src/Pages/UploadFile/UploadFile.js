@@ -14,10 +14,43 @@ import "datatables.net-dt/js/dataTables.dataTables"
 import "datatables.net-dt/css/jquery.dataTables.min.css"
 import $ from 'jquery';
 
+
+function MyVerticallyCenteredModal(props) {
+    return (
+        <Modal
+            {...props}
+            size="md"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Body>
+                <p style={{ marginTop: "1rem", marginLeft: "1rem" }}>
+                    <svg style={{ color: "orange" }} viewBox="64 64 896 896" focusable="false" data-icon="exclamation-circle"
+                        width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                        <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                        <path d="M464 688a48 48 0 1096 0 48 48 0 10-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z"></path>
+                    </svg>
+                    &nbsp;You need to sign in to perform this operation
+
+                    <br />
+                    <div style={{ float: "right", marginTop: "24px" }}>
+                        <button type="button" onClick={props.onHide} className='login-cancel-button'><span>Cancel</span></button>
+                        <button type="button" className='login-do-button'>
+                            <a href='/login' style={{ color: "white" }}>
+                                <span>Sign in</span>
+                            </a></button>
+                    </div>
+                </p>
+            </Modal.Body>
+        </Modal>
+    );
+}
+
+
 function UploadFile() {
 
     const [show1, setMessage] = useState(false);
-    const [show, setShow] = useState(!localStorage.getItem("authToken"));
+    const [show, setShow] = useState(false);
     const [image, setImage] = useState({ preview: '', data: '' })
     const [games, setGames] = useState([]);
     const [size, setSize] = useState();
@@ -183,31 +216,12 @@ function UploadFile() {
                     </tr>
                 </tfoot>
             </Table>
-
-            {
-
-                <Modal
-                    show={show}
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                    onHide={handleClose}
-                >
-                    <Modal.Header closeButton>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <p>
-                            Please login to upload the file
-                        </p>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button onClick={handleClose}>Close</Button>
-                    </Modal.Footer>
-                </Modal>
-
-            }
-
+            <MyVerticallyCenteredModal
+                show={show}
+                onHide={() => setShow(false)}
+            />
         </Container>
+
     );
 }
 
