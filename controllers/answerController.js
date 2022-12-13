@@ -12,7 +12,9 @@ const createAnswer = async (req, res) => {
           $push: {
             comment: {
               content: content,
-              userObj: req.user
+              userEmail: req.user.email,
+              userName: req.user.name,
+              userAvatar: req.user.avatar
             }
           }
         }

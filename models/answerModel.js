@@ -15,7 +15,9 @@ const answerSchema = new mongoose.Schema(
     comment: [{
       type: new mongoose.Schema({
         content: String,
-        userObj: Object,
+        userEmail: String,
+        userName: String,
+        userAvatar: String,
         createdAt: { type: Date, default: Date.now }
       }),
       default: null

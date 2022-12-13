@@ -55,7 +55,8 @@ const questionToFrontEndView = (question, userID) => {
         answers: question.answers,
         followedBy: question.followedBy,
         viewCount: question.viewCount,
-        userObj: question.userObj
+        userObj: question.userObj,
+        createdAt: question.createdAt
     }
 
     frontEndQuestion.isUpvotedByThisUser = (question.votes.indexOf(userID) !== -1)
