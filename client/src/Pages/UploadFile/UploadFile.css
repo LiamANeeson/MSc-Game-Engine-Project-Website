@@ -24,15 +24,39 @@
 }
 
 .table-btn {
-    color: black !important;
-    background-color: #FFB703 !important;
-    border: 2px solid !important;
-    border-color: #FFB703 !important;
-    width: 200px;
+  color: black !important;
+  background-color: #ffb703 !important;
+  border: 2px solid !important;
+  border-color: #ffb703 !important;
+  width: 200px;
 }
 
 .table-btn:hover {
-    background-color: #FFB703 !important;
-    border: 2px solid !important;
-    border-color: black !important;
+  background-color: #ffb703 !important;
+  border: 2px solid !important;
+  border-color: black !important;
+}
+
+.upload-modal-btn {
+  background-color: #fb8500 !important;
+  color: black !important;
+  background-color: #fb8500 !important;
+  border: 2px solid !important;
+  border-color: #fb8500 !important;
+}
+
+.upload-modal-btn:hover {
+  border: 2px solid black !important;
+}
+
+.secondary-upload-modal-btn{
+  background-color: #ffb703 !important;
+  color: black !important;
+  background-color: #ffb703 !important;
+  border: 2px solid !important;
+  border-color: #ffb703 !important;
+}
+
+.secondary-upload-modal-btn:hover{
+  border: 2px solid black !important;
 }

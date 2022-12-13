@@ -31,10 +31,10 @@ const upload =multer({
           tag:req.body.tag
         });
         await uploadfileData.save();
-        res.json({ uploadfileData });
         return res.json({
           success: true,
-          file: upload.secure_url,          
+          file: upload.secure_url,
+          ...uploadfileData
         }); 
   })
 
