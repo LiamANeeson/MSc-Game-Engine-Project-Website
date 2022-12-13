@@ -25,14 +25,14 @@
 
 .table-btn {
   color: black !important;
-  background-color: #ffb703 !important;
+  background-color: #fb8500 !important;
   border: 2px solid !important;
-  border-color: #ffb703 !important;
+  border-color: #fb8500 !important;
   width: 200px;
 }
 
 .table-btn:hover {
-  background-color: #ffb703 !important;
+  background-color: #fb8500 !important;
   border: 2px solid !important;
   border-color: black !important;
 }
