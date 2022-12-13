@@ -391,7 +391,7 @@ const QuestionDetail = (props) => {
                                                                 width="30px"
                                                                 height="30px"
                                                             />
-                                                            {answer?.data?.userObj?.name}
+                                                            {" " + answer?.data?.userObj?.name}
                                                         </div>
                                                         <div className="question-user-date">
                                                             {moment(answer.data.createdAt).fromNow()}
