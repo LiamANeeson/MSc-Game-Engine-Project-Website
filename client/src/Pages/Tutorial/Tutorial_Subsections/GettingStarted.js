@@ -14,7 +14,7 @@ function GettingStarted() {
           <div className='advTutContent'>
             <h2>Getting started with HorizonGE</h2>
             <p></p>
-            <p>Get started with building scenes in HorizonGE, to start select 'Download HorizonGE' from the home page!</p>
+            <p>Get started with building scenes in HorizonGE, to start, select 'Download HorizonGE' from the home page!</p>
             
             <img src={Download_GE} className='dwnld_ge pic-max-width_dwnld center_img_no_width'></img>
             <p className = 'center_txt'> Figure 1: Horizon game engine – empty engine dashboard </p>

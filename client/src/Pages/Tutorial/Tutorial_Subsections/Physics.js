@@ -44,7 +44,7 @@ function Physics() {
           <img src={two_objects} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 2: Horizon game engine – Scene setup with two objects rendered</p>
 
-          <strong id='step1'>Step 1:</strong>
+          <strong id='step1'>Step 1: Adding a Rigid Body to Red Box</strong>
           <p>
             Click on the Red Box if you haven’t already, once the red box is highlighted, click ‘Add Component’ 
             on the right-hand side of the screen. Click ‘RigidBody2DComponent’ to place the object under the 
@@ -53,7 +53,7 @@ function Physics() {
           <img src={Add_rigidBody2DComponent} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 3: Horizon game engine – Add Rigid Body to Red Box</p>
           
-          <strong id='step2'>Step 2:</strong>
+          <strong id='step2'>Step 2: Rigid Body options</strong>
           <p>
           You will notice that the extra Rigid Body physics component has been added to your red box object. 
           Let’s take a closer look at this Rigid Body component to see how it works and what you can do with it. 
@@ -86,7 +86,7 @@ function Physics() {
           <img src={rigidBody2DComponent_options} className='center_img'></img>
           <p className='center_txt'>Figure 4: Horizon game engine – Rigid Body options</p>
 
-          <strong id='step3'>Step 3:</strong>
+          <strong id='step3'>Step 3: Play & Stop scenes</strong>
           <p>
             To test out this new dynamic component on our object, we can play our scene. 
             To do this click File -&gt; Play. To stop, click File -&gt; stop. When you hit play 
@@ -105,7 +105,7 @@ function Physics() {
           <img src={Scene_in_play} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 7: Horizon game engine – Scene in play</p>
 
-          <strong id='step4'>Step 4:</strong>
+          <strong id='step4'>Step 4: Scene setup with added objects</strong>
           <p>
             Now that we have seen how to add a rigid body to our objects, we start can set up multiple objects 
             and begin building a fuller scene. Follow the video sequence at the top to set up your scene.  
@@ -114,7 +114,7 @@ function Physics() {
           <img src={scene_layout} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 8: Horizon game engine – Scene setup with added objects</p>
 
-          <strong id='step5'>Step 5:</strong>
+          <strong id='step5'>Step 5: Add Box Colliders</strong>
           <p>
             Now that we have our scene set up, we can look into the next physics property – ‘Box Collider’. 
             The box collider allows the object to interact with the physics system and provide collision 
@@ -124,7 +124,7 @@ function Physics() {
           <img src={box_collider} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 9: Horizon game engine – Box Collider</p>
 
-          <strong id='step6'>Step 6:</strong>
+          <strong id='step6'>Step 6: Restitution - (Bounciness)</strong>
           <p>
             Now that we have the box collider and rigid body components installed on our objects, 
             we can ‘play’ the scene again to see how the objects will interact with each other. 

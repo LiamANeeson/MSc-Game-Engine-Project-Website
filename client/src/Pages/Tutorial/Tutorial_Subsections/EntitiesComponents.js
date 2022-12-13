@@ -7,7 +7,7 @@ function EntitiesComponents() {
   return (
     <div className='advTutMainContainer'>
       <Sidebar />
-      <div className='adv-tut-content'>
+      <div className='advTutContent'>
         <h2>Entity Component system</h2>
 
         <p>In this tutorial we will discuss how to access some of the components that we can apply to an object entity, check out the video for visual reference!</p>
