@@ -72,6 +72,7 @@ const QuestionDetail = (props) => {
   const [question, setQuestion] = useState();
   const [isUpvotedByThisUser, setIsUpvotedByThisUser] = useState(false);
   const [isDownvotedByThisUser, setIsDownvotedByThisUser] = useState(false);
+  const [isFollowedByThisUser, setIsFollowedByThisUser] = useState(false);
 
   const [modalShow, setModalShow] = React.useState(false);
 
@@ -209,9 +210,21 @@ const QuestionDetail = (props) => {
       toast.error("Something went wrong!");
     }
     if (followRes) {
+      setIsFollowedByThisUser(true);
       toast.success("Followed!");
     }
-  };
+  }
+
+  const unfollowQuestion = async () => {
+    const [followErr, followRes] = await Api.unfollowQuestion(id);
+    if (followErr) {
+      toast.error("Something went wrong!");
+    }
+    if (followRes) {
+      setIsFollowedByThisUser(false);
+      toast.success("Unfollowed!");
+    }
+  }
 
   return (
     <>
@@ -249,11 +262,13 @@ const QuestionDetail = (props) => {
                     if (!authToken) {
                       setModalShow(true);
                     } else {
-                      followQuestion();
+                      isFollowedByThisUser ? unfollowQuestion() : followQuestion();
                     }
                   }}
                 >
-                  Follow
+                  <span style={{ color: isFollowedByThisUser ? "white" : "black" }}>
+                    {isFollowedByThisUser ? "Following" : "Follow"}
+                  </span>
                 </Button>
 
                 <Button

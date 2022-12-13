@@ -270,7 +270,6 @@ const undoDownVoteQuestion = async (req, res) => {
 
 const followQuestion = async (req, res) => {
     try {
-        console.log(req.user);
         const followObject = {
             _id: req.user._id,
             followTime: new Date(),
