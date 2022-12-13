@@ -299,6 +299,24 @@ export async function voteQuestion(questionID) {
   }
 }
 
+//vote question
+export async function undoVoteQuestion(questionID) {
+  try {
+    let token = localStorage.getItem("authToken");
+    const axiosConfig = {
+      method: "patch",
+      url: `${apiURL}/question/${questionID}/undo_vote`,
+      headers: { Authorization: "Bearer " + token },
+    };
+    const response = await axios.default.request(axiosConfig);
+    const normalizedResponse = normalizeServerResponse(response);
+    return [null, normalizedResponse];
+  } catch (error) {
+    const errorObject = normalizeServerError(error);
+    return [errorObject, null];
+  }
+}
+
 // Down vote question
 export async function downVoteQuestion(questionID) {
   try {
@@ -306,6 +324,24 @@ export async function downVoteQuestion(questionID) {
     const axiosConfig = {
       method: "patch",
       url: `${apiURL}/question/${questionID}/down_vote`,
+      headers: { Authorization: "Bearer " + token },
+    };
+    const response = await axios.default.request(axiosConfig);
+    const normalizedResponse = normalizeServerResponse(response);
+    return [null, normalizedResponse];
+  } catch (error) {
+    const errorObject = normalizeServerError(error);
+    return [errorObject, null];
+  }
+}
+
+// Down vote question
+export async function undoDownVoteQuestion(questionID) {
+  try {
+    let token = localStorage.getItem("authToken");
+    const axiosConfig = {
+      method: "patch",
+      url: `${apiURL}/question/${questionID}/undo_down_vote`,
       headers: { Authorization: "Bearer " + token },
     };
     const response = await axios.default.request(axiosConfig);
