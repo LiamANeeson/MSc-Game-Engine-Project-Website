@@ -288,9 +288,6 @@
 .question-interactions {
     display: flex;
     justify-content: right;
-    width: "auto";
-    margin: "40px";
-    padding: "40px";
 }
 
 .question-btn {
@@ -303,8 +300,7 @@
     text-transform: uppercase;
     border-radius: 4px !important;
     box-sizing: border-box !important;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 18px;
 }
 
 .question-btn:hover {

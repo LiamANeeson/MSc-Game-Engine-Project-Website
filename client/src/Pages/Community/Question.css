@@ -177,16 +177,6 @@
     padding: "40px";
 }
 
-.question-btn {
-    margin-left: 20px;
-    margin-right: 20px;
-    height: 50px;
-    background-color: #ec7211;
-    border: 2px solid;
-    border-color: #ec7211;
-    color: black;
-}
-
 .question-btn:hover {
     background-color: #ec7211;
     border-color: black;

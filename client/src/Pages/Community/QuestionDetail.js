@@ -318,7 +318,7 @@ const QuestionDetail = (props) => {
                                             }
                                         }}
                                     >
-                                        <AiIcons.AiFillDelete size={40} />
+                                        <AiIcons.AiFillDelete size={30} />
                                     </Button>
                                 ) : (
                                     ""
