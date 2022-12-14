@@ -47,12 +47,11 @@ function Home() {
             style={{ backgroundColor: "#8ECAE6", border: "none" }}
           >
             <Card.Title style={{ fontWeight: "800" }}>
-              Make Your Own Games
+              Game tutorial
             </Card.Title>
             <Card.Text>
-              Horizon Engine Includes all the features you need so you can make
-              any 2D game you want. Add Physics, Audio and include any sprite
-              sheet that you want!
+              Horizon Engine includes a game tutorial to help you build your first game!
+              Check out out the make a game button above!
             </Card.Text>
           </Card>
         </Col>
@@ -77,12 +76,10 @@ function Home() {
             style={{ backgroundColor: "#8ECAE6", border: "none" }}
           >
             <Card.Title style={{ fontWeight: "800" }}>
-              Make Your Own Games
+              Check out Dark Trails!
             </Card.Title>
             <Card.Text>
-              Horizon Engine Includes all the features you need so you can make
-              any 2D game you want. Add Physics, Audio and include any sprite
-              sheet that you want!
+              Dark trails is a game to help you learn about dark patterns! Download this from the downloads page above!
             </Card.Text>
           </Card>
         </Col>
