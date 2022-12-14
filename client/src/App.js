@@ -39,9 +39,8 @@ import Physics from "./Pages/Tutorial/Tutorial_Subsections/Physics";
 import Scripting from "./Pages/Tutorial/Tutorial_Subsections/Scripting";
 
 //game tutorials imports
-import GameGettingStarted from "./Pages/Tutorial/tutorial_game_subsections/GameGettingStarted";
-import GameCreateProject from "./Pages/Tutorial/tutorial_game_subsections/GameCreateProject";
-import GameCreateScene from "./Pages/Tutorial/tutorial_game_subsections/GameCreateScene";
+import MakeAGame from "./Pages/Tutorial/tutorial_game_subsections/MakeAGame";
+import Prerequisites from "./Pages/Tutorial/tutorial_game_subsections/Prerequisites";
 
 //css
 import "./App.css";
@@ -88,19 +87,14 @@ function App() {
             {/*<Route path='tutorial/sprite-sheet' element={<SpriteSheet />} />*/}
 
             {/* Game Tutorial pages */}
+            {/* <Route
+              path="/tutorial/beginner/prerequisites"
+              element={<Prerequisites/>}
+            /> */}
             <Route
-              path="/tutorial/beginner/game-getting-started"
-              element={<GameGettingStarted />}
+              path="/tutorial/beginner/make-a-game"
+              element={<MakeAGame />}
             />
-            <Route
-              path="/tutorial/beginner/game-create-project"
-              element={<GameCreateProject />}
-            />
-            <Route
-              path="/tutorial/beginner/game-create-scene"
-              element={<GameCreateScene />}
-            />
-            {/*<Route path='tutorial/game-adding-objects' element={<GameAddObjects />} /> */}
             {/* End routes for game tutorial pages */}
 
             {/* Routes for Docuemtation Pages*/}
