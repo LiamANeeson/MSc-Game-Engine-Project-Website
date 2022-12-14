@@ -170,3 +170,19 @@ div a {
     border: 2px solid !important;
     border-color: black !important;
 }
+
+.community-btn-sort{
+
+    margin-right: 15px;
+    margin-top: 9px;
+    margin-bottom: 5px;
+    height: 35px;
+    align-self: center;
+    outline: none;
+    border: 1px solid gray;
+    width: 100%;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 15px;
+}
+
