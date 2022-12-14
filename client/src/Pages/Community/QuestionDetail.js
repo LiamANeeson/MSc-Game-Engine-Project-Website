@@ -113,7 +113,6 @@ const QuestionDetail = (props) => {
         };
         init();
     }, [Api.getQuestion, setAnswers, setShowLoading]);
-    //  console.log( "selected" ,obj);
 
     const postAnswerComment = async (data) => {
         const [postAnswerErr, postAnswerRes] = await Api.createAnswer(

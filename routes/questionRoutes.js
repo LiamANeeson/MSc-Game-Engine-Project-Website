@@ -21,7 +21,7 @@ router.get("/", getQuestions);
 router.post("/created-posts", protect, getCreatedQuestions);
 router.post("/followed-posts", protect, getFollowedQuestions);
 router.post("/", protect, createQuestion);
-router.get("/:id", protect, getQuestionById);
+router.get("/:id", getQuestionById);
 router.patch("/:id", protect, updateQuestion); 
 router.delete("/:id", protect, deleteQuestion);
 router.patch("/:id/vote", protect, voteQuestion);
