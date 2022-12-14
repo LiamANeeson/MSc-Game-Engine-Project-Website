@@ -231,7 +231,7 @@ const forgotPassword = async (req, res) => {
         }
         const PasswordToken = bcrypt.hashSync("123456", 10);
         await User.updateOne({ _id: user._id }, { $set: { token: PasswordToken } });
-        const url = `${process.env.API_PROXY_URL}/user/reset-password?token=${PasswordToken}`;
+        const url = `${process.env.API_PROXY_URL}/user/reset-password-email?token=${PasswordToken}`;
         await sendMail({
             to: email,
             url: url,
