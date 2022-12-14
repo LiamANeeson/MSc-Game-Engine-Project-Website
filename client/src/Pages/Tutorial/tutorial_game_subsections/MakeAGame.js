@@ -16,7 +16,8 @@ import tilemap from '../../../Assets/TileMap/Tilemap.zip';
 
 function GameGettingStarted() {
 
-  const links = [{ id: '#step1', text: 'Step 1: Creating a Project' },
+  const links = [{ id: '#prerequisites', text: 'Prerequisites' },
+  { id: '#step1', text: 'Step 1: Creating a Project' },
   { id: '#step2', text: 'Step 2: Setting up the Scene' },
   { id: '#step3', text: 'Step 3: Adding Sprites' },
   { id: '#step4', text: 'Step 4: Playing the Game' },]
@@ -152,14 +153,14 @@ namespace Hzn {
             <p className='center_txt'> Figure 1: Video - Horizon game engine – Game tutorial</p>
 
 
-            <strong id='step1'>Prerequisites</strong>
+            <strong id='prerequisites'>Prerequisites</strong>
             <p>In order to create your game you will need to download two things:</p>
 
             <p>The first is the horizon game engine which you can find on the downloads page of the website:</p>
             <div class="tilemap-cta-container ">
             <div class="center-cta">
             <a href="https://horizoneng.herokuapp.com/download" >
-              <button className='download-cta' type="submit">Downloads page</button>
+              <button className='gameDownloadCta' type="submit">Downloads page</button>
             </a>
             </div>
             </div> 
@@ -167,7 +168,7 @@ namespace Hzn {
             <div class="tilemap-cta-container ">
             <div class="center-cta">
             <a href="https://learn.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2022" >
-              <button className='download-cta' type="submit">Download visual studio</button>
+              <button className='gameDownloadCta' type="submit">Download visual studio</button>
             </a>
             </div>
             </div> 
@@ -203,7 +204,7 @@ namespace Hzn {
               <div class="tilemap-cta-container ">
               <div class="center-cta">
               <a href={tilemap} download>
-                <button className='download-cta' type="submit">Download tilemaps!</button>
+                <button className='gameDownloadCta' type="submit">Download tilemaps!</button>
               </a>
               </div>
               </div>

@@ -143,7 +143,7 @@ padding: 1%; */
     transform: translate(-50%, -50%);
 }
 
-.download-cta{
+.gameDownloadCta{
     align-items: center !important;
     color: black !important;
     background-color: #FB8500 !important;  
@@ -160,7 +160,7 @@ padding: 1%; */
     box-sizing: border-box !important;
 }
 
-.download-cta:hover {
+.gameDownloadCta:hover {
   background-color: #FB8500 !important;
   border: 2px solid !important;
   border-color: black !important;
