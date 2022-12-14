@@ -85,11 +85,13 @@ function Community() {
       {showLoading ? <div className="loadingDiv"></div> : ""}
       <Container>
         <Row>
-          <Col></Col>
-          <Col md = {4}>
-            <Search setSearch={(search) => setSearch(search)} />
+          <Col>
           </Col>
-          <Col md = {4}>
+          <Col md={4}>
+            <Search setSearch={(search) => setSearch(search)} />
+            <Sort sort={sort} setSort={(sort) => setSort(sort)} />
+          </Col>
+          <Col md={4}>
             <Button
               className="community-btn"
               onClick={handleShow}
@@ -172,7 +174,10 @@ function Community() {
                         <Button variant="secondary" onClick={handleClose}>
                           Close
                         </Button>
-                        <Button className="community-btn-modal" onClick={handleSubmit}>
+                        <Button
+                          className="community-btn-modal"
+                          onClick={handleSubmit}
+                        >
                           Create Post
                         </Button>
                       </Modal.Footer>
