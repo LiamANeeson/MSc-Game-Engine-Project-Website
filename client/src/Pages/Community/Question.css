@@ -100,7 +100,6 @@
     letter-spacing: .01em;
     line-height: .8rem;
     margin-bottom: 0 !important;
-    margin-top: 0.25rem;
     flex-shrink: 0;
 }
 
@@ -110,7 +109,6 @@
     height: 1.25rem;
     line-height: 1.25rem;
     max-width: 10rem;
-    margin-bottom: 0 !important;
     flex-shrink: 0;
 }
 
