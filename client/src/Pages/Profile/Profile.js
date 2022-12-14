@@ -245,7 +245,7 @@ function Profile() {
                                                             }
                                                         </Form.Group>
 
-                                                        <Button className="mt-2" variant="secondary" onClick={handleClose}>
+                                                        <Button className="close_reset_pwd" variant="secondary" onClick={handleClose}>
                                                             Close
                                                         </Button>
                                                         <Button

@@ -60,7 +60,7 @@ function ResetPassword() {
       dispatch(resetPasswordFromEmail(data));
   }
   return (
-    <container className="login-container">
+    <Container className="login-container">
                 <section className="head">
                     <h1>
                         Reset Password
@@ -118,7 +118,7 @@ function ResetPassword() {
                                     }
                                 </Form.Group>
 
-                                <Button className='submit-btn' type="submit">
+                                <Button className='login-btn' type="submit">
                                     Submit
                                 </Button>
                             </form>
@@ -126,7 +126,7 @@ function ResetPassword() {
                     }}
                 </Formik>
 
-            </container>
+            </Container>
   );
 }
 
