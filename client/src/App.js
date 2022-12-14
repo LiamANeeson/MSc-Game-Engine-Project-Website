@@ -119,7 +119,7 @@ function App() {
             {/* Profile Routes */}
             <Route path="/login" element={<Login />} />
             <Route path="/forgot" element={<Forgot />} />
-            <Route path="/user/reset-password" element={<ResetPassword />} />
+            <Route path="/user/reset-password-email" element={<ResetPassword />} />
             <Route path="/logout" element={<LogOut />} />
             <Route path="/register" element={<Register />} />
             <Route
