@@ -127,4 +127,42 @@ padding: 1%; */
 .test_code_tag{
     overflow-wrap: break-word;
 }
+
+.tilemap-cta-container {
+    height: 5rem;
+    position: relative;
+    margin-bottom:4%;
+  }
+
+.center-cta{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.download-cta{
+    align-items: center !important;
+    color: black !important;
+    background-color: #FB8500 !important;  
+    border: 2px solid !important;
+    border-color: #FB8500 !important;
+    width: 35% !important;
+    min-width: 200px !important;
+    height: auto !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    margin-top: 50px !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+}
+
+.download-cta:hover {
+  background-color: #FB8500 !important;
+  border: 2px solid !important;
+  border-color: black !important;
+}
       

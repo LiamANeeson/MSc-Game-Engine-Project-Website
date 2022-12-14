@@ -11,6 +11,7 @@ import scripting_VS_template from '../../../Assets/Images/scripting/scripting_VS
 
 import './tut_subsections.css'
 
+//Code snippet code
 import { Prism as SyntaxHighlighter, style } from 'react-syntax-highlighter';
 import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
@@ -35,7 +36,7 @@ function Scripting() {
 
 
   const codeString = 
-`  using Hzn;
+` using Hzn;
   using System;
   namespace Hzn
   {
