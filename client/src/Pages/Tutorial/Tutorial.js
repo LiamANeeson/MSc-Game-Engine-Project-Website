@@ -18,7 +18,7 @@ function Tutorial() {
                 <Card.Text>
                   Make a game
                 </Card.Text>
-                <Button className='card-btn' href='/tutorial/beginner/game-getting-started'>Make a game!</Button>
+                <Button className='card-btn' href='/tutorial/beginner/make-a-game'>Make a game!</Button>
               </Card.Body>
             </Card>
 

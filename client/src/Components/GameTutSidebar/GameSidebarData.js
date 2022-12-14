@@ -7,23 +7,16 @@ import * as BsIcons from 'react-icons/bs'
 import * as CgIcons from 'react-icons/cg'
 
 export const GameSidebarData = [
+    // {
+    //     title: "Prerequisites",
+    //     path: '/tutorial/beginner/prerequisites',
+    //     icon: <AiIcons.AiFillHome/>,
+    //     cName: 'row'
+    // },
     {
-        title: "Getting Started",
-        path: '/tutorial/beginner/game-getting-started',
-        icon: <AiIcons.AiFillHome/>,
-        cName: 'row'
-    },
-    {
-        title: "Create Project",
-        path: '/tutorial/beginner/game-create-project',
+        title: "Make a game",
+        path: '/tutorial/beginner/make-a-game',
         icon: <FaIcons.FaGamepad/>,
         cName: 'row'
     },
-    {
-        title: "Create Scene",
-        path: '/tutorial/beginner/game-create-scene',
-        icon: <RiIcons.RiMovieFill/>,
-        cName: 'row'
-    }
-
 ]
