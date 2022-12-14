@@ -141,7 +141,7 @@ namespace Hzn {
   return (
     <div className='gmTutMainContainer'>
        
-          <GameSidebar />
+          {/* <GameSidebar /> */}
           <div className='gmTutContent'>
             <h2>Make your own game!</h2>
             <Treemap links={links} />
@@ -152,6 +152,27 @@ namespace Hzn {
             <p className='center_txt'> Figure 1: Video - Horizon game engine – Game tutorial</p>
 
 
+            <strong id='step1'>Prerequisites</strong>
+            <p>In order to create your game you will need to download two things:</p>
+
+            <p>The first is the horizon game engine which you can find on the downloads page of the website:</p>
+            <div class="tilemap-cta-container ">
+            <div class="center-cta">
+            <a href="https://horizoneng.herokuapp.com/download" >
+              <button className='download-cta' type="submit">Downloads page</button>
+            </a>
+            </div>
+            </div> 
+            <p>Secondly, you will need to download the visual studio, community IDE so we can use it for our scripts!</p>
+            <div class="tilemap-cta-container ">
+            <div class="center-cta">
+            <a href="https://learn.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2022" >
+              <button className='download-cta' type="submit">Download visual studio</button>
+            </a>
+            </div>
+            </div> 
+              
+              
             <strong id='step1'>Step 1: Creating a Project</strong>
             <p>The first step when starting to work with Horizon Engine is to create a new 
               project. This is done by selecting File -&gt; New Project. A prompt will appear 
@@ -241,7 +262,7 @@ namespace Hzn {
               <p className='center_txt'>Figure 5: Horizon game engine – 'Enemy.cs' code snippet</p>
               
 
-              <strong id='step4'>Step 4: Playing the Game</strong>
+              <strong id='step4'>Step 5: Playing the Game</strong>
               <p>In order to play the game that we just made, we simply need to navigate to File -&gt; Play and the currently open scene will come to life. Using the arrow keys, you can now move around the scene and should try to avoid the enemies. The goal of the level is to get to the door in the end and a Level completed text will appear in the console once you get there.</p>
               <p>After you are done playing the game, simply navigate to File -&gt; Stop to reset the scene and enter Edit mode once again.</p>
               <p>If you are done working on a project, simply navigate to File -&gt; Close Project and all your changes will be saved automatically.</p>
