@@ -17,6 +17,8 @@
     padding: 1.5rem 0.5rem 1.5rem 0;
     transition: all .3s ease-out;
     margin-top: 0px;
+    display: flex;
+    width: 100%
 }
 
 .q-desc {
@@ -51,6 +53,7 @@
     flex-wrap: wrap;
     justify-content: flex-end;
     gap: 0.5rem;
+    width: 100%;
     margin-top: 5rem;
 }
 
@@ -60,7 +63,6 @@
     flex: 1 1 auto;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
-    float: left;
 }
 
 .comment-userinfo {
@@ -346,4 +348,9 @@
     float: right;
     margin-left: 20px;
     margin-top: 10px;
+}
+
+.answer-gird {
+    display: flex;
+    flex-wrap: wrap;
 }
