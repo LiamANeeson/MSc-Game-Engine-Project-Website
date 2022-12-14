@@ -38,22 +38,22 @@ function GameCreateProject() {
             <img src={empty_engine} alt="HorizonGE empty dashboard" className='pic-width center_img'></img>
             <p className='center_txt'> Figure 2: Horizon game engine – empty engine dashboard </p>
 
-            <strong id='step1'>Step 1:</strong>
+            <strong id='step1'>Step 1: File menu</strong>
             <p>We need to select the file menu to open the option to select a ‘New Project’.</p>
             <img src={File_menu} alt="HorizonGE File menu" className='pic-max-width center_img_no_width'></img>
             <p className='center_txt'> Figure 3: Horizon game engine – File menu </p>
 
-            <strong id='step2'>Step 2:</strong>
+            <strong id='step2'>Step 2: File menu open</strong>
             <p>Next, we need to select ‘New Project’ as seen in the figure below.</p>
             <img src={File_menu_open} alt="HorizonGE File menu open" className='pic-max-width center_img_no_width'></img>
             <p className='center_txt'> Figure 4: Horizon game engine – File menu open </p>
 
-            <strong id='step3'>Step 3:</strong>
+            <strong id='step3'>Step 3: File dialog box</strong>
             <p>Clicking ‘New project’ will open up a ‘New project’ dialog box where you can select the name of the project you’re creating. To select the directory of where you wish to store your project, click on the 3 dots (...) action box, to open up a folder dialog box where you can select the folder of your choosing. Once you have selected your desired directory, hit the ‘create’ button to generate your new project. </p> 
             <img src={new_project_dialog} alt="HorizonGE File menu" className='pic-max-width center_img_no_width'></img>
             <p className='center_txt'> Figure 5: Horizon game engine – File dialog box </p>
 
-            <strong id='step4'>Step 4:</strong>
+            <strong id='step4'>Step 4: New project dashboard</strong>
             <p>Once you have made your project you will be redirected to the main Horizon game engine desktop where your new project will be loaded and ready for you to build your very own scene! See the figure below for reference. </p> 
             <img src={new_project_setup} alt="HorizonGE project dashboard" className='pic-width center_img'></img>
             <p className='center_txt'> Figure 6: Horizon game engine – New project dashboard</p>

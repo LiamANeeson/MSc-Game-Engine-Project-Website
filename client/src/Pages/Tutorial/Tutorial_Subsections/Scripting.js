@@ -139,7 +139,7 @@ function Scripting() {
           <img src={box_collider} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 2: Horizon game engine – Scene setup with two objects rendered</p>
 
-          <strong id='step1'>Step 1:</strong>
+          <strong id='step1'>Step 1:  Adding script component</strong>
           <p>To start off with, click on the ‘Red Box’, go to the components section on the right-hand side and click on the ‘ScriptComponent’ 
             button. This will add a scripting component to the object's components section. If you click on the drop-down menu of 
             script component, you will see that there are no scripts available to select. This is what we will be working on next. Repeat the 
@@ -148,7 +148,7 @@ function Scripting() {
           <img src={Add_script_component} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 3: Horizon game engine – Add script component</p>
           
-          <strong id='step2'>Step 2:</strong>
+          <strong id='step2'>Step 2: Opening project Files</strong>
           <p>To start making a script you will need to open up the directory that the project is saved to. Navigate to the 
             ‘ScriptAppLib’ folder where you will see ‘ScriptAppLib.sln’. Double-click the ‘ScriptAppLib.sln’ ‘solution’ file to open 
             up the scripting project template using visual studio.
@@ -156,7 +156,7 @@ function Scripting() {
           <img src={project_files} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 4: Horizon game engine – Project Files</p>
 
-          <strong id='step3'>Step 3:</strong>
+          <strong id='step3'>Step 3: Scripting template in Visual studio</strong>
           <p>The Horizon Game Engine will use the Visual Studio IDE to allow us to build C# scripts.</p>
           <p>Once visual studio is opened, it will produce a project template with a ‘Player.cs’ file in the source folder. Open this 
             file. See the figure below on how your visual studio setup should look.
@@ -164,7 +164,7 @@ function Scripting() {
           <img src={scripting_VS_template} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 5: Horizon game engine – Scripting template in Visual studio</p>
 
-          <strong id='step4'>Step 4:</strong>
+          <strong id='step4'>Step 4: Adding scripts to visual studio project</strong>
           <p>This is where we can input our scripts. To test this out copy and paste the following example code below into the 'Player.cs' file. 
             It will provide control over the Red Box and allow you to move it around using the WSAD keys. </p>
           <p>Code for 'Player.cs':</p>
@@ -187,7 +187,7 @@ function Scripting() {
           <img src={script_in_player_file} className='pic-width center_img' ></img>
           <p className='center_txt'>Figure 7: Horizon game engine – Scripting in 'Player.cs' file</p>
           
-            <strong id='step5'>Step 5:</strong>
+            <strong id='step5'>Step 5: Build the script</strong>
           <p>Great! Now we build the ‘Player.cs’ file. Click then right–click on the ‘scriptAppLib’ line at the top of the solution 
             explorer in visual studio and click build, you should see build succeded at the bottom of the output 
             section in the visual studio window. That’s it, we can now head back over to Horizon game engine and 
@@ -196,7 +196,7 @@ function Scripting() {
           <img src={build_succeded} className='pic-width center_img' ></img>
           <p>Figure 8: Horizon game engine – Script build succeded</p>
           
-          <strong id='step6'>Step 6:</strong>
+          <strong id='step6'>Step 6: Test object controls</strong>
           <p>Now let’s go back to Horizon Game Engine with our newly built scripts. Click on the Red Box again, 
             and check out the drop-down menu of the script component and you should see your ‘Player.cs’ script there. 
             Select it, now the script has been applied to the Red Box object. Let’s hit play see if it works, don't forget to use 
@@ -206,7 +206,7 @@ function Scripting() {
           <img src={Add_script} className='pic-width center_img'></img>
           <p>Figure 9: Horizon game engine – Add script to object</p>
 
-          <strong id='step7'>Step 7:</strong>
+          <strong id='step7'>Step 7: Adding a script for the white Box object</strong>
           <p>We can now do the same thing for the White Box. Go back to visual studio and in the ‘Solution Explorer’ click 
             on the ‘Player.cs’ file, make a copy of this using ‘Ctrl + C’ & ‘Ctrl + V’. Rename the second file to 
             ‘Player2.cs’ by right clicking the 'Player-copy.cs' file and clicking rename. We just need to change 5 lines of the code to 
@@ -228,7 +228,7 @@ function Scripting() {
           </div>
           <p className='center_txt'>Figure 10: Horizon game engine – 'Player2.cs' code snippet</p>
 
-          <strong id='step8'>Step 8:</strong>
+          <strong id='step8'>Step 8: Testing the scripts on both objects</strong>
           <p>
             Go back to the Horizon Game Engine and click on the White Box, click on the drop-down menu for 
             the script component in the components section and select ‘Player2.cs’ this will apply the script to the 
