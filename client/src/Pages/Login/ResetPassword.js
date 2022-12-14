@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useSearchParams } from 'react-router-dom';
 
-import { resetPassword1 } from "../../features/auth/authSlice";
+import { resetPasswordFromEmail } from "../../features/auth/authSlice";
 import "./Login.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { userResetPasswordSchema } from '../../validation/userValidation'
@@ -15,14 +15,6 @@ import { Form, Button } from 'react-bootstrap';
 function ResetPassword() {
 
   const [searchParams] = useSearchParams();
-
-
-  const [formData, setFormData] = useState({
-    oldpassword: "",
-    newpassword: "",
-  });
-
-  const { oldpassword, newpassword } = formData;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -46,18 +38,12 @@ function ResetPassword() {
     }
   }, [user, resetMsg, isError, isSuccess, message, navigate]);
 
-  const onChange = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
 
   const onSubmit = (data) => {
   
       let token = searchParams.get('token');
       data["token"] = token;
-      dispatch(resetPassword1(data));
+      dispatch(resetPasswordFromEmail(data));
   }
   return (
     <Container className="login-container">
@@ -70,8 +56,8 @@ function ResetPassword() {
 
                 <Formik
                     initialValues={{
-                        newpassword: '',
-                        oldpassword: '',
+                        newPassword: '',
+                        confirmPassword: '',
                     }}
                     validationSchema={userResetPasswordSchema}
                     onSubmit={onSubmit}
@@ -89,15 +75,15 @@ function ResetPassword() {
                                 <Form.Group>
                                     <Form.Label>New Password</Form.Label>
                                     <Form.Control type="password"
-                                        placeholder="Enter password"
-                                        name="oldpassword"
+                                        placeholder="Enter new password"
+                                        name="newPassword"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
-                                        value={values.oldpassword}
+                                        value={values.newPassword}
                                     />
-                                    {errors.oldpassword && touched.oldpassword ?
+                                    {errors.newPassword && touched.newPassword ?
                                         <div className="error-message">
-                                            {errors.oldpassword}
+                                            {errors.newPassword}
                                         </div> : null
                                     }
                                 </Form.Group>
@@ -105,15 +91,15 @@ function ResetPassword() {
                                 <Form.Group>
                                     <Form.Label>Confirm Password</Form.Label>
                                     <Form.Control type="password"
-                                        placeholder="Enter password"
-                                        name="newpassword"
+                                        placeholder="Confirm your password"
+                                        name="confirmPassword"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
-                                        value={values.newpassword}
+                                        value={values.confirmPassword}
                                     />
-                                    {errors.newpassword && touched.newpassword ?
+                                    {errors.confirmPassword && touched.confirmPassword ?
                                         <div className="error-message">
-                                            {errors.newpassword}
+                                            {errors.confirmPassword}
                                         </div> : null
                                     }
                                 </Form.Group>

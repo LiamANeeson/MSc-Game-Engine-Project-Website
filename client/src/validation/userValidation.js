@@ -37,5 +37,6 @@ export const userResetPasswordSchema = yup.object().shape({
         .matches(
             /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*,\.])[0-9a-zA-Z!@#$%^&*,\.]{8,20}$/,
             "Password at least 8 characters, including numbers, upper and lower case letters and special characters three or more"
-        ),
+    ),
+    confirmPassword: yup.string().oneOf([yup.ref('newPassword'), null], 'Passwords must match')
 });
