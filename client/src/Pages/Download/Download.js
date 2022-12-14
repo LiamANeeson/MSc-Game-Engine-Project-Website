@@ -17,11 +17,11 @@ const downloadImage = (image) => {
       }).then(response => {
         var zip = new JSZip();
         var zipData = response.data //
-        zip.file("HorizonGE.zip", zipData); 
+        zip.file("HorizonGameEngine-1.0.0-win64.msi", zipData); 
         zip.generateAsync({type:"blob"})
       .then(function(content) {
           // Force down of the Zip file
-          saveAs(content, "HorizonGE.zip");
+          saveAs(content, "HorizonGameEngine-1.0.0-win64.msi");
         }).catch((error)=>{
           console.log(error)
 });
@@ -39,8 +39,8 @@ const downloadImage = (image) => {
       </section>
       </section>
       <section className='download-section'>
-      <button className='download-btn' onClick={event =>  window.location.href='https://drive.google.com/u/0/uc?id=1kuAqqF0FH9wlIAmSiLKOCnnYggpxzV-k&export=download&confirm=t&uuid=17e9c003-7f68-42aa-aa90-5a4d0ba69148&at=AHV7M3e9Upq0T9Fuyn-DN3Whus6j:1670691281187'}>Download Horizon Game Engine</button>
-      <button className='gm-btn' onClick={event =>  window.location.href='https://drive.google.com/u/0/uc?id=1kuAqqF0FH9wlIAmSiLKOCnnYggpxzV-k&export=download&confirm=t&uuid=17e9c003-7f68-42aa-aa90-5a4d0ba69148&at=AHV7M3e9Upq0T9Fuyn-DN3Whus6j:1670691281187'}>Download Dark Trails Game</button> 
+      <button className='gm-btn' onClick={event =>  window.location.href='https://drive.google.com/u/0/uc?id=1jRteDczyiH6pKuTFSqhfnlXehCbuke5Q&export=download&confirm=t&uuid=3ddca90c-b9a4-42a7-99c1-e7d3e9858d8b&at=AHV7M3dV7_X4VuSyICJ1e9-zm79x:1671018346875'}>Download Horizon Game Engine Installer</button> 
+      <button className='gm-btn' onClick={event =>  window.open('https://drive.google.com/u/0/uc?id=1olKLD4z7acfWCynvGXKVWYO2rq6cDBHw&export=download')}>Download Dark Trails Game</button>
       </section>
       <section className='git-cta'>
         <h2>Horizon GitHub</h2>
