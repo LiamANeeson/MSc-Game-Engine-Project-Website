@@ -22,7 +22,7 @@ const createQuestion = async (req, res) => {
 const getQuestions = async (req, res) => {
     try {
         const page = parseInt(req.query.page) - 1 || 0;
-        const limit = parseInt(req.query.limit) || 5;
+        const limit = parseInt(req.query.limit) || 6;
         const search = req.query.search || "";
         let sort = req.query.sort || "createdAt";
 
@@ -376,7 +376,7 @@ const getFollowedQuestions = async (req, res) => {
     try {
 
         const page = parseInt(req.body.page) - 1 || 0;
-        const limit = parseInt(req.body.limit) || 5;
+        const limit = parseInt(req.body.limit) || 6;
         const search = req.body.search || "";
 
 
