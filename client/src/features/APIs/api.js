@@ -143,32 +143,19 @@ export async function getQuestion(questionID) {
   }
 }
 
-//Get the questions which have been saved by the user
-export async function getUserSavedQuestions() {
-  try {
-    let token = localStorage.getItem("authToken");
-    const axiosConfig = {
-      method: "get",
-      url: `${apiURL}/question/saved-posts`,
-      headers: { Authorization: "Bearer " + token }
-    };
-    const response = await axios.default.request(axiosConfig);
-    const normalizedResponse = normalizeServerResponse(response);
-    return [null, normalizedResponse];
-  } catch (error) {
-    const errorObject = normalizeServerError(error);
-    return [errorObject, null];
-  }
-}
-
 //Get the questions which have been created by the user
-export async function getCreatedQuestions() {
+export async function getCreatedQuestions(limit, page, search) {
     try {
         let token = localStorage.getItem("authToken");
         const axiosConfig = {
-            method: "get",
+            method: "post",
             url: `${apiURL}/question/created-posts`,
-            headers: { Authorization: "Bearer " + token }
+            headers: { Authorization: "Bearer " + token },
+            data: {
+                limit: limit,
+                page: page,
+                search: search,
+            },
         };
         const response = await axios.default.request(axiosConfig);
         const normalizedResponse = normalizeServerResponse(response);
@@ -180,13 +167,18 @@ export async function getCreatedQuestions() {
 }
 
 //Get the questions which have been followed by the user
-export async function getFollowedQuestions() {
+export async function getFollowedQuestions(limit,page, search) {
     try {
         let token = localStorage.getItem("authToken");
         const axiosConfig = {
-            method: "get",
+            method: "post",
             url: `${apiURL}/question/followed-posts`,
-            headers: { Authorization: "Bearer " + token }
+            headers: { Authorization: "Bearer " + token },
+            data: {
+                limit: limit,
+                page: page,
+                search: search,
+            },
         };
         const response = await axios.default.request(axiosConfig);
         const normalizedResponse = normalizeServerResponse(response);
@@ -218,20 +210,20 @@ export async function followQuestion(questionID) {
 
 //unfollow question
 export async function unfollowQuestion(questionID) {
-  try {
-    let token = localStorage.getItem("authToken");
-    const axiosConfig = {
-      method: "patch",
-      url: `${apiURL}/question/${questionID}/unfollow`,
-      headers: { Authorization: "Bearer " + token },
-    };
-    const response = await axios.default.request(axiosConfig);
-    const normalizedResponse = normalizeServerResponse(response);
-    return [null, normalizedResponse];
-  } catch (error) {
-    const errorObject = normalizeServerError(error);
-    return [errorObject, null];
-  }
+    try {
+        let token = localStorage.getItem("authToken");
+        const axiosConfig = {
+            method: "patch",
+            url: `${apiURL}/question/${questionID}/unfollow`,
+            headers: { Authorization: "Bearer " + token },
+        };
+        const response = await axios.default.request(axiosConfig);
+        const normalizedResponse = normalizeServerResponse(response);
+        return [null, normalizedResponse];
+    } catch (error) {
+        const errorObject = normalizeServerError(error);
+        return [errorObject, null];
+    }
 }
 
 //delete question
@@ -252,23 +244,7 @@ export async function deleteQuestion(questionID) {
   }
 }
 
-// Save question
-export async function saveQuestion(questionID) {
-  try {
-    let token = localStorage.getItem("authToken");
-    const axiosConfig = {
-      method: "patch",
-      url: `${apiURL}/question/${questionID}/save`,
-      headers: { Authorization: "Bearer " + token },
-    };
-    const response = await axios.default.request(axiosConfig);
-    const normalizedResponse = normalizeServerResponse(response);
-    return [null, normalizedResponse];
-  } catch (error) {
-    const errorObject = normalizeServerError(error);
-    return [errorObject, null];
-  }
-}
+
 //Voet for answer
 export async function voteAnswer(questionID) {
   try {
@@ -323,6 +299,24 @@ export async function voteQuestion(questionID) {
   }
 }
 
+//vote question
+export async function undoVoteQuestion(questionID) {
+  try {
+    let token = localStorage.getItem("authToken");
+    const axiosConfig = {
+      method: "patch",
+      url: `${apiURL}/question/${questionID}/undo_vote`,
+      headers: { Authorization: "Bearer " + token },
+    };
+    const response = await axios.default.request(axiosConfig);
+    const normalizedResponse = normalizeServerResponse(response);
+    return [null, normalizedResponse];
+  } catch (error) {
+    const errorObject = normalizeServerError(error);
+    return [errorObject, null];
+  }
+}
+
 // Down vote question
 export async function downVoteQuestion(questionID) {
   try {
@@ -330,6 +324,24 @@ export async function downVoteQuestion(questionID) {
     const axiosConfig = {
       method: "patch",
       url: `${apiURL}/question/${questionID}/down_vote`,
+      headers: { Authorization: "Bearer " + token },
+    };
+    const response = await axios.default.request(axiosConfig);
+    const normalizedResponse = normalizeServerResponse(response);
+    return [null, normalizedResponse];
+  } catch (error) {
+    const errorObject = normalizeServerError(error);
+    return [errorObject, null];
+  }
+}
+
+// Down vote question
+export async function undoDownVoteQuestion(questionID) {
+  try {
+    let token = localStorage.getItem("authToken");
+    const axiosConfig = {
+      method: "patch",
+      url: `${apiURL}/question/${questionID}/undo_down_vote`,
       headers: { Authorization: "Bearer " + token },
     };
     const response = await axios.default.request(axiosConfig);

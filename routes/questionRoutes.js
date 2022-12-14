@@ -7,9 +7,9 @@ const {
   updateQuestion,
   deleteQuestion,
   voteQuestion,
+  undoVoteQuestion,
   downVoteQuestion,
-  saveQuestion,
-  getSavedQuestions,
+  undoDownVoteQuestion,
   getCreatedQuestions,
   getFollowedQuestions,
   followQuestion,
@@ -18,16 +18,16 @@ const {
 const { protect } = require("../middleware/authMiddleware");
 
 router.get("/", getQuestions);
-router.get("/saved-posts", protect, getSavedQuestions); // Route For Getting Questions Saved by user. Order matters...
-router.get("/created-posts", protect, getCreatedQuestions);
-router.get("/followed-posts", protect, getFollowedQuestions);
+router.post("/created-posts", protect, getCreatedQuestions);
+router.post("/followed-posts", protect, getFollowedQuestions);
 router.post("/", protect, createQuestion);
 router.get("/:id", protect, getQuestionById);
 router.patch("/:id", protect, updateQuestion); 
 router.delete("/:id", protect, deleteQuestion);
 router.patch("/:id/vote", protect, voteQuestion);
+router.patch("/:id/undo_vote", protect, undoVoteQuestion);
 router.patch("/:id/down_vote", protect, downVoteQuestion);
-router.patch("/:id/save", protect, saveQuestion);
+router.patch("/:id/undo_down_vote", protect, undoDownVoteQuestion);
 router.patch("/:id/follow", protect, followQuestion);
 router.patch("/:id/unfollow", protect, unfollowQuestion);
 

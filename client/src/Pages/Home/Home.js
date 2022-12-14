@@ -2,14 +2,19 @@ import React from "react";
 import { Container, Row, Col, Card, Button, NavLink } from "react-bootstrap";
 
 import "./Home.css";
+import * as FaIcons from 'react-icons/fa'
+import * as AiIcons from 'react-icons/ai';
+import * as HiIcons from 'react-icons/hi'
+import * as GiIcons from 'react-icons/gi'
+
 
 // Row = 12 cols or 100%
 function Home() {
-  let iconStyles = {
-    fontSize: "7rem",
-    marginLeft: "6rem",
-    marginBottom: "3rem",
-  };
+  // let iconStyles = {
+  //   fontSize: "7rem",
+  //   marginLeft: "6rem",
+  //   marginBottom: "3rem",
+  // };
 
   return (
     <Container fluid>
@@ -26,8 +31,9 @@ function Home() {
         </Col>
         <Col sm={12} md = {12} lg = {6}>
           <Card  className = "custom-cardOne" style={{ border: "none" }}>
-            <Button className = "download-cta" href="/download">Get Started</Button>
-            <Button className = "game-cta" href="/download">Download Game</Button>
+            <Button className = "download-cta" href="/download">Downloads</Button>
+            <Button className = "game-cta" href="/tutorial/beginner/game-getting-started">Make A Game</Button>
+            {/* <Button className = "make-game-cta" href="/tutorial/beginner/game-getting-started">Make a game!</Button> */}
           </Card>
         </Col>
       </Row>
@@ -90,16 +96,17 @@ function Home() {
         }}
       >
         <h2 className="section-title">Features</h2>
-        <Col lg={3} md={6} sm={12}>
+        <Col lg={3} md={6} sm={12} style = {{display: "flex"}}>
           <Card
             className="custom-card"
-            style={{ backgroundColor: "#219EBC", border: "none" }}
+            style={{ backgroundColor: "#219EBC", border: "none", alignItems: "center"}}
           >
+            <FaIcons.FaCameraRetro size = {90} style = {{alignItems: "center"}}/>
             <Card.Title style={{ fontWeight: "800" }}>
               Multiple Cameras
             </Card.Title>
-            <Card.Text style={{ height: "8rem" }}>
-              The Horizon Game Engine allows you to make games from multiple
+            <Card.Text style={{ height: "8rem",}}>
+            &emsp;The Horizon Game Engine allows you to make games from multiple
               perspectives. If you want to make platformers or top down games
               Horizon has got you covered!
             </Card.Text>
@@ -109,8 +116,9 @@ function Home() {
         <Col lg={3} md={6}>
           <Card
             className="custom-card"
-            style={{ backgroundColor: "#219EBC", border: "none" }}
+            style={{ backgroundColor: "#219EBC", border: "none", alignItems: "center" }}
           >
+            <GiIcons.GiMaterialsScience size = {90} style = {{alignItems: "center"}} />
             <Card.Title style={{ fontWeight: "800" }}>Physics</Card.Title>
             <Card.Text style={{ height: "8rem" }}>
               Add Physics Rigid Bodies and Coliders to all objects in our game
@@ -122,8 +130,9 @@ function Home() {
         <Col lg={3} md={6}>
           <Card
             className="custom-card"
-            style={{ backgroundColor: "#219EBC", border: "none" }}
+            style={{ backgroundColor: "#219EBC", border: "none", alignItems: "center" }}
           >
+            <HiIcons.HiDesktopComputer size = {90} style = {{alignItems: "center"}} />
             <Card.Title style={{ fontWeight: "800" }}>Custom API</Card.Title>
             <Card.Text style={{ height: "8rem" }}>
               The Horizon Game Engine was built using a custom API which is
@@ -136,8 +145,9 @@ function Home() {
         <Col lg={3} md={6}>
           <Card
             className="custom-card"
-            style={{ backgroundColor: "#219EBC", border: "none" }}
+            style={{ backgroundColor: "#219EBC", border: "none", alignItems: "center" }}
           >
+            <AiIcons.AiOutlineCode size = {90} style = {{alignItems: "center"}}/>
             <Card.Title style={{ fontWeight: "800" }}>Scripting</Card.Title>
             <Card.Text style={{ height: "8rem" }}>
               Add Scipts to objects in your game using C# or using our visual

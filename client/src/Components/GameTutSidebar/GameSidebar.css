@@ -1,34 +1,31 @@
-.sidebar-container{
+.gSidebar-container{
     display:flex;
-    flex-direction: row;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.advSidebar{
+.gSidebar{
     background: #023047;
     color: #fff;
     height: 100%;
     width: 200px;
-    transition: all 0.6s;
+    transition: all 0.5s;
     text-decoration: none;
 }
 
 @media screen and (max-width: 426px) {
     
-    .advCloseSidebar{
-        height: 50px !important;
+    .gCloseSidebar{
+        height: 50px;
         width: 100% !important;
         overflow: hidden;
         position: absolute;
     }
-    .advOpenSidebar{
+    .gOpenSidebar{
         width: 100% !important;
-        height: 100%;
         overflow: visible;
         position: absolute;
     }
 }
-
 
 
 .sidebar .row {

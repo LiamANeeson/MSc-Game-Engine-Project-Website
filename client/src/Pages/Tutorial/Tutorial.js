@@ -1,38 +1,58 @@
 import React from 'react'
-import { Col, Row } from 'react-bootstrap'
-import Sidebar from '../../Components/Sidebar/Sidebar'
-import { Button } from 'react-bootstrap';
+import { Col, Row, Button } from 'react-bootstrap'
+import Card from 'react-bootstrap/Card';
 import './Tutorial.css';
-import './Tutorial.css'
+
+import pic1 from '../../Assets/Images/game_art_1_ratio.png';
+import pic2 from '../../Assets/Images/open_game_art_download.PNG';
 
 
 function Tutorial() {
 
   return (
-    <div >
+      <div className='tutorial-main-container'>
+            <Card className='card-comp'>
+              <Card.Img variant="top" src={pic1} />
+              <Card.Body>
+                <Card.Title>Beginner Game</Card.Title>
+                <Card.Text>
+                  Make a game
+                </Card.Text>
+                <Button className='card-btn' href='/tutorial/beginner/game-getting-started'>Make a game!</Button>
+              </Card.Body>
+            </Card>
 
-      <div className='tut-main-container'>
-        <Sidebar />
-        <div className='tut-content'>
-          <h2>HorizonGE Tutorials</h2>
-          <p className='par-text'>Welcome to our Tutorials page, here you can learn the "ins and outs" 
-            of the Horizon game engine. To navigate through our tutorials use the side bar provided. This will show you how to do things like 
-            opening the game engine, setting up a new project, opening a scene, adding a new object and creating you own game!</p>
-          <p>Use this video for reference throughout the tutorial series to help you follow the steps that will be described. There are also subsection videos in each tutorial to follow also.</p>
-          <iframe className='youtube-iframe' src="https://www.youtube.com/embed/1Gsn6ALwpyM" title="YouTube vceDs"
-             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-             allowFullScreen></iframe>
-          <p>To get started click on the 'Getting started' tab on the sidebar on the left-hand side!</p>
-        </div>
-      </div>
-
-
-    
+            <Card className='card-comp'>
+            <Card.Img variant="top" src={ pic2 }/>
+            <Card.Body>
+              <Card.Title>Advanced functionality</Card.Title>
+              <Card.Text>
+                Learn Horizon GE
+              </Card.Text>
+              <Button className='card-btn' href='/tutorial/advanced/getting-started'>Learn HorizonGE</Button>
+            </Card.Body>
+          </Card>
       </div>
   )
 }
 
 export default Tutorial
+
+//Additional unused code for sampling
+{/* <Sidebar />
+<div className='tut-content'>
+  <h2>HorizonGE Tutorials</h2>
+  <p className='par-text'>Welcome to our Tutorials page, here you can learn the "ins and outs" 
+    of the Horizon game engine. To navigate through our tutorials use the side bar provided. This will show you how to do things like 
+    opening the game engine, setting up a new project, opening a scene, adding a new object and creating you own game!</p>
+  <p>Use this video for reference throughout the tutorial series to help you follow the steps that will be described. There are also subsection videos in each tutorial to follow also.</p>
+  <iframe className='youtube-iframe' src="https://www.youtube.com/embed/1Gsn6ALwpyM" title="YouTube vceDs"
+     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+     allowFullScreen></iframe>
+  <p>To get started click on the 'Getting started' tab on the sidebar on the left-hand side!</p>
+</div> */}
+
+
 
 
 //Example code

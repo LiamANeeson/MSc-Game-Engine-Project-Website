@@ -1,6 +1,6 @@
 import React from 'react'
-import Sidebar from '../../../Components/Sidebar/Sidebar'
-import './tut_subsections.css'
+import GameSidebar from '../../../Components/GameTutSidebar/GameSidebar';
+import './GameTutSubSec.css'
 
 import File_menu from '../../../Assets/Images/newScene/File_menu.png'
 import File_menu_open from '../../../Assets/Images/newScene/file_menu_new_scene.png'
@@ -10,7 +10,7 @@ import new_scene_toggle from '../../../Assets/Images/newScene/new_scene_toggle.p
 
 import Treemap from '../../../Components/TreeMap/TreeMap'
 
-function CreateScene() {
+function GameCreateScene() {
 
   const links = [{ id: '#step1', text: 'Figure 1: File menu' },
   { id: '#step2', text: 'Figure 2: File menu open' },
@@ -20,9 +20,9 @@ function CreateScene() {
   { id: '#step6', text: 'Figure 6: Accessing scenes created' },]
 
   return (
-    <div className='adv-tut-main-container'>
-        <Sidebar />
-          <div className='adv-tut-content'>
+    <div className='gmTutMainContainer'>
+        <GameSidebar />
+          <div className='gmTutContent'>
           <h2>Opening a scene</h2>
           <Treemap links={links} />
           <br></br>
@@ -68,4 +68,4 @@ function CreateScene() {
   )
 }
 
-export default CreateScene
+export default GameCreateScene
