@@ -38,12 +38,6 @@ function ResetPassword() {
     }
   }, [user, resetMsg, isError, isSuccess, message, navigate]);
 
-  const onChange = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
 
   const onSubmit = (data) => {
   
