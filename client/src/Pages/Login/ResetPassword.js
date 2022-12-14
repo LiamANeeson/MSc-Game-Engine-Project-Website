@@ -16,14 +16,6 @@ function ResetPassword() {
 
   const [searchParams] = useSearchParams();
 
-
-  const [formData, setFormData] = useState({
-    oldpassword: "",
-    newpassword: "",
-  });
-
-  const { oldpassword, newpassword } = formData;
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -71,7 +63,7 @@ function ResetPassword() {
                 <Formik
                     initialValues={{
                         newPassword: '',
-                        conFirmPassword: '',
+                        confirmPassword: '',
                     }}
                     validationSchema={userResetPasswordSchema}
                     onSubmit={onSubmit}
@@ -106,14 +98,14 @@ function ResetPassword() {
                                     <Form.Label>Confirm Password</Form.Label>
                                     <Form.Control type="password"
                                         placeholder="Confirm your password"
-                                        name="conFirmPassword"
+                                        name="confirmPassword"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
-                                        value={values.conFirmPassword}
+                                        value={values.confirmPassword}
                                     />
-                                    {errors.conFirmPassword && touched.conFirmPassword ?
+                                    {errors.confirmPassword && touched.confirmPassword ?
                                         <div className="error-message">
-                                            {errors.conFirmPassword}
+                                            {errors.confirmPassword}
                                         </div> : null
                                     }
                                 </Form.Group>

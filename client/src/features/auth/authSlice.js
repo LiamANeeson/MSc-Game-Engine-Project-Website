@@ -44,7 +44,7 @@ export const resetPassword1 = createAsyncThunk('auth/reset', async(user, thunkAP
 })
 
 //reset password from email
-export const resetPasswordFromEmail = createAsyncThunk('auth/resetFromEmail', async (user, thunkAPI) => {
+export const resetPasswordFromEmail = createAsyncThunk('auth/reset', async (user, thunkAPI) => {
     try {
         return await authService.resetPasswordFromEmail(user)
     } catch (error) {
