@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useSearchParams } from 'react-router-dom';
 
-import { resetPassword1 } from "../../features/auth/authSlice";
+import { resetPasswordFromEmail } from "../../features/auth/authSlice";
 import "./Login.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { userResetPasswordSchema } from '../../validation/userValidation'
@@ -57,7 +57,7 @@ function ResetPassword() {
   
       let token = searchParams.get('token');
       data["token"] = token;
-      dispatch(resetPassword1(data));
+      dispatch(resetPasswordFromEmail(data));
   }
   return (
     <container className="login-container">
@@ -70,8 +70,8 @@ function ResetPassword() {
 
                 <Formik
                     initialValues={{
-                        newpassword: '',
-                        oldpassword: '',
+                        newPassword: '',
+                        conFirmPassword: '',
                     }}
                     validationSchema={userResetPasswordSchema}
                     onSubmit={onSubmit}
@@ -89,15 +89,15 @@ function ResetPassword() {
                                 <Form.Group>
                                     <Form.Label>New Password</Form.Label>
                                     <Form.Control type="password"
-                                        placeholder="Enter password"
-                                        name="oldpassword"
+                                        placeholder="Enter new password"
+                                        name="newPassword"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
-                                        value={values.oldpassword}
+                                        value={values.newPassword}
                                     />
-                                    {errors.oldpassword && touched.oldpassword ?
+                                    {errors.newPassword && touched.newPassword ?
                                         <div className="error-message">
-                                            {errors.oldpassword}
+                                            {errors.newPassword}
                                         </div> : null
                                     }
                                 </Form.Group>
@@ -105,15 +105,15 @@ function ResetPassword() {
                                 <Form.Group>
                                     <Form.Label>Confirm Password</Form.Label>
                                     <Form.Control type="password"
-                                        placeholder="Enter password"
-                                        name="newpassword"
+                                        placeholder="Confirm your password"
+                                        name="conFirmPassword"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
-                                        value={values.newpassword}
+                                        value={values.conFirmPassword}
                                     />
-                                    {errors.newpassword && touched.newpassword ?
+                                    {errors.conFirmPassword && touched.conFirmPassword ?
                                         <div className="error-message">
-                                            {errors.newpassword}
+                                            {errors.conFirmPassword}
                                         </div> : null
                                     }
                                 </Form.Group>

@@ -7,6 +7,7 @@ const {
     getUser,
     getFiles,
     resetPassword,
+    resetPasswordFromEmail,
     forgotPassword
 } = require('../controllers/userController')
 const { protect } = require('../middleware/authMiddleware')
@@ -23,6 +24,7 @@ router.post('/profile', updateProfile)
 router.post("/upload", uploadFiles);
 router.post("/download", download);
 router.route('/reset-password').post(resetPassword)
+router.route('/reset-password-email').post(resetPasswordFromEmail)
 router.route('/forget-password').post(forgotPassword)
 
 module.exports = router

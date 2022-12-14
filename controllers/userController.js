@@ -155,6 +155,34 @@ const resetPassword = async (req, res) => {
     }
 };
 
+const resetPasswordFromEmail = async (req, res) => {
+    const { newPassword, confirmPassword, token } = req.body;
+
+    const id = token;
+
+    try {
+        let user = await User.findOne({ token: id }).select("+password");
+
+        if (!user) {
+            return res.status(400).json({ msg: "No user found" });
+        }
+
+        const salt = await bcrypt.genSalt(10);
+        changepassword = await bcrypt.hash(newPassword, salt);
+        await User.findByIdAndUpdate(user._id, {
+            $set: { password: changepassword },
+        });
+        res
+            .status(200)
+            .json({
+                user,
+                message: "password changed successfully thanks for visit",
+            });
+    } catch (error) {
+        return res.status(400).json({ msg: "somthing got wrong!" });
+    }
+};
+
 const transporter = nodemailer.createTransport({
     //service: "gmail",
     host: "smtp.gmail.com",
@@ -232,5 +260,6 @@ module.exports = {
   getFiles,
   getUser,
   resetPassword,
+  resetPasswordFromEmail,
   forgotPassword,
 };
