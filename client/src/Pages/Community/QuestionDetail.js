@@ -113,7 +113,6 @@ const QuestionDetail = (props) => {
         };
         init();
     }, [Api.getQuestion, setAnswers, setShowLoading]);
-    //  console.log( "selected" ,obj);
 
     const postAnswerComment = async (data) => {
         const [postAnswerErr, postAnswerRes] = await Api.createAnswer(
@@ -318,7 +317,7 @@ const QuestionDetail = (props) => {
                                             }
                                         }}
                                     >
-                                        <AiIcons.AiFillDelete size={40} />
+                                        <AiIcons.AiFillDelete size={30} />
                                     </Button>
                                 ) : (
                                     ""
@@ -383,9 +382,9 @@ const QuestionDetail = (props) => {
                                                     }}
                                                 />
                                             </div>
+                                            <div className="answer-content">{answer?.data?.content}</div>
                                         </div>
                                         <div className="answer-detail">
-                                            <div>{answer?.data?.content}</div>
                                             <div className="other-section">
                                                 <div className="answer-detail-comment">
                                                     <button
@@ -405,7 +404,7 @@ const QuestionDetail = (props) => {
                                                     <div className="comment-userinfo-img">
                                                         <div className="question-user-name">
                                                             <img
-                                                                class="rounded-circle mt-2"
+                                                                class="rounded-circle"
                                                                 src={answer?.data?.userObj?.avatar}
                                                                 width="30px"
                                                                 height="30px"

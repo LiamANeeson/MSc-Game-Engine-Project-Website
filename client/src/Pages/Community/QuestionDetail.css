@@ -16,7 +16,7 @@
     grid-area: answer;
     padding: 1.5rem 0.5rem 1.5rem 0;
     transition: all .3s ease-out;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
 .q-desc {
@@ -28,7 +28,7 @@
 }
 
 .count-like {
-    display: flex;
+    display: inline-block;
     flex-direction: column;
     justify-content: flex-start;
     color: rgba(22, 25, 31, .82);
@@ -36,6 +36,7 @@
     font-weight: 500;
     letter-spacing: -1px;
     line-height: 2.4rem;
+    float:left;
 }
 
 .count-middle {
@@ -43,10 +44,10 @@
     flex-direction: column;
     margin-top: 0.4rem;
     margin-bottom: 0.4rem;
+    margin-left: 0.4rem;
 }
 
 .other-section {
-    display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
     gap: 0.5rem;
@@ -54,19 +55,19 @@
 }
 
 .answer-detail-comment {
-    display: flex;
+    display: inline-block;
     flex-wrap: wrap;
     flex: 1 1 auto;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
+    float: left;
 }
 
 .comment-userinfo {
-    width: 13rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    display: inline-block;
+    float: right
 }
+
 
 .answer-detail-commen-button {
     background-color: #FB8500 !important;
@@ -112,6 +113,7 @@
 .answer-comment {
     grid-area: comments;
     width: 100%;
+    float:left;
 }
 
 .answer-commnet-list {
@@ -288,9 +290,6 @@
 .question-interactions {
     display: flex;
     justify-content: right;
-    width: "auto";
-    margin: "40px";
-    padding: "40px";
 }
 
 .question-btn {
@@ -303,8 +302,7 @@
     text-transform: uppercase;
     border-radius: 4px !important;
     box-sizing: border-box !important;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 18px;
 }
 
 .question-btn:hover {
@@ -337,4 +335,15 @@
     background-color: #FB8500 !important;
     border: 2px solid !important;
     border-color: black !important;
+}
+
+.like-dislike{
+    display:flex;
+}
+
+.answer-content {
+    display: inline-block;
+    float: right;
+    margin-left: 20px;
+    margin-top: 10px;
 }
