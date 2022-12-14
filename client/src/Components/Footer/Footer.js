@@ -21,7 +21,7 @@ function Footer() {
           <div className="col">
             <h4>About</h4>
             <ui className="list-unstyled">
-              <li>2D Game Engine</li>
+              <a className="external-links" href="/tutorial/advanced/getting-started"><li>2D Game Engine</li></a>
               <a className="external-links" href="/docs"><li>Documentation</li></a>
             </ui>
           </div>
