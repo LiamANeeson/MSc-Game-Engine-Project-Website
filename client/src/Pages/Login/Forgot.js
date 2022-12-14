@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { forgot, reset } from "../../features/auth/authSlice";
 import "./Login.css";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Button } from "react-bootstrap";
 
 function Forgot() {
   const [formData, setFormData] = useState({
@@ -58,7 +58,7 @@ function Forgot() {
           <h1>
             Password Recovery
           </h1>
-          <p>reciver your  Horizon Game Engine account password!</p>
+          <p>Recover</p>
         </Col>
         <Col md={6} as='form' onSubmit={onSubmit} className="submission-form">
           <label for="email">Email</label>
@@ -71,9 +71,9 @@ function Forgot() {
             placeholder="Please Enter your email"
             onChange={onChange}
           />
-          <button type="submit" className="submit-btn">
+          <Button type="submit" className="login-btn">
             Submit Email
-          </button>
+          </Button>
         </Col>
       </Row>
     </Container>
