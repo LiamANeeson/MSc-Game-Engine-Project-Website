@@ -11,6 +11,9 @@
     margin: 10px;
     text-align: left;
     height: 400px;
+    word-break: keep-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .questions-desc {
@@ -110,6 +113,7 @@
     line-height: 1.25rem;
     max-width: 10rem;
     flex-shrink: 0;
+    margin-bottom: 0.25rem;
 }
 
 
