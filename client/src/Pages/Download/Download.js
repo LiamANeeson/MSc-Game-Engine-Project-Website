@@ -40,7 +40,7 @@ const downloadImage = (image) => {
       </section>
       <section className='download-section'>
       <button className='gm-btn' onClick={event =>  window.location.href='https://drive.google.com/u/0/uc?id=1jRteDczyiH6pKuTFSqhfnlXehCbuke5Q&export=download&confirm=t&uuid=3ddca90c-b9a4-42a7-99c1-e7d3e9858d8b&at=AHV7M3dV7_X4VuSyICJ1e9-zm79x:1671018346875'}>Download Horizon Game Engine Installer</button> 
-      <button className='gm-btn' onClick={event =>  window.open('https://drive.google.com/u/0/uc?id=1olKLD4z7acfWCynvGXKVWYO2rq6cDBHw&export=download')}>Download Dark Trails Game</button>
+      <button className='gm-btn' onClick={event =>  window.open('https://drive.google.com/u/0/uc?id=1l4nXoKq0pLAlSlgAxq2kAqcuApe8o4kI&export=download')}>Download Dark Trails Game</button>
       </section>
       <section className='git-cta'>
         <h2>Horizon GitHub</h2>
