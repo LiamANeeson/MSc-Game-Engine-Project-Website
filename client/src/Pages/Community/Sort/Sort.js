@@ -18,6 +18,7 @@ const Sort = ({ sort, setSort, disabled = false }) => {
     <>
       <div className={styles.container}>
         <Form.Select
+          className={styles.sort}
           disabled={disabled}
           aria-label="Default select example"
           onChange={onSelectChange}
