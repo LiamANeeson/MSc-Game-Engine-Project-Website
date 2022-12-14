@@ -85,10 +85,11 @@ function Community() {
       {showLoading ? <div className="loadingDiv"></div> : ""}
       <Container>
         <Row>
-          <Col>
-          </Col>
+          
           <Col md={4}>
-            <Search setSearch={(search) => setSearch(search)} />
+            <Search setSearch={(search) => setSearch(search)} />          
+          </Col>
+          <Col md={4}  className="community-btn-sort">
             <Sort sort={sort} setSort={(sort) => setSort(sort)} />
           </Col>
           <Col md={4}>
