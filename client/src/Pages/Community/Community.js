@@ -89,7 +89,7 @@ function Community() {
           <Col md={4}>
             <Search setSearch={(search) => setSearch(search)} />          
           </Col>
-          <Col md={4}  className="community-btn-sort">
+          <Col md={4}>
             <Sort sort={sort} setSort={(sort) => setSort(sort)} />
           </Col>
           <Col md={4}>
