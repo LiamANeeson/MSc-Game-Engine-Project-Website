@@ -103,11 +103,10 @@ function Home() {
               Multiple Cameras
             </Card.Title>
             <Card.Text style={{ height: "8rem",}}>
-            &emsp;The Horizon Game Engine allows you to make games from multiple
-              perspectives. If you want to make platformers or top down games
-              Horizon has got you covered!
+              The Horizon Game Engine allows you to make games from multiple
+              perspectives. Make platformers or top down games!
             </Card.Text>
-            <Button className="learnMoreBtns">See More About Cameras</Button>
+            <Button className="learnMoreBtns3">See More About Cameras</Button>
           </Card>
         </Col>
         <Col lg={3} md={6}>
@@ -121,7 +120,7 @@ function Home() {
               Add Physics Rigid Bodies and Coliders to all objects in our game
               using our physics system.
             </Card.Text>
-            <Button className="learnMoreBtns" href="/tutorial/physics">See More On Physics</Button>
+            <Button className="learnMoreBtns3" href="/tutorial/advanced/physics">See More On Physics</Button>
           </Card>
         </Col>
         <Col lg={3} md={6}>
@@ -136,7 +135,7 @@ function Home() {
               available to anyone. So if you want to view the source code and
               use it directly you can!
             </Card.Text>
-            <Button className="learnMoreBtns" href="/docs">See Custom API</Button>
+            <Button className="learnMoreBtns3" href="https://horizondocs.herokuapp.com/" target="_black">See Custom API</Button>
           </Card>
         </Col>
         <Col lg={3} md={6}>
@@ -150,7 +149,7 @@ function Home() {
               Add Scipts to objects in your game using C# or using our visual
               scripting node editor
             </Card.Text>
-            <Button className="learnMoreBtns" href="/tutorial/scripting">See More About Scripting</Button>
+            <Button className="learnMoreBtns3" href="/tutorial/advanced/scripting">See More About Scripting</Button>
           </Card>
         </Col>
       </Row>

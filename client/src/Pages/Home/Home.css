@@ -115,18 +115,28 @@
   background-color: "#009DDC" !important;
 }
 
-.learnMoreBtns {
+.learnMoreBtns3 {
   background-color: #FB8500 !important;
-  border-color: #FB8500 !important;
+  border: 2px solid #FB8500 !important;
   border-radius: 4px !important;
   color: black !important;
-  border: 2px solid;
+  width: 240px !important;
+  margin-top: 15px !important;
+}
+
+.learnMoreBtns3:hover {
+  border: 2px solid black !important;
+}
+
+.learnMoreBtns {
+  background-color: #FB8500 !important;
+  border: 2px solid #FB8500 !important;
+  border-radius: 4px !important;
+  color: black !important;
 }
 
 .learnMoreBtns:hover {
-  border-color: #FB8500 !important;
-  border: 2px solid !important;
-  border-color: black !important;
+  border: 2px solid black !important;
 }
 
 @media only screen and (max-width: 450px) {
