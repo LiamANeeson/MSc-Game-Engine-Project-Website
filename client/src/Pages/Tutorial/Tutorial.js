@@ -3,8 +3,8 @@ import { Col, Row, Button } from 'react-bootstrap'
 import Card from 'react-bootstrap/Card';
 import './Tutorial.css';
 
-import pic1 from '../../Assets/Images/game_art_1_ratio.png';
-import pic2 from '../../Assets/Images/open_game_art_download.PNG';
+import pic1 from '../../Assets/Images/game_imgs/level1_ratio.png';
+import pic2 from '../../Assets/Images/game_imgs/level2_ratio.png';
 
 
 function Tutorial() {
