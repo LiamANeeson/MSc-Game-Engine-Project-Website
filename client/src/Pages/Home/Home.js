@@ -106,7 +106,7 @@ function Home() {
               The Horizon Game Engine allows you to make games from multiple
               perspectives. Make platformers or top down games!
             </Card.Text>
-            <Button className="learnMoreBtns3">See More About Cameras</Button>
+            <Button className="learnMoreBtns3" href="/tutorial/advanced/create-scene">See More About Cameras</Button>
           </Card>
         </Col>
         <Col lg={3} md={6}>
@@ -149,7 +149,7 @@ function Home() {
               Add Scipts to objects in your game using C# or using our visual
               scripting node editor
             </Card.Text>
-            <Button className="learnMoreBtns3" href="/tutorial/advanced/scripting">See More About Scripting</Button>
+            <Button className="learnMoreBtns3" href="/tutorial/advanced/scripts">See More About Scripting</Button>
           </Card>
         </Col>
       </Row>

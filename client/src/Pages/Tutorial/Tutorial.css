@@ -33,9 +33,9 @@
 
 .card-btn{
     color: black !important;
-    background-color: #FFB703 !important;  
+    background-color: #FB8500 !important;  
     border: 2px solid !important;
-    border-color: #FFB703 !important;
+    border-color: #FB8500 !important;
     width: 100% !important;
     font-size: 1.2rem !important;
     font-weight: 600 !important;
@@ -49,7 +49,7 @@
 }
 
 .card-btn:hover {
-  background-color: #FFB703 !important;
+  background-color: #FB8500 !important;
   border: 2px solid !important;
   border-color: black !important;
 }
