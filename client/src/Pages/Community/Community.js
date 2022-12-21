@@ -85,9 +85,54 @@ function Community() {
       {showLoading ? <div className="loadingDiv"></div> : ""}
       <Container>
         <Row>
-          
+
+          <div style={{marginTop:"20px"}}>
+            {isAll == true ? (
+              <>
+                <Button
+                  variant="primary"
+                  disabled={false}
+                  onClick={() => {
+                    setIsAll(!isAll);
+                  }}
+                >
+                  All
+                </Button>{" "}
+                <Button
+                  variant="primary"
+                  disabled={true}
+                  onClick={() => {
+                    setIsAll(!isAll);
+                  }}
+                >
+                  UnAnswered
+                </Button>{" "}
+              </>
+            ) : (
+              <>
+                <Button
+                  variant="primary"
+                  disabled={true}
+                  onClick={() => {
+                    setIsAll(!isAll);
+                  }}
+                >
+                  All
+                </Button>{" "}
+                <Button
+                  variant="primary"
+                  disabled={false}
+                  onClick={() => {
+                    setIsAll(!isAll);
+                  }}
+                >
+                  UnAnswered
+                </Button>{" "}
+              </>
+            )}
+          </div>
           <Col md={4}>
-            <Search setSearch={(search) => setSearch(search)} />          
+            <Search setSearch={(search) => setSearch(search)} />
           </Col>
           <Col md={4}>
             <Sort sort={sort} setSort={(sort) => setSort(sort)} />
