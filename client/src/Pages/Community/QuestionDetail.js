@@ -67,14 +67,15 @@ function MyVerticallyCenteredModal(props) {
 
 const QuestionDetail = (props) => {
 
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [answers, setAnswers] = useState([]);
-  const [question, setQuestion] = useState();
-  const [isUpvotedByThisUser, setIsUpvotedByThisUser] = useState(false);
-  const [isDownvotedByThisUser, setIsDownvotedByThisUser] = useState(false);
-  const [isFollowedByThisUser, setIsFollowedByThisUser] = useState(false);
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const [answers, setAnswers] = useState([]);
+    const [question, setQuestion] = useState();
+    const [isUpvotedByThisUser, setIsUpvotedByThisUser] = useState(false);
+    const [isDownvotedByThisUser, setIsDownvotedByThisUser] = useState(false);
+    const [isFollowedByThisUser, setIsFollowedByThisUser] = useState(false);
 
+    const [isUpdate, setUpdate] = useState(true);
 
     const [modalShow, setModalShow] = React.useState(false);
 
@@ -93,6 +94,41 @@ const QuestionDetail = (props) => {
                 if (localStorage.getItem("userId") == response?.data?.userObj?._id) {
                     setDelete(true);
                 }
+
+              //  console.log("tariq", response);
+                // if(localStorage.getItem("userId") == )
+
+                let followedBy = response?.data?.followedBy;
+                if (followedBy.length >= 1) {
+                    for (let user of followedBy) {
+                        if (user._id == localStorage.getItem("userId")) {
+                            setIsFollowedByThisUser(true);
+                            break;
+                        }
+                    }
+                }
+
+                let votesList = response?.data?.votesList;
+                if (votesList.length >= 1) {
+                    for (let user_id of votesList) {
+                        if (user_id == localStorage.getItem("userId")) {
+                            setIsUpvotedByThisUser(true);
+                            break;
+                        }
+                    }
+                }
+
+                let downVotesList = response?.data?.downVotesList;
+                if (downVotesList.length >= 1) {
+                    for (let user_id of downVotesList) {
+                        if (user_id == localStorage.getItem("userId")) {
+                            setIsDownvotedByThisUser(true);
+                            break;
+                        }
+                    }
+                }
+
+
                 let ans = [];
                 let answerID = response?.data?.answers?.map((answer) => answer);
                 for (let i = 0; i < answerID.length; i++) {
@@ -111,8 +147,11 @@ const QuestionDetail = (props) => {
                 console.log(error);
             }
         };
-        init();
-    }, [Api.getQuestion, setAnswers, setShowLoading]);
+        if (isUpdate) {
+            setUpdate(false);
+            init();
+        }
+    }, [Api.getQuestion, setAnswers, setShowLoading, isUpdate]);
 
     const postAnswerComment = async (data) => {
         const [postAnswerErr, postAnswerRes] = await Api.createAnswer(
@@ -162,71 +201,74 @@ const QuestionDetail = (props) => {
     };
 
 
-  const upVoteQuestion = async (answer_id = "") => {
-    if (answer_id) {
-      const [voteErr, voteRes] = await Api.voteAnswer(answer_id);
-      if (voteErr) {
-        toast.info("You already liked this question!");
-      }
-      if (voteRes) {
-        toast.success("Question Liked!");
-      }
-    } else {
-      const isUndoAction = isUpvotedByThisUser;
-      const [voteErr, voteRes] = (isUndoAction ? await Api.undoVoteQuestion(id) : await Api.voteQuestion(id));
-      if (voteErr) {
-        toast.info("You already liked this question!");
-      } else if (voteRes) {
-        toast.success(isUndoAction ? "Question Unliked!" : "Question Liked!");
-        setIsUpvotedByThisUser(isUndoAction ? false : true);
-        setIsDownvotedByThisUser(false);
-      }
-    }
-  }
+    const upVoteQuestion = async (answer_id = "") => {
+        if (answer_id) {
+            const [voteErr, voteRes] = await Api.voteAnswer(answer_id);
+            if (voteErr) {
+                toast.info("You already liked this question!");
+            }
+            if (voteRes) {
+                toast.success("Question Liked!");
+            }
+        } else {
+            const isUndoAction = isUpvotedByThisUser;
+            const [voteErr, voteRes] = (isUndoAction ? await Api.undoVoteQuestion(id) : await Api.voteQuestion(id));
+            if (voteErr) {
+                toast.info("You already liked this question!");
+            } else if (voteRes) {
+                toast.success(isUndoAction ? "Question Unliked!" : "Question Liked!");
+                setIsUpvotedByThisUser(isUndoAction ? false : true);
+                setIsDownvotedByThisUser(false);
+            }
+        }
 
-  const downVoteQuestion = async (answer_id = "") => {
-    if (answer_id) {
-      const [voteErr, voteRes] = await Api.downVoteAnswer(answer_id);
-      if (voteErr) {
-        toast.error("Something went wrong!");
-      }
-      if (voteRes) {
-        toast.success("Success!");
-      }
-    } else {
-      const isUndoAction = isDownvotedByThisUser;
-      const [voteErr, voteRes] = (isUndoAction ? await Api.undoDownVoteQuestion(id) : await Api.downVoteQuestion(id));
-      if (voteErr) {
-        toast.error("Something went wrong!");
-      } else if (voteRes) {
-        toast.success("Success!");
-        setIsDownvotedByThisUser(isUndoAction ? false : true);
-        setIsUpvotedByThisUser(false);
-      }
+        setUpdate(true);
     }
-  };
 
-  const followQuestion = async () => {
-    const [followErr, followRes] = await Api.followQuestion(id);
-    if (followErr) {
-      toast.error("Something went wrong!");
-    }
-    if (followRes) {
-      setIsFollowedByThisUser(true);
-      toast.success("Followed!");
-    }
-  }
+    const downVoteQuestion = async (answer_id = "") => {
+        if (answer_id) {
+            const [voteErr, voteRes] = await Api.downVoteAnswer(answer_id);
+            if (voteErr) {
+                toast.error("Something went wrong!");
+            }
+            if (voteRes) {
+                toast.success("Success!");
+            }
+        } else {
+            const isUndoAction = isDownvotedByThisUser;
+            const [voteErr, voteRes] = (isUndoAction ? await Api.undoDownVoteQuestion(id) : await Api.downVoteQuestion(id));
+            if (voteErr) {
+                toast.error("Something went wrong!");
+            } else if (voteRes) {
+                toast.success("Success!");
+                setIsDownvotedByThisUser(isUndoAction ? false : true);
+                setIsUpvotedByThisUser(false);
+            }
+        }
+        setUpdate(true);
+    };
 
-  const unfollowQuestion = async () => {
-    const [followErr, followRes] = await Api.unfollowQuestion(id);
-    if (followErr) {
-      toast.error("Something went wrong!");
+    const followQuestion = async () => {
+        const [followErr, followRes] = await Api.followQuestion(id);
+        if (followErr) {
+            toast.error("Something went wrong!");
+        }
+        if (followRes) {
+            setIsFollowedByThisUser(true);
+            toast.success("Followed!");
+        }
     }
-    if (followRes) {
-      setIsFollowedByThisUser(false);
-      toast.success("Unfollowed!");
+
+    const unfollowQuestion = async () => {
+        const [followErr, followRes] = await Api.unfollowQuestion(id);
+        if (followErr) {
+            toast.error("Something went wrong!");
+        }
+        if (followRes) {
+            setIsFollowedByThisUser(false);
+            toast.success("Unfollowed!");
+        }
     }
-  }
 
 
     return (
@@ -253,26 +295,26 @@ const QuestionDetail = (props) => {
                                 </div>
                             </Card.Text>
 
-              <div className="que-tags">
-                {question?.tags.map((tag) => (
-                  <span className="tag">{tag}</span>
-                ))}
-              </div>
-              <div className="question-interactions">
-                <Button
-                  className="question-btn"
-                  onClick={() => {
-                    if (!authToken) {
-                      setModalShow(true);
-                    } else {
-                      isFollowedByThisUser ? unfollowQuestion() : followQuestion();
-                    }
-                  }}
-                >
-                  <span style={{ color: isFollowedByThisUser ? "white" : "black" }}>
-                    {isFollowedByThisUser ? "Following" : "Follow"}
-                  </span>
-                </Button>
+                            <div className="que-tags">
+                                {question?.tags.map((tag) => (
+                                    <span className="tag">{tag}</span>
+                                ))}
+                            </div>
+                            <div className="question-interactions">
+                                <Button
+                                    className="question-btn"
+                                    onClick={() => {
+                                        if (!authToken) {
+                                            setModalShow(true);
+                                        } else {
+                                            isFollowedByThisUser ? unfollowQuestion() : followQuestion();
+                                        }
+                                    }}
+                                >
+                                    <span style={{ color: isFollowedByThisUser ? "white" : "black" }}>
+                                        {isFollowedByThisUser ? "Following" : "Follow"}
+                                    </span>
+                                </Button>
 
                                 <Button
                                     className="question-btn"

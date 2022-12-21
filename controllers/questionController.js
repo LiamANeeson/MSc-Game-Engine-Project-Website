@@ -167,6 +167,7 @@ const voteQuestion = async (req, res) => {
         await Question.updateOne(
             { _id: req.params.id },
             {
+                voteCount: question.votes.length + 1,
                 $push: { votes: req.user._id },
                 $pull: { downVotes: req.user._id },
             }
@@ -228,6 +229,7 @@ const downVoteQuestion = async (req, res) => {
         await Question.updateOne(
             { _id: req.params.id },
             {
+                voteCount: question.votes.length - 1,
                 $pull: { votes: req.user._id },
                 $push: { downVotes: req.user._id },
             }

@@ -38,6 +38,10 @@ const questionSchema = new mongoose.Schema(
             type: Number,
             default: 0
         },
+        voteCount: {
+            type: Number,
+            default: 0
+        },
         followedBy: [Object],
         userObj: Object
     },
@@ -56,14 +60,17 @@ const questionToFrontEndView = (question, userID) => {
         followedBy: question.followedBy,
         viewCount: question.viewCount,
         userObj: question.userObj,
-        createdAt: question.createdAt
+        createdAt: question.createdAt,
     }
 
     frontEndQuestion.isUpvotedByThisUser = (question.votes.indexOf(userID) !== -1)
     frontEndQuestion.isDownvotedByThisUser = (question.downVotes.indexOf(userID) !== -1)
 
-    frontEndQuestion.votes = question.votes.length
-    frontEndQuestion.downVotes = question.downVotes.length
+    frontEndQuestion.votes = question.votes.length;
+    frontEndQuestion.downVotes = question.downVotes.length;
+    frontEndQuestion.votesList = question.votes;
+    frontEndQuestion.downVotesList = question.downVotes;
+
 
     return frontEndQuestion
 }

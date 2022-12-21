@@ -25,8 +25,8 @@ const Sort = ({ sort, setSort, disabled = false }) => {
         >
           <option value="name">Sort by name(A-Z)</option>
           <option value="name-desc">Sort by name(Z-A)</option>
-          <option value="totalVotes">Sort by most votes</option>
-          <option value="views">Sort by most views</option>
+          <option value="voteCount">Sort by most votes</option>
+          <option value="viewCount">Sort by most views</option>
         </Form.Select>
       </div>
     </>
